@@ -99,3 +99,21 @@ other = "Web Apps"
 
 [caseHistoryNavigation]
 other = "Altri case history"
+
+[projects]
+other = "Progetti"
+
+[documents]
+other = "Documenti"
+
+[viewProjectSheet]
+other = "Visualizza la scheda progetto"
+
+[viewDocument]
+other = "Visualizza il documento"
+
+[funder]
+other = "Ente finanziatore"
+
+[amount]
+other = "Importo"

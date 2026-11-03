@@ -101,7 +101,9 @@ static/documento_trasparenza_aiuti_pubblici.pdf  stesso percorso
 |---|---|
 | Case history | `title`, `date`, `description` (sommario), `image`, `imageAlt`, `client` (facoltativo), `sector` (facoltativo), `areas` (scelte tra le 6), corpo |
 | Servizi | `title`, `date`, `description`, `image`, `imageAlt`, `weight` (ordine), `links` (lista label + url), `attachments` (lista label + file), corpo |
-| Trasparenza | `title`, `date`, `year`, `kind` (`progetto` / `documento-aiuti`), `program` (es. "iNEST Spoke 3"), `funder` (facoltativo), `amount` (facoltativo), `file` (PDF), `description` |
+| Trasparenza | `title`, `date`, `year`, `kind` (`progetto` / `documento-aiuti`), `program` (es. "iNEST Spoke 3"), `funder` (facoltativo), `amount` (facoltativo), `file` (PDF), `description`, `image` + `imageAlt` (facoltativi, es. locandina del progetto) |
+
+Il front matter di `content/<lingua>/trasparenza/_index.md` ha inoltre la lista `banners` (`image` + `imageAlt`), mostrata in cima alla pagina. Da esporre in Pages CMS come voce di tipo "file" (passo 12).
 
 Tutte e tre le collection hanno anche il campo `draft` (booleano, default `false`). Con `draft = true` la voce resta nel repo ma non viene pubblicata.
 

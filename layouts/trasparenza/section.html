@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{- with .Params.banners }}
+  <div class="transparency-banners">
+    {{- range . }}{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}{{ end }}
+  </div>
+  {{- end }}
+
+  {{- $projects := where .Pages "Params.kind" "progetto" }}
+  {{- with $projects }}
+  <section class="transparency-projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">{{ T "projects" }}</h2>
+    {{ partial "transparency-list.html" (dict "pages" . "linkLabel" (T "viewProjectSheet")) }}
+  </section>
+  {{- end }}
+
+  {{- $documents := where .Pages "Params.kind" "documento-aiuti" }}
+  {{- with $documents }}
+  <section class="transparency-documents" aria-labelledby="documents-title">
+    <h2 id="documents-title">{{ T "documents" }}</h2>
+    {{ partial "transparency-list.html" (dict "pages" . "linkLabel" (T "viewDocument")) }}
+  </section>
+  {{- end }}
+{{ end }}

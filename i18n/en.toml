@@ -99,3 +99,21 @@ other = "Web Apps"
 
 [caseHistoryNavigation]
 other = "More case histories"
+
+[projects]
+other = "Projects"
+
+[documents]
+other = "Documents"
+
+[viewProjectSheet]
+other = "View the project sheet"
+
+[viewDocument]
+other = "View the document"
+
+[funder]
+other = "Funder"
+
+[amount]
+other = "Amount"
