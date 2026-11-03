@@ -82,10 +82,20 @@ a:hover {
   text-decoration-thickness: 3px;
 }
 
-/* Focus: thick orange outline, visible on every background */
+/* Focus: thick outline, at least 3:1 against the background around it (WCAG 1.4.11).
+   Ink on light backgrounds (16:1 on cream); orange on blue sections (4.2:1). */
 :focus-visible {
-  outline: var(--bw) solid var(--c-orange);
+  outline: var(--bw) solid var(--c-ink);
   outline-offset: 3px;
+}
+
+:is(.site-footer, .home-contacts, .cta-band, .card--blue, .menu-panel) :focus-visible {
+  outline-color: var(--c-orange);
+}
+
+/* Light boxes inside blue sections go back to ink. */
+:is(.home-contacts .card, .menu-panel__bar) :focus-visible {
+  outline-color: var(--c-ink);
 }
 
 /* Text for assistive technology only */

@@ -933,6 +933,31 @@ main:has(> :is(.cta-band, .home-contacts):last-child) + .site-footer {
   object-fit: cover;
 }
 
+/* Tables: bordered grid; scroll inside their own box on small screens. */
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose :is(th, td) {
+  padding: 10px 14px;
+  border: var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--c-lavender);
+  font-weight: 800;
+}
+
+.prose td {
+  background: var(--c-white);
+}
+
 .prose blockquote {
   padding: 20px 24px;
   background: var(--c-lavender);
