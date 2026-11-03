@@ -120,3 +120,9 @@ other = "Importo"
 
 [country]
 other = "Italia"
+
+[redirectMoved]
+other = "Questa pagina è stata spostata."
+
+[redirectGo]
+other = "Vai alla nuova pagina"

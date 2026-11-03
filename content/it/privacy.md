@@ -2,6 +2,7 @@
 title = "Privacy"
 date = 2023-06-27T00:00:00Z
 draft = false
+aliases = ["/informativa_gdpr"]
 +++
 
 ## Privacy Policy di Ominaevo srl
