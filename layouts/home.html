@@ -1,197 +1,290 @@
 {{ define "main" }}
+  {{- $c := hugo.Data.contacts }}
+  {{- $info := index (where $c.emails "id" "info") 0 }}
+  {{- $cards := slice "" "card--lavender" "card--orange" "card--blue" "card--peach" "" }}
+
+  {{- /* ---------------------------------------------------------- Hero */}}
   {{- with .Params.hero }}
-  <section id="hero" class="hero">
-    <h1>{{ .title }}</h1>
-    <a class="hero-cta" href="#{{ .ctaAnchor }}">{{ .ctaLabel }}</a>
+  <section id="hero" class="home-hero" aria-labelledby="hero-title">
+    <div class="container home-hero__grid">
+      <div class="home-hero__main">
+        {{- with $.Params.cosaFacciamo.intro.title }}<p class="tag tag--light home-hero__tag">{{ . }}</p>{{ end }}
+        {{- /* The last word of the title gets the orange highlight (works for any title and language). */}}
+        {{- $words := split .title " " }}
+        {{- $last := index $words (sub (len $words) 1) }}
+        <h1 id="hero-title">{{ delimit (first (sub (len $words) 1) $words) " " }} <span class="highlight">{{ $last }}</span></h1>
+      </div>
+      <div class="home-hero__side">
+        <div class="sticker" aria-hidden="true"><span>{{ T "heroSticker" }}</span></div>
+        <div class="card home-hero__card">
+          {{- with $.Description }}<p>{{ . }}</p>{{ end }}
+          <a class="btn btn--accent" href="#{{ .ctaAnchor }}">{{ .ctaLabel }} <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </div>
   </section>
   {{- end }}
 
-  {{- with .Params.chiSiamo }}
-  <section id="chi-siamo" class="section-chi-siamo" aria-labelledby="chi-siamo-title">
-    <h2 id="chi-siamo-title">{{ .title }}</h2>
-
-    {{- with .storia }}
-    <div class="storia">
-      <h3>{{ .title }}</h3>
-      {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
-    </div>
-    {{- end }}
-
-    {{- with .oggi }}
-    <div class="oggi">
-      <h3>{{ .title }}</h3>
-      <p>{{ .text }}</p>
-    </div>
-    {{- end }}
-
-    {{- with .management }}
-    <div class="management">
-      <h3>{{ .title }}</h3>
-      {{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}
-      {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
-    </div>
-    {{- end }}
-  </section>
-  {{- end }}
-
-  {{- with .Params.cosaFacciamo }}
-  <section id="cosa-facciamo" class="section-cosa-facciamo" aria-labelledby="cosa-facciamo-title">
-    <h2 id="cosa-facciamo-title">{{ .title }}</h2>
-
-    {{- with .intro }}
-    <div class="intro">
-      <h3>{{ .title }}</h3>
-      {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
-      {{ with .closing }}<p>{{ . }}</p>{{ end }}
-    </div>
-    {{- end }}
-
-    <div class="areas">
-      {{- range .areas }}
-      <article class="area">
-        <h3>{{ .title }}</h3>
-        <p class="area-summary">{{ .summary }}</p>
-        <p>{{ .text }}</p>
-      </article>
-      {{- end }}
-    </div>
-
-    {{- range .lists }}
-    <div class="list-block">
-      <h3>{{ .title }}</h3>
+  {{- /* ------------------------------------------- Technology marquee */}}
+  {{- /* Decorative: the same items are in the lists of "Cosa facciamo" below. */}}
+  {{- with after 1 .Params.cosaFacciamo.lists }}
+  <div class="marquee">
+    <div class="marquee__track" aria-hidden="true">
+      {{- range seq 2 }}
       <ul>
-        {{ range .items }}<li>{{ . }}</li>{{ end }}
+        {{- range $.Params.cosaFacciamo.lists | after 1 }}{{ range .items }}<li>{{ strings.TrimSuffix "," . }}</li><li>✦</li>{{ end }}{{ end }}
       </ul>
+      {{- end }}
     </div>
-    {{- end }}
+    <label class="marquee__toggle"><input type="checkbox"> {{ T "pauseAnimation" }}</label>
+  </div>
+  {{- end }}
+
+  {{- /* ----------------------------------------------------- Chi siamo */}}
+  {{- with .Params.chiSiamo }}
+  <section id="chi-siamo" class="section" aria-labelledby="chi-siamo-title">
+    <div class="container home-about">
+      <div class="card home-about__text">
+        <h2 id="chi-siamo-title" class="tag home-label">{{ .title }}</h2>
+        {{- with .storia }}
+        <h3>{{ .title }}</h3>
+        {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+        {{- end }}
+        {{- with .oggi }}
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        {{- end }}
+      </div>
+
+      {{- with .management }}
+      <div class="card card--blue home-about__people">
+        <h3>{{ .title }}</h3>
+        <div class="frame">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</div>
+        {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{- end }}
+    </div>
   </section>
   {{- end }}
 
+  {{- /* ------------------------------------------------- Cosa facciamo */}}
+  {{- with .Params.cosaFacciamo }}
+  <section id="cosa-facciamo" class="section" aria-labelledby="cosa-facciamo-title">
+    <div class="container">
+      <h2 id="cosa-facciamo-title" class="home-title">{{ .title }}<span class="home-title__mark" aria-hidden="true">*</span></h2>
+
+      {{- with .intro }}
+      <div class="home-intro">
+        <h3>{{ .title }}</h3>
+        <div class="home-intro__text">
+          {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+          {{ with .closing }}<p>{{ . }}</p>{{ end }}
+        </div>
+      </div>
+      {{- end }}
+
+      <div class="home-grid">
+        {{- range $i, $area := .areas }}
+        <article class="card {{ index $cards (mod $i (len $cards)) }}">
+          <span class="tag tag--light">{{ printf "%02d" (add $i 1) }}</span>
+          <h3 class="card__title">{{ .title }}</h3>
+          <p class="home-area__summary">{{ .summary }}</p>
+          <p>{{ .text }}</p>
+        </article>
+        {{- end }}
+      </div>
+
+      {{- with .lists }}
+      <div class="home-lists">
+        {{- range . }}
+        <details class="disclosure">
+          <summary>{{ .title }}</summary>
+          <ul>
+            {{ range .items }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        </details>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- /* ------------------------------------------------------- Servizi */}}
   {{- with .Params.servizi }}
-  <section id="servizi" class="section-servizi" aria-labelledby="servizi-title">
-    <h2 id="servizi-title">{{ .title }}</h2>
-    {{ with .intro }}<p>{{ . }}</p>{{ end }}
-    {{- with site.GetPage "/servizi" }}
-    <ul class="entry-list">
-      {{- range .Pages.ByWeight }}
-      <li>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Description }}<p>{{ . }}</p>{{ end }}
-      </li>
-      {{- end }}
-    </ul>
-    <p><a href="{{ .RelPermalink }}">{{ T "viewAll" }}</a></p>
-    {{- end }}
+  <section id="servizi" class="section" aria-labelledby="servizi-title">
+    <div class="container">
+      <div class="card card--peach home-services">
+        <h2 id="servizi-title" class="tag tag--light home-label">{{ .title }}</h2>
+        {{ with .intro }}<p>{{ . }}</p>{{ end }}
+        {{- with site.GetPage "/servizi" }}
+        <ul class="home-services__list">
+          {{- range .Pages.ByWeight }}
+          <li>
+            <h3>{{ .Title }}</h3>
+            {{- /* Skip a description that only repeats the title (dash style aside). */}}
+            {{- if ne (replace .Description "–" "-") (replace .Title "–" "-") }}<p>{{ .Description }}</p>{{ end }}
+            <a class="btn btn--dark" href="{{ .RelPermalink }}">{{ T "readMore" }}<span class="visually-hidden">: {{ .Title }}</span> <span aria-hidden="true">→</span></a>
+          </li>
+          {{- end }}
+        </ul>
+        <p><a class="btn" href="{{ .RelPermalink }}">{{ T "viewAll" }} <span aria-hidden="true">→</span></a></p>
+        {{- end }}
+      </div>
+    </div>
   </section>
   {{- end }}
 
+  {{- /* -------------------------------------------------- Case history */}}
   {{- with .Params.caseHistory }}
-  <section id="case-history" class="section-case-history" aria-labelledby="case-history-title">
-    <h2 id="case-history-title">{{ .title }}</h2>
-    {{ with .intro }}<p>{{ . }}</p>{{ end }}
-    {{- with site.GetPage "/case-history" }}
-    <ul class="entry-list">
-      {{- range first 3 .Pages }}
-      <li>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Description }}<p>{{ . }}</p>{{ end }}
-      </li>
+  <section id="case-history" class="section" aria-labelledby="case-history-title">
+    <div class="container">
+      {{- with site.GetPage "/case-history" }}
+      <div class="home-head">
+        <h2 id="case-history-title" class="home-title">{{ $.Params.caseHistory.title }}</h2>
+        <a class="btn" href="{{ .RelPermalink }}">{{ T "viewAll" }} <span aria-hidden="true">→</span></a>
+      </div>
+      {{ with $.Params.caseHistory.intro }}<p>{{ . }}</p>{{ end }}
+      <ul class="home-cases">
+        {{- range first 3 .Pages }}
+        <li>
+          <a class="card home-case" href="{{ .RelPermalink }}">
+            <div class="home-case__cover">{{ partial "image-by-path.html" (dict "path" .Params.image "alt" "") }}</div>
+            <div class="home-case__body">
+              {{- with .Params.areas }}<span class="home-case__kicker">{{ delimit (apply . "partial" "area-label.html" ".") ", " }}</span>{{ end }}
+              <h3>{{ .Title }}</h3>
+            </div>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
       {{- end }}
-    </ul>
-    <p><a href="{{ .RelPermalink }}">{{ T "viewAll" }}</a></p>
-    {{- end }}
+    </div>
   </section>
   {{- end }}
 
+  {{- /* --------------------------------------------------- Testimonial */}}
   {{- with .Params.testimonial }}
-  <section id="testimonial" class="section-testimonial" aria-labelledby="testimonial-title">
-    <h2 id="testimonial-title">{{ .title }}</h2>
-    {{- range .items }}
-    <figure class="testimonial">
-      <blockquote><p>“{{ .quote }}”</p></blockquote>
-      <figcaption>
-        <strong>{{ .author }}, {{ .role }}</strong>,
-        {{ if .url }}<a href="{{ .url }}" rel="noopener noreferrer">{{ .company }}</a>{{ else }}{{ .company }}{{ end }}
-      </figcaption>
-    </figure>
-    {{- end }}
+  <section id="testimonial" class="section" aria-labelledby="testimonial-title">
+    <div class="container">
+      <h2 id="testimonial-title" class="home-title">{{ .title }}</h2>
+      <div class="home-quotes">
+        {{- range .items }}
+        <figure class="card card--lavender home-quote">
+          <span class="home-quote__mark" aria-hidden="true">“</span>
+          <blockquote><p>{{ .quote }}</p></blockquote>
+          <figcaption>
+            <strong>{{ .author }}</strong>, {{ .role }} –
+            {{ if .url }}<a href="{{ .url }}" rel="noopener noreferrer">{{ .company }}</a>{{ else }}{{ .company }}{{ end }}
+          </figcaption>
+        </figure>
+        {{- end }}
+      </div>
+    </div>
   </section>
   {{- end }}
 
+  {{- /* --------------------------------------------------------- VIDIM */}}
   {{- with .Params.vidim }}
-  <section id="vidim-group" class="section-vidim" aria-labelledby="vidim-title">
-    <h2 id="vidim-title">{{ .title }}</h2>
-    <p>{{ .text }}</p>
+  <section id="vidim-group" class="section home-section--tight" aria-labelledby="vidim-title">
+    <div class="container">
+      <div class="card home-vidim">
+        <h2 id="vidim-title" class="card__title">{{ .title }}</h2>
+        <p>{{ .text }}</p>
+      </div>
+    </div>
   </section>
   {{- end }}
 
+  {{- /* --------------------------------------------------- Trasparenza */}}
   {{- /* Public funding disclosure (FESR posters, funded projects, public aid document).
          The posters' QR code points to the home page, so this content must be reachable here. */}}
   {{- with site.GetPage "/trasparenza" }}
-  <section id="trasparenza" class="section-trasparenza" aria-labelledby="trasparenza-title">
-    <h2 id="trasparenza-title">{{ .Title }}</h2>
+  <section id="trasparenza" class="section" aria-labelledby="trasparenza-title">
+    <div class="container">
+      <div class="home-head">
+        <h2 id="trasparenza-title" class="home-title home-title--m">{{ .Title }}</h2>
+        <a class="btn" href="{{ .RelPermalink }}">{{ T "viewAll" }} <span aria-hidden="true">→</span></a>
+      </div>
 
-    {{- with .Params.banners }}
-    <div class="transparency-banners">
-      {{- range . }}
-      <a href="{{ .image | relURL }}">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</a>
+      {{- with .Params.banners }}
+      <div class="transparency-banners">
+        {{- range . }}
+        <a href="{{ .image | relURL }}">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+
+      {{- with sort .RegularPages "Params.year" "desc" }}
+      <ul class="file-list">
+        {{- range . }}
+          {{- $entry := . }}
+          {{- with .Params.file }}
+        <li>
+          <a class="file-list__item" href="{{ . | relURL }}">
+            <span class="file-list__type" aria-hidden="true">PDF</span>
+            <span class="file-list__title">{{ $entry.Title }}</span>
+            <span class="file-list__meta">{{ $entry.Params.year }}{{ with $entry.Params.fileNote }} {{ . }}{{ end }}</span>
+            <span class="file-list__arrow" aria-hidden="true">↓</span>
+          </a>
+        </li>
+          {{- end }}
+        {{- end }}
+      </ul>
       {{- end }}
     </div>
-    {{- end }}
-
-    {{- with sort .RegularPages "Params.year" "desc" }}
-    <ul class="transparency-files">
-      {{- range . }}
-        {{- $entry := . }}
-        {{- with .Params.file }}
-      <li><a href="{{ . | relURL }}">{{ $entry.Title }}</a> ({{ $entry.Params.year }}){{ with $entry.Params.fileNote }} {{ . }}{{ end }}</li>
-        {{- end }}
-      {{- end }}
-    </ul>
-    {{- end }}
-
-    <p><a href="{{ .RelPermalink }}">{{ T "viewAll" }}</a></p>
   </section>
   {{- end }}
 
+  {{- /* ------------------------------------------------------ Contatti */}}
   {{- with .Params.contatti }}
-  {{- $c := hugo.Data.contacts }}
-  <section id="contatti" class="section-contatti" aria-labelledby="contatti-title">
-    <h2 id="contatti-title">{{ .title }}</h2>
-    <p>{{ .intro }}</p>
+  <section id="contatti" class="section home-contacts" aria-labelledby="contatti-title">
+    <div class="container">
+      <div class="home-contacts__head">
+        <div>
+          <h2 id="contatti-title" class="home-title">{{ .title }}</h2>
+          <p class="home-contacts__intro">{{ .intro }}</p>
+        </div>
+        <div class="home-contacts__cta">
+          {{ with .ctaText }}<p>{{ . }}</p>{{ end }}
+          <a class="btn btn--accent" href="mailto:{{ $info.email }}">{{ .ctaLabel }}</a>
+        </div>
+      </div>
 
-    <div class="office">
-      <h3>{{ .officeTitle }}</h3>
-      <address>
-        <strong>{{ $c.company }}</strong><br>
-        {{ $c.address.street }}<br>
-        {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ T "country" }}
-      </address>
-      <p><a href="tel:{{ $c.phoneHref }}">{{ $c.phone }}</a></p>
-      {{- range first 1 $c.emails }}
-      <p><a href="mailto:{{ .email }}">{{ .email }}</a></p>
-      {{- end }}
+      <div class="home-contacts__grid">
+        <div class="card home-contacts__office">
+          <h3>{{ .officeTitle }}</h3>
+          <address>
+            <strong>{{ $c.company }}</strong><br>
+            {{ $c.address.street }}<br>
+            {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ T "country" }}
+          </address>
+          <p><a href="tel:{{ $c.phoneHref }}">{{ $c.phone }}</a></p>
+          <p><a href="mailto:{{ $info.email }}">{{ $info.email }}</a></p>
+        </div>
+
+        <div class="home-contacts__direct">
+          <h3>{{ .directTitle }}</h3>
+          <dl class="home-contacts__list">
+            <div class="card">
+              <dt>{{ T "contactRolePec" }}</dt>
+              <dd><a href="mailto:{{ $c.pec.email }}">{{ $c.pec.email }}</a></dd>
+            </div>
+            {{- range $c.emails }}
+              {{- if ne .id "info" }}
+            <div class="card">
+              <dt>{{ T (printf "contactRole%s" (strings.FirstUpper .id)) }}</dt>
+              <dd>
+                <a href="mailto:{{ .email }}">{{ .email }}</a>
+                {{- if .publicOnly }}<span class="home-contacts__note">{{ T "publicOnlyNote" }}</span>{{ end }}
+              </dd>
+            </div>
+              {{- end }}
+            {{- end }}
+          </dl>
+        </div>
+      </div>
     </div>
-
-    <div class="direct-contacts">
-      <h3>{{ .directTitle }}</h3>
-      <dl>
-        <dt>{{ T "contactRolePec" }}</dt>
-        <dd><a href="mailto:{{ $c.pec.email }}">{{ $c.pec.email }}</a></dd>
-        {{- range after 1 $c.emails }}
-        <dt>{{ T (printf "contactRole%s" (strings.FirstUpper .id)) }}</dt>
-        <dd>
-          <a href="mailto:{{ .email }}">{{ .email }}</a>
-          {{- if .publicOnly }} ({{ T "publicOnlyNote" }}){{ end }}
-        </dd>
-        {{- end }}
-      </dl>
-    </div>
-
-    <p class="contact-cta">
-      {{ .ctaText }}
-      <a href="mailto:{{ (index $c.emails 0).email }}">{{ .ctaLabel }}</a>
-    </p>
   </section>
   {{- end }}
 {{ end }}

@@ -11,7 +11,7 @@
       {{- with $.Params.areas }}
       <dt>{{ T "areas" }}</dt>
       <dd>
-        {{- range $i, $a := . }}{{ if $i }}, {{ end }}{{ T (printf "area%s" (replace (title (replace $a "-" " ")) " " "")) }}{{ end -}}
+        {{- range $i, $a := . }}{{ if $i }}, {{ end }}{{ partial "area-label.html" $a }}{{ end -}}
       </dd>
       {{- end }}
     </dl>

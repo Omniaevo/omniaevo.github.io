@@ -550,8 +550,8 @@ a.card:active {
   font-size: 1.25rem;
 }
 
-/* Band closes <main> and the blue footer follows: use a white divider there. */
-main:has(> .cta-band:last-child) + .site-footer {
+/* A blue band closes <main> and the blue footer follows: use a white divider there. */
+main:has(> :is(.cta-band, .home-contacts):last-child) + .site-footer {
   border-top-color: var(--c-white);
 }
 
@@ -590,8 +590,199 @@ main:has(> .cta-band:last-child) + .site-footer {
   }
 
   .marquee:hover .marquee__track,
-  .marquee:focus-within .marquee__track {
+  .marquee:has(:checked) .marquee__track {
     animation-play-state: paused;
+  }
+}
+
+/* Pause control (WCAG 2.2.2), CSS only. Hidden when nothing moves. */
+.marquee {
+  position: relative;
+}
+
+.marquee__toggle {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 14px;
+  background: var(--c-white);
+  border-left: var(--border);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.marquee__toggle input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--c-ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee__toggle {
+    display: flex;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Frame: bordered box with shadow around an image                    */
+/* ------------------------------------------------------------------ */
+.frame {
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+}
+
+.frame img {
+  width: 100%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Disclosure (<details>)                                             */
+/* ------------------------------------------------------------------ */
+.disclosure {
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+}
+
+.disclosure > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  list-style: none;
+  cursor: pointer;
+}
+
+.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure > summary::after {
+  content: "+";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: var(--c-orange);
+  border: var(--border);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.disclosure[open] > summary {
+  border-bottom: var(--border);
+}
+
+.disclosure[open] > summary::after {
+  content: "−";
+}
+
+.disclosure > :not(summary) {
+  padding: 16px 20px 20px;
+}
+
+.disclosure ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.disclosure li {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  gap: 12px;
+}
+
+.disclosure li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin-top: 0.55em;
+  background: var(--c-orange);
+  border: 2px solid var(--c-ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* File list: one full-width blue row per downloadable document       */
+/* ------------------------------------------------------------------ */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.file-list__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 14px 20px;
+  background: var(--c-blue);
+  color: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+  text-decoration: none;
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.file-list__item:hover {
+  translate: 2px 2px;
+  box-shadow: var(--sh-xs);
+}
+
+.file-list__type {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  border: var(--border);
+  font-weight: 800;
+}
+
+.file-list__title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.file-list__meta {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.file-list__arrow {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+@media (width < 600px) {
+  .file-list__item {
+    grid-template-columns: auto 1fr;
+  }
+
+  .file-list__meta {
+    grid-column: 2;
+  }
+
+  .file-list__arrow {
+    display: none;
   }
 }
 

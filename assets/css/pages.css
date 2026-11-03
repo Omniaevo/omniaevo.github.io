@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 24px;
-  margin-block: 24px;
+  margin-block: 24px 40px;
 }
 
 .transparency-banners a {
@@ -13,4 +13,410 @@
   background: var(--c-white);
   border: var(--border);
   box-shadow: var(--sh-l);
+}
+
+/* ================================================================== */
+/* Home                                                               */
+/* ================================================================== */
+
+/* Shared bits */
+.home-title {
+  margin-bottom: 40px;
+}
+
+.home-title--m {
+  font-size: var(--fs-h3);
+  line-height: 1.05;
+}
+
+.home-title__mark {
+  color: var(--c-orange);
+}
+
+/* h2 rendered as a small label (Chi siamo, Servizi) */
+.home-label.tag {
+  align-self: flex-start;
+  margin-bottom: 4px;
+  font-size: 1.125rem;
+  letter-spacing: 0;
+}
+
+.home-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.home-head .home-title {
+  margin-bottom: 0;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.home-section--tight {
+  padding-top: 0;
+}
+
+/* Hero */
+.home-hero {
+  padding-block: clamp(40px, 6vw, 72px) clamp(48px, 6vw, 64px);
+}
+
+.home-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+}
+
+/* Extra leading so the bordered highlight does not cover the line above. */
+.home-hero h1 {
+  line-height: 1.04;
+}
+
+/* One word only: a block box keeps the border tight around the glyphs. */
+.home-hero .highlight {
+  display: inline-block;
+  line-height: 1.02;
+  padding-bottom: 0.04em;
+}
+
+.home-hero__tag {
+  margin-bottom: 36px;
+  box-shadow: var(--sh-s);
+}
+
+.home-hero__side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.home-hero__side .sticker {
+  align-self: flex-end;
+}
+
+.sticker > span {
+  inline-size: min-content;
+}
+
+.home-hero__card {
+  gap: 20px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+/* Chi siamo */
+.home-about {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.home-about .card {
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.home-about h3 {
+  margin-top: 12px;
+}
+
+.home-about__people .frame {
+  max-width: 320px;
+}
+
+/* Cosa facciamo */
+.home-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 16px 48px;
+  margin-bottom: 56px;
+}
+
+.home-intro__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 68ch;
+}
+
+.home-area__summary {
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.home-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+  align-items: start;
+  margin-top: 56px;
+}
+
+/* Servizi */
+.home-services {
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.home-services__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.home-services__list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.home-services__list h3 {
+  flex: 1 1 20ch;
+}
+
+.home-services__list p {
+  flex-basis: 100%;
+  order: 1;
+}
+
+/* Case history */
+.home-cases {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.home-case {
+  height: 100%;
+  padding: 0;
+  gap: 0;
+}
+
+.home-case__cover {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--c-lavender);
+  border-bottom: var(--border);
+}
+
+.home-case__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-case__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.home-case__kicker {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.home-case h3 {
+  font-size: 1.625rem;
+  line-height: 1.1;
+}
+
+/* Testimonial */
+.home-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 56px 32px;
+  padding-top: 24px;
+}
+
+.home-quote {
+  position: relative;
+  margin: 0;
+  padding: 48px clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px);
+  box-shadow: var(--sh-xl);
+}
+
+.home-quote__mark {
+  position: absolute;
+  top: -30px;
+  left: 32px;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding-top: 18px;
+  background: var(--c-orange);
+  border: var(--border);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.home-quote blockquote {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.home-quote figcaption {
+  font-size: 0.9375rem;
+}
+
+/* VIDIM */
+.home-vidim {
+  max-width: 900px;
+}
+
+/* Contatti: blue, full width, last section before the footer */
+.home-contacts {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-top: var(--border);
+}
+
+.home-contacts__head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px 48px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.home-contacts__head .home-title {
+  margin-bottom: 16px;
+}
+
+.home-contacts__intro {
+  max-width: 48ch;
+  font-size: 1.25rem;
+}
+
+.home-contacts__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-contacts__cta .btn {
+  font-size: 1.375rem;
+  box-shadow: var(--sh-m);
+}
+
+.home-contacts__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.home-contacts h3 {
+  font-size: 1.375rem;
+}
+
+.home-contacts__direct h3 {
+  margin-bottom: 16px;
+}
+
+.home-contacts__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+.home-contacts__list .card {
+  gap: 4px;
+  padding: 16px 20px;
+  box-shadow: var(--sh-m);
+}
+
+.home-contacts__list dt {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.home-contacts__list a,
+.home-contacts__office a {
+  display: inline-block;
+  padding-block: 6px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.home-contacts__note {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.home-contacts address {
+  font-style: normal;
+}
+
+/* Home: tablet and phone */
+@media (width < 900px) {
+  .home-hero__grid,
+  .home-about,
+  .home-intro,
+  .home-lists,
+  .home-contacts__head,
+  .home-contacts__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero__side .sticker {
+    position: absolute;
+    top: 0;
+    right: var(--gutter);
+    width: 104px;
+    font-size: 1rem;
+  }
+
+  .home-hero {
+    position: relative;
+  }
+
+  .home-hero__main {
+    padding-right: 96px;
+  }
+
+  /* Case history: horizontal scroll row */
+  .home-cases {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(80%, 320px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 4px var(--gutter) 16px;
+    scroll-padding-inline: var(--gutter);
+  }
+
+  .home-cases > li {
+    scroll-snap-align: start;
+  }
+}
+
+@media (600px <= width < 900px) {
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

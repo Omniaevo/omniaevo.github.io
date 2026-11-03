@@ -1,0 +1,5 @@
+{{- /*
+  Returns the translated label of an area id ("web-apps" → T "areaWebApps").
+  Context: the area id (string).
+*/ -}}
+{{- return T (printf "area%s" (replace (title (replace . "-" " ")) " " "")) -}}

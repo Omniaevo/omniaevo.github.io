@@ -141,3 +141,10 @@ other = "Home"
 
 [breadcrumb]
 other = "Percorso"
+
+# Decorative hero sticker (aria-hidden).
+[heroSticker]
+other = "dal 2007"
+
+[pauseAnimation]
+other = "Ferma l’animazione"
