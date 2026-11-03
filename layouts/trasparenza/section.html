@@ -1,26 +1,68 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+<div class="container">
+  {{ partial "breadcrumb.html" . }}
+
+  <header class="list-hero list-hero--wide">
+    <h1>{{ partial "title-highlight.html" (dict "text" .Title) }}</h1>
+    {{- with .Content }}<div class="card list-hero__intro">{{ . }}</div>{{ end }}
+  </header>
 
   {{- with .Params.banners }}
   <div class="transparency-banners">
-    {{- range . }}{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}{{ end }}
+    {{- range . }}
+    <a href="{{ .image | relURL }}">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt "lazy" false) }}</a>
+    {{- end }}
   </div>
   {{- end }}
 
   {{- $projects := where .Pages "Params.kind" "progetto" }}
   {{- with $projects }}
-  <section class="transparency-projects" aria-labelledby="projects-title">
+  <section class="transparency-group" aria-labelledby="projects-title">
     <h2 id="projects-title">{{ T "projects" }}</h2>
-    {{ partial "transparency-list.html" (dict "pages" . "linkLabel" (T "viewProjectSheet")) }}
+    {{- range .GroupByParam "year" "desc" }}
+    <h3 class="tag tag--light transparency-year">{{ .Key }}</h3>
+    <ul class="poster-cards">
+      {{- range .Pages }}
+        {{- $entry := . }}
+      <li>
+        <article class="card poster-card">
+          {{- with .Params.image }}
+          <a class="poster-card__image" href="{{ . | relURL }}">{{ partial "image-by-path.html" (dict "path" . "alt" $entry.Params.imageAlt) }}</a>
+          {{- end }}
+          <div class="poster-card__body">
+            <ul class="tags">
+              {{- with .Params.program }}<li class="tag">{{ . }}</li>{{ end }}
+              <li class="tag tag--light">{{ .Params.year }}</li>
+            </ul>
+            <h4>{{ .Title }}</h4>
+            {{- with .Description }}<p>{{ . }}</p>{{ end }}
+            {{- if or .Params.funder .Params.amount }}
+            <dl class="poster-card__facts">
+              {{- with .Params.funder }}<dt>{{ T "funder" }}</dt><dd>{{ . }}</dd>{{ end }}
+              {{- with .Params.amount }}<dt>{{ T "amount" }}</dt><dd>{{ . }}</dd>{{ end }}
+            </dl>
+            {{- end }}
+            {{- with .Params.file }}
+            <p class="poster-card__action">
+              <a class="btn btn--accent" href="{{ . | relURL }}">{{ T "viewProjectSheet" }} · {{ upper (strings.TrimPrefix "." (path.Ext .)) }} <span aria-hidden="true">↓</span></a>
+              {{- with $entry.Params.fileNote }} <span class="poster-card__note">{{ . }}</span>{{ end }}
+            </p>
+            {{- end }}
+          </div>
+        </article>
+      </li>
+      {{- end }}
+    </ul>
+    {{- end }}
   </section>
   {{- end }}
 
   {{- $documents := where .Pages "Params.kind" "documento-aiuti" }}
   {{- with $documents }}
-  <section class="transparency-documents" aria-labelledby="documents-title">
+  <section class="transparency-group" aria-labelledby="documents-title">
     <h2 id="documents-title">{{ T "documents" }}</h2>
-    {{ partial "transparency-list.html" (dict "pages" . "linkLabel" (T "viewDocument")) }}
+    {{ partial "file-list.html" (sort . "Params.year" "desc") }}
   </section>
   {{- end }}
+</div>
 {{ end }}

@@ -191,23 +191,7 @@
       </div>
       {{- end }}
 
-      {{- with sort .RegularPages "Params.year" "desc" }}
-      <ul class="file-list">
-        {{- range . }}
-          {{- $entry := . }}
-          {{- with .Params.file }}
-        <li>
-          <a class="file-list__item" href="{{ . | relURL }}">
-            <span class="file-list__type" aria-hidden="true">PDF</span>
-            <span class="file-list__title">{{ $entry.Title }}</span>
-            <span class="file-list__meta">{{ $entry.Params.year }}{{ with $entry.Params.fileNote }} {{ . }}{{ end }}</span>
-            <span class="file-list__arrow" aria-hidden="true">↓</span>
-          </a>
-        </li>
-          {{- end }}
-        {{- end }}
-      </ul>
-      {{- end }}
+      {{- with sort .RegularPages "Params.year" "desc" }}{{ partial "file-list.html" . }}{{ end }}
     </div>
   </section>
   {{- end }}
