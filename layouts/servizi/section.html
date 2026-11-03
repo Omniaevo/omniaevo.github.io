@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <ul class="entry-list service-list">
+    {{ range .Pages.ByWeight }}
+      <li>
+        <article>
+          {{ partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt) }}
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+        </article>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

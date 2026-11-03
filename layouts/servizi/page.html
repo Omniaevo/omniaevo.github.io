@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <article class="service">
+    <h1>{{ .Title }}</h1>
+    {{ partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt "lazy" false) }}
+    {{ .Content }}
+
+    {{- with .Params.links }}
+    <ul class="service-links">
+      {{- range . }}
+      <li><a href="{{ .url }}" rel="noopener noreferrer">{{ .label }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
+
+    {{- with .Params.attachments }}
+    <ul class="service-attachments">
+      {{- range . }}
+      {{- $external := (urls.Parse .file).Scheme }}
+      <li><a href="{{ if $external }}{{ .file }}{{ else }}{{ .file | relURL }}{{ end }}"{{ if $external }} rel="noopener noreferrer"{{ end }}>{{ .label }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </article>
+{{ end }}
