@@ -69,3 +69,33 @@ other = "Legal information"
 
 [viewAll]
 other = "View all"
+
+[client]
+other = "Client"
+
+[sector]
+other = "Sector"
+
+[areas]
+other = "Areas"
+
+[areaEngineering]
+other = "Engineering"
+
+[areaNetwork]
+other = "Network"
+
+[areaResearch]
+other = "Research"
+
+[areaSystems]
+other = "Systems"
+
+[areaSoftware]
+other = "Software"
+
+[areaWebApps]
+other = "Web Apps"
+
+[caseHistoryNavigation]
+other = "More case histories"

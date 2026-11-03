@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <article class="case-history">
+    <h1>{{ .Title }}</h1>
+    {{ partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt "lazy" false) }}
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+
+    {{- with or .Params.client .Params.sector .Params.areas }}
+    <dl class="case-meta">
+      {{- with $.Params.client }}<dt>{{ T "client" }}</dt><dd>{{ . }}</dd>{{ end }}
+      {{- with $.Params.sector }}<dt>{{ T "sector" }}</dt><dd>{{ . }}</dd>{{ end }}
+      {{- with $.Params.areas }}
+      <dt>{{ T "areas" }}</dt>
+      <dd>
+        {{- range $i, $a := . }}{{ if $i }}, {{ end }}{{ T (printf "area%s" (replace (title (replace $a "-" " ")) " " "")) }}{{ end -}}
+      </dd>
+      {{- end }}
+    </dl>
+    {{- end }}
+
+    {{ .Content }}
+  </article>
+
+  {{- /* In Hugo, NextInSection is the newer page and PrevInSection the older one. */ -}}
+  <nav class="entry-nav" aria-label="{{ T "caseHistoryNavigation" }}">
+    {{- with .PrevInSection }}<a rel="prev" href="{{ .RelPermalink }}">{{ T "previous" }}: {{ .Title }}</a>{{ end }}
+    {{- with .NextInSection }}<a rel="next" href="{{ .RelPermalink }}">{{ T "next" }}: {{ .Title }}</a>{{ end }}
+  </nav>
+{{ end }}
