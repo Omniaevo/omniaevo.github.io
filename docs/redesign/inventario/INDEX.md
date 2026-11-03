@@ -10,7 +10,7 @@ Estratto il 2026-11-03 da https://www.omniaevo.it/. Testi convertiti in Markdown
 | /chi-siamo | [chi-siamo.md](chi-siamo.md) | /#chi-siamo | 2019/01/massimo.jpg |
 | /cosa-facciamo | [cosa-facciamo.md](cosa-facciamo.md) | /#cosa-facciamo | 2019/01/omniaevo_chiSiamo.jpg<br>2019/01/omniaevo_programmazione.jpg |
 | /testimonial | [testimonial.md](testimonial.md) | /#testimonial | — |
-| /contatti | [contatti.md](contatti.md) | /#contatti + /supporto/ + data/contacts.toml | 2023/06/Logo-OE-metal-JO-reflect-Glass-building-scaled.jpg |
+| /contatti | [contatti.md](contatti.md) | /#contatti + data/contacts.toml | 2023/06/Logo-OE-metal-JO-reflect-Glass-building-scaled.jpg |
 | /progetti-fesr-e-documento-trasparenza-aiuti-pubblici | [progetti-fesr-e-documento-trasparenza-aiuti-pubblici.md](progetti-fesr-e-documento-trasparenza-aiuti-pubblici.md) | /trasparenza/ | 2025/09/Efficientamento_FESR.png<br>2026/04/Sviluppo_FESR-scaled.png<br>2025/09/Locandina_A3_rendicontazione_Spoke3_OMNIAEVO.png<br>2025/09/Locandina_A3_rendicontazione_Spoke8_OMNIAEVO.png<br>2025/09/Locandina_A3_rendicontazione_Spoke9_OMNIAEVO.png |
 | /informativa_gdpr | [informativa_gdpr.md](informativa_gdpr.md) | /privacy/ | — |
 | /cookie-policy | [cookie-policy.md](cookie-policy.md) | /privacy/#cookie | — |
@@ -34,7 +34,7 @@ Estratto il 2026-11-03 da https://www.omniaevo.it/. Testi convertiti in Markdown
 | https://www.omniaevo.it/wp-content/uploads/2026/02/Scheda-progetto-BaC-iNEST-Spoke8-GG24.pdf | media/2026/02/Scheda-progetto-BaC-iNEST-Spoke8-GG24.pdf | 223329 |
 | https://www.omniaevo.it/wp-content/uploads/2026/02/Scheda-progetto-BaC-iNEST-Spoke9-GL24.pdf | media/2026/02/Scheda-progetto-BaC-iNEST-Spoke9-GL24.pdf | 209499 |
 | https://www.omniaevo.it/documento_trasparenza_aiuti_pubblici.pdf | media/documento_trasparenza_aiuti_pubblici.pdf | 679197 |
-| https://www.omniaevo.it/omniaevoremote.exe | (scaricato al passo 8) | — |
+| https://www.omniaevo.it/omniaevoremote.exe | (non migrato: decisione, vedi PIANO sez. 1) | — |
 | https://eshop.twt.it/pec/manuale/TWT-PEC-MO.pdf | (esterno, solo URL) | — |
 
 ## Immagini e altri media
@@ -114,7 +114,7 @@ Estratto il 2026-11-03 da https://www.omniaevo.it/. Testi convertiti in Markdown
 
 ## Note e anomalie rilevate
 
-- **Contatori Chi siamo** (da `data-value` nell'HTML): Collaboratori **23**, Paesi **18**, Clienti **462**. Il sito mostra 0 per un bug JS.
+- **Contatori Chi siamo** (da `data-value` nell'HTML): Collaboratori **23**, Paesi **18**, Clienti **462**. Il sito mostra 0 per un bug JS. **Non migrati**: i contatori sono stati rimossi.
 - **Home, duplicati**: titolo "I.C.T a 360°" ripetuto due volte (la seconda come "I.C.T a 360° gradi!" con testo diverso); due pulsanti "Scopri di più" identici verso `/cosa-facciamo/`; tre intestazioni vuote (`##`) residue. Titolo "COSA FACCIAMO" della home e pagina `/cosa-facciamo` sono blocchi distinti: i testi delle 6 aree sono solo in home.
 - **Home, VIDIM Group**: solo testo, nessun logo nell'HTML (lo sfondo punta a `omniaevo.primastudio.cloud`, dominio di staging, non scaricato). TODO: chiedere i loghi.
 - **Home, hero**: immagine di sfondo `2019/01/omniaevo_header.jpg` (scaricata). Altre immagini usate come sfondo CSS non sono recuperabili dall'HTML.

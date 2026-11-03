@@ -16,7 +16,8 @@
 | Lingue | Italiano (default, alla radice `/`) + Inglese (`/en/`) |
 | Collection CMS | **Case history**, **Servizi**, **Trasparenza** |
 | Case history | Contenuti mantenuti così come sono oggi |
-| Supporto | Solo assistenza remota e contatti di assistenza. **Rimuovere** le guide interne e i percorsi morti (BitLocker, categoria Smartworking) |
+| Supporto | **Nessuna pagina `/supporto/`** e nessun download di assistenza remota (`omniaevoremote.exe` non migrato). Le email di assistenza restano nella sezione `#contatti`. Guide interne e percorsi morti (BitLocker, categoria Smartworking) rimossi |
+| Contatori "Omniaevo oggi" | **Rimossi** (datati). Resta il testo della sezione |
 | Design | Fuori ambito. I template hanno HTML semantico minimo e nessuno stile |
 | Bozza statica attuale | Spostata in `_legacy/` come riferimento per la fase di design |
 
@@ -28,10 +29,10 @@
 | URL attuale | Contenuto |
 |---|---|
 | `/` | Hero "Soluzioni semplici per esigenze complesse", "I.C.T a 360°" (duplicato), 6 aree (Engineering, Network, Research, Systems, Software, Web Apps), VIDIM Group, CTA contatti |
-| `/chi-siamo` | Storia di Omniaevo, Omniaevo oggi (contatori Collaboratori/Paesi/Clienti, oggi a "0" per un bug JS), Management |
+| `/chi-siamo` | Storia di Omniaevo, Omniaevo oggi (contatori Collaboratori/Paesi/Clienti, oggi a "0" per un bug JS: **non migrati**), Management |
 | `/cosa-facciamo` | Intro + motto "Rendiamo semplice la tecnologia", Campi di attività, Tecnologie, Programmazione, Automazione |
 | `/testimonial` | Testimonial (es. Dott. Erik Franceschini, Mangiarotti Spa). Non è nel menu |
-| `/contatti` | Sede, telefono, 8 email per reparto, download assistenza remota |
+| `/contatti` | Sede, telefono, 8 email per reparto, download assistenza remota (**non migrato**) |
 | `/progetti-fesr-e-documento-trasparenza-aiuti-pubblici` | 3 schede iNEST (Spoke 3 Geo Deck, Spoke 8 GG24, Spoke 9 GL24) + documento trasparenza aiuti pubblici |
 | `/informativa_gdpr` | Informativa privacy |
 | `/cookie-policy` | Cookie policy |
@@ -44,7 +45,7 @@
 | Smartworking (1) | bitlocker → **da eliminare** |
 
 ### Link e allegati da preservare
-- `https://www.omniaevo.it/omniaevoremote.exe` (assistenza remota)
+- ~~`https://www.omniaevo.it/omniaevoremote.exe` (assistenza remota)~~ — non migrato
 - `https://www.omniaevo.it/documento_trasparenza_aiuti_pubblici.pdf`
 - `wp-content/uploads/2026/02/Scheda-progetto-BaC-iNEST-Spoke{3-Geo-Deck,8-GG24,9-GL24}.pdf`
 - `https://eshop.twt.it/pec/manuale/TWT-PEC-MO.pdf` + link webmail PEC
@@ -53,7 +54,7 @@
 
 ### Problemi da correggere (non sono modifiche ai testi)
 - Il titolo "I.C.T a 360°" e il blocco "Cosa facciamo" sono duplicati in home.
-- I contatori di Chi siamo mostrano 0 (prendere i valori reali dall'HTML o chiederli).
+- ~~I contatori di Chi siamo mostrano 0~~ — i contatori non vengono migrati.
 - Il `<title>` della home è "Omniaevo - Omniaevo".
 - Nella sitemap gli slug finiscono con `%20`.
 - Il footer mostra "© 2019": l'anno va generato in automatico.
@@ -64,7 +65,7 @@
 
 ```
 /                          Home (one-page)
-├─ #chi-siamo              storia, oggi (contatori), management
+├─ #chi-siamo              storia, oggi, management
 ├─ #cosa-facciamo          intro + 6 aree + campi/tecnologie/programmazione/automazione
 ├─ #servizi                elenco dalla collection Servizi
 ├─ #case-history           ultime 3 → /case-history/
@@ -76,7 +77,6 @@
 /servizi/                  archivio              (collection)
 /servizi/<slug>/           dettaglio
 /trasparenza/              elenco per anno, link ai PDF (collection, senza pagine di dettaglio)
-/supporto/                 assistenza remota + email assistenza
 /privacy/                  informativa GDPR + cookie policy (#cookie)
 /404
 ```
@@ -85,12 +85,11 @@ La stessa struttura esiste sotto `/en/`.
 ### Struttura dei contenuti (repo)
 ```
 content/
-  it/  _index.md  case-history/  servizi/  trasparenza/  supporto.md  privacy.md
+  it/  _index.md  case-history/  servizi/  trasparenza/  privacy.md
   en/  (stessi percorsi e stessi slug → Hugo collega le traduzioni in automatico)
 data/contacts.toml         dati indipendenti dalla lingua (email, telefono, P.IVA, indirizzo)
 i18n/it.toml, i18n/en.toml etichette UI
 static/uploads/            media caricati dal CMS (immagini + PDF)
-static/omniaevoremote.exe  stesso percorso del sito attuale
 static/documento_trasparenza_aiuti_pubblici.pdf  stesso percorso
 ```
 
@@ -113,7 +112,7 @@ Tutte e tre le collection hanno anche il campo `draft` (booleano, default `false
 | Case history | Sì | `draft` |
 | Servizi | Sì | `draft` |
 | Trasparenza | **No** (documenti con obblighi di pubblicazione) | solo `draft` |
-| Home, Supporto (tipo file) | Non applicabile, solo modifica | — |
+| Home (tipo file) | Non applicabile, solo modifica | — |
 
 Un file eliminato resta nella history di Git e si può ripristinare. I media collegati (immagini, PDF) **non** vengono eliminati insieme alla voce: si gestiscono a parte nella sezione Media.
 
@@ -134,7 +133,7 @@ Ogni passo è piccolo, si verifica da solo e finisce con un commit su `develop`.
 | 5 | Collection Case history IT | 1, 3 |
 | 6 | Collection Servizi IT | 1, 3 |
 | 7 | Collection Trasparenza IT | 1, 3 |
-| 8 | Supporto e contatti IT | 1, 3 |
+| 8 | ~~Supporto e contatti IT~~ — pagina Supporto eliminata, resta solo la verifica dei contatti | 1, 3 |
 | 9 | Privacy e cookie IT | 1, 3 |
 | 10 | Versione inglese | 4–9 |
 | 11 | Redirect dai vecchi URL | 4–9 |
@@ -207,7 +206,7 @@ Fai così:
    - baseURL https://omniaevo.github.io/, title "Omniaevo", timeZone Europe/Rome
    - lingue: it (default, alla radice, contentDir content/it) e en (/en/, contentDir content/en)
    - menu main per lingua, con voci che puntano alle ancore della home e alle pagine
-     /case-history/, /servizi/, /trasparenza/, /supporto/
+     /case-history/, /servizi/, /trasparenza/
    - [pagination], [taxonomies] vuoto (non servono taxonomy), enableRobotsTXT,
      goldmark unsafe = false, [security]
    - module mounts: monta static/uploads anche in assets/uploads (ripeti i mount di default
@@ -266,7 +265,7 @@ Fai così:
 3. home.html: una <section id="..."> per ogni sezione, con le ancore della mappa.
    #servizi elenca la collection servizi (per weight). #case-history mostra le ultime 3
    con un link all'archivio. #contatti usa data/contacts.toml.
-4. Contatori: valori dall'inventario, resi come testo statico (niente JS).
+4. Niente contatori: della sezione "Omniaevo oggi" resta solo il testo.
 
 Criteri di accettazione: tutti i testi delle 5 pagine d'origine sono presenti una sola
 volta (verifica con l'inventario). Le ancore funzionano dal menu.
@@ -332,22 +331,20 @@ Criteri di accettazione: 4 voci visibili, 4 PDF raggiungibili, nessuna pagina di
 dettaglio in public/trasparenza/.
 ```
 
-### Passo 8 — Supporto e contatti IT
+### Passo 8 — Verifica contatti (pagina Supporto eliminata)
 
 ```text
-Obiettivo: creare /supporto/ e completare i dati di contatto.
+Obiettivo: verificare che i contatti siano completi. Non esiste più una pagina Supporto
+né il download dell'assistenza remota (vedi sezione 1).
 
 Fai così:
-1. Copia omniaevoremote.exe dal sito attuale in static/omniaevoremote.exe (stesso URL).
-   Registra nel resoconto dimensione e hash SHA-256 del file.
-2. content/it/supporto.md: download assistenza remota, email assistenza, support,
-   assistenzapa (con la nota "solo per PA ed enti pubblici"). Testi dall'inventario
-   di /contatti. Niente guide interne, niente BitLocker.
-3. La sezione #contatti della home e la pagina supporto leggono le email da
-   data/contacts.toml: nessuna email duplicata nei contenuti.
+1. Nessuna azione su /supporto/ e su omniaevoremote.exe: non vanno creati.
+2. Controlla che la sezione #contatti della home legga tutte le email da data/contacts.toml
+   (con la nota "solo per PA ed enti pubblici" su assistenzapa) e che nessuna email sia
+   duplicata nei contenuti.
 
-Criteri di accettazione: tutte le 8 email e la PEC compaiono almeno una volta nel sito,
-il download funziona, nessun riferimento a BitLocker o Smartworking.
+Criteri di accettazione: tutte le 7 email e la PEC compaiono nella home, nessun riferimento
+a BitLocker, Smartworking, supporto o assistenza remota.
 ```
 
 ### Passo 9 — Privacy e cookie IT
@@ -428,7 +425,7 @@ Fai così:
    - content di tipo collection: Case history IT/EN, Servizi IT/EN, Trasparenza IT/EN,
      con i campi della sezione 3 (tipi: string, text, date, image, file, select per
      areas e kind, number per weight e year, rich-text per il corpo)
-   - content di tipo file: Home IT/EN (front matter di _index.md), Supporto IT/EN
+   - content di tipo file: Home IT/EN (front matter di _index.md)
    - format toml-frontmatter, come i file esistenti
    - i nomi dei file dei nuovi elementi sono generati dal titolo (slug)
    - operations per collection (sezione "Eliminazione dal CMS" del piano):

@@ -20,14 +20,6 @@
     {{- with .oggi }}
     <div class="oggi">
       <h3>{{ .title }}</h3>
-      <dl class="counters">
-        {{- range .counters }}
-        <div class="counter">
-          <dt>{{ .label }}</dt>
-          <dd>{{ .value }}</dd>
-        </div>
-        {{- end }}
-      </dl>
       <p>{{ .text }}</p>
     </div>
     {{- end }}

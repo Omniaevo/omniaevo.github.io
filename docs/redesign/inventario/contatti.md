@@ -5,7 +5,7 @@
 - Meta description: (nessuna)
 - Data pubblicazione: (n/d)
 - Ultima modifica: 2026-04-22
-- Destinazione: /#contatti + /supporto/ + data/contacts.toml
+- Destinazione: /#contatti + data/contacts.toml
 
 ---
 

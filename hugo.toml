@@ -63,10 +63,6 @@ defaultContentLanguageInSubdir = false
       pageRef = '/trasparenza'
       weight = 50
     [[languages.it.menus.main]]
-      name = 'Supporto'
-      pageRef = '/supporto'
-      weight = 60
-    [[languages.it.menus.main]]
       name = 'Contatti'
       url = '/#contatti'
       weight = 70
@@ -99,10 +95,6 @@ defaultContentLanguageInSubdir = false
       name = 'Transparency'
       pageRef = '/trasparenza'
       weight = 50
-    [[languages.en.menus.main]]
-      name = 'Support'
-      pageRef = '/supporto'
-      weight = 60
     [[languages.en.menus.main]]
       name = 'Contacts'
       url = '/en/#contatti'

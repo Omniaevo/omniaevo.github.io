@@ -20,11 +20,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   [chiSiamo.oggi]
     title = "Omniaevo oggi"
     text = "Oggi noi di Omniaevo siamo leader nelle tecnologie per piattaforme di mobilità intelligente ed integrata, operiamo per i maggiori player internazionali. Collaboriamo inoltre sia con aziende private che con enti pubblici offrendo soluzioni personalizzate in tutti i settori dell’information technology e nell’assistenza tecnica."
-    counters = [
-      { value = "23", label = "Collaboratori" },
-      { value = "18", label = "Paesi con i quali lavoriamo" },
-      { value = "462", label = "Clienti" },
-    ]
 
   [chiSiamo.management]
     title = "Management di Omniaevo"
