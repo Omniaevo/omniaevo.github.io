@@ -1,0 +1,122 @@
+/* Minimal reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Base */
+body {
+  min-height: 100vh;
+  background: var(--c-cream);
+  color: var(--c-ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: 1.1; letter-spacing: -0.02em; }
+h4 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.01em; }
+
+p,
+li,
+dd {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 3px;
+}
+
+/* Focus: thick orange outline, visible on every background */
+:focus-visible {
+  outline: var(--bw) solid var(--c-orange);
+  outline-offset: 3px;
+}
+
+/* Skip link: hidden until focused */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 12px 18px;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  border: var(--border);
+  box-shadow: var(--sh-s);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--c-ink);
+}
+
+/* Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

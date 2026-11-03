@@ -1,0 +1,34 @@
+/* Design tokens (NB1). Every color, shadow and font used by the site comes from here. */
+:root {
+  /* Colors */
+  --c-blue: #163687;
+  --c-orange: #e08f14;
+  --c-cream: #f2efe9;
+  --c-ink: #111111;
+  --c-lavender: #c3cff2;
+  --c-peach: #ffd9a0;
+  --c-white: #ffffff;
+
+  /* Lines and shadows */
+  --bw: 3px;
+  --border: var(--bw) solid var(--c-ink);
+  --sh-s: 3px 3px 0 var(--c-ink);
+  --sh-m: 6px 6px 0 var(--c-ink);
+  --sh-l: 8px 8px 0 var(--c-ink);
+  --sh-xl: 10px 10px 0 var(--c-ink);
+
+  /* Typography */
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+  --fs-body: 1.0625rem;              /* 17 px */
+  --fs-h1: clamp(3rem, 8vw, 7rem);   /* 48 → 112 px */
+  --fs-h2: clamp(2.25rem, 5vw, 4.5rem);
+  --fs-h3: clamp(1.5rem, 2.5vw, 2.25rem);
+  --lh-tight: 0.92;
+  --lh-body: 1.6;
+  --track-tight: -0.045em;
+
+  /* Layout */
+  --max: 1320px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --space-section: clamp(56px, 8vw, 96px);
+}
