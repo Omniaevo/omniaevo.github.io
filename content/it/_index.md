@@ -24,7 +24,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   [chiSiamo.management]
     title = "Management di Omniaevo"
     name = "Massimo Belluz"
-    image = "uploads/home/massimo-belluz.jpg"
+    image = "/uploads/home/massimo-belluz.jpg"
     imageAlt = "Massimo Belluz"
     paragraphs = [
       "Massimo Belluz è nato a Udine il 04/05/1973, solida preparazione scientifica applicata alla tecnologia.",

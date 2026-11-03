@@ -11,10 +11,4 @@ reviewed = false
   image = "/uploads/trasparenza/Sviluppo_FESR.png"
   imageAlt = "FESR development"
 
-# Entries only feed the list page: no detail pages. Target kind=page so the list itself renders.
-[[cascade]]
-  [cascade.build]
-    render = "never"
-  [cascade.target]
-    kind = "page"
 +++

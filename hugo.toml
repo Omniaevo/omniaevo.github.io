@@ -18,6 +18,15 @@ defaultContentLanguageInSubdir = false
 [markup.highlight]
   noClasses = false
 
+# Transparency entries only feed the list page: no detail pages.
+# Kept here (not in _index.md) so that editing the index from the CMS cannot drop it.
+[[cascade]]
+  [cascade.build]
+    render = 'never'
+  [cascade.target]
+    path = '/trasparenza/**'
+    kind = 'page'
+
 [security]
   enableInlineShortcodes = false
   [security.funcs]

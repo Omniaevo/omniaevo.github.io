@@ -11,10 +11,4 @@ aliases = ["/progetti-fesr-e-documento-trasparenza-aiuti-pubblici"]
   image = "/uploads/trasparenza/Sviluppo_FESR.png"
   imageAlt = "Sviluppo FESR"
 
-# Entries only feed the list page: no detail pages. Target kind=page so the list itself renders.
-[[cascade]]
-  [cascade.build]
-    render = "never"
-  [cascade.target]
-    kind = "page"
 +++

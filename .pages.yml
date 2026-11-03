@@ -1,0 +1,1189 @@
+# Pages CMS configuration. Docs: https://pagescms.org/docs/configuration/
+# Generated structure; edit by hand if needed. Not exposed: privacy, redirect pages, hugo.toml, data/.
+media:
+  input: static/uploads
+  output: /uploads
+  rename: safe
+settings:
+  content:
+    merge: true
+  commit:
+    templates:
+      create: 'content(create): {path}'
+      update: 'content(update): {path}'
+      delete: 'content(delete): {path}'
+      rename: 'content(rename): {oldPath} -> {newPath}'
+content:
+- name: group-it
+  label: Italiano
+  type: group
+  items:
+  - name: home-it
+    label: Home
+    type: file
+    path: content/it/_index.md
+    format: toml-frontmatter
+    delimiters: +++
+    operations:
+      delete: false
+    fields:
+    - name: title
+      label: Titolo del sito
+      type: string
+      description: Nome mostrato nel titolo del browser.
+    - name: description
+      label: Descrizione per i motori di ricerca
+      type: text
+      description: Una o due frasi che descrivono il sito.
+    - name: hero
+      label: Apertura
+      type: object
+      description: Primo blocco della pagina.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Frase principale.
+      - name: ctaLabel
+        label: Testo del pulsante
+        type: string
+        description: Per esempio «Scopri di più».
+      - name: ctaAnchor
+        label: Sezione di destinazione
+        type: string
+        description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
+        readonly: true
+    - name: chiSiamo
+      label: Chi siamo
+      type: object
+      description: Sezione sull'azienda.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: storia
+        label: Storia
+        type: object
+        description: Racconto della nascita e crescita dell'azienda.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+      - name: oggi
+        label: Oggi
+        type: object
+        description: Descrizione dell'azienda oggi.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: text
+          label: Testo
+          type: text
+          description: Testo del blocco.
+      - name: management
+        label: Management
+        type: object
+        description: Persona che guida l'azienda.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: name
+          label: Nome
+          type: string
+          description: Nome e cognome.
+        - name: image
+          label: Foto
+          type: image
+          description: Foto della persona.
+        - name: imageAlt
+          label: Descrizione della foto
+          type: string
+          description: Frase breve letta dagli screen reader.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+    - name: cosaFacciamo
+      label: Cosa facciamo
+      type: object
+      description: Sezione sulle attività.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: intro
+        label: Introduzione
+        type: object
+        description: Testo di apertura.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+        - name: closing
+          label: Paragrafo finale
+          type: text
+          description: Ultimo paragrafo dell'introduzione.
+      - name: areas
+        label: Aree di attività
+        type: object
+        description: Le sei aree, nell'ordine in cui compaiono.
+        fields:
+        - name: title
+          label: Nome dell'area
+          type: string
+          description: Nome breve.
+        - name: summary
+          label: Sintesi
+          type: string
+          description: Una riga che riassume l'area.
+        - name: text
+          label: Descrizione
+          type: text
+          description: Testo completo dell'area.
+        list: true
+      - name: lists
+        label: Elenchi
+        type: object
+        description: Campi di attività, tecnologie, programmazione, automazione.
+        fields:
+        - name: title
+          label: Titolo dell'elenco
+          type: string
+          description: Per esempio «Tecnologie».
+        - name: items
+          label: Voci
+          type: string
+          description: Una voce per riga.
+          list: true
+        list: true
+    - name: servizi
+      label: Servizi (titolo)
+      type: object
+      description: Intestazione della sezione Servizi in home.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Facoltativa. Testo sotto il titolo.
+    - name: caseHistory
+      label: Case history (titolo)
+      type: object
+      description: Intestazione della sezione Case history in home.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Facoltativa. Testo sotto il titolo.
+    - name: testimonial
+      label: Testimonial
+      type: object
+      description: Testimonianze dei clienti.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo della sezione.
+      - name: items
+        label: Testimonianze
+        type: object
+        description: Una voce per ogni testimonianza.
+        fields:
+        - name: quote
+          label: Testo
+          type: text
+          description: La frase del cliente, senza virgolette.
+        - name: author
+          label: Nome
+          type: string
+          description: Nome della persona.
+        - name: role
+          label: Ruolo
+          type: string
+          description: Ruolo nell'azienda.
+        - name: company
+          label: Azienda
+          type: string
+          description: Nome dell'azienda.
+        - name: url
+          label: Sito dell'azienda
+          type: string
+          description: Facoltativo. Indirizzo completo, con https://.
+        list: true
+    - name: vidim
+      label: VIDIM Group
+      type: object
+      description: Presentazione della rete d'impresa.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: text
+        label: Testo
+        type: text
+        description: Descrizione.
+    - name: contatti
+      label: Contatti
+      type: object
+      description: Testi della sezione contatti. Gli indirizzi email non sono qui.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Frase sotto il titolo.
+      - name: officeTitle
+        label: Titolo «sede»
+        type: string
+        description: Titolo del blocco con indirizzo e telefono.
+      - name: directTitle
+        label: Titolo «contatti diretti»
+        type: string
+        description: Titolo dell'elenco delle email.
+      - name: ctaText
+        label: Frase finale
+        type: text
+        description: Frase prima del pulsante.
+      - name: ctaLabel
+        label: Testo del pulsante
+        type: string
+        description: Per esempio «CONTATTACI!».
+  - name: case-history-it
+    label: Case history
+    type: collection
+    path: content/it/case-history
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del progetto. Compare nell'elenco e in cima alla pagina.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione. Nell'elenco i più recenti stanno in alto.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: description
+      label: Sommario
+      type: text
+      description: Breve introduzione al progetto, mostrata in elenco e sotto il titolo.
+    - name: image
+      label: Immagine principale
+      type: image
+      description: Foto o schema che rappresenta il progetto.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: client
+      label: Cliente
+      type: string
+      description: Facoltativo. Nome del cliente.
+    - name: sector
+      label: Settore
+      type: string
+      description: Facoltativo. Settore di attività del cliente.
+    - name: areas
+      label: Aree
+      type: select
+      description: Aree di competenza coinvolte nel progetto.
+      options:
+        multiple: true
+        values:
+        - name: engineering
+          label: Engineering
+        - name: network
+          label: Network
+        - name: research
+          label: Research
+        - name: systems
+          label: Systems
+        - name: software
+          label: Software
+        - name: web-apps
+          label: Web Apps
+    - name: body
+      label: Testo
+      type: rich-text
+      description: Descrizione completa del progetto, con eventuali altre immagini.
+    view:
+      fields:
+      - title
+      - date
+      - draft
+      primary: title
+      sort:
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: true
+      delete: true
+  - name: servizi-it
+    label: Servizi
+    type: collection
+    path: content/it/servizi
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del servizio.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: weight
+      label: Ordine
+      type: number
+      description: 'Numero che decide l''ordine: i numeri bassi vengono prima.'
+    - name: description
+      label: Sommario
+      type: text
+      description: Breve descrizione, mostrata in elenco e nella home.
+    - name: image
+      label: Immagine
+      type: image
+      description: Immagine del servizio.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: links
+      label: Link
+      type: object
+      description: Collegamenti utili del servizio, per esempio un portale web.
+      fields:
+      - name: label
+        label: Testo del link
+        type: string
+        description: Cosa leggerà l'utente.
+      - name: url
+        label: Indirizzo
+        type: string
+        description: Indirizzo completo, che inizia con https://.
+      list: true
+    - name: attachments
+      label: Allegati
+      type: object
+      description: Documenti da scaricare, per esempio un manuale.
+      fields:
+      - name: label
+        label: Nome del documento
+        type: string
+        description: Cosa leggerà l'utente.
+      - name: file
+        label: File
+        type: file
+        description: Carica un file oppure indica l'indirizzo di un documento esterno.
+      list: true
+    - name: body
+      label: Testo
+      type: rich-text
+      description: Descrizione del servizio. Facoltativa.
+    view:
+      fields:
+      - title
+      - date
+      - draft
+      primary: title
+      sort:
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: true
+      delete: true
+  - name: trasparenza-it
+    label: Trasparenza
+    type: collection
+    path: content/it/trasparenza
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del progetto o del documento.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: year
+      label: Anno
+      type: number
+      description: Anno sotto cui viene raggruppata la voce nella pagina.
+      required: true
+    - name: kind
+      label: Tipo
+      type: select
+      description: Progetto finanziato oppure documento sugli aiuti pubblici.
+      required: true
+      options:
+        values:
+        - name: progetto
+          label: Progetto
+        - name: documento-aiuti
+          label: Documento aiuti pubblici
+    - name: program
+      label: Programma
+      type: string
+      description: Per esempio «iNEST Spoke 3». Facoltativo.
+    - name: funder
+      label: Ente finanziatore
+      type: string
+      description: Facoltativo. Lascia vuoto se non serve.
+    - name: amount
+      label: Importo
+      type: string
+      description: Facoltativo. Scrivi l'importo come deve apparire.
+    - name: description
+      label: Descrizione
+      type: text
+      description: Facoltativa. Breve testo mostrato sotto il titolo.
+    - name: image
+      label: Locandina o immagine
+      type: image
+      description: Facoltativa. Locandina del progetto.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: file
+      label: File PDF
+      type: file
+      description: Documento da scaricare.
+      required: true
+    - name: fileNote
+      label: Nota accanto al link
+      type: string
+      description: Facoltativa. Per esempio «(document in Italian)».
+    view:
+      fields:
+      - title
+      - year
+      - kind
+      - draft
+      primary: title
+      sort:
+      - year
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: false
+      delete: false
+  - name: trasparenza-pagina-it
+    label: 'Trasparenza: titolo e banner'
+    type: file
+    path: content/it/trasparenza/_index.md
+    format: toml-frontmatter
+    delimiters: +++
+    operations:
+      delete: false
+    fields:
+    - name: title
+      label: Titolo della pagina
+      type: string
+      description: Titolo mostrato in cima alla pagina.
+    - name: aliases
+      label: Vecchi indirizzi
+      type: string
+      description: 'Non modificare: servono per i link del vecchio sito.'
+      readonly: true
+      list: true
+    - name: banners
+      label: Banner
+      type: object
+      description: Immagini mostrate in cima alla pagina.
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Banner.
+      - name: imageAlt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
+      list: true
+- name: group-en
+  label: English (inglese)
+  type: group
+  items:
+  - name: home-en
+    label: Home
+    type: file
+    path: content/en/_index.md
+    format: toml-frontmatter
+    delimiters: +++
+    operations:
+      delete: false
+    fields:
+    - name: title
+      label: Titolo del sito
+      type: string
+      description: Nome mostrato nel titolo del browser.
+    - name: reviewed
+      label: Traduzione rivista
+      type: boolean
+      description: Spunta quando una persona ha controllato la traduzione.
+      default: false
+    - name: description
+      label: Descrizione per i motori di ricerca
+      type: text
+      description: Una o due frasi che descrivono il sito.
+    - name: hero
+      label: Apertura
+      type: object
+      description: Primo blocco della pagina.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Frase principale.
+      - name: ctaLabel
+        label: Testo del pulsante
+        type: string
+        description: Per esempio «Scopri di più».
+      - name: ctaAnchor
+        label: Sezione di destinazione
+        type: string
+        description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
+        readonly: true
+    - name: chiSiamo
+      label: Chi siamo
+      type: object
+      description: Sezione sull'azienda.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: storia
+        label: Storia
+        type: object
+        description: Racconto della nascita e crescita dell'azienda.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+      - name: oggi
+        label: Oggi
+        type: object
+        description: Descrizione dell'azienda oggi.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: text
+          label: Testo
+          type: text
+          description: Testo del blocco.
+      - name: management
+        label: Management
+        type: object
+        description: Persona che guida l'azienda.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: name
+          label: Nome
+          type: string
+          description: Nome e cognome.
+        - name: image
+          label: Foto
+          type: image
+          description: Foto della persona.
+        - name: imageAlt
+          label: Descrizione della foto
+          type: string
+          description: Frase breve letta dagli screen reader.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+    - name: cosaFacciamo
+      label: Cosa facciamo
+      type: object
+      description: Sezione sulle attività.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: intro
+        label: Introduzione
+        type: object
+        description: Testo di apertura.
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Titolo del blocco.
+        - name: paragraphs
+          label: Paragrafi
+          type: text
+          description: Un paragrafo per ogni voce.
+          list: true
+        - name: closing
+          label: Paragrafo finale
+          type: text
+          description: Ultimo paragrafo dell'introduzione.
+      - name: areas
+        label: Aree di attività
+        type: object
+        description: Le sei aree, nell'ordine in cui compaiono.
+        fields:
+        - name: title
+          label: Nome dell'area
+          type: string
+          description: Nome breve.
+        - name: summary
+          label: Sintesi
+          type: string
+          description: Una riga che riassume l'area.
+        - name: text
+          label: Descrizione
+          type: text
+          description: Testo completo dell'area.
+        list: true
+      - name: lists
+        label: Elenchi
+        type: object
+        description: Campi di attività, tecnologie, programmazione, automazione.
+        fields:
+        - name: title
+          label: Titolo dell'elenco
+          type: string
+          description: Per esempio «Tecnologie».
+        - name: items
+          label: Voci
+          type: string
+          description: Una voce per riga.
+          list: true
+        list: true
+    - name: servizi
+      label: Servizi (titolo)
+      type: object
+      description: Intestazione della sezione Servizi in home.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Facoltativa. Testo sotto il titolo.
+    - name: caseHistory
+      label: Case history (titolo)
+      type: object
+      description: Intestazione della sezione Case history in home.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Facoltativa. Testo sotto il titolo.
+    - name: testimonial
+      label: Testimonial
+      type: object
+      description: Testimonianze dei clienti.
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo della sezione.
+      - name: items
+        label: Testimonianze
+        type: object
+        description: Una voce per ogni testimonianza.
+        fields:
+        - name: quote
+          label: Testo
+          type: text
+          description: La frase del cliente, senza virgolette.
+        - name: author
+          label: Nome
+          type: string
+          description: Nome della persona.
+        - name: role
+          label: Ruolo
+          type: string
+          description: Ruolo nell'azienda.
+        - name: company
+          label: Azienda
+          type: string
+          description: Nome dell'azienda.
+        - name: url
+          label: Sito dell'azienda
+          type: string
+          description: Facoltativo. Indirizzo completo, con https://.
+        list: true
+    - name: vidim
+      label: VIDIM Group
+      type: object
+      description: Presentazione della rete d'impresa.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: text
+        label: Testo
+        type: text
+        description: Descrizione.
+    - name: contatti
+      label: Contatti
+      type: object
+      description: Testi della sezione contatti. Gli indirizzi email non sono qui.
+      fields:
+      - name: title
+        label: Titolo
+        type: string
+        description: Titolo della sezione.
+      - name: intro
+        label: Introduzione
+        type: text
+        description: Frase sotto il titolo.
+      - name: officeTitle
+        label: Titolo «sede»
+        type: string
+        description: Titolo del blocco con indirizzo e telefono.
+      - name: directTitle
+        label: Titolo «contatti diretti»
+        type: string
+        description: Titolo dell'elenco delle email.
+      - name: ctaText
+        label: Frase finale
+        type: text
+        description: Frase prima del pulsante.
+      - name: ctaLabel
+        label: Testo del pulsante
+        type: string
+        description: Per esempio «CONTATTACI!».
+  - name: case-history-en
+    label: Case history
+    type: collection
+    path: content/en/case-history
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del progetto. Compare nell'elenco e in cima alla pagina.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione. Nell'elenco i più recenti stanno in alto.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: reviewed
+      label: Traduzione rivista
+      type: boolean
+      description: Spunta quando una persona ha controllato la traduzione.
+      default: false
+    - name: description
+      label: Sommario
+      type: text
+      description: Breve introduzione al progetto, mostrata in elenco e sotto il titolo.
+    - name: image
+      label: Immagine principale
+      type: image
+      description: Foto o schema che rappresenta il progetto.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: client
+      label: Cliente
+      type: string
+      description: Facoltativo. Nome del cliente.
+    - name: sector
+      label: Settore
+      type: string
+      description: Facoltativo. Settore di attività del cliente.
+    - name: areas
+      label: Aree
+      type: select
+      description: Aree di competenza coinvolte nel progetto.
+      options:
+        multiple: true
+        values:
+        - name: engineering
+          label: Engineering
+        - name: network
+          label: Network
+        - name: research
+          label: Research
+        - name: systems
+          label: Systems
+        - name: software
+          label: Software
+        - name: web-apps
+          label: Web Apps
+    - name: body
+      label: Testo
+      type: rich-text
+      description: Descrizione completa del progetto, con eventuali altre immagini.
+    view:
+      fields:
+      - title
+      - date
+      - draft
+      primary: title
+      sort:
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: true
+      delete: true
+  - name: servizi-en
+    label: Servizi
+    type: collection
+    path: content/en/servizi
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del servizio.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: reviewed
+      label: Traduzione rivista
+      type: boolean
+      description: Spunta quando una persona ha controllato la traduzione.
+      default: false
+    - name: weight
+      label: Ordine
+      type: number
+      description: 'Numero che decide l''ordine: i numeri bassi vengono prima.'
+    - name: description
+      label: Sommario
+      type: text
+      description: Breve descrizione, mostrata in elenco e nella home.
+    - name: image
+      label: Immagine
+      type: image
+      description: Immagine del servizio.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: links
+      label: Link
+      type: object
+      description: Collegamenti utili del servizio, per esempio un portale web.
+      fields:
+      - name: label
+        label: Testo del link
+        type: string
+        description: Cosa leggerà l'utente.
+      - name: url
+        label: Indirizzo
+        type: string
+        description: Indirizzo completo, che inizia con https://.
+      list: true
+    - name: attachments
+      label: Allegati
+      type: object
+      description: Documenti da scaricare, per esempio un manuale.
+      fields:
+      - name: label
+        label: Nome del documento
+        type: string
+        description: Cosa leggerà l'utente.
+      - name: file
+        label: File
+        type: file
+        description: Carica un file oppure indica l'indirizzo di un documento esterno.
+      list: true
+    - name: body
+      label: Testo
+      type: rich-text
+      description: Descrizione del servizio. Facoltativa.
+    view:
+      fields:
+      - title
+      - date
+      - draft
+      primary: title
+      sort:
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: true
+      delete: true
+  - name: trasparenza-en
+    label: Trasparenza
+    type: collection
+    path: content/en/trasparenza
+    format: toml-frontmatter
+    delimiters: +++
+    exclude:
+    - _index.md
+    filename:
+      template: '{primary}.md'
+      field: create
+    fields:
+    - name: title
+      label: Titolo
+      type: string
+      description: Nome del progetto o del documento.
+      required: true
+    - name: date
+      label: Data
+      type: date
+      description: Data di pubblicazione.
+      options:
+        time: true
+        format: yyyy-MM-dd'T'HH:mm:ssXXX
+    - name: draft
+      label: Bozza (non pubblicare)
+      type: boolean
+      description: Se attiva, la voce resta salvata ma non compare sul sito.
+      default: false
+    - name: reviewed
+      label: Traduzione rivista
+      type: boolean
+      description: Spunta quando una persona ha controllato la traduzione.
+      default: false
+    - name: year
+      label: Anno
+      type: number
+      description: Anno sotto cui viene raggruppata la voce nella pagina.
+      required: true
+    - name: kind
+      label: Tipo
+      type: select
+      description: Progetto finanziato oppure documento sugli aiuti pubblici.
+      required: true
+      options:
+        values:
+        - name: progetto
+          label: Progetto
+        - name: documento-aiuti
+          label: Documento aiuti pubblici
+    - name: program
+      label: Programma
+      type: string
+      description: Per esempio «iNEST Spoke 3». Facoltativo.
+    - name: funder
+      label: Ente finanziatore
+      type: string
+      description: Facoltativo. Lascia vuoto se non serve.
+    - name: amount
+      label: Importo
+      type: string
+      description: Facoltativo. Scrivi l'importo come deve apparire.
+    - name: description
+      label: Descrizione
+      type: text
+      description: Facoltativa. Breve testo mostrato sotto il titolo.
+    - name: image
+      label: Locandina o immagine
+      type: image
+      description: Facoltativa. Locandina del progetto.
+    - name: imageAlt
+      label: Descrizione dell'immagine
+      type: string
+      description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: file
+      label: File PDF
+      type: file
+      description: Documento da scaricare.
+      required: true
+    - name: fileNote
+      label: Nota accanto al link
+      type: string
+      description: Facoltativa. Per esempio «(document in Italian)».
+    view:
+      fields:
+      - title
+      - year
+      - kind
+      - draft
+      primary: title
+      sort:
+      - year
+      - date
+      - title
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: false
+      delete: false
+  - name: trasparenza-pagina-en
+    label: 'Trasparenza: titolo e banner'
+    type: file
+    path: content/en/trasparenza/_index.md
+    format: toml-frontmatter
+    delimiters: +++
+    operations:
+      delete: false
+    fields:
+    - name: title
+      label: Titolo della pagina
+      type: string
+      description: Titolo mostrato in cima alla pagina.
+    - name: reviewed
+      label: Traduzione rivista
+      type: boolean
+      description: Spunta quando una persona ha controllato la traduzione.
+      default: false
+    - name: aliases
+      label: Vecchi indirizzi
+      type: string
+      description: 'Non modificare: servono per i link del vecchio sito.'
+      readonly: true
+      list: true
+    - name: banners
+      label: Banner
+      type: object
+      description: Immagini mostrate in cima alla pagina.
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Banner.
+      - name: imageAlt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
+      list: true

@@ -25,7 +25,7 @@ reviewed = false
   [chiSiamo.management]
     title = "Omniaevo management"
     name = "Massimo Belluz"
-    image = "uploads/home/massimo-belluz.jpg"
+    image = "/uploads/home/massimo-belluz.jpg"
     imageAlt = "Massimo Belluz"
     paragraphs = [
       "Massimo Belluz was born in Udine on 4 May 1973 and has a solid scientific background applied to technology.",
