@@ -66,3 +66,6 @@ other = 'FOR PUBLIC ADMINISTRATIONS AND PUBLIC BODIES ONLY'
 
 [legalNavigation]
 other = "Legal information"
+
+[viewAll]
+other = "View all"

@@ -1,0 +1,12 @@
+{{- /*
+  Image from a front matter path (e.g. "uploads/home/hero.jpg" or "/uploads/..."), looked up in assets/.
+  Context: dict "path" <string> "alt" <string> "lazy" <bool, default true>
+  Renders nothing when the path is empty; warns when the file is missing.
+*/ -}}
+{{- with .path -}}
+  {{- with resources.Get (strings.TrimPrefix "/" .) -}}
+    {{- partial "image.html" (dict "img" . "alt" $.alt "lazy" (cond (isset $ "lazy") $.lazy true)) -}}
+  {{- else -}}
+    {{- warnf "image not found in assets: %q" . -}}
+  {{- end -}}
+{{- end -}}
