@@ -6,7 +6,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   title = "Soluzioni semplici per esigenze complesse"
   ctaLabel = "Scopri di più"
   ctaAnchor = "cosa-facciamo"
-  image = "uploads/home/hero.jpg"
 
 [chiSiamo]
   title = "Chi siamo"
@@ -57,47 +56,34 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
     title = "Engineering"
     summary = "Soluzioni per l’industria e il monitoraggio ambientale"
     text = "Progettiamo soluzioni per l’industria: automazione, robotica, controllo di processo, supervisione, sistemi di misura e monitoraggio, sistemi di visione, gestione energia, saldatura automatizzata, controllo produzione. Inoltre sviluppiamo applicazioni per monitoraggio geologico ed ambientale."
-    image = "uploads/home/engineering.jpg"
-    imageAlt = "Engineering"
 
   [[cosaFacciamo.areas]]
     title = "Network"
     summary = "Progettazione e installazione di sistemi di comunicazione di rete"
     text = "Progettiamo e installiamo sistemi di comunicazione: cablaggi rame e fibra, connettività wireless, firewall, VPN, soluzioni multi-homing, ponti radio, bus di campo civili ed industriali, Thin client, PCoIP, desktop virtualization."
-    image = "uploads/home/network.jpg"
-    imageAlt = "Network"
 
   [[cosaFacciamo.areas]]
     title = "Research"
     summary = "Processi, algoritmi, modellazione matematica, raccolta ed analisi dati"
     text = "Studiamo processi, algoritmi, modellazione matematica, raccolta ed analisi dati (scientifici, economici, marketing,…), data-fusion, analisi geografiche. Progettiamo elettronica digitale ed analogica personalizzata. Sviluppiamo software di laboratorio e prototipizzazione hardware e software."
-    image = "uploads/home/research.jpg"
-    imageAlt = "Research"
 
   [[cosaFacciamo.areas]]
     title = "Systems"
     summary = "Piattaforme di elaborazione e virtualizzazione, assistenza tecnica"
     text = "Progettiamo ed allestiamo piattaforme di elaborazione, virtualizzazione, storage, clustering hardware, clustering applicativo, disaster recovery. Forniamo assistenza tecnica on-site ed off-site. Realizziamo databases distribuiti, big data, business intelligence."
-    image = "uploads/home/systems.jpg"
-    imageAlt = "Systems"
 
   [[cosaFacciamo.areas]]
     title = "Software"
     summary = "Software e firmware per ambienti server, client e mobile"
     text = "Progettiamo architetture complesse distribuite e scalabili, basate su microservizi in container docker, con comunicazione sincrona o asincrona sfruttando code messaggi Kafka o zeroMQ. Scalabilità gestita tramite orchestratore Kubernetes."
-    image = "uploads/home/software.jpg"
-    imageAlt = "Software"
 
   [[cosaFacciamo.areas]]
     title = "Web Apps"
     summary = "Sistemi completi orientati al web per ogni applicazione"
     text = "Sviluppiamo sistemi completi orientati al web, per la gestione di processi aziendali, flotte veicoli aziendali e car sharing, analisi e visualizzazione dati, gestioni documentali, database aziendali, tracking produzione, supervisioni e monitoraggi remoti, questionari statistici, gestione assets, GIS e cartografie dinamiche."
-    image = "uploads/home/web-apps.jpg"
-    imageAlt = "Web Apps"
 
   [[cosaFacciamo.lists]]
     title = "I nostri campi di attività"
-    image = "uploads/home/campi-di-attivita.jpg"
     items = [
       "Progettazione, realizzazione e manutenzione di infrastrutture IT complete. Soluzioni studiate su misura dalla piccola azienda anche unipersonale alla grande struttura articolata",
       "Networking, connettività avanzate, cablaggi dati civili ed industriali",
@@ -110,7 +96,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
   [[cosaFacciamo.lists]]
     title = "Tecnologie"
-    image = "uploads/home/tecnologie.jpg"
     items = ["Ipervisori VMware, KVM", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
 
   [[cosaFacciamo.lists]]
@@ -155,8 +140,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   intro = "Per informazioni sulla nostra attività o per fissare un appuntamento, non esitate a contattarci!"
   officeTitle = "Sede legale e operativa"
   directTitle = "Contatti diretti"
-  image = "uploads/home/sede.jpg"
-  imageAlt = "Omniaevo"
   ctaText = "Per qualsiasi tua richiesta in merito alla nostra attività o se vuoi conoscerci di persona"
   ctaLabel = "CONTATTACI!"
 +++

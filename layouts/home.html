@@ -3,7 +3,6 @@
   <section id="hero" class="hero">
     <h1>{{ .title }}</h1>
     <a class="hero-cta" href="#{{ .ctaAnchor }}">{{ .ctaLabel }}</a>
-    {{ partial "image-by-path.html" (dict "path" .image "alt" "" "lazy" false) }}
   </section>
   {{- end }}
 
@@ -58,7 +57,6 @@
     <div class="areas">
       {{- range .areas }}
       <article class="area">
-        {{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}
         <h3>{{ .title }}</h3>
         <p class="area-summary">{{ .summary }}</p>
         <p>{{ .text }}</p>
@@ -68,7 +66,6 @@
 
     {{- range .lists }}
     <div class="list-block">
-      {{ partial "image-by-path.html" (dict "path" .image "alt" "") }}
       <h3>{{ .title }}</h3>
       <ul>
         {{ range .items }}<li>{{ . }}</li>{{ end }}
@@ -141,7 +138,6 @@
   <section id="contatti" class="section-contatti" aria-labelledby="contatti-title">
     <h2 id="contatti-title">{{ .title }}</h2>
     <p>{{ .intro }}</p>
-    {{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}
 
     <div class="office">
       <h3>{{ .officeTitle }}</h3>
