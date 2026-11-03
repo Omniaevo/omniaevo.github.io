@@ -63,3 +63,6 @@ other = 'Certified email (PEC)'
 
 [publicOnlyNote]
 other = 'FOR PUBLIC ADMINISTRATIONS AND PUBLIC BODIES ONLY'
+
+[legalNavigation]
+other = "Legal information"

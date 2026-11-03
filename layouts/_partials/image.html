@@ -1,0 +1,29 @@
+{{- /*
+  Responsive image. Context: dict "img" <resource> "alt" <string> "lazy" <bool, default true>
+  JPEG/PNG are converted to WebP with a srcset; other types (SVG, GIF, WebP) are output as is.
+*/ -}}
+{{- $img := .img -}}
+{{- $lazy := true -}}
+{{- if isset . "lazy" }}{{ $lazy = .lazy }}{{ end -}}
+{{- if in (slice "jpeg" "png") $img.MediaType.SubType -}}
+  {{- $srcset := slice -}}
+  {{- $fallback := $img -}}
+  {{- range slice 480 960 1600 -}}
+    {{- if le . $img.Width -}}
+      {{- $r := $img.Resize (printf "%dx webp q80" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink .) -}}
+      {{- $fallback = $r -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $srcset -}}
+    {{- $fallback = $img.Process "webp q80" -}}
+  {{- end -}}
+  <img src="{{ $fallback.RelPermalink }}"
+    {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 960px) 100vw, 960px"{{ end }}
+    width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+    alt="{{ .alt }}"{{ if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }} decoding="async">
+{{- else -}}
+  <img src="{{ $img.RelPermalink }}"
+    {{- if reflect.IsImageResourceWithMeta $img }} width="{{ $img.Width }}" height="{{ $img.Height }}"{{ end }}
+    alt="{{ .alt }}"{{ if $lazy }} loading="lazy"{{ end }} decoding="async">
+{{- end -}}

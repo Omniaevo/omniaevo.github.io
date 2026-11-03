@@ -1,0 +1,30 @@
+{{- $page := . -}}
+<header class="site-header">
+  <a class="site-logo" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+
+  <nav class="main-nav" aria-label="{{ T "mainNavigation" }}">
+    <ul>
+      {{- range site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      </li>
+      {{- end }}
+    </ul>
+  </nav>
+
+  {{- if hugo.IsMultilingual }}
+  <nav class="language-switcher" aria-label="{{ T "languageSwitcher" }}">
+    <ul>
+      {{- range hugo.Sites }}
+        {{- if ne .Language.Lang site.Language.Lang }}
+          {{- $target := .Home.RelPermalink }}
+          {{- with index (where $page.AllTranslations "Language.Lang" .Language.Lang) 0 }}
+            {{- $target = .RelPermalink }}
+          {{- end }}
+      <li><a href="{{ $target }}" hreflang="{{ .Language.Locale }}" lang="{{ .Language.Locale }}">{{ .Language.Label }}</a></li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </nav>
+  {{- end }}
+</header>

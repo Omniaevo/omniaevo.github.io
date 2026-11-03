@@ -40,6 +40,7 @@ defaultContentLanguageInSubdir = false
     label = 'Italiano'
     weight = 1
     [languages.it.params]
+      claim = 'Soluzioni semplici per esigenze complesse'
       description = 'Omniaevo: soluzioni semplici per esigenze complesse. Engineering, network, research, systems, software e web apps.'
     [[languages.it.menus.main]]
       name = 'Chi siamo'
@@ -76,6 +77,7 @@ defaultContentLanguageInSubdir = false
     label = 'English'
     weight = 2
     [languages.en.params]
+      claim = 'Simple solutions for complex needs'
       description = 'Omniaevo: simple solutions for complex needs. Engineering, network, research, systems, software and web apps.'
     [[languages.en.menus.main]]
       name = 'About us'
