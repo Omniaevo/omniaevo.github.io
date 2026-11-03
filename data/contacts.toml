@@ -1,0 +1,46 @@
+# Language-independent company data. Labels for each role live in i18n (contact.role.<id>).
+company = 'Omniaevo S.r.l.'
+vat = '02494210301'
+phone = '+39 0432 1845421'
+phoneHref = '+3904321845421'
+fax = '+39 0432 901514'
+
+[address]
+  street = 'Viale Veneto, 33/11'
+  postalCode = '33033'
+  city = 'Codroipo'
+  province = 'UD'
+  country = 'Italia'
+
+[pec]
+  email = 'omniaevo@qnetpec.it'
+
+# publicOnly: address reserved for public administrations and public bodies.
+[[emails]]
+  id = 'info'
+  email = 'info@omniaevo.it'
+
+[[emails]]
+  id = 'administration'
+  email = 'amministrazione@omniaevo.it'
+
+[[emails]]
+  id = 'support'
+  email = 'assistenza@omniaevo.it'
+
+[[emails]]
+  id = 'supportPa'
+  email = 'assistenzapa@omniaevo.it'
+  publicOnly = true
+
+[[emails]]
+  id = 'supportEn'
+  email = 'support@omniaevo.it'
+
+[[emails]]
+  id = 'sales'
+  email = 'commerciale@omniaevo.it'
+
+[[emails]]
+  id = 'complaints'
+  email = 'reclami@omniaevo.it'

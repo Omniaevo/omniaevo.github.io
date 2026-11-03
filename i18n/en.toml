@@ -1,0 +1,65 @@
+[skipToContent]
+other = 'Skip to content'
+
+[mainNavigation]
+other = 'Main navigation'
+
+[languageSwitcher]
+other = 'Language'
+
+[privacyPolicy]
+other = 'Privacy'
+
+[cookiePolicy]
+other = 'Cookie policy'
+
+[vatNumber]
+other = 'VAT no.'
+
+[rightsReserved]
+other = 'All rights reserved'
+
+[readMore]
+other = 'Read more'
+
+[previous]
+other = 'Previous'
+
+[next]
+other = 'Next'
+
+[notFoundTitle]
+other = 'Page not found'
+
+[notFoundText]
+other = 'The page you are looking for does not exist or has moved.'
+
+[backToHome]
+other = 'Back to home'
+
+[contactRoleInfo]
+other = 'Information'
+
+[contactRoleAdministration]
+other = 'Administration'
+
+[contactRoleSupport]
+other = 'Support'
+
+[contactRoleSupportPa]
+other = 'Public administration (PA) support'
+
+[contactRoleSupportEn]
+other = 'Support (English)'
+
+[contactRoleSales]
+other = 'Sales'
+
+[contactRoleComplaints]
+other = 'Complaints'
+
+[contactRolePec]
+other = 'Certified email (PEC)'
+
+[publicOnlyNote]
+other = 'FOR PUBLIC ADMINISTRATIONS AND PUBLIC BODIES ONLY'

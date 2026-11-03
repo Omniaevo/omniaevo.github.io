@@ -1,0 +1,65 @@
+[skipToContent]
+other = 'Vai al contenuto'
+
+[mainNavigation]
+other = 'Navigazione principale'
+
+[languageSwitcher]
+other = 'Lingua'
+
+[privacyPolicy]
+other = 'Privacy'
+
+[cookiePolicy]
+other = 'Cookie policy'
+
+[vatNumber]
+other = 'P. IVA'
+
+[rightsReserved]
+other = 'Tutti i diritti riservati'
+
+[readMore]
+other = 'Scopri di più'
+
+[previous]
+other = 'Precedente'
+
+[next]
+other = 'Prossimo'
+
+[notFoundTitle]
+other = 'Pagina non trovata'
+
+[notFoundText]
+other = 'La pagina che cerchi non esiste o è stata spostata.'
+
+[backToHome]
+other = 'Torna alla home'
+
+[contactRoleInfo]
+other = 'Informazioni'
+
+[contactRoleAdministration]
+other = 'Amministrazione'
+
+[contactRoleSupport]
+other = 'Assistenza'
+
+[contactRoleSupportPa]
+other = 'Assistenza Pubblica Amministrazione (PA)'
+
+[contactRoleSupportEn]
+other = 'Support'
+
+[contactRoleSales]
+other = 'Vendite'
+
+[contactRoleComplaints]
+other = 'Reclami'
+
+[contactRolePec]
+other = 'PEC'
+
+[publicOnlyNote]
+other = 'SOLO PER PA ED ENTI PUBBLICI'
