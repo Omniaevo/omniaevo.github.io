@@ -125,6 +125,35 @@
   </section>
   {{- end }}
 
+  {{- /* Public funding disclosure (FESR posters, funded projects, public aid document).
+         The posters' QR code points to the home page, so this content must be reachable here. */}}
+  {{- with site.GetPage "/trasparenza" }}
+  <section id="trasparenza" class="section-trasparenza" aria-labelledby="trasparenza-title">
+    <h2 id="trasparenza-title">{{ .Title }}</h2>
+
+    {{- with .Params.banners }}
+    <div class="transparency-banners">
+      {{- range . }}
+      <a href="{{ .image | relURL }}">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with sort .RegularPages "Params.year" "desc" }}
+    <ul class="transparency-files">
+      {{- range . }}
+        {{- $entry := . }}
+        {{- with .Params.file }}
+      <li><a href="{{ . | relURL }}">{{ $entry.Title }}</a> ({{ $entry.Params.year }}){{ with $entry.Params.fileNote }} {{ . }}{{ end }}</li>
+        {{- end }}
+      {{- end }}
+    </ul>
+    {{- end }}
+
+    <p><a href="{{ .RelPermalink }}">{{ T "viewAll" }}</a></p>
+  </section>
+  {{- end }}
+
   {{- with .Params.contatti }}
   {{- $c := hugo.Data.contacts }}
   <section id="contatti" class="section-contatti" aria-labelledby="contatti-title">

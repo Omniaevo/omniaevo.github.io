@@ -31,4 +31,5 @@
   --max: 1320px;
   --gutter: clamp(16px, 3vw, 32px);
   --space-section: clamp(56px, 8vw, 96px);
+  --header-h: 72px;                  /* sticky header height, also used by scroll-padding */
 }

@@ -61,15 +61,15 @@ defaultContentLanguageInSubdir = false
       weight = 20
     [[languages.it.menus.main]]
       name = 'Servizi'
-      pageRef = '/servizi'
+      url = '/#servizi'
       weight = 30
     [[languages.it.menus.main]]
       name = 'Case history'
-      pageRef = '/case-history'
+      url = '/#case-history'
       weight = 40
     [[languages.it.menus.main]]
       name = 'Trasparenza'
-      pageRef = '/trasparenza'
+      url = '/#trasparenza'
       weight = 50
     [[languages.it.menus.main]]
       name = 'Contatti'
@@ -94,15 +94,15 @@ defaultContentLanguageInSubdir = false
       weight = 20
     [[languages.en.menus.main]]
       name = 'Services'
-      pageRef = '/servizi'
+      url = '/en/#servizi'
       weight = 30
     [[languages.en.menus.main]]
       name = 'Case history'
-      pageRef = '/case-history'
+      url = '/en/#case-history'
       weight = 40
     [[languages.en.menus.main]]
       name = 'Transparency'
-      pageRef = '/trasparenza'
+      url = '/en/#trasparenza'
       weight = 50
     [[languages.en.menus.main]]
       name = 'Contacts'

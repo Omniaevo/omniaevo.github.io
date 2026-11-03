@@ -1,1 +1,16 @@
 /* Page-specific styles (steps 4–8). */
+
+/* Transparency posters (home and /trasparenza/): framed, side by side. */
+.transparency-banners {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+  margin-block: 24px;
+}
+
+.transparency-banners a {
+  display: block;
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-l);
+}

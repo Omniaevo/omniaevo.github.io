@@ -1,3 +1,19 @@
+/* Anchors land below the sticky header */
+html {
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  scroll-behavior: smooth;
+}
+
+/* Footer stays at the bottom on short pages */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 /* Page width and section rhythm */
 .container {
   width: 100%;

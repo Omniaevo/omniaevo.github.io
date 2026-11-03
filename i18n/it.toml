@@ -126,3 +126,12 @@ other = "Questa pagina è stata spostata."
 
 [redirectGo]
 other = "Vai alla nuova pagina"
+
+[menu]
+other = "Menu"
+
+[closeMenu]
+other = "Chiudi"
+
+[transparency]
+other = "Trasparenza"
