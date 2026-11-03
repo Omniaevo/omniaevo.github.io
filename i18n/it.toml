@@ -117,3 +117,6 @@ other = "Ente finanziatore"
 
 [amount]
 other = "Importo"
+
+[country]
+other = "Italia"

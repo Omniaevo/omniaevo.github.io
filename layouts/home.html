@@ -136,7 +136,7 @@
       <address>
         <strong>{{ $c.company }}</strong><br>
         {{ $c.address.street }}<br>
-        {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ $c.address.country }}
+        {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ T "country" }}
       </address>
       <p><a href="tel:{{ $c.phoneHref }}">{{ $c.phone }}</a></p>
       {{- range first 1 $c.emails }}

@@ -10,7 +10,6 @@ fax = '+39 0432 901514'
   postalCode = '33033'
   city = 'Codroipo'
   province = 'UD'
-  country = 'Italia'
 
 [pec]
   email = 'omniaevo@qnetpec.it'

@@ -117,3 +117,6 @@ other = "Funder"
 
 [amount]
 other = "Amount"
+
+[country]
+other = "Italy"

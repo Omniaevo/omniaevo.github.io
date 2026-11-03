@@ -8,6 +8,7 @@
   <ul class="transparency-list">
     {{- range .Pages }}
     <li>
+      {{- $entry := . }}
       <h4>{{ .Title }}</h4>
       {{- partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt) }}
       {{- with .Params.program }}<p>{{ . }}</p>{{ end }}
@@ -15,7 +16,7 @@
       {{- with .Params.funder }}<p>{{ T "funder" }}: {{ . }}</p>{{ end }}
       {{- with .Params.amount }}<p>{{ T "amount" }}: {{ . }}</p>{{ end }}
       {{- with .Params.file }}
-      <p><a href="{{ . | relURL }}">{{ $label }}</a></p>
+      <p><a href="{{ . | relURL }}">{{ $label }}</a>{{ with $entry.Params.fileNote }} {{ . }}{{ end }}</p>
       {{- end }}
     </li>
     {{- end }}

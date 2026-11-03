@@ -11,4 +11,5 @@ program = ''
 funder = ''
 amount = ''
 file = ''
+fileNote = ''   # e.g. (document in Italian)
 +++

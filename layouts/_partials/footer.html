@@ -3,15 +3,17 @@
   <address>
     <strong>{{ $c.company }}</strong><br>
     {{ $c.address.street }}<br>
-    {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ $c.address.country }}<br>
+    {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ T "country" }}<br>
     {{ T "vatNumber" }} {{ $c.vat }}<br>
     <a href="tel:{{ $c.phoneHref }}">{{ $c.phone }}</a>
   </address>
 
   <nav aria-label="{{ T "legalNavigation" }}">
     <ul>
-      <li><a href="{{ relLangURL "privacy/" }}">{{ T "privacyPolicy" }}</a></li>
-      <li><a href="{{ relLangURL "privacy/#cookie" }}">{{ T "cookiePolicy" }}</a></li>
+      {{- /* No English privacy page yet: fall back to the Italian one. */}}
+      {{- $privacy := cond (site.GetPage "/privacy") (relLangURL "privacy/") (relURL "privacy/") }}
+      <li><a href="{{ $privacy }}"{{ if not (site.GetPage "/privacy") }} hreflang="it"{{ end }}>{{ T "privacyPolicy" }}</a></li>
+      <li><a href="{{ $privacy }}#cookie"{{ if not (site.GetPage "/privacy") }} hreflang="it"{{ end }}>{{ T "cookiePolicy" }}</a></li>
     </ul>
   </nav>
 
