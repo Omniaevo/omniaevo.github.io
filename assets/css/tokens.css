@@ -12,6 +12,7 @@
   /* Lines and shadows */
   --bw: 3px;
   --border: var(--bw) solid var(--c-ink);
+  --sh-xs: 1px 1px 0 var(--c-ink);   /* pressed/hover state */
   --sh-s: 3px 3px 0 var(--c-ink);
   --sh-m: 6px 6px 0 var(--c-ink);
   --sh-l: 8px 8px 0 var(--c-ink);

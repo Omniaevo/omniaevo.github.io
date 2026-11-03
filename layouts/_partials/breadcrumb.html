@@ -1,0 +1,12 @@
+{{- /*
+  Breadcrumb: home, ancestors, current page.
+  Context: the current page.
+*/ -}}
+<nav class="breadcrumb" aria-label="{{ T "breadcrumb" }}">
+  <ol>
+    {{- range .Ancestors.Reverse }}
+    <li><a href="{{ .RelPermalink }}">{{ if .IsHome }}{{ T "home" }}{{ else }}{{ .LinkTitle }}{{ end }}</a></li>
+    {{- end }}
+    <li><span aria-current="page">{{ .LinkTitle }}</span></li>
+  </ol>
+</nav>

@@ -135,3 +135,9 @@ other = "Chiudi"
 
 [transparency]
 other = "Trasparenza"
+
+[home]
+other = "Home"
+
+[breadcrumb]
+other = "Percorso"

@@ -1,0 +1,16 @@
+{{- /*
+  Contact band before the footer. Reuses the home page contact texts (no new copy).
+  Call with: partialCached "cta-band.html" . site.Language.Lang
+*/ -}}
+{{- $info := index (where hugo.Data.contacts.emails "id" "info") 0 }}
+{{- with site.Home.Params.contatti }}
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band__inner">
+    <div>
+      <h2 id="cta-band-title">{{ .title }}</h2>
+      {{- with .ctaText }}<p class="cta-band__text">{{ . }}</p>{{ end }}
+    </div>
+    <a class="btn btn--accent" href="mailto:{{ $info.email }}">{{ .ctaLabel }}</a>
+  </div>
+</section>
+{{- end }}

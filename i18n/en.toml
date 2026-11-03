@@ -135,3 +135,9 @@ other = "Close"
 
 [transparency]
 other = "Transparency"
+
+[home]
+other = "Home"
+
+[breadcrumb]
+other = "Breadcrumb"

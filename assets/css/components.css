@@ -312,3 +312,423 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Pressable surfaces: buttons and linked cards share one behaviour   */
+/* ------------------------------------------------------------------ */
+.btn,
+a.card {
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover,
+a.card:hover {
+  translate: 2px 2px;
+  box-shadow: var(--sh-xs);
+}
+
+.btn:active,
+a.card:active {
+  translate: 3px 3px;
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Button                                                             */
+/* ------------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 22px;
+  background: var(--c-white);
+  color: var(--c-ink);
+  border: var(--border);
+  box-shadow: var(--sh-s);
+  font-size: 1.125rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn--light { background: var(--c-white); color: var(--c-ink); }
+.btn--accent { background: var(--c-orange); color: var(--c-ink); }
+.btn--dark { background: var(--c-ink); color: var(--c-white); }
+
+/* ------------------------------------------------------------------ */
+/* Tag                                                                */
+/* ------------------------------------------------------------------ */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--c-lavender);
+  color: var(--c-ink);
+  border: var(--border);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.tag--light { background: var(--c-white); }
+.tag--peach { background: var(--c-peach); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Card                                                               */
+/* ------------------------------------------------------------------ */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  background: var(--c-white);
+  color: var(--c-ink);
+  border: var(--border);
+  box-shadow: var(--sh-l);
+  text-decoration: none;
+}
+
+.card--blue { background: var(--c-blue); color: var(--c-white); }
+.card--orange { background: var(--c-orange); }
+.card--lavender { background: var(--c-lavender); }
+.card--peach { background: var(--c-peach); }
+
+.card__title {
+  font-size: var(--fs-h3);
+}
+
+.card > .tag {
+  align-self: flex-start;
+}
+
+/* Pushes "Read more →" and similar to the bottom of the card. */
+.card__more {
+  margin-top: auto;
+  font-weight: 800;
+}
+
+/* ------------------------------------------------------------------ */
+/* Highlight (decorative block behind a word in a title)              */
+/* ------------------------------------------------------------------ */
+.highlight {
+  padding: 0 0.12em;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  border: var(--border);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.highlight--blue {
+  display: inline-block;
+  padding: 0 0.15em;
+  background: var(--c-blue);
+  color: var(--c-white);
+  box-shadow: var(--sh-m);
+  rotate: -2deg;
+}
+
+/* ------------------------------------------------------------------ */
+/* Sticker (decorative, aria-hidden)                                  */
+/* ------------------------------------------------------------------ */
+.sticker {
+  display: grid;
+  place-items: center;
+  width: 150px;
+  aspect-ratio: 1;
+  background: var(--c-lavender);
+  border: var(--border);
+  border-radius: 50%;
+  box-shadow: var(--sh-m);
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  rotate: 10deg;
+}
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb                                                         */
+/* ------------------------------------------------------------------ */
+.breadcrumb {
+  padding-block: 28px 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 0.5em;
+}
+
+.breadcrumb a {
+  display: inline-block;
+  padding-block: 10px;
+}
+
+.breadcrumb [aria-current] {
+  display: inline-block;
+  padding-block: 10px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Spec card ("scheda progetto")                                      */
+/* ------------------------------------------------------------------ */
+.spec-card {
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-l);
+  rotate: 1.5deg;
+}
+
+.spec-card__head {
+  padding: 10px 18px;
+  background: var(--c-ink);
+  color: var(--c-white);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spec-card dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.spec-card dt,
+.spec-card dd {
+  padding: 12px 18px;
+  border-top: var(--border);
+}
+
+.spec-card dt {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ */
+/* CTA band (blue, full width, before the footer)                     */
+/* ------------------------------------------------------------------ */
+.cta-band {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-top: var(--border);
+}
+
+.cta-band__inner {
+  padding-block: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 48px;
+}
+
+.cta-band__text {
+  max-width: 40ch;
+  margin-top: 12px;
+  font-size: 1.25rem;
+}
+
+/* Band closes <main> and the blue footer follows: use a white divider there. */
+main:has(> .cta-band:last-child) + .site-footer {
+  border-top-color: var(--c-white);
+}
+
+/* ------------------------------------------------------------------ */
+/* Marquee (decorative band; still when reduced motion is requested)  */
+/* ------------------------------------------------------------------ */
+.marquee {
+  overflow: hidden;
+  padding-block: 14px;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  border-block: var(--border);
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee__track > * {
+  display: flex;
+  gap: 0.6em;
+  padding-right: 0.6em;
+  margin: 0;
+  list-style: none;
+}
+
+/* The track holds the list twice: moving it by half loops seamlessly. */
+@media (prefers-reduced-motion: no-preference) {
+  .marquee__track {
+    animation: marquee 60s linear infinite;
+  }
+
+  .marquee:hover .marquee__track,
+  .marquee:focus-within .marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  to { translate: -50% 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Prose (Markdown body)                                              */
+/* ------------------------------------------------------------------ */
+.prose > * + * {
+  margin-top: 1em;
+}
+
+.prose :is(p, li, dd, blockquote) {
+  max-width: 68ch;
+}
+
+.prose :is(h2, h3, h4) {
+  margin-top: 1.6em;
+}
+
+.prose h2 { font-size: var(--fs-h3); line-height: 1.05; letter-spacing: -0.03em; }
+.prose h3 { font-size: 1.375rem; line-height: 1.2; letter-spacing: -0.01em; }
+.prose h4 { font-size: 1.125rem; }
+
+.prose a:hover {
+  color: var(--c-blue);
+}
+
+/* Lists as bordered rows */
+.prose :is(ul, ol) {
+  max-width: 68ch;
+  padding: 0;
+  list-style: none;
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+}
+
+.prose li {
+  padding: 12px 18px;
+}
+
+.prose li + li {
+  border-top: var(--border);
+}
+
+.prose ul > li {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  gap: 14px;
+}
+
+.prose ul > li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin-top: 0.55em;
+  background: var(--c-orange);
+  border: 2px solid var(--c-ink);
+}
+
+.prose ol {
+  counter-reset: item;
+}
+
+/* Number in a cream column on the left, text padded on the right. */
+.prose ol > li {
+  counter-increment: item;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 18px;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 18px 12px 0;
+}
+
+.prose ol > li::before {
+  content: counter(item, decimal-leading-zero);
+  align-self: stretch;
+  margin-block: -12px;
+  display: grid;
+  place-items: center;
+  background: var(--c-cream);
+  border-right: var(--border);
+  font-weight: 800;
+}
+
+.prose :is(ul, ol) :is(ul, ol) {
+  margin-top: 8px;
+  box-shadow: none;
+}
+
+/* Images: framed; consecutive images in one paragraph form a grid. */
+/* Natural size (never upscaled); grid images fill their cell. */
+.prose img {
+  background: var(--c-white);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+}
+
+.prose p:has(> img) {
+  max-width: none;
+}
+
+.prose p:has(> img + img) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 24px;
+}
+
+/* Small screens: the gallery becomes a horizontal scroll row. */
+@media (width < 600px) {
+  .prose p:has(> img + img) {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 75%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 14px;
+  }
+
+  .prose p:has(> img + img) img {
+    scroll-snap-align: start;
+  }
+}
+
+.prose p:has(> img + img) img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.prose blockquote {
+  padding: 20px 24px;
+  background: var(--c-lavender);
+  border: var(--border);
+  box-shadow: var(--sh-m);
+}
