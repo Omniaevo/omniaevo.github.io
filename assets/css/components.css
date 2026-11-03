@@ -812,6 +812,15 @@ main:has(> :is(.cta-band, .home-contacts):last-child) + .site-footer {
   margin-top: 1.6em;
 }
 
+.prose > :first-child {
+  margin-top: 0;
+}
+
+/* Long URLs written as link text must not widen the page. */
+.prose a {
+  overflow-wrap: anywhere;
+}
+
 .prose h2 { font-size: var(--fs-h3); line-height: 1.05; letter-spacing: -0.03em; }
 .prose h3 { font-size: 1.375rem; line-height: 1.2; letter-spacing: -0.01em; }
 .prose h4 { font-size: 1.125rem; }

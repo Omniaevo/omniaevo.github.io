@@ -160,3 +160,6 @@ other = "Link esterno"
 
 [document]
 other = "Documento"
+
+[tableOfContents]
+other = "Indice"

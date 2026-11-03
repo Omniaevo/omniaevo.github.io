@@ -1,5 +1,10 @@
 {{ define "main" }}
-  <h1>{{ T "notFoundTitle" }}</h1>
-  <p>{{ T "notFoundText" }}</p>
-  <p><a href="{{ site.Home.RelPermalink }}">{{ T "backToHome" }}</a></p>
+<div class="container not-found">
+  <h1>
+    <span class="highlight highlight--tilt">404</span>
+    <span class="entry-hero__subtitle">{{ T "notFoundTitle" }}</span>
+  </h1>
+  <p class="not-found__text">{{ T "notFoundText" }}</p>
+  <a class="btn btn--accent" href="{{ site.Home.RelPermalink }}">{{ T "backToHome" }} <span aria-hidden="true">→</span></a>
+</div>
 {{ end }}
