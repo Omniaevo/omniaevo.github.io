@@ -151,3 +151,12 @@ other = "Pause the animation"
 
 [projectSheet]
 other = "Project sheet"
+
+[service]
+other = "Service"
+
+[externalLink]
+other = "External link"
+
+[document]
+other = "Document"

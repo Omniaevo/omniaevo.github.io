@@ -1,24 +1,71 @@
 {{ define "main" }}
-  <article class="service">
-    <h1>{{ .Title }}</h1>
-    {{ partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt "lazy" false) }}
-    {{ .Content }}
+{{- $supportId := cond (eq site.Language.Lang "en") "supportEn" "support" }}
+{{- $support := index (where hugo.Data.contacts.emails "id" $supportId) 0 }}
+<div class="container">
+  {{ partial "breadcrumb.html" . }}
 
-    {{- with .Params.links }}
-    <ul class="service-links">
-      {{- range . }}
-      <li><a href="{{ .url }}" rel="noopener noreferrer">{{ .label }}</a></li>
+  <article class="entry">
+    <header class="entry-hero entry-hero--service">
+      <div class="entry-hero__main">
+        <p class="tag tag--peach entry-hero__kicker">{{ T "service" }}</p>
+        {{- /* "PEC – Posta Elettronica Certificata": short name in the blue block, the rest below it. */}}
+        {{- $parts := split .Title " – " }}
+        {{- if gt (len $parts) 1 }}
+        <h1>
+          <span class="highlight highlight--blue highlight--tilt">{{ index $parts 0 }}</span>
+          <span class="entry-hero__subtitle">{{ delimit (after 1 $parts) " – " }}</span>
+        </h1>
+        {{- else }}
+        <h1>{{ partial "title-highlight.html" (dict "text" .Title) }}</h1>
+        {{- end }}
+        {{- /* Skip a description that only repeats the title (dash style aside). */}}
+        {{- with .Description }}
+          {{- if ne (replace . "–" "-") (replace $.Title "–" "-") }}<p class="entry-hero__lead">{{ . }}</p>{{ end }}
+        {{- end }}
+      </div>
+
+      {{- with .Params.image }}
+      <div class="frame entry-cover entry-hero__media">{{ partial "image-by-path.html" (dict "path" . "alt" $.Params.imageAlt "lazy" false) }}</div>
+      {{- end }}
+    </header>
+
+    {{- if or .Params.links .Params.attachments }}
+    <ul class="action-cards">
+      {{- range .Params.links }}
+      <li>
+        <a class="card action-card" href="{{ .url }}" rel="noopener noreferrer">
+          <span class="action-card__icon" aria-hidden="true">↗</span>
+          <span class="action-card__text">
+            <span class="action-card__kicker">{{ T "externalLink" }}</span>
+            <span class="action-card__title">{{ .label }}</span>
+          </span>
+        </a>
+      </li>
+      {{- end }}
+      {{- range .Params.attachments }}
+        {{- $external := (urls.Parse .file).Scheme }}
+      <li>
+        <a class="card card--blue action-card" href="{{ if $external }}{{ .file }}{{ else }}{{ .file | relURL }}{{ end }}"{{ if $external }} rel="noopener noreferrer"{{ end }}>
+          <span class="action-card__icon action-card__icon--file" aria-hidden="true">{{ upper (strings.TrimPrefix "." (path.Ext .file)) }}</span>
+          <span class="action-card__text">
+            <span class="action-card__kicker">{{ T "document" }}</span>
+            <span class="action-card__title">{{ .label }}</span>
+          </span>
+          <span class="action-card__arrow" aria-hidden="true">↓</span>
+        </a>
+      </li>
       {{- end }}
     </ul>
     {{- end }}
 
-    {{- with .Params.attachments }}
-    <ul class="service-attachments">
-      {{- range . }}
-      {{- $external := (urls.Parse .file).Scheme }}
-      <li><a href="{{ if $external }}{{ .file }}{{ else }}{{ .file | relURL }}{{ end }}"{{ if $external }} rel="noopener noreferrer"{{ end }}>{{ .label }}</a></li>
-      {{- end }}
-    </ul>
+    {{- with .Content }}<div class="prose entry-body">{{ . }}</div>{{ end }}
+
+    {{- with $support }}
+    <div class="card card--peach support-band">
+      <p class="support-band__label">{{ T (printf "contactRole%s" (strings.FirstUpper .id)) }}</p>
+      <a class="btn btn--dark" href="mailto:{{ .email }}">{{ .email }}</a>
+    </div>
     {{- end }}
   </article>
+</div>
 {{ end }}
