@@ -9,10 +9,7 @@
     <div class="container home-hero__grid">
       <div class="home-hero__main">
         {{- with $.Params.cosaFacciamo.intro.title }}<p class="tag tag--light home-hero__tag">{{ . }}</p>{{ end }}
-        {{- /* The last word of the title gets the orange highlight (works for any title and language). */}}
-        {{- $words := split .title " " }}
-        {{- $last := index $words (sub (len $words) 1) }}
-        <h1 id="hero-title">{{ delimit (first (sub (len $words) 1) $words) " " }} <span class="highlight">{{ $last }}</span></h1>
+        <h1 id="hero-title">{{ partial "title-highlight.html" (dict "text" .title) }}</h1>
       </div>
       <div class="home-hero__side">
         <div class="sticker" aria-hidden="true"><span>{{ T "heroSticker" }}</span></div>
@@ -159,27 +156,6 @@
         {{- end }}
       </ul>
       {{- end }}
-    </div>
-  </section>
-  {{- end }}
-
-  {{- /* --------------------------------------------------- Testimonial */}}
-  {{- with .Params.testimonial }}
-  <section id="testimonial" class="section" aria-labelledby="testimonial-title">
-    <div class="container">
-      <h2 id="testimonial-title" class="home-title">{{ .title }}</h2>
-      <div class="home-quotes">
-        {{- range .items }}
-        <figure class="card card--lavender home-quote">
-          <span class="home-quote__mark" aria-hidden="true">“</span>
-          <blockquote><p>{{ .quote }}</p></blockquote>
-          <figcaption>
-            <strong>{{ .author }}</strong>, {{ .role }} –
-            {{ if .url }}<a href="{{ .url }}" rel="noopener noreferrer">{{ .company }}</a>{{ else }}{{ .company }}{{ end }}
-          </figcaption>
-        </figure>
-        {{- end }}
-      </div>
     </div>
   </section>
   {{- end }}

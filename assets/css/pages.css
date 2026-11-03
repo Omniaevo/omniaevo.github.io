@@ -16,6 +16,191 @@
 }
 
 /* ================================================================== */
+/* List pages (case history, services): title and horizontal cards    */
+/* ================================================================== */
+.list-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px;
+  align-items: end;
+  padding-block: 32px 48px;
+}
+
+.list-hero__intro {
+  font-size: 1.1875rem;
+}
+
+.entry-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding: 0 0 var(--space-section);
+  list-style: none;
+}
+
+.entry-card {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  height: 100%;
+  padding: 0;
+  gap: 0;
+}
+
+.entry-card__cover {
+  min-height: 240px;
+  overflow: hidden;
+  background: var(--c-lavender);
+  border-right: var(--border);
+}
+
+.entry-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entry-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.entry-card__body .tag {
+  font-size: 0.8125rem;
+}
+
+.entry-card h2 {
+  font-size: 1.875rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.entry-card p {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.entry-card__foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.entry-card__more {
+  margin-left: auto;
+}
+
+/* ================================================================== */
+/* Detail pages (case history, services)                              */
+/* ================================================================== */
+.entry-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 32px;
+  align-items: start;
+  padding-block: 32px 48px;
+}
+
+.entry-hero .tags {
+  margin-bottom: 24px;
+}
+
+.entry-hero h1 {
+  font-size: clamp(2.75rem, 6.5vw, 6rem);
+  line-height: 1.02;
+}
+
+.entry-hero__lead {
+  max-width: 40ch;
+  margin-top: 28px;
+  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+}
+
+.entry-hero__spec {
+  margin-top: 16px;
+}
+
+/* Cover at natural size (sources are small): never upscaled. */
+.entry-cover {
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: var(--sh-xl);
+}
+
+.entry-cover img {
+  width: auto;
+}
+
+.entry-body {
+  padding-top: 56px;
+}
+
+.entry {
+  padding-bottom: 56px;
+}
+
+.entry-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding-bottom: var(--space-section);
+}
+
+.entry-nav .card {
+  gap: 6px;
+  padding: 24px;
+}
+
+.entry-nav__next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.entry-nav__label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.entry-nav__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+@media (width < 900px) {
+  .list-hero,
+  .entry-hero,
+  .entry-cards,
+  .entry-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-nav__next {
+    grid-column: auto;
+  }
+}
+
+@media (width < 600px) {
+  .entry-card {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-card__cover {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    border-right: 0;
+    border-bottom: var(--border);
+  }
+}
+
+/* ================================================================== */
 /* Home                                                               */
 /* ================================================================== */
 
@@ -233,48 +418,6 @@
 .home-case h3 {
   font-size: 1.625rem;
   line-height: 1.1;
-}
-
-/* Testimonial */
-.home-quotes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-  gap: 56px 32px;
-  padding-top: 24px;
-}
-
-.home-quote {
-  position: relative;
-  margin: 0;
-  padding: 48px clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px);
-  box-shadow: var(--sh-xl);
-}
-
-.home-quote__mark {
-  position: absolute;
-  top: -30px;
-  left: 32px;
-  display: grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  padding-top: 18px;
-  background: var(--c-orange);
-  border: var(--border);
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.home-quote blockquote {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.home-quote figcaption {
-  font-size: 0.9375rem;
 }
 
 /* VIDIM */

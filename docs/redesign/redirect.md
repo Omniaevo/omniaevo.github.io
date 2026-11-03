@@ -7,7 +7,7 @@ Il sito attuale (WordPress, `www.omniaevo.it`) ha questi URL. GitHub Pages non s
 | `/` | `/` | stesso URL |
 | `/chi-siamo` | `/#chi-siamo` | pagina `redirect` (`content/it/chi-siamo.md`) |
 | `/cosa-facciamo` | `/#cosa-facciamo` | pagina `redirect` (`content/it/cosa-facciamo.md`) |
-| `/testimonial` | `/#testimonial` | pagina `redirect` (`content/it/testimonial.md`) |
+| `/testimonial` | `/` (sezione rimossa) | pagina `redirect` (`content/it/testimonial.md`) |
 | `/contatti` | `/#contatti` | pagina `redirect` (`content/it/contatti.md`) |
 | `/cookie-policy` | `/privacy/#cookie` | pagina `redirect` (`content/it/cookie-policy.md`) |
 | `/informativa_gdpr` | `/privacy/` | `aliases` in `content/it/privacy.md` |

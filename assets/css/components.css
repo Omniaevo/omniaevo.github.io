@@ -431,10 +431,15 @@ a.card:active {
 }
 
 .highlight--blue {
-  display: inline-block;
-  padding: 0 0.15em;
   background: var(--c-blue);
   color: var(--c-white);
+}
+
+/* Tilted block with shadow; single word only (inline-block). */
+.highlight--tilt {
+  display: inline-block;
+  padding: 0 0.15em;
+  line-height: 1.02;
   box-shadow: var(--sh-m);
   rotate: -2deg;
 }
@@ -501,6 +506,7 @@ a.card:active {
 }
 
 .spec-card__head {
+  line-height: 1.4;
   padding: 10px 18px;
   background: var(--c-ink);
   color: var(--c-white);
@@ -530,6 +536,7 @@ a.card:active {
 /* CTA band (blue, full width, before the footer)                     */
 /* ------------------------------------------------------------------ */
 .cta-band {
+  padding-block: 0; /* the inner box holds the spacing */
   background: var(--c-blue);
   color: var(--c-white);
   border-top: var(--border);

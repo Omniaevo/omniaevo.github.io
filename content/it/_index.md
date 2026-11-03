@@ -109,22 +109,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   title = "Case history"
   intro = "" # TODO: the current site has no intro text for this section
 
-[testimonial]
-  title = "Testimonial"
-
-  [[testimonial.items]]
-    quote = "Il nostro settore ci porta ad avere esigenze di customizzazioni di altissimo livello in termini di Software, Automazione e Robotica che difficilmente si trovano disponibili sul mercato e raramente concentrate in una sola realtà. La nostra collaborazione con OmniaEvo ha sempre portato al successo."
-    author = "Dott. Erik Franceschini"
-    role = "Welding Engineering Department Robotics and Automation Area"
-    company = "Mangiarotti Spa - A Toshiba and Westinghouse Group Company"
-    url = "http://mangiarotti.it/"
-
-  [[testimonial.items]]
-    quote = "OmniaEvo ha sviluppato una piattaforma di car sharing per noi in pochissimo tempo realizzando tra l’altro un sistema assolutamente innovativo. Di alto livello e disponibilità l’assistenza e il supporto continuo che Omniaevo ci ha dato nella fase di startup."
-    author = "Dott. Paolo Guaitamacchi"
-    role = "CEO"
-    company = "Twist Srl"
-
 [vidim]
   title = "VIDIM Group"
   text = "VIDIM Group è una rete d’impresa che unisce le competenze di aziende specializzate per creare un futuro industriale più efficiente e sostenibile, di cui fa parte Omniaevo"

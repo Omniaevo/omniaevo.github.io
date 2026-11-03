@@ -29,7 +29,7 @@ I mockup semplificano alcuni dati. Il sito vero segue il contenuto:
 | Scheda progetto con divisione, responsabile, data consegna | Solo i campi del front matter: `client`, `sector`, `areas`. Il resto resta nel corpo del testo così com'è |
 | 3 "punti chiave" colorati nel dettaglio case history | Il corpo Markdown resta com'è; liste e immagini del corpo ricevono lo stile NB1 (`.prose`) |
 | Filtri per area nell'indice case history | **Non nella v1**: 5 case history su 6 sono `engineering`, il filtro non aiuta. Da aggiungere quando le aree saranno più varie (CSS `:has()` + radio, senza JS) |
-| Una sola testimonianza in home | Tutte le voci di `testimonial.items` |
+| Testimonianza in home | Sezione rimossa su richiesta: `/testimonial` reindirizza alla home |
 | Fascia tecnologie | Generata dalle liste "Tecnologie", "Programmazione", "Automazione" di `cosaFacciamo.lists` |
 
 ---
@@ -223,7 +223,7 @@ Fai così:
    ("Campi di attività", "Tecnologie"…), così la sezione resta corta.
 5. #servizi: fascia pesca con i servizi della collection (per weight).
 6. #case-history: ultime 3 come card con immagine; su mobile riga scorrevole.
-7. #testimonial: tutte le voci come card lavanda con virgolette arancio.
+7. (rimosso) #testimonial: sezione eliminata, `/testimonial` reindirizza alla home.
 8. #vidim-group: card semplice (loghi assenti: nessun placeholder visibile).
 9. #contatti: sezione blu a tutta larghezza, titolo grande, bottone info@ e griglia di card
    con tutte le email (ruolo da i18n, nota PA), PEC, telefono, indirizzo.

@@ -1,15 +1,34 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  <ul class="entry-list case-list">
-    {{ range .Pages }}
-      <li>
-        <article>
-          {{ partial "image-by-path.html" (dict "path" .Params.image "alt" .Params.imageAlt) }}
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          {{ with .Description }}<p>{{ . }}</p>{{ end }}
-        </article>
-      </li>
-    {{ end }}
+<div class="container">
+  {{ partial "breadcrumb.html" . }}
+
+  <header class="list-hero">
+    <h1>{{ partial "title-highlight.html" (dict "text" .Title "class" "highlight--tilt") }}</h1>
+    {{- with .Content }}<div class="card list-hero__intro">{{ . }}</div>{{ end }}
+  </header>
+
+  <ul class="entry-cards">
+    {{- range .Pages }}
+    <li>
+      <a class="card entry-card" href="{{ .RelPermalink }}">
+        <div class="entry-card__cover">{{ partial "image-by-path.html" (dict "path" .Params.image "alt" "") }}</div>
+        <div class="entry-card__body">
+          {{- with .Params.areas }}
+          <ul class="tags">
+            {{- range . }}<li class="tag">{{ partial "area-label.html" . }}</li>{{ end }}
+          </ul>
+          {{- end }}
+          <h2>{{ .Title }}</h2>
+          {{- with .Description }}<p>{{ . }}</p>{{ end }}
+          <span class="entry-card__foot">
+            {{- with .Params.client }}<span><span class="visually-hidden">{{ T "client" }}: </span>{{ . }}</span>{{ end }}
+            <span class="entry-card__more">{{ T "readMore" }} <span aria-hidden="true">→</span></span>
+          </span>
+        </div>
+      </a>
+    </li>
+    {{- end }}
   </ul>
+</div>
+{{ partialCached "cta-band.html" . site.Language.Lang }}
 {{ end }}

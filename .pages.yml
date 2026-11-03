@@ -201,41 +201,6 @@ content:
         label: Introduzione
         type: text
         description: Facoltativa. Testo sotto il titolo.
-    - name: testimonial
-      label: Testimonial
-      type: object
-      description: Testimonianze dei clienti.
-      fields:
-      - name: title
-        label: Titolo della sezione
-        type: string
-        description: Titolo della sezione.
-      - name: items
-        label: Testimonianze
-        type: object
-        description: Una voce per ogni testimonianza.
-        fields:
-        - name: quote
-          label: Testo
-          type: text
-          description: La frase del cliente, senza virgolette.
-        - name: author
-          label: Nome
-          type: string
-          description: Nome della persona.
-        - name: role
-          label: Ruolo
-          type: string
-          description: Ruolo nell'azienda.
-        - name: company
-          label: Azienda
-          type: string
-          description: Nome dell'azienda.
-        - name: url
-          label: Sito dell'azienda
-          type: string
-          description: Facoltativo. Indirizzo completo, con https://.
-        list: true
     - name: vidim
       label: VIDIM Group
       type: object
@@ -780,41 +745,6 @@ content:
         label: Introduzione
         type: text
         description: Facoltativa. Testo sotto il titolo.
-    - name: testimonial
-      label: Testimonial
-      type: object
-      description: Testimonianze dei clienti.
-      fields:
-      - name: title
-        label: Titolo della sezione
-        type: string
-        description: Titolo della sezione.
-      - name: items
-        label: Testimonianze
-        type: object
-        description: Una voce per ogni testimonianza.
-        fields:
-        - name: quote
-          label: Testo
-          type: text
-          description: La frase del cliente, senza virgolette.
-        - name: author
-          label: Nome
-          type: string
-          description: Nome della persona.
-        - name: role
-          label: Ruolo
-          type: string
-          description: Ruolo nell'azienda.
-        - name: company
-          label: Azienda
-          type: string
-          description: Nome dell'azienda.
-        - name: url
-          label: Sito dell'azienda
-          type: string
-          description: Facoltativo. Indirizzo completo, con https://.
-        list: true
     - name: vidim
       label: VIDIM Group
       type: object

@@ -148,3 +148,6 @@ other = "since 2007"
 
 [pauseAnimation]
 other = "Pause the animation"
+
+[projectSheet]
+other = "Project sheet"

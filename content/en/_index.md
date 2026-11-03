@@ -110,22 +110,6 @@ reviewed = false
   title = "Case history"
   intro = "" # TODO: the current site has no intro text for this section
 
-[testimonial]
-  title = "Testimonials"
-
-  [[testimonial.items]]
-    quote = "Our sector requires highly customised software, automation and robotics solutions that are hard to find on the market and rarely available from a single company. Our collaboration with OmniaEvo has always been a success."
-    author = "Dott. Erik Franceschini"
-    role = "Welding Engineering Department Robotics and Automation Area"
-    company = "Mangiarotti Spa - A Toshiba and Westinghouse Group Company"
-    url = "http://mangiarotti.it/"
-
-  [[testimonial.items]]
-    quote = "OmniaEvo developed a car sharing platform for us in a very short time, creating among other things a truly innovative system. The support and continuous assistance Omniaevo gave us during the start-up phase were of a very high standard."
-    author = "Dott. Paolo Guaitamacchi"
-    role = "CEO"
-    company = "Twist Srl"
-
 [vidim]
   title = "VIDIM Group"
   text = "VIDIM Group is a business network that brings together the skills of specialised companies to create a more efficient and sustainable industrial future. Omniaevo is part of it."
