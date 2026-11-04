@@ -1,6 +1,6 @@
 # Privacy e cookie: punti da far valutare
 
-I testi in `content/it/privacy.md` sono identici a quelli del sito attuale (`inventario/informativa_gdpr.md` e `inventario/cookie-policy.md`). Non sono stati corretti: li valuta una persona (revisione legale, vedi PIANO sez. 6).
+I testi in `content/it/privacy.md` sono identici a quelli del sito attuale (`inventario/informativa_gdpr.md` e `inventario/cookie-policy.md`). Non sono stati corretti: li valuta una persona (revisione legale, vedi `ACCORDION.md` sez. 6).
 
 ## Non corrispondono al nuovo sito
 

@@ -1,10 +1,10 @@
 # Verifica dei contenuti
 
-Data: 2026-11-03. Ambito: **solo contenuti** (testo, link, media) del passo 14 del piano. Non sono incluse le verifiche che dipendono dal design e dal deploy (h1, title/description, hreflang, sitemap, 404, link rotti online): vanno rifatte a design finito, prima del merge su `main`.
+Data: 2026-11-03. Ambito: **solo contenuti** (testo, link, media) della migrazione dei contenuti. Non sono incluse le verifiche che dipendono dal design e dal deploy (h1, title/description, hreflang, sitemap, 404, link rotti online): vanno rifatte a design finito, prima del merge su `main`.
 
 Metodo: build di produzione (`hugo --gc --minify --panicOnWarning`), poi confronto automatico di ogni riga di `inventario/INDEX.md` con l'HTML generato. I testi sono confrontati paragrafo per paragrafo (minuscolo, spazi e apici normalizzati). I media sono confrontati con l'hash SHA-256 dei file.
 
-Legenda: **OK** = presente e identico · **modificato** = presente con una differenza voluta · **assente (decisione)** = non migrato per una scelta registrata nel piano.
+Legenda: **OK** = presente e identico · **modificato** = presente con una differenza voluta · **assente (decisione)** = non migrato per una scelta presa durante la migrazione.
 
 ## Pagine e articoli
 

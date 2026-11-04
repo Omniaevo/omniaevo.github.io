@@ -24,7 +24,7 @@ Estratto il 2026-11-03 da https://www.omniaevo.it/. Testi convertiti in Markdown
 
 ## Pagine escluse
 
-- `/smartworking/bitlocker/` — da eliminare (piano, sez. 1). Non estratta.
+- `/smartworking/bitlocker/` — da eliminare (decisione della migrazione). Non estratta.
 
 ## PDF e allegati
 
@@ -34,7 +34,7 @@ Estratto il 2026-11-03 da https://www.omniaevo.it/. Testi convertiti in Markdown
 | https://www.omniaevo.it/wp-content/uploads/2026/02/Scheda-progetto-BaC-iNEST-Spoke8-GG24.pdf | media/2026/02/Scheda-progetto-BaC-iNEST-Spoke8-GG24.pdf | 223329 |
 | https://www.omniaevo.it/wp-content/uploads/2026/02/Scheda-progetto-BaC-iNEST-Spoke9-GL24.pdf | media/2026/02/Scheda-progetto-BaC-iNEST-Spoke9-GL24.pdf | 209499 |
 | https://www.omniaevo.it/documento_trasparenza_aiuti_pubblici.pdf | media/documento_trasparenza_aiuti_pubblici.pdf | 679197 |
-| https://www.omniaevo.it/omniaevoremote.exe | (non migrato: decisione, vedi PIANO sez. 1) | — |
+| https://www.omniaevo.it/omniaevoremote.exe | da ripristinare allo stesso URL: file fornito dall'utente (vedi `../ACCORDION.md`) | — |
 | https://eshop.twt.it/pec/manuale/TWT-PEC-MO.pdf | (esterno, solo URL) | — |
 
 ## Immagini e altri media
