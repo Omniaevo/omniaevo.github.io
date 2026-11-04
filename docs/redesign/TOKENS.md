@@ -37,7 +37,7 @@ Gli indirizzi email **non vanno mai a capo** (`white-space: nowrap`): le righe c
 
 ## Card
 
-Stile V2, approvato: numero con evidenziatore, contorno 2 px; al passaggio fondo `--mist` e freccia che diventa cerchio arancio e si sposta di 2 px. Le card sono tutte alte uguali: categoria 1 riga, titolo 2 righe, descrizione 3 righe, troncati con «…». Case history: variante C2 (approvata): copertina 16:9 dentro la card, con margine di 8 px e raggio 12. Nessuna icona nelle card.
+Stile V2, approvato: numero con evidenziatore, contorno 2 px; al passaggio fondo `--mist` e freccia che diventa cerchio arancio e si sposta di 2 px. Le card sono tutte alte uguali: categoria 1 riga, titolo 2 righe, descrizione 3 righe, troncati con «…». Case history: variante C2 (approvata): copertina 16:9 dentro la card, con margine di 8 px. **Immagini dentro una card:** stanno a una distanza fissa dal bordo e hanno raggio `--r-s` (12 px). La regola rigorosamente concentrica (raggio della card meno la distanza) con 12 px di distanza dava 4 px, quasi squadrato; con `--r-s` lo scarto ottico è accettabile. Management: distanza 12 px, foto 200×250 px, a sinistra, con il testo che scorre accanto e sotto; se l'area interna della card è più stretta di 400 px (container query) la foto sta sopra il testo. Case history C2: distanza 8 px, stesso raggio. Nessuna icona nelle card.
 
 ## Tipografia
 

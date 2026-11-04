@@ -48,6 +48,10 @@ content:
         label: Parola evidenziata
         type: string
         description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
+      - name: text
+        label: Testo sotto il titolo
+        type: text
+        description: Una o due frasi. Non ripetere il titolo. La descrizione per i motori di ricerca (sopra) è un campo separato.
       - name: ctaLabel
         label: Testo del pulsante
         type: string
@@ -596,6 +600,10 @@ content:
         label: Parola evidenziata
         type: string
         description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
+      - name: text
+        label: Testo sotto il titolo
+        type: text
+        description: Una o due frasi. Non ripetere il titolo. La descrizione per i motori di ricerca (sopra) è un campo separato.
       - name: ctaLabel
         label: Testo del pulsante
         type: string

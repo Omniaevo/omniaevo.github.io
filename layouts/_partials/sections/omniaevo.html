@@ -20,7 +20,7 @@
       {{- else if $.h1 }}{{ warnf "hero.highlight %q not found in the title" . }}{{ end }}
     {{- end }}
     {{- if $.h1 }}<h1 class="hero__title">{{ $title | safeHTML }}</h1>{{ else }}<h2 class="hero__title">{{ $title | safeHTML }}</h2>{{ end }}
-    {{- with $home.Description }}<p class="hero__text">{{ . }}</p>{{ end }}
+    {{- with .text }}<p class="hero__text">{{ . }}</p>{{ end }}
   </div>
   {{- end }}
 

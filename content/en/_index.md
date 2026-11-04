@@ -6,6 +6,7 @@ reviewed = false
 [hero]
   title = "Simple solutions for complex needs"
   highlight = "Simple"
+  text = "Omniaevo operates in all areas of information technology, from internetworking to industrial automation."
   ctaLabel = "Learn more"
   ctaAnchor = "cosa-facciamo"
 

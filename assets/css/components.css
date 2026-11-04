@@ -314,30 +314,41 @@
   margin-top: 1em;
 }
 
+/* Management card: the photo floats left, 12 px from the card edge, and the text flows around it and
+   under it. Its radius is --r-s: optically close to concentric with the card corner (a strictly
+   concentric 4 px looked square). The text keeps 24 px from the edge (12 + 12). */
 .about__person {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-3);
+  --inset: 12px;
+  container-type: inline-size;
+  display: flow-root;
+  padding: var(--inset);
   border-radius: var(--r-m);
   background: var(--mist);
 }
 
 .about__photo {
-  flex: 0 0 140px;
+  float: left;
+  margin: 0 var(--space-2) var(--space-2) 0;
 }
 
 .about__photo img {
-  width: 140px;
-  height: 175px;
+  width: 200px;
+  height: 250px;
   border-radius: var(--r-s);
   background: var(--white);
   object-fit: cover;
 }
 
 .about__text {
-  flex: 1 1 220px;
+  padding: var(--inset);
+}
+
+/* Narrow card: no room beside the photo, it sits above the text */
+@container (max-width: 399.98px) {
+  .about__photo {
+    float: none;
+    margin: 0 0 var(--space-1);
+  }
 }
 
 .about__name {
@@ -346,7 +357,7 @@
 
 @media (min-width: 720px) {
   .about {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
   }
 
   .about > div:not(.about__person) {

@@ -5,6 +5,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 [hero]
   title = "Soluzioni semplici per esigenze complesse"
   highlight = "semplici"
+  text = "Omniaevo opera in tutti i settori dell’information technology, dall’internetworking all’automazione industriale."
   ctaLabel = "Scopri di più"
   ctaAnchor = "cosa-facciamo"
 
