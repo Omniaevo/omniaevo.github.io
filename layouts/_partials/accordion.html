@@ -1,0 +1,24 @@
+{{- /*
+  Accordion of five strips. Without JavaScript the open section follows :target
+  (see layout.css); with no hash, the section named in "open" is open.
+  Context: dict "open" <section id>.
+*/ -}}
+{{- $open := .open | default "omniaevo" }}
+{{- $sections := slice
+  (dict "id" "omniaevo" "label" (T "sectionOmniaevo"))
+  (dict "id" "cosa-facciamo" "label" (T "sectionCosaFacciamo"))
+  (dict "id" "servizi" "label" (T "sectionServizi"))
+  (dict "id" "case-history" "label" (T "sectionCaseHistory"))
+  (dict "id" "trasparenza" "label" (T "sectionTrasparenza")) }}
+<div class="accordion">
+  {{- range $i, $s := $sections }}
+  <section class="panel-wrap" id="{{ $s.id }}" data-tone="{{ $i }}"{{ if eq $s.id $open }} data-open{{ end }}>
+    {{ partial "strip.html" (dict "index" $i "label" $s.label "id" $s.id) }}
+    <div class="panel" id="{{ $s.id }}-panel" role="region" aria-labelledby="{{ $s.id }}-title">
+      <div class="panel__inner">
+        <h2 id="{{ $s.id }}-title">{{ $s.label }}</h2>
+      </div>
+    </div>
+  </section>
+  {{- end }}
+</div>

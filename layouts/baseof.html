@@ -4,11 +4,9 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <a class="skip-link" href="#main">{{ T "skipToContent" }}</a>
-  {{ partial "header.html" . }}
+  <a class="skip-link" href="#{{ block "skip-target" . }}main{{ end }}">{{ T "skipToContent" }}</a>
   <main id="main">
     {{ block "main" . }}{{ end }}
   </main>
-  {{ partialCached "footer.html" . site.Language.Locale }}
 </body>
 </html>

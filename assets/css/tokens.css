@@ -42,7 +42,8 @@
   --r-s: 12px;
   --r-m: 16px;
   --r-sheet: 24px;
-  --t-strip: .6s cubic-bezier(.7, 0, .2, 1);
+  --t-strip-time: .6s;
+  --t-strip: var(--t-strip-time) cubic-bezier(.7, 0, .2, 1);
   --t-sheet: .5s cubic-bezier(.2, .8, .2, 1);
 
   /* Focus ring */

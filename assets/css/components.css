@@ -1,1 +1,182 @@
-/* A1 "Strati": components come in steps 2–10. */
+/* ---------------------------------------------------------------- Strip */
+/* Tones: 0 white, 1–3 blues, 4 orange (ink text). --strip-bg is also used by the open indicator. */
+.panel-wrap[data-tone="0"] { --strip-bg: var(--c-white);   --strip-fg: var(--c-blue); --strip-bar: var(--c-orange); }
+.panel-wrap[data-tone="1"] { --strip-bg: var(--c-strip-1); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
+.panel-wrap[data-tone="2"] { --strip-bg: var(--c-strip-2); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
+.panel-wrap[data-tone="3"] { --strip-bg: var(--c-strip-3); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
+.panel-wrap[data-tone="4"] { --strip-bg: var(--c-strip-4); --strip-fg: var(--c-ink);   --strip-bar: var(--c-blue); }
+
+.strip {
+  --mark: var(--strip-mark-m);
+  --indicator: 30px;
+  --contact: 44px;
+  position: relative;
+  flex: 0 0 var(--strip-m);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px 0 16px;
+  background: var(--strip-bg);
+  color: var(--strip-fg);
+}
+
+.panel-wrap[data-tone="0"] .strip {
+  border-bottom: 1px solid var(--c-line);
+}
+
+/* The link covers the whole strip; the contact button sits above it */
+.strip__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.strip__link:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Logo and number share the same box, so labels start at the same height */
+.strip__mark {
+  flex: 0 0 var(--mark);
+  width: var(--mark);
+  height: var(--mark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.strip__mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.strip__num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: .85;
+}
+
+.strip__label {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.strip__end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.strip__contact {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--contact);
+  height: var(--contact);
+  border-radius: 50%;
+  background: var(--c-surface);
+  color: var(--c-blue);
+}
+
+.strip__contact:hover {
+  background: var(--c-line);
+}
+
+/* Indicator: two concentric SVGs, cross-faded by --open */
+.strip__indicator {
+  display: grid;
+  width: var(--indicator);
+  height: var(--indicator);
+  pointer-events: none;
+}
+
+.strip__indicator svg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  transition: opacity .3s;
+}
+
+.strip__ind-open { opacity: var(--open); }
+.strip__ind-closed { opacity: calc(1 - var(--open)); }
+
+/* Bar of the open strip */
+.strip__bar {
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: var(--strip-bar);
+  opacity: var(--open);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .strip:hover { filter: brightness(1.12); }
+}
+
+/* Desktop: vertical strips */
+@media (min-width: 1100px) and (min-height: 560px) {
+  .strip {
+    --mark: var(--strip-mark);
+    --indicator: 36px;
+    --contact: 52px;
+    flex: 0 0 var(--strip);
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    padding: 24px 0;
+  }
+
+  .panel-wrap[data-tone="0"] .strip {
+    border-bottom: 0;
+    border-right: 1px solid var(--c-line);
+  }
+
+  .strip__num { font-size: 15px; }
+
+  .strip__label {
+    flex: 0 1 auto;
+    font-size: 30px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: transform .25s;
+  }
+
+  @media (hover: hover) {
+    .strip:hover .strip__label { transform: rotate(180deg) translateX(6px); }
+  }
+
+  .strip__end {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .strip__bar {
+    inset: 0 0 0 auto;
+    width: 4px;
+    height: auto;
+  }
+}
+
+/* Low screens: strips are plain section headings, no state */
+@media (max-height: 559.98px) {
+  .strip__indicator,
+  .strip__bar {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------- Panel */
+.panel__inner h2 {
+  font-size: var(--fs-h2);
+}

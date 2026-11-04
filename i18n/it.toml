@@ -163,3 +163,22 @@ other = "Documento"
 
 [tableOfContents]
 other = "Indice"
+
+# Accordion strips (labels of the five sections).
+[sectionOmniaevo]
+other = "Omniaevo"
+
+[sectionCosaFacciamo]
+other = "Cosa facciamo"
+
+[sectionServizi]
+other = "Servizi"
+
+[sectionCaseHistory]
+other = "Case history"
+
+[sectionTrasparenza]
+other = "Trasparenza"
+
+[contacts]
+other = "Contatti"
