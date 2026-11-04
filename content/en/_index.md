@@ -12,28 +12,7 @@ reviewed = false
 
 [chiSiamo]
   title = "About us"
-
-  [chiSiamo.storia]
-    title = "The history of Omniaevo"
-    paragraphs = [
-      "Omniaevo S.r.l. was founded in 2007 to deliver software projects commissioned by large national companies.",
-      "In 2013 the company broadened its know-how and extended its services to projects in several fields, from industrial automation to corporate network design and hosting/housing. It also became known in international markets with an innovative Car-Sharing platform.",
-    ]
-
-  [chiSiamo.oggi]
-    title = "Omniaevo today"
-    text = "Today Omniaevo is a leader in technologies for smart, integrated mobility platforms, and works for the major international players. We also work with private companies and public bodies, offering tailored solutions in every area of information technology and technical support."
-
-  [chiSiamo.management]
-    title = "Omniaevo management"
-    name = "Massimo Belluz"
-    image = "/uploads/home/massimo-belluz.jpg"
-    imageAlt = "Massimo Belluz"
-    paragraphs = [
-      "Massimo Belluz was born in Udine on 4 May 1973 and has a solid scientific background applied to technology.",
-      "Over the years he has led many hardware and software research and development projects in a wide range of fields: industrial, scientific, statistical, medical, geological, mobility and GIS.",
-      "He has been with Omniaevo Srl since 2007 as head of R&D, where he continuously evaluates new technologies and adopts them synergistically in ongoing projects. Since July 2018 he has been the company's Sole Director.",
-    ]
+  # TODO: English texts to be provided (text, mission, vision, historyTitle, timeline) and facts (top-level list)
 
 [cosaFacciamo]
   title = "What we do"
@@ -122,11 +101,6 @@ reviewed = false
 [caseHistory]
   title = "Case history"
   intro = "" # TODO: the current site has no intro text for this section
-
-[vidim]
-  title = "VIDIM Group"
-  text = "VIDIM Group is a business network that brings together the skills of specialised companies to create a more efficient and sustainable industrial future. Omniaevo is part of it."
-  # TODO: logos not available (see docs/redesign/inventario/INDEX.md)
 
 [contatti]
   title = "Contacts"

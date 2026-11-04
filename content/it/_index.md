@@ -9,29 +9,88 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   ctaLabel = "Scopri di più"
   ctaAnchor = "cosa-facciamo"
 
+# Facts of the 00 section (2024 figures, to be confirmed by Omniaevo)
+[[facts]]
+  value = "23"
+  label = "collaboratori"
+
+[[facts]]
+  value = "18"
+  label = "Paesi di collaborazione"
+
+[[facts]]
+  value = "462"
+  label = "clienti"
+
 [chiSiamo]
   title = "Chi siamo"
+  text = "Omniaevo è la sinergia tra competenze diverse e passioni comuni, un partner affidabile nell’ingegneria digitale che accompagna i propri clienti verso l’innovazione. Non ci limitiamo alla consulenza: progettiamo e costruiamo soluzioni che trasformano idee in realtà tangibili."
+  historyTitle = "Storia"
 
-  [chiSiamo.storia]
-    title = "Storia di Omniaevo"
-    paragraphs = [
-      "Omniaevo S.r.l. è nata nel 2007 per la realizzazione di progetti software commissionati da grandi realtà nazionali.",
-      "Nel 2013 l’azienda ha ampliato il know-how implementando i propri servizi con progetti in vari ambiti dall’automazione industriale alla progettazione di reti aziendali, hosting/housing e facendosi conoscere anche nei mercati internazionali con la realizzazione di una innovativa piattaforma di Car-Sharing",
+  [chiSiamo.mission]
+    title = "Mission"
+    text = "La nostra missione è trasformare le sfide complesse in opportunità semplici e realizzabili, attraverso l’innovazione tecnologica. Crediamo che con creatività e competenza si possano raggiungere soluzioni straordinarie, capaci di fare la differenza."
+
+  [chiSiamo.vision]
+    title = "Vision"
+    text = "Immaginiamo un futuro in cui tecnologia e ingegneria lavorano in armonia per migliorare il mondo. Creiamo soluzioni che superano le aspettative dei clienti, garantendo innovazione, qualità ed efficacia in ogni progetto."
+
+  [[chiSiamo.timeline]]
+    year = "2007"
+    items = [
+      "Fondazione di Omniaevo S.r.l.",
+      "Primi progetti software per grandi realtà nazionali",
     ]
 
-  [chiSiamo.oggi]
-    title = "Omniaevo oggi"
-    text = "Oggi noi di Omniaevo siamo leader nelle tecnologie per piattaforme di mobilità intelligente ed integrata, operiamo per i maggiori player internazionali. Collaboriamo inoltre sia con aziende private che con enti pubblici offrendo soluzioni personalizzate in tutti i settori dell’information technology e nell’assistenza tecnica."
+  [[chiSiamo.timeline]]
+    year = "2010"
+    items = [
+      "Prima espansione del team nello sviluppo software",
+      "Primi servizi di automazione industriale",
+    ]
 
-  [chiSiamo.management]
-    title = "Management di Omniaevo"
-    name = "Massimo Belluz"
-    image = "/uploads/home/massimo-belluz.jpg"
-    imageAlt = "Massimo Belluz"
-    paragraphs = [
-      "Massimo Belluz è nato a Udine il 04/05/1973, solida preparazione scientifica applicata alla tecnologia.",
-      "Negli anni a capo di molti progetti di ricerca e di sviluppo hardware e software nei settori più disparati: industriali, scientifici, statistici, medicali, geologici, mobilità, GIS.",
-      "In Omniaevo Srl dal 2007 è il responsabile R&D e si occupa della continua valutazione delle nuove tecnologie e la loro sinergica adozione nei progetti in corso. Da luglio 2018 è Amministratore Unico della stessa",
+  [[chiSiamo.timeline]]
+    year = "2013"
+    items = [
+      "Ampliamento del know-how: automazione industriale, reti aziendali, hosting/housing",
+    ]
+
+  [[chiSiamo.timeline]]
+    year = "2015"
+    items = [
+      "Espansione nei mercati internazionali con una piattaforma innovativa di car-sharing",
+      "Collaborazioni attive con aziende in 5 nuovi paesi",
+    ]
+
+  [[chiSiamo.timeline]]
+    year = "2018"
+    items = [
+      "15 collaboratori",
+      "Nuove soluzioni per la mobilità intelligente",
+      "Primi rapporti con i maggiori player internazionali",
+    ]
+
+  [[chiSiamo.timeline]]
+    year = "2020"
+    items = [
+      "Oltre 300 clienti",
+      "Servizi di assistenza tecnica avanzata per aziende private ed enti pubblici",
+    ]
+
+  [[chiSiamo.timeline]]
+    year = "2022"
+    items = [
+      "Leader nelle tecnologie per piattaforme di mobilità intelligente e integrata",
+      "Team a 20 collaboratori",
+    ]
+
+  [[chiSiamo.timeline]]
+    year = "2024"
+    items = [
+      "23 collaboratori",
+      "Collaborazioni con 18 paesi",
+      "462 clienti",
+      "Soluzioni personalizzate per aziende private ed enti pubblici nell’information technology e nell’assistenza tecnica",
     ]
 
 [cosaFacciamo]
@@ -172,11 +231,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 [caseHistory]
   title = "Case history"
   intro = "" # TODO: the current site has no intro text for this section
-
-[vidim]
-  title = "VIDIM Group"
-  text = "VIDIM Group è una rete d’impresa che unisce le competenze di aziende specializzate per creare un futuro industriale più efficiente e sostenibile, di cui fa parte Omniaevo"
-  # TODO: logos not available (see docs/redesign/inventario/INDEX.md)
 
 [contatti]
   title = "Contatti"

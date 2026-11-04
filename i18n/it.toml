@@ -187,18 +187,6 @@ other = "Trasparenza"
 other = "Contatti"
 
 # Home: section 00.
-[factFounded]
-other = "anno di fondazione"
-
-[factAreas]
-other = "aree di competenza"
-
-[factCases]
-other = "case history"
-
-[factNetwork]
-other = "rete d’impresa di cui facciamo parte"
-
 [expandMore]
 other = "Approfondisci"
 

@@ -1,6 +1,6 @@
 {{- /*
   Section 00. Context: dict "h1" <bool: the hero title is the page <h1>, else <h2>>
-  Data: home front matter (hero, chiSiamo, cosaFacciamo, vidim, contatti) and data/contacts.toml.
+  Data: home front matter (hero, facts, chiSiamo, cosaFacciamo, contatti) and data/contacts.toml.
 */ -}}
 {{- $home := site.Home }}
 {{- $p := $home.Params }}
@@ -19,56 +19,50 @@
   </div>
   {{- end }}
 
-  {{- /* Facts: real data only, each one links to the part of the site it counts */}}
-  {{- $cases := len (where site.RegularPages "Section" "case-history") }}
+  {{- /* Facts (2024 figures from the CMS): filled cards, they inform and link nowhere */}}
+  {{- with site.Home.Params.facts }}
   <ul class="facts">
-    {{- with $c.foundedYear }}
-    <li><a href="#chi-siamo"><span class="facts__value">{{ . }}</span><span class="facts__label">{{ T "factFounded" }}</span>{{ partial "icon-arrow.html" }}</a></li>
-    {{- end }}
-    {{- with $p.cosaFacciamo.areas }}
-    <li><a href="#cosa-facciamo"><span class="facts__value">{{ len . }}</span><span class="facts__label">{{ T "factAreas" }}</span>{{ partial "icon-arrow.html" }}</a></li>
-    {{- end }}
-    {{- if $cases }}
-    <li><a href="#case-history"><span class="facts__value">{{ $cases }}</span><span class="facts__label">{{ T "factCases" }}</span>{{ partial "icon-arrow.html" }}</a></li>
+    {{- range . }}
+    <li><span class="facts__value">{{ .value }}</span><span class="facts__label">{{ .label }}</span></li>
     {{- end }}
   </ul>
+  {{- end }}
 
-  {{- /* Chi siamo */}}
+  {{- /* Chi siamo: text, Mission, Vision, then the history as a timeline */}}
   {{- with $p.chiSiamo }}
   <section class="about" id="chi-siamo" aria-labelledby="chi-siamo-title">
     <h2 id="chi-siamo-title">{{ .title }}</h2>
-    {{- with .storia }}
-    <div>
-      <h3>{{ .title }}</h3>
-      {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
-    </div>
-    {{- end }}
-    {{- with .oggi }}
-    <div>
-      <h3>{{ .title }}</h3>
-      <p>{{ .text }}</p>
-    </div>
-    {{- end }}
-    {{- with .management }}
-    <div class="about__person">
-      <div class="about__photo">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</div>
-      <div class="about__text">
+    {{- with .text }}<p class="about__lead">{{ . }}</p>{{ end }}
+    {{- if or .mission .vision }}
+    <div class="about__mv">
+      {{- range slice .mission .vision }}{{ with . }}
+      <div>
         <h3>{{ .title }}</h3>
-        {{- with .name }}<p class="about__name">{{ . }}</p>{{ end }}
-        {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+        <p>{{ .text }}</p>
+      </div>
+      {{- end }}{{ end }}
+    </div>
+    {{- end }}
+    {{- with .timeline }}
+    <div>
+      {{- with $p.chiSiamo.historyTitle }}<h3>{{ . }}</h3>{{ end }}
+      {{- /* Two columns on a wide panel: the first one gets the extra row when the count is odd */}}
+      {{- $rows := div (add (len .) 1) 2 }}
+      <div class="timeline-wrap">
+        <ol class="timeline" style="--rows: {{ $rows }}">
+          {{- range $i, $t := . }}
+          <li class="timeline__row{{ if eq $i (sub $rows 1) }} timeline__row--end{{ end }}">
+            <span class="timeline__year">{{ $t.year }}</span>
+            <ul class="timeline__items">
+              {{- range $t.items }}<li>{{ . }}</li>{{ end }}
+            </ul>
+          </li>
+          {{- end }}
+        </ol>
       </div>
     </div>
     {{- end }}
   </section>
-  {{- end }}
-
-  {{- /* VIDIM network */}}
-  {{- with $p.vidim }}
-  <aside class="network" aria-labelledby="network-title">
-    <p class="network__label">{{ T "factNetwork" }}</p>
-    <h2 id="network-title">{{ .title }}</h2>
-    {{- with .text }}<p>{{ . }}</p>{{ end }}
-  </aside>
   {{- end }}
 
   {{- /* Company details + link to Trasparenza */}}

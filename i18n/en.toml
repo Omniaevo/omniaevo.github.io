@@ -187,18 +187,6 @@ other = "Transparency"
 other = "Contacts"
 
 # Home: section 00.
-[factFounded]
-other = "year founded"
-
-[factAreas]
-other = "areas of expertise"
-
-[factCases]
-other = "case studies"
-
-[factNetwork]
-other = "business network we belong to"
-
 [expandMore]
 other = "Learn more"
 

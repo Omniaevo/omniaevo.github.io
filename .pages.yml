@@ -61,6 +61,20 @@ content:
         type: string
         description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
         readonly: true
+    - name: facts
+      label: Numeri
+      type: object
+      description: I tre riquadri sotto il titolo della home. Dati 2024, da confermare.
+      list: true
+      fields:
+      - name: value
+        label: Valore
+        type: string
+        description: Il numero, per esempio «462».
+      - name: label
+        label: Etichetta
+        type: string
+        description: Cosa conta il numero, per esempio «clienti».
     - name: chiSiamo
       label: Chi siamo
       type: object
@@ -70,58 +84,52 @@ content:
         label: Titolo della sezione
         type: string
         description: Titolo mostrato in cima alla sezione.
-      - name: storia
-        label: Storia
+      - name: text
+        label: Testo
+        type: text
+        description: Paragrafo di apertura.
+      - name: mission
+        label: Mission
         type: object
-        description: Racconto della nascita e crescita dell'azienda.
         fields:
         - name: title
           label: Titolo
           type: string
-          description: Titolo del blocco.
-        - name: paragraphs
-          label: Paragrafi
-          type: text
-          description: Un paragrafo per ogni voce.
-          list: true
-      - name: oggi
-        label: Oggi
-        type: object
-        description: Descrizione dell'azienda oggi.
-        fields:
-        - name: title
-          label: Titolo
-          type: string
-          description: Titolo del blocco.
+          description: Piccolo titolo, per esempio «Mission».
         - name: text
           label: Testo
           type: text
-          description: Testo del blocco.
-      - name: management
-        label: Management
+          description: Descrizione della missione.
+      - name: vision
+        label: Vision
         type: object
-        description: Persona che guida l'azienda.
         fields:
         - name: title
           label: Titolo
           type: string
-          description: Titolo del blocco.
-        - name: name
-          label: Nome
-          type: string
-          description: Nome e cognome.
-        - name: image
-          label: Foto
-          type: image
-          description: Foto della persona.
-        - name: imageAlt
-          label: Descrizione della foto
-          type: string
-          description: Frase breve letta dagli screen reader.
-        - name: paragraphs
-          label: Paragrafi
+          description: Piccolo titolo, per esempio «Vision».
+        - name: text
+          label: Testo
           type: text
-          description: Un paragrafo per ogni voce.
+          description: Descrizione della visione.
+      - name: historyTitle
+        label: Titolo della storia
+        type: string
+        description: Piccolo titolo sopra la timeline, per esempio «Storia».
+      - name: timeline
+        label: Storia (timeline)
+        type: object
+        description: Una riga per anno, dal più vecchio al più recente.
+        list: true
+        fields:
+        - name: year
+          label: Anno
+          type: string
+          description: Per esempio «2015».
+        - name: items
+          label: Punti
+          type: string
+          description: Cosa è successo quell'anno, un punto per riga.
           list: true
     - name: cosaFacciamo
       label: Cosa facciamo
@@ -305,19 +313,6 @@ content:
         label: Introduzione
         type: text
         description: Facoltativa. Testo sotto il titolo.
-    - name: vidim
-      label: VIDIM Group
-      type: object
-      description: Presentazione della rete d'impresa.
-      fields:
-      - name: title
-        label: Titolo
-        type: string
-        description: Titolo della sezione.
-      - name: text
-        label: Testo
-        type: text
-        description: Descrizione.
     - name: contatti
       label: Contatti
       type: object
@@ -714,6 +709,20 @@ content:
         type: string
         description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
         readonly: true
+    - name: facts
+      label: Numeri
+      type: object
+      description: I tre riquadri sotto il titolo della home. Dati 2024, da confermare.
+      list: true
+      fields:
+      - name: value
+        label: Valore
+        type: string
+        description: Il numero, per esempio «462».
+      - name: label
+        label: Etichetta
+        type: string
+        description: Cosa conta il numero, per esempio «clienti».
     - name: chiSiamo
       label: Chi siamo
       type: object
@@ -723,58 +732,52 @@ content:
         label: Titolo della sezione
         type: string
         description: Titolo mostrato in cima alla sezione.
-      - name: storia
-        label: Storia
+      - name: text
+        label: Testo
+        type: text
+        description: Paragrafo di apertura.
+      - name: mission
+        label: Mission
         type: object
-        description: Racconto della nascita e crescita dell'azienda.
         fields:
         - name: title
           label: Titolo
           type: string
-          description: Titolo del blocco.
-        - name: paragraphs
-          label: Paragrafi
-          type: text
-          description: Un paragrafo per ogni voce.
-          list: true
-      - name: oggi
-        label: Oggi
-        type: object
-        description: Descrizione dell'azienda oggi.
-        fields:
-        - name: title
-          label: Titolo
-          type: string
-          description: Titolo del blocco.
+          description: Piccolo titolo, per esempio «Mission».
         - name: text
           label: Testo
           type: text
-          description: Testo del blocco.
-      - name: management
-        label: Management
+          description: Descrizione della missione.
+      - name: vision
+        label: Vision
         type: object
-        description: Persona che guida l'azienda.
         fields:
         - name: title
           label: Titolo
           type: string
-          description: Titolo del blocco.
-        - name: name
-          label: Nome
-          type: string
-          description: Nome e cognome.
-        - name: image
-          label: Foto
-          type: image
-          description: Foto della persona.
-        - name: imageAlt
-          label: Descrizione della foto
-          type: string
-          description: Frase breve letta dagli screen reader.
-        - name: paragraphs
-          label: Paragrafi
+          description: Piccolo titolo, per esempio «Vision».
+        - name: text
+          label: Testo
           type: text
-          description: Un paragrafo per ogni voce.
+          description: Descrizione della visione.
+      - name: historyTitle
+        label: Titolo della storia
+        type: string
+        description: Piccolo titolo sopra la timeline, per esempio «Storia».
+      - name: timeline
+        label: Storia (timeline)
+        type: object
+        description: Una riga per anno, dal più vecchio al più recente.
+        list: true
+        fields:
+        - name: year
+          label: Anno
+          type: string
+          description: Per esempio «2015».
+        - name: items
+          label: Punti
+          type: string
+          description: Cosa è successo quell'anno, un punto per riga.
           list: true
     - name: cosaFacciamo
       label: Cosa facciamo
@@ -958,19 +961,6 @@ content:
         label: Introduzione
         type: text
         description: Facoltativa. Testo sotto il titolo.
-    - name: vidim
-      label: VIDIM Group
-      type: object
-      description: Presentazione della rete d'impresa.
-      fields:
-      - name: title
-        label: Titolo
-        type: string
-        description: Titolo della sezione.
-      - name: text
-        label: Testo
-        type: text
-        description: Descrizione.
     - name: contatti
       label: Contatti
       type: object
