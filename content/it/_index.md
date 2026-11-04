@@ -134,11 +134,11 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
   [[cosaFacciamo.lists]]
     title = "Infrastrutture"
-    items = ["Ipervisori VMware, KVM", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
+    items = ["Ipervisori VMware", "Ipervisori KVM", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
 
   [[cosaFacciamo.lists]]
     title = "Programmazione"
-    items = ["Java", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, Continuous integration e deployement"]
+    items = ["Java", "C#", "C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab", "CI/CD"]
 
   [[cosaFacciamo.lists]]
     title = "Automazione"
@@ -146,7 +146,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
   [[cosaFacciamo.lists]]
     title = "AI"
-    items = ["Python, R", "TensorFlow, PyTorch, Keras", "Scikit-learn, XGBoost", "NLTK, SpaCy", "OpenCV, YOLO", "Jupyter, Anaconda", "Google AI Platform, Microsoft Azure AI, Amazon SageMaker"]
+    items = ["Python", "R", "TensorFlow", "PyTorch", "Keras", "Scikit-learn", "XGBoost", "NLTK", "SpaCy", "OpenCV", "YOLO", "Jupyter", "Anaconda", "Google AI Platform", "Microsoft Azure AI", "Amazon SageMaker"]
 
   [cosaFacciamo.settoriIntro]
     title = "Settori"

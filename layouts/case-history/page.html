@@ -1,58 +1,21 @@
+{{- /* Case history detail: the accordion with section 02 open and the detail sheet already open. */ -}}
+{{ define "skip-target" }}detail-title{{ end }}
+
 {{ define "main" }}
-<div class="container">
-  {{ partial "breadcrumb.html" . }}
-
-  <article class="entry">
-    <header class="entry-hero">
-      <div class="entry-hero__main">
-        {{- with .Params.areas }}
-        <ul class="tags">
-          {{- range . }}<li class="tag">{{ partial "area-label.html" . }}</li>{{ end }}
-        </ul>
-        {{- end }}
-        <h1>{{ partial "title-highlight.html" (dict "text" .Title) }}</h1>
-        {{- with .Description }}<p class="entry-hero__lead">{{ . }}</p>{{ end }}
-      </div>
-
-      {{- with or .Params.client .Params.sector .Params.areas }}
-      <aside class="spec-card entry-hero__spec" aria-labelledby="spec-title">
-        <h2 class="spec-card__head" id="spec-title">{{ T "projectSheet" }}</h2>
-        <dl>
-          {{- with $.Params.client }}<dt>{{ T "client" }}</dt><dd>{{ . }}</dd>{{ end }}
-          {{- with $.Params.sector }}<dt>{{ T "sector" }}</dt><dd>{{ . }}</dd>{{ end }}
-          {{- with $.Params.areas }}
-          <dt>{{ T "areas" }}</dt>
-          <dd>{{ delimit (apply . "partial" "area-label.html" ".") ", " }}</dd>
-          {{- end }}
-        </dl>
-      </aside>
-      {{- end }}
-    </header>
-
-    {{- with .Params.image }}
-    <div class="frame entry-cover">{{ partial "image-by-path.html" (dict "path" . "alt" $.Params.imageAlt "lazy" false) }}</div>
-    {{- end }}
-
-    {{- with .Content }}<div class="prose entry-body">{{ . }}</div>{{ end }}
-  </article>
-
-  {{- /* In Hugo, NextInSection is the newer page and PrevInSection the older one. */}}
-  {{- if or .PrevInSection .NextInSection }}
-  <nav class="entry-nav" aria-label="{{ T "caseHistoryNavigation" }}">
-    {{- with .PrevInSection }}
-    <a class="card entry-nav__prev" rel="prev" href="{{ .RelPermalink }}">
-      <span class="entry-nav__label"><span aria-hidden="true">←</span> {{ T "previous" }}</span>
-      <span class="entry-nav__title">{{ .Title }}</span>
-    </a>
-    {{- end }}
-    {{- with .NextInSection }}
-    <a class="card card--lavender entry-nav__next" rel="next" href="{{ .RelPermalink }}">
-      <span class="entry-nav__label">{{ T "next" }} <span aria-hidden="true">→</span></span>
-      <span class="entry-nav__title">{{ .Title }}</span>
-    </a>
-    {{- end }}
-  </nav>
-  {{- end }}
-</div>
-{{ partialCached "cta-band.html" . site.Language.Lang }}
+{{- $home := site.Home.RelPermalink }}
+{{- $meta := slice }}
+{{- with .Params.client }}{{ $meta = $meta | append . }}{{ end }}
+{{- with .Params.sector }}{{ $meta = $meta | append . }}{{ end }}
+{{- $items := slice }}
+{{- with .Params.image }}{{ $items = $items | append (dict "image" . "alt" $.Params.imageAlt) }}{{ end }}
+{{- range .Params.gallery }}{{ $items = $items | append . }}{{ end }}
+{{ partial "sheet.html" (dict
+  "page" .
+  "label" (T "sectionCaseHistory")
+  "index" 2
+  "closeHref" (printf "%s#case-history" $home)
+  "meta" (delimit $meta " · ")
+  "items" $items
+  "actions" (slice (dict "label" (T "contactUs") "href" (printf "%s#contatti" $home)))) }}
+{{ partial "accordion.html" (dict "open" "case-history" "h1" false "base" $home) }}
 {{ end }}

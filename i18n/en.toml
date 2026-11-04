@@ -232,3 +232,16 @@ other = "Customer support"
 
 [downloads]
 other = "Downloads"
+
+# Detail sheet (case history, services).
+[contactUs]
+other = "Contact us"
+
+[images]
+other = "Images"
+
+[previousImage]
+other = "Previous image"
+
+[nextImage]
+other = "Next image"

@@ -9,13 +9,13 @@ imageAlt = "Tors Tunnel"
 client = ""
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/galleria-di-tors-2.png", alt = "Tors Tunnel – image 2" },
+  { image = "/uploads/case-history/galleria-di-tors-3.png", alt = "Tors Tunnel – image 3" },
+  { image = "/uploads/case-history/galleria-di-tors-4.png", alt = "Tors Tunnel – image 4" },
+  { image = "/uploads/case-history/galleria-di-tors-5.png", alt = "Tors Tunnel – image 5" },
+]
 +++
-
-![Tors Tunnel – image 2](/uploads/case-history/galleria-di-tors-2.png)
-![Tors Tunnel – image 3](/uploads/case-history/galleria-di-tors-3.png)
-![Tors Tunnel – image 4](/uploads/case-history/galleria-di-tors-4.png)
-![Tors Tunnel – image 5](/uploads/case-history/galleria-di-tors-5.png)
-
 - Safety systems compliant with European (2004/54/EC) and Italian (Legislative Decree 264 of 5 October 2006) standards, including:
 - 8 ventilation accelerators of 25 kW each
 - 8 internal and external variable message panels

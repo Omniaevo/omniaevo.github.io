@@ -46,11 +46,11 @@ reviewed = false
 
   [[cosaFacciamo.lists]]
     title = "Infrastructure"
-    items = ["VMware, KVM hypervisors", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
+    items = ["VMware hypervisors", "KVM hypervisors", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
 
   [[cosaFacciamo.lists]]
     title = "Programming"
-    items = ["Java", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, continuous integration and deployment"]
+    items = ["Java", "C#", "C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab", "CI/CD"]
 
   [[cosaFacciamo.lists]]
     title = "Automation"
@@ -58,7 +58,7 @@ reviewed = false
 
   [[cosaFacciamo.lists]]
     title = "AI"
-    items = ["Python, R", "TensorFlow, PyTorch, Keras", "Scikit-learn, XGBoost", "NLTK, SpaCy", "OpenCV, YOLO", "Jupyter, Anaconda", "Google AI Platform, Microsoft Azure AI, Amazon SageMaker"]
+    items = ["Python", "R", "TensorFlow", "PyTorch", "Keras", "Scikit-learn", "XGBoost", "NLTK", "SpaCy", "OpenCV", "YOLO", "Jupyter", "Anaconda", "Google AI Platform", "Microsoft Azure AI", "Amazon SageMaker"]
 
 [servizi]
   title = "Services"

@@ -1,0 +1,29 @@
+{{- /*
+  Detail sheet, already open (no JavaScript needed). The backdrop and the close button are links back to the
+  section. Desktop: it sits inside the open section (strips stay visible on both sides); phone: bottom sheet.
+  Context: dict "page" "label" (section name) "index" (strip number) "closeHref" "meta" "items" (gallery images)
+  "actions" (slice of { label, href, external }).
+*/ -}}
+{{- $p := .page }}
+<a class="detail__backdrop" href="{{ .closeHref }}" style="--i: {{ .index }}" tabindex="-1" aria-hidden="true"></a>
+<dialog class="detail" open aria-labelledby="detail-title" data-sheet style="--i: {{ .index }}">
+  <div class="detail__top">
+    <span class="detail__grip" aria-hidden="true"></span>
+    <div class="detail__bar">
+      <span class="detail__label">{{ .label }}</span>
+      <a class="sheet__close" href="{{ .closeHref }}" aria-label="{{ T "close" }}">{{ partial "icon.html" "close" }}</a>
+    </div>
+  </div>
+  <div class="detail__scroll">
+    <h1 class="detail__title" id="detail-title">{{ $p.Title }}</h1>
+    {{- with .meta }}<p class="detail__meta">{{ . }}</p>{{ end }}
+    {{ partial "gallery.html" (dict "items" .items) }}
+    {{- with $p.Description }}{{ if ne (replace . "–" "-") (replace $p.Title "–" "-") }}<p class="detail__lead">{{ . }}</p>{{ end }}{{ end }}
+    {{- with $p.Content }}<div class="detail__body">{{ . }}</div>{{ end }}
+    {{- with .actions }}
+    <p class="detail__actions">
+      {{- range . }}<a class="btn" href="{{ .href }}"{{ if .external }} rel="noopener noreferrer"{{ end }}>{{ .label }}</a>{{ end }}
+    </p>
+    {{- end }}
+  </div>
+</dialog>

@@ -418,10 +418,24 @@ content:
           label: Software
         - name: web-apps
           label: Web Apps
+    - name: gallery
+      label: Galleria
+      type: object
+      description: Altre immagini del progetto, nell'ordine in cui compaiono. L'immagine principale è sempre la prima.
+      list: true
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Foto o schema. Formato libero, meglio sopra i 1200 px di larghezza.
+      - name: alt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
     - name: body
       label: Testo
       type: rich-text
-      description: Descrizione completa del progetto, con eventuali altre immagini.
+      description: Descrizione completa del progetto.
     view:
       fields:
       - title
@@ -483,6 +497,20 @@ content:
       label: Descrizione dell'immagine
       type: string
       description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: gallery
+      label: Galleria
+      type: object
+      description: Altre immagini del servizio, nell'ordine in cui compaiono. L'immagine principale è sempre la prima.
+      list: true
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Foto o schema. Formato libero, meglio sopra i 1200 px di larghezza.
+      - name: alt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
     - name: links
       label: Link
       type: object
@@ -1083,10 +1111,24 @@ content:
           label: Software
         - name: web-apps
           label: Web Apps
+    - name: gallery
+      label: Galleria
+      type: object
+      description: Altre immagini del progetto, nell'ordine in cui compaiono. L'immagine principale è sempre la prima.
+      list: true
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Foto o schema. Formato libero, meglio sopra i 1200 px di larghezza.
+      - name: alt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
     - name: body
       label: Testo
       type: rich-text
-      description: Descrizione completa del progetto, con eventuali altre immagini.
+      description: Descrizione completa del progetto.
     view:
       fields:
       - title
@@ -1153,6 +1195,20 @@ content:
       label: Descrizione dell'immagine
       type: string
       description: Frase breve che descrive l'immagine, letta dagli screen reader.
+    - name: gallery
+      label: Galleria
+      type: object
+      description: Altre immagini del servizio, nell'ordine in cui compaiono. L'immagine principale è sempre la prima.
+      list: true
+      fields:
+      - name: image
+        label: Immagine
+        type: image
+        description: Foto o schema. Formato libero, meglio sopra i 1200 px di larghezza.
+      - name: alt
+        label: Descrizione dell'immagine
+        type: string
+        description: Frase breve letta dagli screen reader.
     - name: links
       label: Link
       type: object

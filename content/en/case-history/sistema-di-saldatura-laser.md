@@ -9,13 +9,13 @@ imageAlt = "Laser welding system"
 client = "MANGIAROTTI SPA"
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-2.png", alt = "Laser welding system – image 2" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-3.png", alt = "Laser welding system – image 3" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-4.png", alt = "Laser welding system – image 4" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-5.png", alt = "Laser welding system – image 5" },
+]
 +++
-
-![Laser welding system – image 2](/uploads/case-history/sistema-di-saldatura-laser-2.png)
-![Laser welding system – image 3](/uploads/case-history/sistema-di-saldatura-laser-3.png)
-![Laser welding system – image 4](/uploads/case-history/sistema-di-saldatura-laser-4.png)
-![Laser welding system – image 5](/uploads/case-history/sistema-di-saldatura-laser-5.png)
-
 - import of targets from CAD drawings
 - machine vision for high-precision aiming and alignment
 - control and recording of all process parameters

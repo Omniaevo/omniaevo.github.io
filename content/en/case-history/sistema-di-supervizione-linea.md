@@ -9,12 +9,12 @@ imageAlt = "Line supervision system"
 client = ""
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-2.png", alt = "Line supervision system – image 2" },
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-3.png", alt = "Line supervision system – image 3" },
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-4.png", alt = "Line supervision system – image 4" },
+]
 +++
-
-![Line supervision system – image 2](/uploads/case-history/sistema-di-supervizione-linea-2.png)
-![Line supervision system – image 3](/uploads/case-history/sistema-di-supervizione-linea-3.png)
-![Line supervision system – image 4](/uploads/case-history/sistema-di-supervizione-linea-4.png)
-
 Main features
 
 - Communication infrastructure based on TCP/IP and RS232 serial protocols

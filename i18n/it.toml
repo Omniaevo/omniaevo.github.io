@@ -232,3 +232,16 @@ other = "Assistenza clienti"
 
 [downloads]
 other = "Scaricabili"
+
+# Detail sheet (case history, services).
+[contactUs]
+other = "Contattaci"
+
+[images]
+other = "Immagini"
+
+[previousImage]
+other = "Immagine precedente"
+
+[nextImage]
+other = "Immagine successiva"

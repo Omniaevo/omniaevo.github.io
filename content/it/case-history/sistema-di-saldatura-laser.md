@@ -8,13 +8,13 @@ imageAlt = "Sistema di saldatura laser"
 client = "MANGIAROTTI SPA"
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-2.png", alt = "Sistema di saldatura laser – immagine 2" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-3.png", alt = "Sistema di saldatura laser – immagine 3" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-4.png", alt = "Sistema di saldatura laser – immagine 4" },
+  { image = "/uploads/case-history/sistema-di-saldatura-laser-5.png", alt = "Sistema di saldatura laser – immagine 5" },
+]
 +++
-
-![Sistema di saldatura laser – immagine 2](/uploads/case-history/sistema-di-saldatura-laser-2.png)
-![Sistema di saldatura laser – immagine 3](/uploads/case-history/sistema-di-saldatura-laser-3.png)
-![Sistema di saldatura laser – immagine 4](/uploads/case-history/sistema-di-saldatura-laser-4.png)
-![Sistema di saldatura laser – immagine 5](/uploads/case-history/sistema-di-saldatura-laser-5.png)
-
 - importazione bersagli da disegni cad
 - visione artificiale per puntamento ed allineamento di alta precisione
 - controllo e registrazione di tutti i parametri di processo

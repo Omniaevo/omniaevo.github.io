@@ -120,8 +120,8 @@
 
 | Gruppo | Etichette |
 |---|---|
-| Infrastrutture | Ipervisori VMware, KVM · Veeam backup · Ubiquiti networking · PFsense · Docker · Kubernetes · Ansible |
-| Programmazione | Java · C#, C/C++ · NodeJS · PHP · Swift · Zend Framework · Code Igniter · Angular · JQuery/Bootstrap · Nest · Loopback · Git/GitLab, Continuous integration e deployment |
+| Infrastrutture | Ipervisori VMware · Ipervisori KVM · Veeam backup · Ubiquiti networking · PFsense · Docker · Kubernetes · Ansible |
+| Programmazione | Java · C# · C/C++ · NodeJS · PHP · Swift · Zend Framework · Code Igniter · Angular · JQuery/Bootstrap · Nest · Loopback · Git/GitLab · CI/CD |
 | Automazione | PLC · Robot GE Fanuc · Yaskawa · Sensoristica · Sistemi di visione · Raccolta dati ed analisi · Tecnologie IoT |
 | **AI** (nuovo) | Python, R · TensorFlow, PyTorch, Keras · Scikit-learn, XGBoost · NLTK, SpaCy · OpenCV, YOLO · Jupyter, Anaconda · Google AI Platform, Microsoft Azure AI, Amazon SageMaker |
 

@@ -9,13 +9,13 @@ imageAlt = "Mine monitoring"
 client = "VIDONI SPA"
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/monitoraggio-miniere-2.jpg", alt = "Mine monitoring – image 2" },
+  { image = "/uploads/case-history/monitoraggio-miniere-3.jpg", alt = "Mine monitoring – image 3" },
+  { image = "/uploads/case-history/monitoraggio-miniere-4.jpg", alt = "Mine monitoring – image 4" },
+  { image = "/uploads/case-history/monitoraggio-miniere-5.png", alt = "Mine monitoring – image 5" },
+]
 +++
-
-![Mine monitoring – image 2](/uploads/case-history/monitoraggio-miniere-2.jpg)
-![Mine monitoring – image 3](/uploads/case-history/monitoraggio-miniere-3.jpg)
-![Mine monitoring – image 4](/uploads/case-history/monitoraggio-miniere-4.jpg)
-![Mine monitoring – image 5](/uploads/case-history/monitoraggio-miniere-5.png)
-
 A few kilometres from Tarvisio, in the north-eastern corner of Italy, lie the Raibl mining complex and the village of Cave del Predil.
 
 It is a very old sphalerite and galena mine, developed over centuries of activity into an intricate system of tunnels extending for more than 150 km and reaching depths of over 500 m below the surface.

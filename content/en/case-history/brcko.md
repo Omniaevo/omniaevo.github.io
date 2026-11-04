@@ -9,12 +9,12 @@ imageAlt = "Brcko"
 client = "CISP"
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/brcko-2.png", alt = "Brcko – image 2" },
+  { image = "/uploads/case-history/brcko-3.png", alt = "Brcko – image 3" },
+  { image = "/uploads/case-history/brcko-4.png", alt = "Brcko – image 4" },
+]
 +++
-
-![Brcko – image 2](/uploads/case-history/brcko-2.png)
-![Brcko – image 3](/uploads/case-history/brcko-3.png)
-![Brcko – image 4](/uploads/case-history/brcko-4.png)
-
 The water supply system designed to Brcko (Bosnia Herzegovina) is divided into two operational areas.
 
 - by the river Sava (the pumping station has 11 pumps, suction);

@@ -16,5 +16,7 @@
   "problem" `<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>`
   "tailor" `<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>`
   "person" `<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.6-7 8-7s8 2.5 8 7"/>`
+  "up" `<path d="M12 19V5M6 11l6-6 6 6"/>`
+  "down" `<path d="M12 5v14M6 13l6 6 6-6"/>`
   "flag" `<path d="M5 21V4h12l-2 4 2 4H5"/>` }}
 {{- with index $paths . }}<svg class="icon" aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{{ . | safeHTML }}</svg>{{ else }}{{ warnf "icon.html: unknown icon %q" . }}{{ end }}

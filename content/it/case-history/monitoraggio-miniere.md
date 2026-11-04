@@ -8,13 +8,13 @@ imageAlt = "Monitoraggio miniere"
 client = "VIDONI SPA"
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/monitoraggio-miniere-2.jpg", alt = "Monitoraggio miniere – immagine 2" },
+  { image = "/uploads/case-history/monitoraggio-miniere-3.jpg", alt = "Monitoraggio miniere – immagine 3" },
+  { image = "/uploads/case-history/monitoraggio-miniere-4.jpg", alt = "Monitoraggio miniere – immagine 4" },
+  { image = "/uploads/case-history/monitoraggio-miniere-5.png", alt = "Monitoraggio miniere – immagine 5" },
+]
 +++
-
-![Monitoraggio miniere – immagine 2](/uploads/case-history/monitoraggio-miniere-2.jpg)
-![Monitoraggio miniere – immagine 3](/uploads/case-history/monitoraggio-miniere-3.jpg)
-![Monitoraggio miniere – immagine 4](/uploads/case-history/monitoraggio-miniere-4.jpg)
-![Monitoraggio miniere – immagine 5](/uploads/case-history/monitoraggio-miniere-5.png)
-
 A pochi chilometri da Tarvisio, nell’angolo più nord-orientale d’Italia, si trova il complesso minerario di Raibl ed il paese di Cave del Predil.
 
 Si tratta di una miniera molto antica di Blenda e Galena sviluppata nei secoli di attività in un articolato sistema di gallerie esteso per oltre 150Km e fino alla profondità di oltre 500m dalla superficie.

@@ -8,12 +8,12 @@ imageAlt = "Sistema di supervizione linea"
 client = ""
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-2.png", alt = "Sistema di supervizione linea – immagine 2" },
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-3.png", alt = "Sistema di supervizione linea – immagine 3" },
+  { image = "/uploads/case-history/sistema-di-supervizione-linea-4.png", alt = "Sistema di supervizione linea – immagine 4" },
+]
 +++
-
-![Sistema di supervizione linea – immagine 2](/uploads/case-history/sistema-di-supervizione-linea-2.png)
-![Sistema di supervizione linea – immagine 3](/uploads/case-history/sistema-di-supervizione-linea-3.png)
-![Sistema di supervizione linea – immagine 4](/uploads/case-history/sistema-di-supervizione-linea-4.png)
-
 Caratteristiche principali
 
 - Infrastruttura di comunicazione basata su protocolli TCP/IP e Seriale RS232

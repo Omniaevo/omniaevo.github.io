@@ -715,7 +715,7 @@
    title small on one row, full text. Touch devices: the card stays at rest and a tap opens the sheet. */
 .areas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(max(400px, calc((100% - 2 * var(--space-2)) / 3)), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(400px, calc((100% - 2 * var(--space-2)) / 3))), 1fr));
   gap: var(--space-2);
   padding: 0;
   list-style: none;
@@ -825,7 +825,6 @@
     flex: none;
     width: 2em;
     font-size: var(--fs-h3);
-    color: var(--ink);
   }
 
   .area:hover .area__summary,
@@ -857,9 +856,14 @@
     cursor: pointer;
   }
 
+  /* The text opens in the sheet, so the card stays short: smaller number, three lines of text */
+  .area__num {
+    font-size: var(--fs-h2);
+  }
+
   .area__summary {
-    -webkit-line-clamp: 5;
-    height: 8em;
+    -webkit-line-clamp: 3;
+    height: 4.5em;
   }
 
   .area__full {
@@ -956,8 +960,7 @@
 /* Same number + title row as the revealed card, with a larger title */
 .sheet .area__num {
   width: 2em;
-  font-size: var(--fs-small);
-  color: var(--ink);
+  font-size: var(--fs-h3);
 }
 
 .sheet .area__title {
@@ -1549,4 +1552,332 @@
 
 .doc-list .contact__text b {
   white-space: normal;
+}
+
+/* ------------------------------------------------ Detail sheet (case history, services) */
+/* Phone and low screens: bottom sheet, full width. Desktop: inside the open section; the strips stay visible on
+   both sides. --i is the number of the open strip (0-4). */
+.detail__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: var(--backdrop);
+}
+
+.detail {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: none;
+  height: 92dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--space-3) var(--space-3) 0 0;
+  background: var(--white);
+  color: var(--ink);
+  animation: detail-up var(--t-slow);
+}
+
+@keyframes detail-up {
+  from { transform: translateY(102%); }
+}
+
+@media (min-width: 1100px) and (min-height: 560px) {
+  .detail__backdrop {
+    inset: 0 calc((var(--strip-count) - 1 - var(--i)) * var(--strip)) 0 calc((var(--i) + 1) * var(--strip));
+  }
+
+  .detail {
+    inset: auto calc((var(--strip-count) - 1 - var(--i)) * var(--strip) + var(--space-3)) 0 calc((var(--i) + 1) * var(--strip) + var(--space-3));
+    height: 90dvh;
+  }
+}
+
+.detail__top {
+  flex: none;
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.detail__grip {
+  display: block;
+  width: 52px;
+  height: 5px;
+  margin: 0 auto var(--space-1);
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.detail__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.detail__label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--orange-dark);
+}
+
+.detail__scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--space-4) var(--space-3) var(--space-5);
+}
+
+@media (min-width: 720px) {
+  .detail__top,
+  .detail__scroll {
+    padding-inline: clamp(var(--space-3), 4vw, var(--space-5));
+  }
+}
+
+:where(.detail h1, .detail p) {
+  margin: 0;
+}
+
+.detail__title {
+  font-size: var(--fs-h2);
+  line-height: .95;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+
+.detail__meta {
+  margin-top: var(--space-1);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.detail__lead,
+.detail__body,
+.detail__actions {
+  max-width: 70ch;
+  margin-top: var(--space-4);
+}
+
+.detail__lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.detail__body > * + * {
+  margin-top: var(--space-2);
+}
+
+.detail__body ul {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.detail__body li {
+  position: relative;
+  padding-left: var(--space-2);
+}
+
+.detail__body li::before {
+  content: "";
+  position: absolute;
+  top: .55em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* Gallery: one strip of slides (scroll-snap, works without JavaScript). Wide: thumbnails in a column on the right. */
+.gallery {
+  --gallery-h: clamp(18rem, 46vh, 30rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+}
+
+.gallery ul,
+.gallery ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery__track {
+  position: relative; /* slides measure their offset from here (app.js) */
+  display: flex;
+  gap: var(--space-1);
+  aspect-ratio: 4 / 3;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery__track {
+    scroll-behavior: smooth;
+  }
+}
+
+.gallery__slide {
+  position: relative;
+  flex: 0 0 100%;
+  overflow: hidden;
+  border-radius: var(--r-m);
+  background: var(--mist);
+  scroll-snap-align: start;
+}
+
+.gallery__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery__count {
+  position: absolute;
+  left: var(--space-2);
+  bottom: var(--space-2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--blue);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+/* Phone: the strip is the carousel (swipe sideways), the dots show where you are */
+.gallery__rail {
+  display: none;
+}
+
+.gallery__dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gallery__dots a {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line);
+  transition: width var(--t-fast), background-color var(--t-fast);
+}
+
+.gallery__dots a[aria-current] {
+  width: 22px;
+  background: var(--orange);
+}
+
+/* Wide: big image on the left, rail on the right (arrow up, three thumbnails, arrow down) */
+@media (min-width: 720px) {
+  .gallery--multi {
+    grid-template-columns: minmax(0, 1fr) 132px;
+    gap: var(--space-2);
+  }
+
+  .gallery__track {
+    aspect-ratio: auto;
+    height: var(--gallery-h);
+  }
+
+  .gallery__dots {
+    display: none;
+  }
+
+  .gallery__rail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    height: var(--gallery-h);
+  }
+
+  /* Without JavaScript the arrows do nothing: they are not shown and the thumbnails scroll */
+  html:not(.js) .gallery__arrow {
+    display: none;
+  }
+
+  .gallery__arrow {
+    flex: none;
+    display: grid;
+    place-items: center;
+    height: 44px;
+    border: 0;
+    border-radius: var(--r-s);
+    background: var(--mist);
+    color: var(--blue);
+    cursor: pointer;
+    transition: background-color var(--t-fast);
+  }
+
+  .gallery__arrow:hover:not(:disabled) {
+    background: var(--orange);
+    color: var(--ink);
+  }
+
+  .gallery__arrow:disabled {
+    opacity: .4;
+    cursor: default;
+  }
+
+  .gallery__thumbs {
+    position: relative;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .gallery__thumbs li {
+    flex: 0 0 calc((100% - 2 * var(--space-1)) / 3);
+  }
+
+  .gallery__thumbs a {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-radius: var(--r-s);
+    background: var(--mist);
+    opacity: .6;
+    transition: opacity var(--t-fast), border-color var(--t-fast);
+  }
+
+  .gallery__thumbs a[aria-current],
+  .gallery__thumbs a:hover,
+  .gallery__thumbs a:focus-visible {
+    opacity: 1;
+  }
+
+  .gallery__thumbs a[aria-current],
+  .gallery__thumbs a:hover {
+    border-color: var(--orange);
+  }
+
+  .gallery__thumbs img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

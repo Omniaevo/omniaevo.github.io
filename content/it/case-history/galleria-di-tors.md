@@ -8,13 +8,13 @@ imageAlt = "Galleria di Tors"
 client = ""
 sector = ""
 areas = ["engineering"]
+gallery = [
+  { image = "/uploads/case-history/galleria-di-tors-2.png", alt = "Galleria di Tors – immagine 2" },
+  { image = "/uploads/case-history/galleria-di-tors-3.png", alt = "Galleria di Tors – immagine 3" },
+  { image = "/uploads/case-history/galleria-di-tors-4.png", alt = "Galleria di Tors – immagine 4" },
+  { image = "/uploads/case-history/galleria-di-tors-5.png", alt = "Galleria di Tors – immagine 5" },
+]
 +++
-
-![Galleria di Tors – immagine 2](/uploads/case-history/galleria-di-tors-2.png)
-![Galleria di Tors – immagine 3](/uploads/case-history/galleria-di-tors-3.png)
-![Galleria di Tors – immagine 4](/uploads/case-history/galleria-di-tors-4.png)
-![Galleria di Tors – immagine 5](/uploads/case-history/galleria-di-tors-5.png)
-
 - Sistemi di sicurezza a norma europea (2004/54/CE) ed italiana (D.lgs 264 – 5 ottobre 2006), tra cui:
 - 8 acceleratori di ventilazione da 25KW
 - 8 Pannelli a messaggio variabile interni ed esterni

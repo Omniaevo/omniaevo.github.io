@@ -10,6 +10,8 @@ document.documentElement.classList.add("js");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const wraps = [...document.querySelectorAll(".panel-wrap")];
 const baseTitle = document.title;
+// Detail pages (case, service) keep their own title and open the section by themselves; their links leave the page.
+const detail = !!document.querySelector("[data-sheet]");
 
 // Strips: links with the button role. Enter already follows the link; Space does the same.
 wraps.forEach((wrap) => {
@@ -33,6 +35,7 @@ const openWrap = () => hashTarget()?.closest(".panel-wrap") ?? wraps.find((w) =>
 const sync = () => {
   const open = openWrap();
   wraps.forEach((wrap) => wrap.querySelector(".strip__link").setAttribute("aria-expanded", String(wrap === open)));
+  if (detail) return;
   const label = open?.querySelector(".strip__label").textContent;
   document.title = open && open !== wraps[0] ? `${label} — ${baseTitle.split(" — ")[0]}` : baseTitle;
 };
@@ -40,7 +43,7 @@ const sync = () => {
 // A hash that points inside a panel: scroll the panel to it (not the page), once the section has opened.
 const scrollToInner = () => {
   const target = hashTarget();
-  if (!target || target.classList.contains("panel-wrap")) return;
+  if (detail || !target || target.classList.contains("panel-wrap")) return;
   setTimeout(() => target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" }), reduceMotion.matches ? 0 : 400);
 };
 
@@ -52,6 +55,7 @@ scrollToInner();
 // Contacts button: if the first section is closed, open it first and wait for the strip animation to end,
 // then scroll to the contacts block (smooth, instant with reduced motion). Without JS the link still jumps.
 document.querySelector(".strip__contact")?.addEventListener("click", (event) => {
+  if (detail) return;
   const target = document.getElementById("contatti");
   const section = document.getElementById("omniaevo");
   if (!target || !section) return;
@@ -108,3 +112,38 @@ if (sheet) {
   });
   sheet.addEventListener("close", () => opener?.focus());
 }
+
+// Gallery of a detail sheet: arrows, thumbnails and dots follow the strip (swipe or scroll). Without JS the
+// strip scrolls and the links jump to #img-n.
+document.querySelectorAll(".gallery--multi").forEach((gallery) => {
+  const track = gallery.querySelector(".gallery__track");
+  const slides = [...track.children];
+  const thumbs = [...gallery.querySelectorAll(".gallery__thumbs a")];
+  const dots = [...gallery.querySelectorAll(".gallery__dots a")];
+  const list = gallery.querySelector(".gallery__thumbs");
+  const [prev, next] = ["prev", "next"].map((name) => gallery.querySelector(`[data-gallery="${name}"]`));
+  const behavior = () => (reduceMotion.matches ? "auto" : "smooth");
+
+  const current = () => slides.reduce((best, slide, i) =>
+    Math.abs(slide.offsetLeft - track.scrollLeft) < Math.abs(slides[best].offsetLeft - track.scrollLeft) ? i : best, 0);
+
+  const show = (i) => {
+    [thumbs, dots].forEach((items) => items.forEach((el, k) => el.toggleAttribute("aria-current", k === i)));
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    // Thumbnail window: three visible, it follows the selected image.
+    const first = thumbs[Math.max(0, Math.min(i - 1, slides.length - 3))].parentElement;
+    list.scrollTo({ top: first.offsetTop, behavior: behavior() });
+  };
+
+  const goTo = (i) => track.scrollTo({ left: slides[i].offsetLeft, behavior: behavior() });
+
+  track.addEventListener("scroll", () => show(current()), { passive: true });
+  prev.addEventListener("click", () => goTo(Math.max(0, current() - 1)));
+  next.addEventListener("click", () => goTo(Math.min(slides.length - 1, current() + 1)));
+  [...thumbs, ...dots].forEach((link, k) => link.addEventListener("click", (event) => {
+    event.preventDefault();
+    goTo(k % slides.length);
+  }));
+  show(0);
+});
