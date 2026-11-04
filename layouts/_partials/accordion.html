@@ -20,6 +20,8 @@
         {{ partial "sections/omniaevo.html" (dict "h1" $.h1) }}
         {{- else if eq $s.id "cosa-facciamo" }}
         {{ partial "sections/cosa-facciamo.html" . }}
+        {{- else if eq $s.id "case-history" }}
+        {{ partial "sections/case-history.html" . }}
         {{- else if eq $s.id "team" }}
         {{ partial "sections/team.html" . }}
         {{- else }}

@@ -76,6 +76,7 @@ reviewed = false
 
 [caseHistory]
   title = "Case history"
+  highlight = "history"
   intro = "" # TODO: the current site has no intro text for this section
 
 [contatti]

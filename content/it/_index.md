@@ -234,6 +234,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
 [caseHistory]
   title = "Case history"
+  highlight = "history"
   intro = "" # TODO: the current site has no intro text for this section
 
 [contatti]

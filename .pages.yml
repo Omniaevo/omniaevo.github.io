@@ -313,6 +313,10 @@ content:
         label: Titolo
         type: string
         description: Titolo della sezione.
+      - name: highlight
+        label: Parola evidenziata
+        type: string
+        description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
       - name: intro
         label: Introduzione
         type: text
@@ -965,6 +969,10 @@ content:
         label: Titolo
         type: string
         description: Titolo della sezione.
+      - name: highlight
+        label: Parola evidenziata
+        type: string
+        description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
       - name: intro
         label: Introduzione
         type: text

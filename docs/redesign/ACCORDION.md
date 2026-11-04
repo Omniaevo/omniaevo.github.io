@@ -150,7 +150,7 @@ Stato al 2026-11-04. I passi 1–4 sono stati fatti con i **testi di prima**: i 
 | 4 | Sezione 01 Cosa facciamo | 2 | **Fatto** (`e6316a2`): intro, 6 card delle aree con anteprima al passaggio e foglio, tecnologie come chip |
 | **4b** | **Testi nuovi nella 01**: nuove aree, gruppo AI, Settori (4) | 4 | Da fare |
 | 5 | Blocco Servizi dentro la 01 + Scaricabili + eseguibile (con i 4 servizi nuovi) | 4b | Da fare |
-| 6 | Sezione 02 Case history (card) | 2b | Da fare |
+| 6 | Sezione 02 Case history (card) | 2b | **Fatto**: 6 card uguali (copertina 16:9, meta, titolo 2 righe, testo 3 righe), contatore |
 | 7 | Sezione 04 Trasparenza (ex `04` poi `05`) | 2b | Da fare |
 | **7b** | **Sezione 03 Team**: citazione, Valori, riquadri foto + mansione | 2b | Da fare |
 | 8 | JS dell'accordion: pulsanti, cronologia, deep link, Contatti | 3–7b | Da fare |

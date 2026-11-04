@@ -1,0 +1,39 @@
+{{- /*
+  Section 02 Case history. Data: home front matter "caseHistory" (title, highlight, intro) and the
+  case-history collection (weight, then newest first).
+  Cards are outlined (they open a page), all the same size: 16:9 cover inset 8px, meta line (1 row:
+  client, else sector, else first area), title (2 rows), text (3 rows). No category is invented.
+*/ -}}
+{{- $cases := (site.GetPage "/case-history").RegularPages }}
+{{- with site.Home.Params.caseHistory }}
+<div class="cases">
+
+  <header>
+    <h2 class="cases__title" id="case-history-title">
+      {{- partial "mark-text.html" (dict "text" .title "highlight" .highlight) }}
+      <span class="cases__count" aria-label="{{ T "projects" }}: {{ len $cases }}">{{ len $cases }}</span>
+    </h2>
+    {{- with .intro }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  <ul class="case-list">
+    {{- range $cases }}
+    {{- $c := . }}
+    {{- $meta := or .Params.client .Params.sector }}
+    {{- if and (not $meta) .Params.areas }}{{ $meta = partial "area-label.html" (index .Params.areas 0) }}{{ end }}
+    <li>
+      <a class="case" href="{{ .RelPermalink }}">
+        {{- with .Params.image }}
+        <span class="case__cover">{{ partial "image-by-path.html" (dict "path" . "alt" $c.Params.imageAlt) }}</span>
+        {{- end }}
+        {{- with $meta }}<span class="case__meta">{{ . }}</span>{{ end }}
+        <h3 class="case__title">{{ .Title }}</h3>
+        {{- with .Description }}<p class="case__text">{{ . }}</p>{{ end }}
+        <span class="case__arrow">{{ partial "icon-arrow.html" }}</span>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+
+</div>
+{{- end }}
