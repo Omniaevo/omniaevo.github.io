@@ -37,48 +37,49 @@ reviewed = false
 
 [cosaFacciamo]
   title = "What we do"
+  highlight = "do"
 
   [cosaFacciamo.intro]
     title = "I.C.T. at 360°"
     paragraphs = [
       "OmniaEvo S.r.l. operates in all areas of information technology, from internetworking to industrial automation.",
-      "What sets Omniaevo apart is the team's ability to bring a broad range of skills to bear, delivering solutions of high technical quality that are simple and focused on the customer.",
-      "The added value of our services comes from working alongside the customer and involving them closely in every phase of the project.",
-      "Omniaevo focuses on consulting, design and implementation of advanced digital technologies in a variety of application fields. Our motto is “We make technology simple”.",
-      "The Omniaevo team can bring a broad range of skills to meet the requirements of the most demanding and cross-disciplinary projects, giving the customer a single point of contact for all their needs. We work side by side with the customer to suggest solutions that lead to tangible gains in value, and by involving them throughout every project we create a product that is truly tailor-made.",
+      "What sets Omniaevo apart is the team's ability to bring a broad range of skills to bear, delivering solutions of high technical quality that are **simple and focused on the customer**.",
+      "The added value of our services comes from working alongside the customer and **involving them closely** in every phase of the project.",
+      "Omniaevo focuses on consulting, design and implementation of advanced digital technologies in a variety of application fields. Our motto is “**We make technology simple**”.",
+      "The Omniaevo team can bring a broad range of skills to meet the requirements of the most demanding and cross-disciplinary projects, giving the customer a **single point of contact** for all their needs. We work side by side with the customer to suggest solutions that lead to tangible gains in value, and by involving them throughout every project we create a product that is truly tailor-made.",
       "We propose sustainable developments and offer advanced, cutting-edge services to anticipate market demand.",
     ]
-    closing = "OmniaEvo S.r.l. operates in all areas of information technology, from internetworking to industrial automation. We specialise in building customised, high-profile, complex, vertical, turnkey technology solutions. We offer high-level personalised support."
+    closing = "OmniaEvo S.r.l. operates in all areas of information technology, from internetworking to industrial automation. We specialise in building customised, high-profile, complex, vertical, turnkey technology solutions. We offer **high-level personalised support**."
 
   [[cosaFacciamo.areas]]
     title = "Engineering"
     summary = "Solutions for industry and environmental monitoring"
-    text = "We design solutions for industry: automation, robotics, process control, supervision, measurement and monitoring systems, vision systems, energy management, automated welding, production control. We also develop applications for geological and environmental monitoring."
+    text = "We design solutions for industry: automation, robotics, process control, supervision, measurement and monitoring systems, vision systems, energy management, automated welding, production control. We also develop applications for **geological and environmental monitoring**."
 
   [[cosaFacciamo.areas]]
     title = "Network"
     summary = "Design and installation of network communication systems"
-    text = "We design and install communication systems: copper and fibre cabling, wireless connectivity, firewalls, VPNs, multi-homing solutions, radio links, civil and industrial fieldbuses, thin clients, PCoIP, desktop virtualization."
+    text = "We design and install communication systems: **copper and fibre cabling**, wireless connectivity, firewalls, VPNs, multi-homing solutions, radio links, civil and industrial fieldbuses, thin clients, PCoIP, desktop virtualization."
 
   [[cosaFacciamo.areas]]
     title = "Research"
     summary = "Processes, algorithms, mathematical modelling, data collection and analysis"
-    text = "We study processes, algorithms, mathematical modelling, and the collection and analysis of data (scientific, economic, marketing, …), data fusion and geographic analysis. We design custom digital and analogue electronics. We develop laboratory software and hardware and software prototypes."
+    text = "We study processes, algorithms, **mathematical modelling**, and the collection and analysis of data (scientific, economic, marketing, …), data fusion and geographic analysis. We design custom digital and analogue electronics. We develop laboratory software and hardware and software prototypes."
 
   [[cosaFacciamo.areas]]
     title = "Systems"
     summary = "Computing and virtualization platforms, technical support"
-    text = "We design and set up computing platforms, virtualization, storage, hardware clustering, application clustering and disaster recovery. We provide on-site and off-site technical support. We build distributed databases, big data and business intelligence."
+    text = "We design and set up computing platforms, virtualization, storage, hardware clustering, application clustering and **disaster recovery**. We provide on-site and off-site technical support. We build distributed databases, big data and business intelligence."
 
   [[cosaFacciamo.areas]]
     title = "Software"
     summary = "Software and firmware for server, client and mobile environments"
-    text = "We design complex, distributed and scalable architectures based on microservices in Docker containers, with synchronous or asynchronous communication using Kafka or ZeroMQ message queues. Scalability is managed by the Kubernetes orchestrator."
+    text = "We design complex, distributed and scalable architectures based on **microservices in Docker containers**, with synchronous or asynchronous communication using Kafka or ZeroMQ message queues. Scalability is managed by the Kubernetes orchestrator."
 
   [[cosaFacciamo.areas]]
     title = "Web Apps"
     summary = "Complete web-based systems for every application"
-    text = "We develop complete web-based systems for business process management, company vehicle fleets and car sharing, data analysis and visualisation, document management, company databases, production tracking, remote supervision and monitoring, statistical questionnaires, asset management, GIS and dynamic mapping."
+    text = "We develop complete web-based systems for business process management, company vehicle fleets and car sharing, data analysis and visualisation, document management, company databases, production tracking, remote supervision and monitoring, statistical questionnaires, asset management, **GIS and dynamic mapping**."
 
   [[cosaFacciamo.lists]]
     title = "Our fields of activity"
@@ -98,7 +99,7 @@ reviewed = false
 
   [[cosaFacciamo.lists]]
     title = "Programming"
-    items = ["Java,", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, continuous integration and deployment"]
+    items = ["Java", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, continuous integration and deployment"]
 
   [[cosaFacciamo.lists]]
     title = "Automation"

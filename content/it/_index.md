@@ -36,48 +36,49 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
 [cosaFacciamo]
   title = "Cosa facciamo"
+  highlight = "facciamo"
 
   [cosaFacciamo.intro]
     title = "I.C.T a 360°"
     paragraphs = [
       "OmniaEvo S.r.l. opera in tutti i settori dell’information technology, dall’internetworking all’automazione industriale.",
-      "L’attività di Omniaevo si distingue per la capacità del Team di mettere in campo un ampio spettro di competenze volte a fornire soluzioni di alta qualità tecnica, semplici e centrate sul cliente.",
-      "Il valore aggiunto dei servizi offerti è dato dall’affiancamento e stretto coinvolgimento del cliente in ogni fase progettuale.",
-      "Omniaevo è focalizzata nella offerta di servizi di consulenza, progettazione e realizzazione di tecnologie digitali avanzate in vari settori applicativi. Il nostro motto è “Rendiamo semplice la tecnologia”.",
-      "Il team Omniaevo è in grado di mettere in campo un ampio spettro di competenze finalizzata a soddisfare i requisiti dei progetti più impegnativi e trasversali, fornendo al cliente un interlocutore unico per le proprie esigenze. Lavoriamo fianco a fianco con cliente per indicargli soluzioni che conducono a tangibili incrementi di valore, coinvolgendolo per tutta la durata di ogni singolo progetto riusciamo a confezionare un prodotto veramente realizzato “su misura”.",
+      "L’attività di Omniaevo si distingue per la capacità del Team di mettere in campo un ampio spettro di competenze volte a fornire **soluzioni di alta qualità tecnica**, semplici e centrate sul cliente.",
+      "Il valore aggiunto dei servizi offerti è dato dall’affiancamento e stretto **coinvolgimento del cliente** in ogni fase progettuale.",
+      "Omniaevo è focalizzata nella offerta di servizi di consulenza, progettazione e realizzazione di tecnologie digitali avanzate in vari settori applicativi. Il nostro motto è “**Rendiamo semplice la tecnologia**”.",
+      "Il team Omniaevo è in grado di mettere in campo un ampio spettro di competenze finalizzata a soddisfare i requisiti dei progetti più impegnativi e trasversali, fornendo al cliente un **interlocutore unico** per le proprie esigenze. Lavoriamo fianco a fianco con cliente per indicargli soluzioni che conducono a tangibili incrementi di valore, coinvolgendolo per tutta la durata di ogni singolo progetto riusciamo a confezionare un prodotto veramente realizzato “su misura”.",
       "Proponiamo evoluzioni sostenibili e offriamo servizi evoluti d’avanguardia per anticipare la richiesta del mercato.",
     ]
-    closing = "OmniaEvo S.r.l. opera in tutti i settori dell’information technology, dall’internetworking all’automazione industriale. Siamo specializzati nella realizzazione di soluzioni tecnologiche personalizzate, di alto profilo, complesse, verticali e chiavi in mano. Offriamo assistenza personalizzata di alto livello."
+    closing = "OmniaEvo S.r.l. opera in tutti i settori dell’information technology, dall’internetworking all’automazione industriale. Siamo specializzati nella realizzazione di soluzioni tecnologiche personalizzate, di alto profilo, complesse, verticali e chiavi in mano. Offriamo **assistenza personalizzata di alto livello**."
 
   [[cosaFacciamo.areas]]
     title = "Engineering"
     summary = "Soluzioni per l’industria e il monitoraggio ambientale"
-    text = "Progettiamo soluzioni per l’industria: automazione, robotica, controllo di processo, supervisione, sistemi di misura e monitoraggio, sistemi di visione, gestione energia, saldatura automatizzata, controllo produzione. Inoltre sviluppiamo applicazioni per monitoraggio geologico ed ambientale."
+    text = "Progettiamo soluzioni per l’industria: automazione, robotica, controllo di processo, supervisione, sistemi di misura e monitoraggio, sistemi di visione, gestione energia, saldatura automatizzata, controllo produzione. Inoltre sviluppiamo applicazioni per **monitoraggio geologico ed ambientale**."
 
   [[cosaFacciamo.areas]]
     title = "Network"
     summary = "Progettazione e installazione di sistemi di comunicazione di rete"
-    text = "Progettiamo e installiamo sistemi di comunicazione: cablaggi rame e fibra, connettività wireless, firewall, VPN, soluzioni multi-homing, ponti radio, bus di campo civili ed industriali, Thin client, PCoIP, desktop virtualization."
+    text = "Progettiamo e installiamo sistemi di comunicazione: **cablaggi rame e fibra**, connettività wireless, firewall, VPN, soluzioni multi-homing, ponti radio, bus di campo civili ed industriali, Thin client, PCoIP, desktop virtualization."
 
   [[cosaFacciamo.areas]]
     title = "Research"
     summary = "Processi, algoritmi, modellazione matematica, raccolta ed analisi dati"
-    text = "Studiamo processi, algoritmi, modellazione matematica, raccolta ed analisi dati (scientifici, economici, marketing,…), data-fusion, analisi geografiche. Progettiamo elettronica digitale ed analogica personalizzata. Sviluppiamo software di laboratorio e prototipizzazione hardware e software."
+    text = "Studiamo processi, algoritmi, **modellazione matematica**, raccolta ed analisi dati (scientifici, economici, marketing,…), data-fusion, analisi geografiche. Progettiamo elettronica digitale ed analogica personalizzata. Sviluppiamo software di laboratorio e prototipizzazione hardware e software."
 
   [[cosaFacciamo.areas]]
     title = "Systems"
     summary = "Piattaforme di elaborazione e virtualizzazione, assistenza tecnica"
-    text = "Progettiamo ed allestiamo piattaforme di elaborazione, virtualizzazione, storage, clustering hardware, clustering applicativo, disaster recovery. Forniamo assistenza tecnica on-site ed off-site. Realizziamo databases distribuiti, big data, business intelligence."
+    text = "Progettiamo ed allestiamo piattaforme di elaborazione, virtualizzazione, storage, clustering hardware, clustering applicativo, **disaster recovery**. Forniamo assistenza tecnica on-site ed off-site. Realizziamo databases distribuiti, big data, business intelligence."
 
   [[cosaFacciamo.areas]]
     title = "Software"
     summary = "Software e firmware per ambienti server, client e mobile"
-    text = "Progettiamo architetture complesse distribuite e scalabili, basate su microservizi in container docker, con comunicazione sincrona o asincrona sfruttando code messaggi Kafka o zeroMQ. Scalabilità gestita tramite orchestratore Kubernetes."
+    text = "Progettiamo architetture complesse distribuite e scalabili, basate su **microservizi in container docker**, con comunicazione sincrona o asincrona sfruttando code messaggi Kafka o zeroMQ. Scalabilità gestita tramite orchestratore Kubernetes."
 
   [[cosaFacciamo.areas]]
     title = "Web Apps"
     summary = "Sistemi completi orientati al web per ogni applicazione"
-    text = "Sviluppiamo sistemi completi orientati al web, per la gestione di processi aziendali, flotte veicoli aziendali e car sharing, analisi e visualizzazione dati, gestioni documentali, database aziendali, tracking produzione, supervisioni e monitoraggi remoti, questionari statistici, gestione assets, GIS e cartografie dinamiche."
+    text = "Sviluppiamo sistemi completi orientati al web, per la gestione di processi aziendali, flotte veicoli aziendali e car sharing, analisi e visualizzazione dati, gestioni documentali, database aziendali, tracking produzione, supervisioni e monitoraggi remoti, questionari statistici, gestione assets, **GIS e cartografie dinamiche**."
 
   [[cosaFacciamo.lists]]
     title = "I nostri campi di attività"
@@ -97,7 +98,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
   [[cosaFacciamo.lists]]
     title = "Programmazione"
-    items = ["Java,", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, Continuous integration e deployement"]
+    items = ["Java", "C#, C/C++", "NodeJS", "PHP", "Swift", "Zend Framework", "Code Igniter", "Angular", "JQuery/Bootstrap", "Nest", "Loopback", "Git/GitLab, Continuous integration e deployement"]
 
   [[cosaFacciamo.lists]]
     title = "Automazione"

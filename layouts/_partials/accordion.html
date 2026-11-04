@@ -18,6 +18,8 @@
       <div class="panel__inner">
         {{- if eq $s.id "omniaevo" }}
         {{ partial "sections/omniaevo.html" (dict "h1" $.h1) }}
+        {{- else if eq $s.id "cosa-facciamo" }}
+        {{ partial "sections/cosa-facciamo.html" . }}
         {{- else }}
         <h2 id="{{ $s.id }}-title">{{ $s.label }}</h2>
         {{- end }}

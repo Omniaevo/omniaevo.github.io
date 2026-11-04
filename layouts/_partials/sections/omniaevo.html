@@ -13,13 +13,8 @@
   <div class="hero">
     <p class="hero__eyebrow">{{ $c.company }} · {{ $c.address.city }} ({{ $c.address.province }}){{ with $c.foundedYear }} · {{ T "since" . }}{{ end }}</p>
     {{- /* hero.highlight: one word of the title gets the orange mark. Only on the page title (h1). */}}
-    {{- $title := .title | htmlEscape }}
-    {{- with .highlight }}
-      {{- if and $.h1 (strings.Contains $title (htmlEscape .)) }}
-        {{- $title = strings.Replace $title (htmlEscape .) (printf `<span class="mark">%s</span>` (htmlEscape .)) 1 }}
-      {{- else if $.h1 }}{{ warnf "hero.highlight %q not found in the title" . }}{{ end }}
-    {{- end }}
-    {{- if $.h1 }}<h1 class="hero__title">{{ $title | safeHTML }}</h1>{{ else }}<h2 class="hero__title">{{ $title | safeHTML }}</h2>{{ end }}
+    {{- $title := partial "mark-text.html" (dict "text" .title "highlight" (cond $.h1 .highlight "")) }}
+    {{- if $.h1 }}<h1 class="hero__title">{{ $title }}</h1>{{ else }}<h2 class="hero__title">{{ $title }}</h2>{{ end }}
     {{- with .text }}<p class="hero__text">{{ . }}</p>{{ end }}
   </div>
   {{- end }}

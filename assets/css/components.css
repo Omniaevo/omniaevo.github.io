@@ -348,7 +348,8 @@
   grid-column: 1 / -1;
 }
 
-.about h3 {
+.about h3,
+.what h3 {
   margin-bottom: var(--space-1);
   font-family: var(--font-body);
   font-size: var(--fs-body);
@@ -644,4 +645,340 @@
 
 .legal-row p:last-child {
   margin-left: auto;
+}
+
+/* ------------------------------------------------- Section 01 (Cosa facciamo) */
+.what {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.what h2,
+.what h3,
+.what p {
+  margin: 0;
+}
+
+.what header p + p {
+  margin-top: var(--space-2);
+}
+
+.what header h3 {
+  margin-top: var(--space-3);
+}
+
+.what__title {
+  font-size: var(--fs-display);
+  line-height: .95;
+}
+
+/* Key words in running text: an orange band a third of the font size high, at the very bottom of the
+   text (the title mark sits higher, behind the letters). Semibold, not animated. */
+.what p strong {
+  padding-inline: .08em;
+  background: linear-gradient(var(--orange), var(--orange)) no-repeat 0 100% / 100% .33em;
+  font-weight: 600;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.what__lead {
+  margin-top: var(--space-1);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+.what__more {
+  max-width: 70ch;
+  margin-top: var(--space-2);
+}
+
+.what__more summary {
+  padding-block: 10px;
+  color: var(--blue);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.what__more p {
+  margin-top: 1em;
+}
+
+.what__more dt {
+  margin-top: var(--space-2);
+  font-weight: 600;
+}
+
+/* Areas: filled cards (they only inform), equal size, max 3 per row.
+   Rest: big number, title, summary. Pointer devices, hover or focus: white card with a line, number and
+   title small on one row, full text. Touch devices: the card stays at rest and a tap opens the sheet. */
+.areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(240px, calc((100% - 2 * var(--space-2)) / 3)), 1fr));
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: 24rem;
+  padding: var(--space-3);
+  border-radius: var(--r-m);
+  background: var(--mist);
+  box-shadow: inset 0 0 0 var(--bw) transparent;
+  transition: background-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+/* Number and title: stacked at rest, one row when revealed (the number goes from a full-width line to a
+   narrow one, so the title moves up next to it). */
+.area__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.area__num {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+  transition: width var(--t-fast), font-size var(--t-fast), color var(--t-fast);
+}
+
+.what .area__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+  transition: font-size var(--t-fast);
+}
+
+/* Summary and full text share one box and cross-fade */
+.area__body {
+  display: grid;
+}
+
+.area__summary,
+.area__full {
+  grid-area: 1 / 1;
+  transition: opacity var(--t-fast);
+}
+
+.area__summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  height: 4.8em;
+}
+
+.area__full {
+  opacity: 0;
+}
+
+.area__hint {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  transition: opacity var(--t-fast);
+}
+
+@media (hover: hover) {
+  .area:hover,
+  .area:focus-within {
+    background: var(--white);
+    box-shadow: inset 0 0 0 var(--bw) var(--line);
+  }
+
+  .area:hover .area__num,
+  .area:focus-within .area__num {
+    width: 2em;
+    font-size: var(--fs-small);
+    color: var(--ink);
+  }
+
+  .area:hover .area__title,
+  .area:focus-within .area__title {
+    font-size: var(--fs-body);
+  }
+
+  .area:hover .area__summary,
+  .area:focus-within .area__summary {
+    opacity: 0;
+  }
+
+  .area:hover .area__full,
+  .area:focus-within .area__full {
+    opacity: 1;
+    transition-delay: .1s;
+  }
+
+  .area:hover .area__hint,
+  .area:focus-within .area__hint {
+    opacity: 0;
+  }
+}
+
+/* Touch devices: compact cards; the full text stays for assistive technology until the sheet opens.
+   Without JavaScript there is no sheet, so the full text replaces the summary. */
+@media (hover: none) {
+  .area {
+    min-height: 0;
+    padding-bottom: calc(var(--space-3) + 44px + var(--space-1));
+    cursor: pointer;
+  }
+
+  .area__full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  html:not(.js) .area__full {
+    position: static;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    opacity: 1;
+  }
+
+  html:not(.js) .area__summary,
+  html:not(.js) .area__hint {
+    display: none;
+  }
+}
+
+/* Bottom sheet (touch devices): one shared dialog, filled by app.js */
+.sheet {
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: none;
+  max-height: 85dvh;
+  margin: 0;
+  padding: var(--space-1) var(--space-3) var(--space-4);
+  overflow-y: auto;
+  border: 0;
+  border-radius: var(--r-m) var(--r-m) 0 0;
+  background: var(--white);
+  color: var(--ink);
+  transform: translateY(100%);
+  transition: transform var(--t-slow), overlay var(--t-slow) allow-discrete, display var(--t-slow) allow-discrete;
+}
+
+.sheet[open] {
+  transform: none;
+}
+
+@starting-style {
+  .sheet[open] {
+    transform: translateY(100%);
+  }
+}
+
+.sheet::backdrop {
+  background: var(--backdrop);
+}
+
+.sheet__grip {
+  width: 44px;
+  height: 4px;
+  margin: 0 auto var(--space-1);
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.sheet__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.sheet__label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--orange-dark);
+}
+
+.sheet__close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* Same number + title row as the revealed card, with a larger title */
+.sheet .area__num {
+  width: 2em;
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+
+.sheet .area__title {
+  font-size: var(--fs-h3);
+}
+
+.sheet__text {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 720px) {
+  .sheet {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+}
+
+/* Technology lists */
+.stacks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 6px var(--space-2);
+  border-radius: 999px;
+  background: var(--mist);
+  color: var(--blue);
+  font-size: var(--fs-small);
+  font-weight: 600;
 }

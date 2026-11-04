@@ -27,6 +27,10 @@ Classe `.mark`: banda arancio `--orange` alta circa un terzo del corpo, **dietro
 
 **Dove si usa:** solo sui titoli di pagina (`h1`), una sola parola, una per pannello. Mai sui titoli di blocco (`h2`), sui titoli di card, né sui link. Home: «semplici» (IT) e «Simple» (EN), campo `hero.highlight` nel CMS. Gli altri titoli di pagina hanno un campo analogo: «Cosa **facciamo**», «**Servizi**», «Case **history**», «**Trasparenza**» (approvato).
 
+## Parole chiave nel testo
+
+Nei testi lunghi, **poche** parole chiave (al massimo una per paragrafo o per area) hanno una banda `--orange` alta un terzo del corpo (0,33 em) che parte dal fondo del testo, più bassa di quella dei titoli (`.mark`, centrata dietro le lettere); peso 600, testo `--ink`. Non si anima e non cambia al passaggio del mouse: così non si confonde con un link (blu, sottolineato). Nel CMS si scrive la parola tra due asterischi (`**parola**`); il sito la rende con `<strong>`. Oggi vale nei testi di «Cosa facciamo» (`.what p strong`); si estende alle altre sezioni quando servono.
+
 ## Icone
 
 Una famiglia, SVG inline (`layouts/_partials/icon.html`), griglia 24, tratto 1,8, angoli arrotondati, `currentColor`, `aria-hidden`. Si usano dove aiutano a riconoscere: contatti, tipo di file, azioni dei pulsanti. **Non** nelle card delle aree né nelle case history. Misure: 22 px in un cerchio da 44 px (36 px sotto i 560 px), 18 px nei pulsanti. Il cerchio è `--mist`; al passaggio diventa `--orange` con icona `--ink`. Da sola solo nel pulsante Contatti, con nome accessibile.

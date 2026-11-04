@@ -196,6 +196,12 @@ other = "case history"
 [factNetwork]
 other = "rete d’impresa di cui facciamo parte"
 
+[expandMore]
+other = "Approfondisci"
+
+[areaDetails]
+other = "Dettagli delle aree"
+
 [companyData]
 other = "Dati societari"
 
@@ -222,3 +228,6 @@ other = "Commerciale e amministrazione"
 
 [contactGroupCertified]
 other = "Posta certificata"
+
+[close]
+other = "Chiudi"

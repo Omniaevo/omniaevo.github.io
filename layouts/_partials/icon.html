@@ -9,5 +9,7 @@
   "support" `<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m5.6 5.6 3.9 3.9m5 5 3.9 3.9m0-12.8-3.9 3.9m-5 5-3.9 3.9"/>`
   "sales" `<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.2"/>`
   "admin" `<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>`
+  "plus" `<path d="M12 5v14M5 12h14"/>`
+  "close" `<path d="M6 6l12 12M18 6 6 18"/>`
   "flag" `<path d="M5 21V4h12l-2 4 2 4H5"/>` }}
 {{- with index $paths . }}<svg class="icon" aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{{ . | safeHTML }}</svg>{{ else }}{{ warnf "icon.html: unknown icon %q" . }}{{ end }}
