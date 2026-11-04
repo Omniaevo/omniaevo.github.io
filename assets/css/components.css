@@ -180,3 +180,320 @@
 .panel__inner h2 {
   font-size: var(--fs-h2);
 }
+
+/* ----------------------------------------------------------- Buttons, links */
+.panel a:where(:not([class])) {
+  color: var(--c-blue);
+  font-weight: 600;
+}
+
+.panel a:where(:not([class])):hover {
+  color: var(--c-strip-3);
+}
+
+/* Orange pill, ink text */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  font-size: .875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.btn .icon {
+  flex: none;
+}
+
+/* ------------------------------------------------------- Section 00 (home) */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.home h2 {
+  margin: 0;
+}
+
+.hero__eyebrow {
+  margin-bottom: 20px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--c-orange-text);
+}
+
+.hero__title {
+  margin-bottom: 24px;
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -0.04em;
+}
+
+.hero__title span {
+  color: var(--c-orange);
+}
+
+.hero__text {
+  max-width: 50ch;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+/* Facts: three cells joined by 2 px lines */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid var(--c-line);
+  border-radius: var(--r-m);
+  background: var(--c-line);
+  list-style: none;
+}
+
+.facts li {
+  padding: 24px;
+  background: var(--c-white);
+}
+
+.facts__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--c-blue);
+}
+
+.facts__label {
+  display: block;
+  margin-top: 4px;
+  color: var(--c-muted);
+}
+
+.facts__note {
+  margin-top: -40px; /* closes the 64 px gap of .home to 24 px */
+  max-width: 70ch;
+  color: var(--c-muted);
+}
+
+/* Chi siamo: Storia and Oggi stacked on the left, the management card on the right */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+}
+
+.about h2 {
+  grid-column: 1 / -1;
+}
+
+.about h3 {
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--c-orange-text);
+}
+
+.about p {
+  line-height: 1.7;
+}
+
+.about p + p {
+  margin-top: 1em;
+}
+
+.about__person {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px 24px;
+  padding: 24px;
+  border-radius: var(--r-m);
+  background: var(--c-surface);
+}
+
+.about__person p {
+  font-size: .9375rem;
+  line-height: 1.6;
+}
+
+.about__photo {
+  flex: 0 0 140px;
+}
+
+.about__photo img {
+  width: 140px;
+  height: 175px;
+  border-radius: var(--r-s);
+  background: var(--c-white);
+  object-fit: cover;
+}
+
+.about__text {
+  flex: 1 1 220px;
+}
+
+@media (min-width: 760px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+
+  .about > div:not(.about__person) {
+    grid-column: 1;
+  }
+
+  .about__person {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+  }
+}
+
+.about__name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+/* Company details */
+.legal-data {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px 40px;
+  padding: 28px 32px;
+  border-radius: var(--r-m);
+  background: var(--c-surface);
+}
+
+.legal-data h2 {
+  flex: 1 1 100%;
+  font-family: var(--font-body);
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.legal-data p {
+  font-size: .875rem;
+}
+
+.legal-data span,
+.contacts span {
+  display: block;
+  color: var(--c-muted);
+}
+
+.legal-data .btn {
+  margin-left: auto;
+}
+
+.placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-muted);
+}
+
+/* Contatti: intro and registered office on the first row, then equal small cards */
+.contacts {
+  display: grid;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 2px solid var(--c-ink);
+  scroll-margin-top: 32px;
+}
+
+.contacts h2 {
+  font-size: 2rem;
+}
+
+.contacts__top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+}
+
+.contacts__intro {
+  align-self: center;
+  max-width: 44ch;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+.contacts__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+
+/* One column on phones: cards keep their own height. Otherwise all rows are equal. */
+@media (min-width: 600px) {
+  .contacts__list {
+    grid-auto-rows: 1fr;
+  }
+}
+
+.contacts__item {
+  padding: 16px 20px;
+  border-radius: var(--r-s);
+  background: var(--c-surface);
+  font-size: .9375rem;
+  overflow-wrap: anywhere;
+}
+
+.contacts__item :is(dt, span) {
+  display: block;
+  margin-bottom: 4px;
+  font-size: .8125rem;
+  color: var(--c-muted);
+}
+
+.contacts__item dd {
+  margin: 0;
+}
+
+.contacts__office address {
+  font-style: normal;
+}
+
+.legal-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--c-line);
+  font-size: .875rem;
+  color: var(--c-muted);
+}
+
+.legal-row ul {
+  display: flex;
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-row a {
+  display: inline-block;
+  padding-block: 12px; /* target height ≥ 44 px */
+}
+
+.legal-row p:last-child {
+  margin-left: auto;
+}

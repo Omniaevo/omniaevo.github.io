@@ -1,7 +1,7 @@
 {{- /*
   Accordion of five strips. Without JavaScript the open section follows :target
   (see layout.css); with no hash, the section named in "open" is open.
-  Context: dict "open" <section id>.
+  Context: dict "open" <section id>, "h1" <bool: hero title is the page <h1>>.
 */ -}}
 {{- $open := .open | default "omniaevo" }}
 {{- $sections := slice
@@ -14,9 +14,13 @@
   {{- range $i, $s := $sections }}
   <section class="panel-wrap" id="{{ $s.id }}" data-tone="{{ $i }}"{{ if eq $s.id $open }} data-open{{ end }}>
     {{ partial "strip.html" (dict "index" $i "label" $s.label "id" $s.id) }}
-    <div class="panel" id="{{ $s.id }}-panel" role="region" aria-labelledby="{{ $s.id }}-title">
+    <div class="panel" id="{{ $s.id }}-panel" role="region" aria-label="{{ $s.label }}">
       <div class="panel__inner">
+        {{- if eq $s.id "omniaevo" }}
+        {{ partial "sections/omniaevo.html" (dict "h1" $.h1) }}
+        {{- else }}
         <h2 id="{{ $s.id }}-title">{{ $s.label }}</h2>
+        {{- end }}
       </div>
     </div>
   </section>

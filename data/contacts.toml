@@ -4,6 +4,11 @@ vat = '02494210301'
 phone = '+39 0432 1845421'
 phoneHref = '+3904321845421'
 fax = '+39 0432 901514'
+foundedYear = 2007
+
+# TODO: values not available yet. Empty = the site shows a placeholder.
+rea = ''
+shareCapital = ''
 
 [address]
   street = 'Viale Veneto, 33/11'

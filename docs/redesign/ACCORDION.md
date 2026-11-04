@@ -29,7 +29,7 @@
 
 | Sezione | Contenuto | Origine dei dati |
 |---|---|---|
-| `00` Omniaevo | Hero (claim + testo), 3 riquadri di fatti, Chi siamo (storia, oggi, management con foto), Dati societari + pulsante «Trasparenza →», **Contatti** (tutti i recapiti), riga legale | `content/*/_index.md` (`hero`, `chiSiamo`), `data/contacts.toml` |
+| `00` Omniaevo | Hero (riga «Omniaevo S.r.l. · Codroipo (UD) · dal 2007», claim con l'ultima parola arancio, testo; niente pulsante), 3 riquadri di fatti uniti da linee (con il testo di VIDIM sotto), Chi siamo (storia, oggi, management con foto 96×120 accanto al testo), Dati societari (segnaposto «[da inserire]» per REA e capitale sociale finché mancano) + pulsante «Trasparenza →», **Contatti** (griglia etichetta + valore, tutti i recapiti), riga legale | `content/*/_index.md` (`hero`, `chiSiamo`), `data/contacts.toml` |
 | `01` Cosa facciamo | Intro, 6 aree numerate `00`–`05`, tecnologie come etichette | `cosaFacciamo` di `_index.md` |
 | `02` Servizi | Elenco servizi (aprono il foglio) + **Scaricabili**: `omniaevoremote.exe` (ripristinato) e allegati | collection `servizi` + nuovo campo `downloads` (vedi sotto) |
 | `03` Case history | Card tutte uguali (copertina, categoria, titolo 2 righe, descrizione 3 righe, troncati con «…»). Aprono il foglio | collection `case-history` |
@@ -37,10 +37,13 @@
 
 I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007), numero delle aree (contato dai dati), rete VIDIM. **Niente contatori inventati.**
 
+> **Regola di stile:** il mockup è la sola fonte. Niente stili, colori, forme o componenti presi da altrove. Dove il mockup non copre un caso (es. testo dei dati che il mockup ha riassunto, stato di focus) si sceglie la soluzione più vicina al mockup e la si elenca tra le differenze nel resoconto del passo.
+
 ### Interfaccia (dettagli già approvati sul mockup)
 
 - **Prima striscia** bianca, unita al contenuto della `00`: in alto il **logo** (marchio di `_legacy/assets/logo.svg`, blu), al centro l'etichetta verticale, in basso **un solo pulsante Contatti** (solo icona, nome accessibile «Contatti») e sotto il segnalatore. Il pulsante apre la `00` e scorre al blocco Contatti.
 - **Altre strisce**: numero in alto, etichetta verticale, segnalatore in basso. Colori: `#11307a`, `#0d276a`, `#0a1f58`; Trasparenza arancio `#e08f14` con testo inchiostro. Striscia aperta: barra di 4 px a destra (arancio; blu sulla striscia arancio).
+- **Titoli e testo**: titoli in blu `--c-blue`, peso 800 (titoli di pagina e sezione) o 700 (titoli piccoli). Sottotitoli piccoli (es. «Storia», «Omniaevo oggi») in corpo 16 px, `--c-orange-text`. Pulsanti: pillola arancio con testo inchiostro, 44 px, 14 px grassetto. Link: blu, peso 600.
 - **Allineamento**: logo e numeri stanno nello **stesso riquadro** (52 × 52 px desktop, 36 × 36 px mobile), così le etichette partono tutte dalla stessa altezza.
 - **Segnalatore**: SVG, mai caratteri di testo. Chiuso = anello + «+». Aperto = cerchio pieno del colore del testo con punto centrale del colore della striscia (su striscia blu: cerchio bianco, punto blu). I cerchi sono concentrici per costruzione.
 - **Card**: stessa dimensione in tutta la griglia. Altezze fisse e `line-clamp` (categoria 1 riga, titolo 2, descrizione 3). Il testo completo è nel foglio.
@@ -63,7 +66,7 @@ I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007)
 | Scaricabili | **Nuovo campo `downloads`** in `servizi` di `_index.md` (titolo, file, nota), modificabile dal CMS. Il manuale PEC resta allegato del servizio PEC e compare anche qui |
 | Eseguibile | `static/omniaevoremote.exe`, **stesso URL** del sito vecchio (`/omniaevoremote.exe`). Il file lo fornisce l'utente; finché manca, la voce non compare. Quando arriva: copiarlo in `static/` e registrare dimensione e SHA-256 |
 | Titoli | Un solo `<h1>` per pagina. Home: `<h1>` = claim dell'hero; titoli di sezione `<h2>`. Pagine di dettaglio: `<h1>` = titolo nel foglio; l'hero scende a `<h2>` |
-| Accessibilità | Strisce = `<button aria-expanded aria-controls>` (con JS) o `<a>` (senza JS); pannelli `role="region"`; pannelli chiusi `inert` (niente focus su contenuti nascosti); contrasto AA; target ≥ 44 px; focus visibile arancio 3 px |
+| Accessibilità | Strisce = `<button aria-expanded aria-controls>` (con JS) o `<a>` (senza JS); pannelli `role="region"`; pannelli chiusi `inert` (niente focus su contenuti nascosti); contrasto AA; target ≥ 44 px; focus visibile 3 px: inchiostro su fondi chiari, arancio sulle strisce blu (l'arancio su bianco fa solo 2,6:1, sotto il 3:1 richiesto; il mockup usa arancio ovunque, differenza voluta) |
 | Stampa | Foglio di stile `print`: tutte le sezioni aperte una dopo l'altra, strisce nascoste |
 
 ### Risposte alle domande aperte (2026-11-04)
@@ -103,10 +106,11 @@ I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007)
   --panel-w: calc(100vw - var(--strip-count) * var(--strip));  /* final width of the open panel */
   /* Shape and motion */
   --r-s: 12px;  --r-m: 16px;  --r-sheet: 24px;
-  --t-strip: .6s cubic-bezier(.7, 0, .2, 1);  --t-sheet: .5s cubic-bezier(.2, .8, .2, 1);
+  --t-strip-time: .6s;
+  --t-strip: var(--t-strip-time) cubic-bezier(.7, 0, .2, 1);  --t-sheet: .5s cubic-bezier(.2, .8, .2, 1);
 }
 ```
-Il passo 1 verifica i contrasti (in particolare `--c-orange-text` su bianco e il testo inchiostro su arancio) e corregge i valori se servono.
+Il passo 1 ha verificato i contrasti: `--c-orange-text` va bene solo su bianco (4,7:1; su `--c-surface` fa 4,16:1); il testo su arancio è sempre inchiostro (7,0:1, il bianco fa 2,6:1); l'anello di focus è inchiostro su chiaro e arancio su scuro (`--focus`, `--focus-on-dark`, attributo `data-dark`).
 
 ### Componenti
 | Componente | File | Note |
@@ -188,6 +192,9 @@ Regole:
 - Codice, classi e commenti in inglese. Testi UI via i18n (it ed en).
 - Alla fine esegui `hugo --gc --minify --printPathWarnings --printI18nWarnings --panicOnWarning`:
   zero warning. Controlla con `hugo server` a 1440×900, 1100×800, 390×844 e 844×390.
+- Stile: solo quello del mockup (leggi i file .dc.html: misure, colori, pesi, forme). Non mescolare
+  altri stili. Se devi discostartene (caso non coperto, contrasto, contenuto del CMS che il mockup
+  non ha) avvisa nel resoconto con motivo, e mettilo in «differenze rispetto al mockup».
 - NON fare commit: proponi il messaggio di commit nel resoconto.
 - Resoconto finale: file creati o modificati, differenze rispetto al mockup e perché,
   TODO aperti.

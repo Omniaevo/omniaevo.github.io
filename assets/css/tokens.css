@@ -17,7 +17,7 @@
   --c-surface: #eef1f8;
   --c-line: #e3e6ee;
   --c-white: #ffffff;
-  --c-orange-text: #96590a;   /* orange for small text on white and surface (AA) */
+  --c-orange-text: #a5650a;   /* orange for small text, on white only (4.7:1) */
   --c-backdrop: rgb(11 20 48 / .55);
 
   /* Typography */

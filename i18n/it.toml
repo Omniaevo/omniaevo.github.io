@@ -182,3 +182,31 @@ other = "Trasparenza"
 
 [contacts]
 other = "Contatti"
+
+# Home: section 00.
+[factFounded]
+other = "anno di fondazione"
+
+[factAreas]
+other = "aree di competenza"
+
+[factNetwork]
+other = "rete d’impresa di cui facciamo parte"
+
+[companyData]
+other = "Dati societari"
+
+[reaNumber]
+other = "REA"
+
+[shareCapital]
+other = "Capitale sociale"
+
+[placeholderValue]
+other = "[da inserire]"
+
+[contactPhone]
+other = "Telefono"
+
+[since]
+other = "dal {{ . }}"

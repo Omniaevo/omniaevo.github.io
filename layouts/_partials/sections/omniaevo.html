@@ -1,0 +1,122 @@
+{{- /*
+  Section 00. Context: dict "h1" <bool: the hero title is the page <h1>, else <h2>>
+  Data: home front matter (hero, chiSiamo, cosaFacciamo, vidim, contatti) and data/contacts.toml.
+*/ -}}
+{{- $home := site.Home }}
+{{- $p := $home.Params }}
+{{- $c := hugo.Data.contacts }}
+{{- $info := index (where $c.emails "id" "info") 0 }}
+<div class="home">
+
+  {{- /* Hero */}}
+  {{- with $p.hero }}
+  <div class="hero">
+    <p class="hero__eyebrow">{{ $c.company }} · {{ $c.address.city }} ({{ $c.address.province }}){{ with $c.foundedYear }} · {{ T "since" . }}{{ end }}</p>
+    {{- /* The last word of the claim is orange. */}}
+    {{- $words := split .title " " }}
+    {{- $last := index $words (sub (len $words) 1) }}
+    {{- $head := delimit (first (sub (len $words) 1) $words) " " }}
+    {{- if $.h1 }}<h1 class="hero__title">{{ $head }} <span>{{ $last }}</span></h1>{{ else }}<h2 class="hero__title">{{ $head }} <span>{{ $last }}</span></h2>{{ end }}
+    {{- with $home.Description }}<p class="hero__text">{{ . }}</p>{{ end }}
+  </div>
+  {{- end }}
+
+  {{- /* Facts: only real data */}}
+  <ul class="facts">
+    {{- with $c.foundedYear }}
+    <li><span class="facts__value">{{ . }}</span><span class="facts__label">{{ T "factFounded" }}</span></li>
+    {{- end }}
+    {{- with $p.cosaFacciamo.areas }}
+    <li><span class="facts__value">{{ len . }}</span><span class="facts__label">{{ T "factAreas" }}</span></li>
+    {{- end }}
+    {{- with $p.vidim }}
+    <li><span class="facts__value">{{ index (split .title " ") 0 }}</span><span class="facts__label">{{ T "factNetwork" }}</span></li>
+    {{- end }}
+  </ul>
+  {{- with $p.vidim.text }}<p class="facts__note">{{ . }}</p>{{ end }}
+
+  {{- /* Chi siamo */}}
+  {{- with $p.chiSiamo }}
+  <section class="about" id="chi-siamo" aria-labelledby="chi-siamo-title">
+    <h2 id="chi-siamo-title">{{ .title }}</h2>
+    {{- with .storia }}
+    <div>
+      <h3>{{ .title }}</h3>
+      {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+    </div>
+    {{- end }}
+    {{- with .oggi }}
+    <div>
+      <h3>{{ .title }}</h3>
+      <p>{{ .text }}</p>
+    </div>
+    {{- end }}
+    {{- with .management }}
+    <div class="about__person">
+      <div class="about__photo">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</div>
+      <div class="about__text">
+        <h3>{{ .title }}</h3>
+        {{- with .name }}<p class="about__name">{{ . }}</p>{{ end }}
+        {{ range .paragraphs }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </div>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- /* Company details + link to Trasparenza */}}
+  {{ partial "legal-data.html" (dict "id" "omniaevo" "link" "#trasparenza") }}
+
+  {{- /* Contatti */}}
+  {{- /* contatti.ctaText and ctaLabel say the same as intro: not shown here. */}}
+  {{- with $p.contatti }}
+  <section class="contacts" id="contatti" aria-labelledby="contatti-title">
+    <h2 id="contatti-title">{{ .title }}</h2>
+    <div class="contacts__top">
+      <p class="contacts__intro">{{ .intro }}</p>
+      <div class="contacts__item contacts__office">
+        <span>{{ .officeTitle }}</span>
+        <address>{{ $c.company }}<br>{{ $c.address.street }}<br>{{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }}) – {{ T "country" }}</address>
+      </div>
+    </div>
+    <dl class="contacts__list">
+      <div class="contacts__item">
+        <dt>{{ T "contactPhone" }}</dt>
+        <dd><a href="tel:{{ $c.phoneHref }}">{{ $c.phone }}</a></dd>
+      </div>
+      <div class="contacts__item">
+        <dt>{{ T "contactRoleInfo" }}</dt>
+        <dd><a href="mailto:{{ $info.email }}">{{ $info.email }}</a></dd>
+      </div>
+      <div class="contacts__item">
+        <dt>{{ T "contactRolePec" }}</dt>
+        <dd><a href="mailto:{{ $c.pec.email }}">{{ $c.pec.email }}</a></dd>
+      </div>
+      {{- range $c.emails }}
+        {{- if ne .id "info" }}
+      <div class="contacts__item">
+        <dt>{{ T (printf "contactRole%s" (strings.FirstUpper .id)) }}{{ if .publicOnly }} · {{ T "publicOnlyNote" }}{{ end }}</dt>
+        <dd><a href="mailto:{{ .email }}">{{ .email }}</a></dd>
+      </div>
+        {{- end }}
+      {{- end }}
+    </dl>
+  </section>
+  {{- end }}
+
+  {{- /* Legal row */}}
+  {{- /* No English privacy page yet: fall back to the Italian one. */}}
+  {{- $hasPrivacy := site.GetPage "/privacy" }}
+  {{- $privacy := relURL "privacy/" }}
+  {{- if $hasPrivacy }}{{ $privacy = relLangURL "privacy/" }}{{ end }}
+  <footer class="legal-row">
+    <p>{{ T "vatNumber" }} {{ $c.vat }}</p>
+    <nav aria-label="{{ T "legalNavigation" }}">
+      <ul>
+        <li><a href="{{ $privacy }}"{{ if not $hasPrivacy }} hreflang="it"{{ end }}>{{ T "privacyPolicy" }}</a></li>
+        <li><a href="{{ $privacy }}#cookie"{{ if not $hasPrivacy }} hreflang="it"{{ end }}>{{ T "cookiePolicy" }}</a></li>
+      </ul>
+    </nav>
+    <p>© {{ now.Year }} {{ $c.company }} – {{ T "rightsReserved" }}</p>
+  </footer>
+</div>
