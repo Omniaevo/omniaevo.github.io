@@ -56,15 +56,7 @@
 
 **Hero:** claim e testo restano quelli attuali.
 
-**Fatti** (3 riquadri uguali, campo `facts`: lista di `{ value, label }`):
-
-| Valore | Etichetta |
-|---|---|
-| 23 | collaboratori |
-| 18 | Paesi di collaborazione |
-| 462 | clienti |
-
-Dati 2024: da riconfermare. L'anno «dal 2007» è già sopra il titolo.
+**Fatti:** i 3 riquadri 23 / 18 / 462 sono stati **tolti** (2026-11-04, «materiale da WordPress»). I numeri restano solo nella tappa 2024 della timeline.
 
 **Chi siamo** (`chiSiamo.text`):
 > Omniaevo è la sinergia tra competenze diverse e passioni comuni, un partner affidabile nell'ingegneria digitale che accompagna i propri clienti verso l'innovazione. Non ci limitiamo alla consulenza: progettiamo e costruiamo soluzioni che trasformano idee in realtà tangibili.

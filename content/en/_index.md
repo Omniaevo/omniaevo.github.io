@@ -12,7 +12,7 @@ reviewed = false
 
 [chiSiamo]
   title = "About us"
-  # TODO: English texts to be provided (text, mission, vision, historyTitle, timeline) and facts (top-level list)
+  # TODO: English texts to be provided (text, mission, vision, historyTitle, timeline)
 
 [cosaFacciamo]
   title = "What we do"
@@ -30,35 +30,7 @@ reviewed = false
     ]
     closing = "OmniaEvo S.r.l. operates in all areas of information technology, from internetworking to industrial automation. We specialise in building customised, high-profile, complex, vertical, turnkey technology solutions. We offer **high-level personalised support**."
 
-  [[cosaFacciamo.areas]]
-    title = "Engineering"
-    summary = "Solutions for industry and environmental monitoring"
-    text = "We design solutions for industry: automation, robotics, process control, supervision, measurement and monitoring systems, vision systems, energy management, automated welding, production control. We also develop applications for **geological and environmental monitoring**."
-
-  [[cosaFacciamo.areas]]
-    title = "Network"
-    summary = "Design and installation of network communication systems"
-    text = "We design and install communication systems: **copper and fibre cabling**, wireless connectivity, firewalls, VPNs, multi-homing solutions, radio links, civil and industrial fieldbuses, thin clients, PCoIP, desktop virtualization."
-
-  [[cosaFacciamo.areas]]
-    title = "Research"
-    summary = "Processes, algorithms, mathematical modelling, data collection and analysis"
-    text = "We study processes, algorithms, **mathematical modelling**, and the collection and analysis of data (scientific, economic, marketing, …), data fusion and geographic analysis. We design custom digital and analogue electronics. We develop laboratory software and hardware and software prototypes."
-
-  [[cosaFacciamo.areas]]
-    title = "Systems"
-    summary = "Computing and virtualization platforms, technical support"
-    text = "We design and set up computing platforms, virtualization, storage, hardware clustering, application clustering and **disaster recovery**. We provide on-site and off-site technical support. We build distributed databases, big data and business intelligence."
-
-  [[cosaFacciamo.areas]]
-    title = "Software"
-    summary = "Software and firmware for server, client and mobile environments"
-    text = "We design complex, distributed and scalable architectures based on **microservices in Docker containers**, with synchronous or asynchronous communication using Kafka or ZeroMQ message queues. Scalability is managed by the Kubernetes orchestrator."
-
-  [[cosaFacciamo.areas]]
-    title = "Web Apps"
-    summary = "Complete web-based systems for every application"
-    text = "We develop complete web-based systems for business process management, company vehicle fleets and car sharing, data analysis and visualisation, document management, company databases, production tracking, remote supervision and monitoring, statistical questionnaires, asset management, **GIS and dynamic mapping**."
+  # TODO: English texts to be provided: cosaFacciamo.areas (6 areas) and cosaFacciamo.settori (4 sectors)
 
   [[cosaFacciamo.lists]]
     title = "Our fields of activity"
@@ -73,7 +45,7 @@ reviewed = false
     ]
 
   [[cosaFacciamo.lists]]
-    title = "Technologies"
+    title = "Infrastructure"
     items = ["VMware, KVM hypervisors", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
 
   [[cosaFacciamo.lists]]
@@ -83,6 +55,10 @@ reviewed = false
   [[cosaFacciamo.lists]]
     title = "Automation"
     items = ["PLC", "GE Fanuc robots", "Yaskawa", "Sensors", "Vision systems", "Data collection and analysis", "IoT technologies"]
+
+  [[cosaFacciamo.lists]]
+    title = "AI"
+    items = ["Python, R", "TensorFlow, PyTorch, Keras", "Scikit-learn, XGBoost", "NLTK, SpaCy", "OpenCV, YOLO", "Jupyter, Anaconda", "Google AI Platform, Microsoft Azure AI, Amazon SageMaker"]
 
 [servizi]
   title = "Services"

@@ -1,6 +1,6 @@
 {{- /*
   Section 00. Context: dict "h1" <bool: the hero title is the page <h1>, else <h2>>
-  Data: home front matter (hero, facts, chiSiamo, cosaFacciamo, contatti) and data/contacts.toml.
+  Data: home front matter (hero, chiSiamo, cosaFacciamo, contatti) and data/contacts.toml.
 */ -}}
 {{- $home := site.Home }}
 {{- $p := $home.Params }}
@@ -17,15 +17,6 @@
     {{- if $.h1 }}<h1 class="hero__title">{{ $title }}</h1>{{ else }}<h2 class="hero__title">{{ $title }}</h2>{{ end }}
     {{- with .text }}<p class="hero__text">{{ . }}</p>{{ end }}
   </div>
-  {{- end }}
-
-  {{- /* Facts (2024 figures from the CMS): filled cards, they inform and link nowhere */}}
-  {{- with site.Home.Params.facts }}
-  <ul class="facts">
-    {{- range . }}
-    <li><span class="facts__value">{{ .value }}</span><span class="facts__label">{{ .label }}</span></li>
-    {{- end }}
-  </ul>
   {{- end }}
 
   {{- /* Chi siamo: text, Mission, Vision, then the history as a timeline */}}

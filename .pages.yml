@@ -61,20 +61,6 @@ content:
         type: string
         description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
         readonly: true
-    - name: facts
-      label: Numeri
-      type: object
-      description: I tre riquadri sotto il titolo della home. Dati 2024, da confermare.
-      list: true
-      fields:
-      - name: value
-        label: Valore
-        type: string
-        description: Il numero, per esempio «462».
-      - name: label
-        label: Etichetta
-        type: string
-        description: Cosa conta il numero, per esempio «clienti».
     - name: chiSiamo
       label: Chi siamo
       type: object
@@ -171,30 +157,48 @@ content:
           label: Nome dell'area
           type: string
           description: Nome breve.
-        - name: summary
-          label: Sintesi
-          type: string
-          description: Una riga che riassume l'area.
         - name: text
           label: Descrizione
           type: text
-          description: Testo completo dell'area.
+          description: Testo completo dell'area. Le prime righe compaiono sulla scheda, il resto al passaggio del mouse.
         list: true
       - name: lists
         label: Elenchi
         type: object
-        description: Campi di attività, tecnologie, programmazione, automazione.
+        description: Campi di attività (non mostrato), infrastrutture, programmazione, automazione, AI.
         fields:
         - name: title
           label: Titolo dell'elenco
           type: string
-          description: Per esempio «Tecnologie».
+          description: Per esempio «Infrastrutture».
         - name: items
           label: Voci
           type: string
           description: Una voce per riga.
           list: true
         list: true
+      - name: settoriIntro
+        label: Titolo dei settori
+        type: object
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Piccolo titolo sopra le schede, per esempio «Settori».
+      - name: settori
+        label: Settori
+        type: object
+        description: Una scheda per settore, tutte uguali. Per aggiungerne una (per esempio «Industriale») basta una voce in più.
+        list: true
+        fields:
+        - name: title
+          label: Nome del settore
+          type: string
+          description: Nome breve.
+        - name: text
+          label: Descrizione
+          type: text
+          description: Testo della scheda.
     - name: servizi
       label: Servizi (titolo)
       type: object
@@ -709,20 +713,6 @@ content:
         type: string
         description: 'Non modificare: identifica la sezione a cui porta il pulsante.'
         readonly: true
-    - name: facts
-      label: Numeri
-      type: object
-      description: I tre riquadri sotto il titolo della home. Dati 2024, da confermare.
-      list: true
-      fields:
-      - name: value
-        label: Valore
-        type: string
-        description: Il numero, per esempio «462».
-      - name: label
-        label: Etichetta
-        type: string
-        description: Cosa conta il numero, per esempio «clienti».
     - name: chiSiamo
       label: Chi siamo
       type: object
@@ -819,30 +809,48 @@ content:
           label: Nome dell'area
           type: string
           description: Nome breve.
-        - name: summary
-          label: Sintesi
-          type: string
-          description: Una riga che riassume l'area.
         - name: text
           label: Descrizione
           type: text
-          description: Testo completo dell'area.
+          description: Testo completo dell'area. Le prime righe compaiono sulla scheda, il resto al passaggio del mouse.
         list: true
       - name: lists
         label: Elenchi
         type: object
-        description: Campi di attività, tecnologie, programmazione, automazione.
+        description: Campi di attività (non mostrato), infrastrutture, programmazione, automazione, AI.
         fields:
         - name: title
           label: Titolo dell'elenco
           type: string
-          description: Per esempio «Tecnologie».
+          description: Per esempio «Infrastrutture».
         - name: items
           label: Voci
           type: string
           description: Una voce per riga.
           list: true
         list: true
+      - name: settoriIntro
+        label: Titolo dei settori
+        type: object
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Piccolo titolo sopra le schede, per esempio «Settori».
+      - name: settori
+        label: Settori
+        type: object
+        description: Una scheda per settore, tutte uguali. Per aggiungerne una (per esempio «Industriale») basta una voce in più.
+        list: true
+        fields:
+        - name: title
+          label: Nome del settore
+          type: string
+          description: Nome breve.
+        - name: text
+          label: Descrizione
+          type: text
+          description: Testo della scheda.
     - name: servizi
       label: Servizi (titolo)
       type: object

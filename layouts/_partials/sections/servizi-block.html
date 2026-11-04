@@ -23,7 +23,8 @@
     {{- range $i, $p := . }}
     <li class="step">
       <span class="step__num">{{ printf "%02d" (add $i 1) }}</span>
-      <span class="step__text"><b>{{ $p.Title }}</b><span>{{ $p.Description }}</span></span>
+      <b class="step__title">{{ $p.Title }}</b>
+      <span class="step__text">{{ $p.Description }}</span>
     </li>
     {{- end }}
   </ol>

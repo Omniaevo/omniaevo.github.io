@@ -9,19 +9,6 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   ctaLabel = "Scopri di più"
   ctaAnchor = "cosa-facciamo"
 
-# Facts of the 00 section (2024 figures, to be confirmed by Omniaevo)
-[[facts]]
-  value = "23"
-  label = "collaboratori"
-
-[[facts]]
-  value = "18"
-  label = "Paesi di collaborazione"
-
-[[facts]]
-  value = "462"
-  label = "clienti"
-
 [chiSiamo]
   title = "Chi siamo"
   text = "Omniaevo è la sinergia tra competenze diverse e passioni comuni, un partner affidabile nell’ingegneria digitale che accompagna i propri clienti verso l’innovazione. Non ci limitiamo alla consulenza: progettiamo e costruiamo soluzioni che trasformano idee in realtà tangibili."
@@ -110,34 +97,28 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
     closing = "OmniaEvo S.r.l. opera in tutti i settori dell’information technology, dall’internetworking all’automazione industriale. Siamo specializzati nella realizzazione di soluzioni tecnologiche personalizzate, di alto profilo, complesse, verticali e chiavi in mano. Offriamo **assistenza personalizzata di alto livello**."
 
   [[cosaFacciamo.areas]]
-    title = "Engineering"
-    summary = "Soluzioni per l’industria e il monitoraggio ambientale"
-    text = "Progettiamo soluzioni per l’industria: automazione, robotica, controllo di processo, supervisione, sistemi di misura e monitoraggio, sistemi di visione, gestione energia, saldatura automatizzata, controllo produzione. Inoltre sviluppiamo applicazioni per **monitoraggio geologico ed ambientale**."
+    title = "Infrastrutture IT"
+    text = "Progettiamo, realizziamo e manteniamo infrastrutture IT complete, su misura: dalla piccola azienda unipersonale alla grande struttura articolata. Piattaforme di elaborazione, virtualizzazione, storage, clustering e disaster recovery, con assistenza tecnica on-site e off-site. L’obiettivo è un’infrastruttura robusta, scalabile ed efficiente, che supporti la crescita e l’innovazione."
 
   [[cosaFacciamo.areas]]
-    title = "Network"
-    summary = "Progettazione e installazione di sistemi di comunicazione di rete"
-    text = "Progettiamo e installiamo sistemi di comunicazione: **cablaggi rame e fibra**, connettività wireless, firewall, VPN, soluzioni multi-homing, ponti radio, bus di campo civili ed industriali, Thin client, PCoIP, desktop virtualization."
+    title = "Networking"
+    text = "Progettiamo e installiamo sistemi di comunicazione avanzati: cablaggi in rame e fibra, connettività wireless, firewall, VPN, soluzioni multi-homing, ponti radio, bus di campo civili e industriali, thin client, PCoIP e desktop virtualization. L’obiettivo è una connettività affidabile e sicura."
 
   [[cosaFacciamo.areas]]
-    title = "Research"
-    summary = "Processi, algoritmi, modellazione matematica, raccolta ed analisi dati"
-    text = "Studiamo processi, algoritmi, **modellazione matematica**, raccolta ed analisi dati (scientifici, economici, marketing,…), data-fusion, analisi geografiche. Progettiamo elettronica digitale ed analogica personalizzata. Sviluppiamo software di laboratorio e prototipizzazione hardware e software."
+    title = "Automazione industriale"
+    text = "Progettiamo soluzioni per l’industria: automazione, robotica, controllo di processo, supervisione, sistemi di misura e monitoraggio, sistemi di visione, gestione energetica, saldatura automatizzata e controllo produzione. Sviluppiamo inoltre applicazioni per il monitoraggio geologico e ambientale."
 
   [[cosaFacciamo.areas]]
-    title = "Systems"
-    summary = "Piattaforme di elaborazione e virtualizzazione, assistenza tecnica"
-    text = "Progettiamo ed allestiamo piattaforme di elaborazione, virtualizzazione, storage, clustering hardware, clustering applicativo, **disaster recovery**. Forniamo assistenza tecnica on-site ed off-site. Realizziamo databases distribuiti, big data, business intelligence."
+    title = "Project management"
+    text = "Gestiamo progetti articolati multi-tecnologia con le metodologie più moderne ed efficaci. Il nostro team segue ogni progetto con professionalità, perché ogni soluzione sia realizzata in modo efficace e nei tempi previsti."
 
   [[cosaFacciamo.areas]]
-    title = "Software"
-    summary = "Software e firmware per ambienti server, client e mobile"
-    text = "Progettiamo architetture complesse distribuite e scalabili, basate su **microservizi in container docker**, con comunicazione sincrona o asincrona sfruttando code messaggi Kafka o zeroMQ. Scalabilità gestita tramite orchestratore Kubernetes."
+    title = "Sviluppo software"
+    text = "Progettiamo architetture distribuite e scalabili basate su microservizi in container Docker, con comunicazione sincrona o asincrona (code di messaggi Kafka o zeroMQ) e scalabilità gestita con Kubernetes. Sviluppiamo sistemi completi orientati al web: processi aziendali, flotte veicoli e car sharing, analisi e visualizzazione dati, gestione documentale, tracking della produzione, supervisione e monitoraggio remoti, GIS e cartografie dinamiche. Realizziamo anche database distribuiti, big data e business intelligence."
 
   [[cosaFacciamo.areas]]
-    title = "Web Apps"
-    summary = "Sistemi completi orientati al web per ogni applicazione"
-    text = "Sviluppiamo sistemi completi orientati al web, per la gestione di processi aziendali, flotte veicoli aziendali e car sharing, analisi e visualizzazione dati, gestioni documentali, database aziendali, tracking produzione, supervisioni e monitoraggi remoti, questionari statistici, gestione assets, **GIS e cartografie dinamiche**."
+    title = "Ricerca"
+    text = "Investiamo in ricerca per studiare processi, algoritmi e modellazione matematica, raccolta e analisi dati (scientifici, economici, marketing), data-fusion e analisi geografiche. Progettiamo elettronica digitale e analogica personalizzata e sviluppiamo software di laboratorio e prototipi hardware e software."
 
   [[cosaFacciamo.lists]]
     title = "I nostri campi di attività"
@@ -152,7 +133,7 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
     ]
 
   [[cosaFacciamo.lists]]
-    title = "Tecnologie"
+    title = "Infrastrutture"
     items = ["Ipervisori VMware, KVM", "Veeam backup", "Ubiquiti networking", "PFsense", "Docker", "Kubernetes", "Ansible"]
 
   [[cosaFacciamo.lists]]
@@ -162,6 +143,29 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
   [[cosaFacciamo.lists]]
     title = "Automazione"
     items = ["PLC", "Robot GE Fanuc", "Yaskawa", "Sensoristica", "Sistemi di visione", "Raccolta dati ed analisi", "Tecnologie IoT"]
+
+  [[cosaFacciamo.lists]]
+    title = "AI"
+    items = ["Python, R", "TensorFlow, PyTorch, Keras", "Scikit-learn, XGBoost", "NLTK, SpaCy", "OpenCV, YOLO", "Jupyter, Anaconda", "Google AI Platform, Microsoft Azure AI, Amazon SageMaker"]
+
+  [cosaFacciamo.settoriIntro]
+    title = "Settori"
+
+  [[cosaFacciamo.settori]]
+    title = "Produttivo"
+    text = "Sosteniamo il settore produttivo con soluzioni che aumentano la produttività e migliorano la qualità dei prodotti: sistemi di controllo e monitoraggio, raccolta e analisi dei dati di produzione."
+
+  [[cosaFacciamo.settori]]
+    title = "HighTech"
+    text = "Adottiamo e integriamo le tecnologie più avanzate: sviluppo software, infrastrutture IT, virtualizzazione e cloud, automazione, AI e IoT, per i clienti più esigenti e innovativi."
+
+  [[cosaFacciamo.settori]]
+    title = "Civile"
+    text = "Offriamo soluzioni per migliorare la gestione di infrastrutture e servizi, con enti pubblici e privati: sistemi di gestione, smart city, monitoraggio ambientale, gestione energetica e risparmio."
+
+  [[cosaFacciamo.settori]]
+    title = "Pubblica amministrazione"
+    text = "Sosteniamo la transizione digitale degli enti pubblici con consulenza, progettazione e implementazione di tecnologie conformi alle normative: digitalizzazione dei processi, e-government, sicurezza IT, assistenza continua."
 
 [servizi]
   title = "Servizi"

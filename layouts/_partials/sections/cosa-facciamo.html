@@ -2,10 +2,12 @@
   Section 01. Data: home front matter, cosaFacciamo (title, highlight, intro, areas, lists).
   Intro: all paragraphs visible, full width.
   Text: **word** in the CMS strings becomes a key word with a small underline (see .what strong).
-  Areas: equal cards with the summary, full text on hover (pointer) or in a bottom sheet (touch).
-  Lists: technologies, programming, automation (the fields-of-activity list repeats the areas: not shown).
+  Areas: equal fixed-size cards. Rest: the first lines of the text; hover (pointer): the full text; touch: bottom sheet.
+  Lists: infrastructure, programming, automation, AI (the fields-of-activity list repeats the areas: not shown).
+  Sectors: equal cards after the lists.
 */ -}}
 {{- with site.Home.Params.cosaFacciamo }}
+{{- $c := . }}
 <div class="what">
 
   <header>
@@ -28,7 +30,7 @@
         <h3 class="area__title">{{ $a.title }}</h3>
       </div>
       <div class="area__body">
-        <p class="area__summary" aria-hidden="true">{{ $a.summary }}</p>
+        <p class="area__summary" aria-hidden="true">{{ site.Home.RenderString $a.text }}</p>
         <p class="area__full">{{ site.Home.RenderString $a.text }}</p>
       </div>
       <span class="area__hint">{{ partial "icon.html" "plus" }}</span>
@@ -61,6 +63,21 @@
     {{- end }}
     {{- end }}
   </div>
+
+  {{- /* Sectors: plain rows separated by lines (title left, text right). A new sector = one more CMS entry. */}}
+  {{- with .settori }}
+  <div class="sectors">
+    {{- with $c.settoriIntro }}<h3>{{ .title }}</h3>{{ end }}
+    <ul class="sectors__list">
+      {{- range . }}
+      <li class="sector">
+        <h4 class="sector__title">{{ .title }}</h4>
+        <p>{{ .text }}</p>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
 
   {{ partial "sections/servizi-block.html" . }}
 
