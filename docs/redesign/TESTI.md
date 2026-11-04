@@ -21,34 +21,34 @@
 | Avvocato | Senza nome: «esperti legali». Nessun blocco «Novità» |
 | Sostenibilità | Tolta |
 | Case history | Restano i 6 case veri. I case del PDF sono modelli e non si usano |
-| Team | Nuova striscia `04 Team`; Trasparenza diventa `05` |
+| Team | Nuova striscia `03 Team`; Trasparenza diventa `04` |
+| Servizi | Accorpato in `01 Cosa facciamo` come blocco finale (~270 parole): niente striscia dedicata. Strisce: 5 |
 | Pagine del PDF | Non si usano tutte (sezione 3). Contenuti incompleti o prolissi sono corretti o lasciati fuori |
 
 ## 3. Cosa si usa del PDF
 
 | Si usa | Dove |
 |---|---|
-| Servizi (3 cerchi), menu Servizi (4 voci) | `02` |
-| Valori | `04` Team |
+| Servizi (3 cerchi), menu Servizi (4 voci) | `01`, blocco Servizi |
+| Valori | `03` Team |
 | Timeline 2007–2024, numeri 2024 | `00` |
-| Chi siamo, Mission, Vision | `00`; ultima frase di «Chi siamo» e citazione: `04` Team |
+| Chi siamo, Mission, Vision | `00`; ultima frase di «Chi siamo» e citazione: `03` Team |
 | Aree di lavoro (testi) | `01` |
 | Tecnologie (elenchi) | `01` |
 | Settori (4 pagine presenti) | `01` |
-| Servizi (4 testi) | `02` |
+| Servizi (4 testi) | `01`, blocco Servizi |
 
 **Non si usa:** Punti di forza, Scenario, Obiettivi, Analisi cliente, Sito attuale, Proposta d'azione, slogan, **Sostenibilità**, **Novità** (il contenuto utile va nel servizio legale), **case history modello**, descrizioni lunghe dei gruppi di tecnologie, elenchi «Servizi offerti» di aree e settori (ripetono il paragrafo), slide finale (contatti dell'agenzia).
 
-## 4. Dalle voci di menu del PDF alle 6 strisce
+## 4. Dalle voci di menu del PDF alle 5 strisce
 
 | Voce PDF | Dove va |
 |---|---|
-| Omniaevo (Chi siamo, Team) | `00` e `04` Team |
-| Aree di lavoro, Tecnologie, Settori | `01` |
-| Servizi | `02` |
-| Case history | `03` |
+| Omniaevo (Chi siamo, Team) | `00` e `03` Team |
+| Aree di lavoro, Tecnologie, Settori, Servizi | `01` (Servizi è l'ultimo blocco) |
+| Case history | `02` |
 | Contatti | `00` (blocco già presente) |
-| — | `05` Trasparenza (invariata) |
+| — | `04` Trasparenza (invariata) |
 
 ## 5. Testi per sezione
 
@@ -142,7 +142,9 @@ Dati 2024: da riconfermare. L'anno «dal 2007» è già sopra il titolo.
 | Civile | Offriamo soluzioni per migliorare la gestione di infrastrutture e servizi, con enti pubblici e privati: sistemi di gestione, smart city, monitoraggio ambientale, gestione energetica e risparmio. |
 | Pubblica amministrazione | Sosteniamo la transizione digitale degli enti pubblici con consulenza, progettazione e implementazione di tecnologie conformi alle normative: digitalizzazione dei processi, e-government, sicurezza IT, assistenza continua. |
 
-### 5.3 — `02` Servizi
+### 5.3 — `01` Cosa facciamo, blocco Servizi
+
+Non è più una striscia: sta in fondo alla `01`, dopo i Settori, con `id="servizi"` e sottotitolo «Come lavoriamo».
 
 **Intro** (`servizi.intro`, dal PDF):
 > Consulenza ingegneria digitale · Progettazione e sviluppo hardware e software · Implementazione e supporto legale integrato.
@@ -169,11 +171,11 @@ Elenco: Installazione di hardware e software · Configurazione di reti e sistemi
 
 Elenco: Consulenza legale su normative IT · Conformità GDPR · Sicurezza informatica · Redazione e revisione di contratti IT.
 
-### 5.4 — `03` Case history
+### 5.4 — `02` Case history
 
 Restano i 6 case attuali. Dal PDF si prende solo lo schema del foglio, **Sfida · Soluzione · Risultati**, da compilare solo con dati reali forniti da Omniaevo. Il campo `sector` dei case si compila quando Omniaevo sceglie i settori.
 
-### 5.5 — `04` Team (nuova striscia)
+### 5.5 — `03` Team (nuova striscia)
 
 **Citazione** (`team.quote`): «Un team multidisciplinare in grado di realizzare progetti di ingegneria digitale per industria e servizi.»
 
@@ -183,7 +185,7 @@ Restano i 6 case attuali. Dal PDF si prende solo lo schema del foglio, **Sfida �
 
 **Persone** (`team.members`: lista di `{ name, role, photo, photoAlt }`). Circa 10 riquadri tutti uguali: foto verticale 4:5, stesso ritaglio, nome e mansione (al massimo 2 righe). Senza foto compare una sagoma SVG su fondo `--mist`. Durante lo sviluppo i riquadri dicono `Nome Cognome` / `Mansione`: vanno sostituiti prima della pubblicazione (il passo 14 lo verifica). Da Omniaevo: nomi, mansioni, ordine (per struttura aziendale) e foto.
 
-### 5.6 — `05` Trasparenza
+### 5.6 — `04` Trasparenza
 
 Invariata.
 

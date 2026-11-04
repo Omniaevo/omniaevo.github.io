@@ -5,7 +5,8 @@
 > Artboard: `A1-Strati.dc.html` (desktop) e `AM-Strati.dc.html` (mobile). I mockup sono interattivi: prova strisce, foglio di dettaglio, galleria e pulsante Contatti.
 > Contenuti, collection e CMS sono quelli già nel repository (`content/`, `data/`, `.pages.yml`, guida in `CMS.md`), salvo le eccezioni della sezione 1 e i **testi nuovi** del PDF di strategia, raccolti in **[`TESTI.md`](TESTI.md)** (fonte dei testi dal 2026-11-04).
 > I testi di `TESTI.md` sono **provvisori** (più vicini alla realtà ma non definitivi): vanno solo nei campi del CMS, così Omniaevo li modifica senza toccare il codice.
-> **Aggiornamento 2026-11-04 (testi del PDF):** le strisce diventano **6** (nuova `04 Team`, Trasparenza passa a `05`), la `00` perde management e VIDIM e guadagna Mission, Vision e timeline, `01` e `02` cambiano contenuto. Lo stato dei passi già fatti è nella tabella della sezione 4, i passi nuovi sono 2b, 3b, 4b e 7b.
+> **Aggiornamento 2026-11-04 (testi del PDF):** nuova striscia `Team`, la `00` perde management e VIDIM e guadagna Mission, Vision e timeline, `01` e Servizi cambiano contenuto. Lo stato dei passi già fatti è nella tabella della sezione 4, i passi nuovi sono 2b, 3b, 4b e 7b.
+> **Aggiornamento 2026-11-04 (accorpamento):** **Servizi** (~270 parole) non è più una striscia: diventa un blocco dentro `01 Cosa facciamo`. Le strisce sono **5**: `00` Omniaevo, `01` Cosa facciamo, `02` Case history, `03` Team, `04` Trasparenza. La soglia desktop resta **1100 px**.
 
 ---
 
@@ -16,11 +17,11 @@
 | Tema | Decisione |
 |---|---|
 | Pagina | **Un solo documento per lingua** (`/` e `/en/`), alto quanto lo schermo (`100dvh`). La pagina non scorre: scorre solo il contenuto della sezione aperta |
-| Sezioni | **6 strisce**, numerate **da zero**: `00` Omniaevo, `01` Cosa facciamo, `02` Servizi, `03` Case history, `04` Team, `05` Trasparenza. Una sola sezione è aperta; all'avvio è aperta la `00`. Trasparenza resta ultima (striscia arancio) |
-| Desktop (≥ 1200 px) | Strisce **verticali** affiancate, larghe 96 px. La striscia aperta cresce (`flex-grow`) e occupa lo spazio libero. Con 6 strisce (576 px) più il pannello minimo (560 px) servono 1136 px: la soglia sale da 1100 a **1200 px** |
-| Mobile e tablet (< 1200 px) | Strisce **orizzontali** impilate, alte 60 px (6 strisce = 360 px, restano 484 px a 844 px di altezza). La striscia aperta cresce in altezza |
+| Sezioni | **5 strisce**, numerate **da zero**: `00` Omniaevo, `01` Cosa facciamo (include Servizi), `02` Case history, `03` Team, `04` Trasparenza. Una sola sezione è aperta; all'avvio è aperta la `00`. Trasparenza resta ultima (striscia arancio) |
+| Desktop (≥ 1100 px) | Strisce **verticali** affiancate, larghe 96 px. La striscia aperta cresce (`flex-grow`) e occupa lo spazio libero. Con 5 strisce (480 px) più il pannello minimo (560 px) servono 1040 px: la soglia resta **1100 px** |
+| Mobile e tablet (< 1100 px) | Strisce **orizzontali** impilate, alte 60 px (5 strisce = 300 px, restano 544 px a 844 px di altezza). La striscia aperta cresce in altezza |
 | Schermi bassi (altezza < 560 px, es. telefono in orizzontale) | Niente accordion: le sezioni sono una sotto l'altra e la pagina scorre normalmente. Le strisce diventano intestazioni di sezione |
-| Indirizzo delle sezioni | **Hash**: `/#cosa-facciamo`, `/#servizi`, `/#case-history`, `/#team`, `/#trasparenza` (la `00` è `/`). Un hash che punta a un elemento *dentro* una sezione (es. `#contatti`, `#chi-siamo`) apre quella sezione e scorre all'elemento. Niente pagine duplicate, niente problemi di contenuto duplicato per i motori di ricerca |
+| Indirizzo delle sezioni | **Hash**: `/#cosa-facciamo`, `/#case-history`, `/#team`, `/#trasparenza` (la `00` è `/`). `/#servizi` resta valido come **alias**: è l'id del blocco Servizi dentro la `01`, quindi apre la `01` e scorre al blocco. Un hash che punta a un elemento *dentro* una sezione (es. `#contatti`, `#chi-siamo`) apre quella sezione e scorre all'elemento. Niente pagine duplicate, niente problemi di contenuto duplicato per i motori di ricerca |
 | Dettagli (case, servizi) | Restano **pagine vere** con il loro URL (`/case-history/brcko/`, `/servizi/pec-…/`): indicizzabili e condivisibili. Dalla pagina si aprono in un **foglio dal basso** (bottom sheet) senza cambio pagina; l'URL cambia con `history.pushState` |
 | Accesso diretto a un dettaglio | La pagina di dettaglio rende tutta l'interfaccia, con la sezione giusta aperta e il foglio già aperto. Chiudendo il foglio si resta nella sezione |
 | Pagine indice `/servizi/`, `/case-history/`, `/trasparenza/` | Diventano pagine `redirect` verso `/#servizi`, `/#case-history`, `/#trasparenza` (`noindex`, fuori dalla sitemap) |
@@ -32,11 +33,10 @@
 | Sezione | Contenuto | Origine dei dati |
 |---|---|---|
 | `00` Omniaevo | Hero (riga «Omniaevo S.r.l. · Codroipo (UD) · dal 2007», **claim attuale** con «semplici» evidenziato (banda arancio dietro il testo), testo; niente pulsante), 3 riquadri di fatti uniti da linee (**23 collaboratori · 18 Paesi · 462 clienti**), Chi siamo (testo, **Mission**, **Vision**), **Storia** (timeline 2007–2024), Dati societari (segnaposto «[da inserire]» per REA e capitale sociale finché mancano) + pulsante «Trasparenza →», **Contatti** (griglia etichetta + valore, tutti i recapiti), riga legale. **Tolti:** management, VIDIM, Sostenibilità | `content/*/_index.md` (`hero`, `facts`, `chiSiamo`), `data/contacts.toml` |
-| `01` Cosa facciamo | Intro, 6 aree numerate `00`–`05` (Infrastrutture IT, Networking, Automazione industriale, Project management, Sviluppo software, Ricerca) con testo, tecnologie come etichette (4 gruppi, nuovo: AI), **Settori** (4 schede uguali, Industriale quando c'è il testo) | `cosaFacciamo` di `_index.md` |
-| `02` Servizi | Intro, **4 servizi numerati** `01`–`04` (Consulenza, Progettazione, Implementazione, Supporto legale integrato) che aprono il foglio, poi gruppo «Assistenza clienti»: PEC e **Scaricabili** (`omniaevoremote.exe` ripristinato e allegati) | collection `servizi` + campo `downloads` (vedi sotto) |
-| `03` Case history | Card tutte uguali (copertina, categoria, titolo 2 righe, descrizione 3 righe, troncati con «…»). Aprono il foglio | collection `case-history` |
-| `04` Team | Citazione, testo, **Valori** (3 schede), griglia dei **riquadri foto + mansione** (circa 10, tutti uguali, segnaposto SVG finché mancano le foto) | `team` di `_index.md` |
-| `05` Trasparenza | Intro, dati societari, elenco documenti e bandi (PDF) | collection `trasparenza`, `data/contacts.toml` |
+| `01` Cosa facciamo | Intro, 6 aree numerate `00`–`05` (Infrastrutture IT, Networking, Automazione industriale, Project management, Sviluppo software, Ricerca) con testo, tecnologie come etichette (4 gruppi, nuovo: AI), **Settori** (4 schede uguali, Industriale quando c'è il testo), poi il blocco **Servizi** (`id="servizi"`, sottotitolo «Come lavoriamo»): intro di una riga, **4 servizi numerati** `01`–`04` (Consulenza, Progettazione, Implementazione, Supporto legale integrato) che aprono il foglio, e gruppo «Assistenza clienti»: PEC e **Scaricabili** (`omniaevoremote.exe` ripristinato e allegati) | `cosaFacciamo` di `_index.md`; blocco Servizi: collection `servizi` + `servizi` di `_index.md` + campo `downloads` (vedi sotto) |
+| `02` Case history | Card tutte uguali (copertina, categoria, titolo 2 righe, descrizione 3 righe, troncati con «…»). Aprono il foglio | collection `case-history` |
+| `03` Team | Citazione, testo, **Valori** (3 schede), griglia dei **riquadri foto + mansione** (circa 10, tutti uguali, segnaposto SVG finché mancano le foto) | `team` di `_index.md` |
+| `04` Trasparenza | Intro, dati societari, elenco documenti e bandi (PDF) | collection `trasparenza`, `data/contacts.toml` |
 
 I testi esatti di ogni blocco sono in [`TESTI.md`](TESTI.md). I 3 riquadri di fatti della `00` usano solo dati del PDF di strategia (2024) e sono modificabili dal CMS. **Niente contatori inventati.**
 
@@ -45,7 +45,7 @@ I testi esatti di ogni blocco sono in [`TESTI.md`](TESTI.md). I 3 riquadri di fa
 ### Interfaccia (dettagli già approvati sul mockup)
 
 - **Prima striscia** bianca, unita al contenuto della `00`: in alto il **logo** (marchio di `_legacy/assets/logo.svg`, blu), al centro l'etichetta verticale, in basso **un solo pulsante Contatti** (solo icona, nome accessibile «Contatti») e sotto il segnalatore. Il pulsante apre la `00` e scorre al blocco Contatti.
-- **Altre strisce**: numero in alto, etichetta verticale, segnalatore in basso. Colori: tre blu ricavati da `--blue` (`--strip-1/2/3`); Trasparenza arancio `--orange` con testo inchiostro. Le strisce blu (`01`–`04`) ripartono dal primo tono dopo il terzo: `01` = `--strip-1`, `02` = `--strip-2`, `03` = `--strip-3`, `04` Team = `--strip-1` (da confermare sul mockup). Striscia aperta: barra di 4 px a destra (arancio; blu sulla striscia arancio).
+- **Altre strisce**: numero in alto, etichetta verticale, segnalatore in basso. Colori: tre blu ricavati da `--blue` (`--strip-1/2/3`); Trasparenza arancio `--orange` con testo inchiostro. Le tre strisce blu usano i tre toni in ordine, senza ripartenze: `01` = `--strip-1`, `02` = `--strip-2`, `03` Team = `--strip-3`; `04` Trasparenza arancio. Striscia aperta: barra di 4 px a destra (arancio; blu sulla striscia arancio).
 - **Titoli e testo**: vedi `TOKENS.md`. Titoli in blu, Bricolage 800; testo Schibsted 400, enfasi 600. Sottotitoli piccoli (es. «Storia», «Omniaevo oggi») in 16 px 600, `--orange-dark`. Pulsanti: pillola arancio con testo inchiostro, 44 px. Link: blu, 600, sottolineati. Parole chiave: evidenziatore `.mark`.
 - **Allineamento**: logo e numeri stanno nello **stesso riquadro** (52 × 52 px desktop, 36 × 36 px mobile), così le etichette partono tutte dalla stessa altezza.
 - **Segnalatore**: SVG, mai caratteri di testo. Chiuso = anello + «+». Aperto = cerchio pieno del colore del testo con punto centrale del colore della striscia (su striscia blu: cerchio bianco, punto blu). I cerchi sono concentrici per costruzione.
@@ -87,7 +87,8 @@ I testi esatti di ogni blocco sono in [`TESTI.md`](TESTI.md). I 3 riquadri di fa
 | Storia | 3b | Fa fede la **timeline del PDF** (8 tappe). Sostituisce «Storia» e «Omniaevo oggi» |
 | Avvocato nel testo legale | 5 | **Senza nome**: «esperti legali». Nessun blocco «Novità» |
 | Sostenibilità | 3b | **Tolta** |
-| Team | 2b, 7b | **Nuova striscia `04 Team`**; Trasparenza diventa `05`. Riquadri foto + mansione tutti uguali, segnaposto SVG, ordine per struttura aziendale |
+| Team | 2b, 7b | **Nuova striscia `03 Team`**; Trasparenza diventa `04`. Riquadri foto + mansione tutti uguali, segnaposto SVG, ordine per struttura aziendale |
+| Servizi | 2b, 5 | **Accorpato in `01 Cosa facciamo`** come blocco finale (~270 parole, non regge una striscia). Niente striscia Servizi; `/#servizi` resta alias del blocco; le pagine di dettaglio dei servizi restano. Strisce: 5, soglia 1100 px |
 | Case history del PDF | 6 | **Non si usano** (dati inventati). Restano i 6 case veri; del PDF si prende lo schema Sfida / Soluzione / Risultati |
 
 ---
@@ -100,7 +101,7 @@ I token (8 colori, 6 misure di testo, 3 pesi, 6 spazi, 2 raggi, 2 durate) sono d
 ### Componenti
 | Componente | File | Note |
 |---|---|---|
-| `.accordion` | `layout.css` | contenitore flex `100dvh`; riga su desktop, colonna < 1200 px; flusso normale con altezza < 560 px |
+| `.accordion` | `layout.css` | contenitore flex `100dvh`; riga su desktop, colonna < 1100 px; flusso normale con altezza < 560 px |
 | `.strip` | `components.css` | `.strip__mark` (logo o numero, riquadro fisso), `.strip__label` (verticale su desktop), `.strip__contact`, `.strip__indicator` (SVG), `.strip__bar` |
 | `.panel` | `components.css` | contenitore scorrevole; `.panel__inner` alla larghezza finale `--panel-w` (min 560 px) |
 | `.card` | `components.css` | dimensione fissa, `.card__cover`, `.card__meta` (1 riga), `.card__title` (2 righe), `.card__text` (3 righe) |
@@ -121,10 +122,11 @@ I token (8 colori, 6 misure di testo, 3 pesi, 6 spazi, 2 raggi, 2 durate) sono d
 |---|---|---|
 | Pagina con le strisce | `layouts/baseof.html` + `layouts/_partials/accordion.html` | il partial riceve la sezione da aprire e il contenuto opzionale del foglio |
 | Home | `layouts/home.html` | `accordion.html` con sezione `00` aperta |
-| Sezioni | `layouts/_partials/sections/{omniaevo,cosa-facciamo,servizi,case-history,team,trasparenza}.html` | una per file, dati da front matter e collection |
+| Sezioni | `layouts/_partials/sections/{omniaevo,cosa-facciamo,case-history,team,trasparenza}.html` | una per file, dati da front matter e collection |
+| Blocco Servizi | `layouts/_partials/sections/servizi-block.html` | incluso in fondo a `cosa-facciamo.html`, con `id="servizi"` |
 | Striscia | `layouts/_partials/strip.html` | logo o numero, etichetta, Contatti (solo `00`), segnalatore |
-| Dettaglio case | `layouts/case-history/page.html` | `accordion.html` con `03` aperta + `sheet.html` già aperto |
-| Dettaglio servizio | `layouts/servizi/page.html` | come sopra con `02` |
+| Dettaglio case | `layouts/case-history/page.html` | `accordion.html` con `02` aperta + `sheet.html` già aperto |
+| Dettaglio servizio | `layouts/servizi/page.html` | come sopra con `01` aperta e scorrimento al blocco Servizi |
 | Foglio | `layouts/_partials/sheet.html` + `gallery.html` | un solo modello; il contenuto è in `[data-sheet]` |
 | Privacy | `layouts/page.html` | `accordion.html` con `00` aperta + foglio con il testo |
 | Indici collection | `layouts/{servizi,case-history,trasparenza}/section.html` | redirect verso l'hash (riusa `layouts/redirect/`) |
@@ -136,21 +138,21 @@ I token (8 colori, 6 misure di testo, 3 pesi, 6 spazi, 2 raggi, 2 durate) sono d
 
 Ogni passo è piccolo e si verifica da solo. Alla fine di ogni passo **non** si fa commit: si propone il messaggio (Conventional Commits) e l'utente decide. Fino al passo 11 il sito può sembrare incompleto: si lavora sul branch `feature/redesign`.
 
-Stato al 2026-11-04. I passi 1–4 sono stati fatti con i **testi di prima**: i passi 2b, 3b e 4b li aggiornano ai testi di [`TESTI.md`](TESTI.md) senza rifare il lavoro. Il passo 7b aggiunge il Team.
+Stato al 2026-11-04. I passi 1–4 sono stati fatti con i **testi di prima**: i passi 2b, 3b e 4b li aggiornano ai testi di [`TESTI.md`](TESTI.md) senza rifare il lavoro. Il passo 7b aggiunge il Team; il passo 5 (Servizi) è ora un blocco della 01.
 
 | # | Passo | Dipende da | Stato |
 |---|---|---|---|
 | 1 | Fondamenta: token, font, base, rimozione CSS NB1 | — | **Fatto** (`6bb92f3`) |
-| 2 | Accordion statico (senza JS): strisce, pannelli, responsive, `:target` | 1 | **Fatto** (`2e5731e`): 5 strisce |
-| **2b** | **Sesta striscia Team: rinumerazione, soglia a 1200 px, mockup** | 2 | Da fare |
+| 2 | Accordion statico (senza JS): strisce, pannelli, responsive, `:target` | 1 | **Fatto** (`2e5731e`): 5 strisce (con Servizi, senza Team) |
+| **2b** | **Riordino strisce: Servizi accorpato in 01, Team aggiunto (sempre 5), mockup** | 2 | Da fare |
 | 3 | Sezione 00 Omniaevo | 2 | **Fatto** (`92328ff`, `14d80bd`, `47fc525`) con i testi vecchi: hero, 3 fatti, storia, management, VIDIM, dati societari, contatti, riga legale |
 | **3b** | **Testi nuovi nella 00**: fatti 23/18/462, Mission, Vision, timeline; via management e VIDIM | 3, 2b | Da fare |
 | 4 | Sezione 01 Cosa facciamo | 2 | **Fatto** (`e6316a2`): intro, 6 card delle aree con anteprima al passaggio e foglio, tecnologie come chip |
 | **4b** | **Testi nuovi nella 01**: nuove aree, gruppo AI, Settori (4) | 4 | Da fare |
-| 5 | Sezione 02 Servizi + Scaricabili + eseguibile (ora con i 4 servizi nuovi) | 2 | Da fare |
-| 6 | Sezione 03 Case history (card) | 2 | Da fare |
-| 7 | Sezione 05 Trasparenza (ex `04`) | 2b | Da fare |
-| **7b** | **Sezione 04 Team**: citazione, Valori, riquadri foto + mansione | 2b | Da fare |
+| 5 | Blocco Servizi dentro la 01 + Scaricabili + eseguibile (con i 4 servizi nuovi) | 4b | Da fare |
+| 6 | Sezione 02 Case history (card) | 2b | Da fare |
+| 7 | Sezione 04 Trasparenza (ex `04` poi `05`) | 2b | Da fare |
+| **7b** | **Sezione 03 Team**: citazione, Valori, riquadri foto + mansione | 2b | Da fare |
 | 8 | JS dell'accordion: pulsanti, cronologia, deep link, Contatti | 3–7b | Da fare |
 | 9 | Pagine di dettaglio con foglio e galleria (senza JS) + campo `gallery` | 8 |
 | 10 | JS del foglio e della galleria | 9 |
@@ -189,7 +191,7 @@ Regole:
   target ≥ 44 px, decorazioni con aria-hidden.
 - Codice, classi e commenti in inglese. Testi UI via i18n (it ed en).
 - Alla fine esegui `hugo --gc --minify --printPathWarnings --printI18nWarnings --panicOnWarning`:
-  zero warning. Controlla con `hugo server` a 1440×900, 1200×800, 1100×800, 390×844 e 844×390.
+  zero warning. Controlla con `hugo server` a 1440×900, 1100×800, 1099×800, 390×844 e 844×390.
 - Stile: solo quello del mockup (leggi i file .dc.html: misure, colori, pesi, forme). Non mescolare
   altri stili. Se devi discostartene (caso non coperto, contrasto, contenuto del CMS che il mockup
   non ha) avvisa nel resoconto con motivo, e mettilo in «differenze rispetto al mockup».
@@ -241,7 +243,7 @@ Fai così:
 3. Ogni sezione contiene la striscia e un .panel scorrevole con .panel__inner largo
    --panel-w (min 560 px) e, per ora, solo il titolo della sezione.
 4. layout.css: desktop riga flex, strisce larghe --strip, la sezione aperta flex-grow 1
-   con transizione --t-slow. < 1200 px (era 1100, vedi passo 2b): colonna, strisce alte --strip-m, etichetta
+   con transizione --t-slow. < 1100 px: colonna, strisce alte --strip-m, etichetta
    orizzontale. Altezza < 560 px: flusso normale, la pagina scorre, tutte le sezioni aperte.
 5. Senza JS la sezione aperta segue :target; senza hash è aperta quella con data-open:
    usa :has() su .accordion. Le sezioni chiuse non mostrano il pannello.
@@ -253,30 +255,35 @@ giusta senza JS; strisce ferme, pannello scorrevole; nessuno scroll orizzontale;
 numeri allineati al pixel (stessa y del centro su desktop, stessa x su mobile).
 ```
 
-### Passo 2b — Sesta striscia Team
+### Passo 2b — Riordino strisce: Servizi accorpato, Team aggiunto
 
 ```text
-Obiettivo: portare l'accordion da 5 a 6 strisce, senza ancora riempire la nuova sezione.
+Obiettivo: le strisce restano 5 ma cambiano: via Servizi (diventa un blocco della 01), dentro
+Team. Nessun cambio di soglia (1100 px).
 
-Prima: il mockup non ha la striscia Team. Aggiungi sul canvas, nella pagina «Accordion —
-sezioni a strisce», le strisce a 6 (desktop e mobile) e il pannello Team con la griglia dei
-riquadri (vedi passo 7b), tutto con lo stile esistente. Mostra il risultato all'utente e
-aspetta l'approvazione prima di scrivere il codice.
+Prima: il mockup ha ancora la striscia Servizi e non ha il Team. Sul canvas, nella pagina
+«Accordion — sezioni a strisce», togli la striscia Servizi, aggiungi la striscia Team e il suo
+pannello con la griglia dei riquadri (vedi passo 7b), desktop e mobile, con lo stile esistente.
+Disegna anche il blocco Servizi in fondo alla 01 (sottotitolo «Come lavoriamo», 4 righe
+numerate, gruppo «Assistenza clienti»). Mostra il risultato e aspetta l'approvazione prima del
+codice.
 
 Fai così:
-1. Ordine e id: omniaevo (00), cosa-facciamo (01), servizi (02), case-history (03),
-   team (04), trasparenza (05). Numeri delle strisce da zero.
-2. Aggiorna accordion.html, strip.html e le etichette i18n (it ed en): nuova etichetta «Team».
-3. layout.css e :target/:has(): ora 6 sezioni. Soglia desktop da 1100 a 1200 px (6 strisce da
-   96 px = 576 px, più pannello minimo 560 px); sotto 1200 px strisce orizzontali.
-   Controlla 1200×800 e 1199×800: nessuno scroll orizzontale, pannello leggibile.
-4. Colori delle strisce: 01 --strip-1, 02 --strip-2, 03 --strip-3, 04 --strip-1 (conferma
-   sul mockup), 05 arancio.
-5. Il pannello 04 contiene per ora solo il titolo «Team». Trasparenza (id trasparenza)
-   diventa 05: aggiorna numeri, etichette e CSS che la trattavano come quinta/04.
+1. Ordine e id: omniaevo (00), cosa-facciamo (01), case-history (02), team (03),
+   trasparenza (04). Numeri delle strisce da zero.
+2. Aggiorna accordion.html, strip.html e le etichette i18n (it ed en): togli la striscia
+   «Servizi» (l'etichetta resta per il sottotitolo del blocco), nuova etichetta «Team».
+3. layout.css e :target/:has(): la soglia resta 1100 px (5 strisce da 96 px = 480 px, più
+   pannello minimo 560 px = 1040 px). Controlla 1100×800 e 1099×800.
+4. Colori delle strisce: 01 --strip-1, 02 --strip-2, 03 --strip-3, 04 arancio.
+5. Il pannello 03 contiene per ora solo il titolo «Team». Trasparenza (id trasparenza) è 04:
+   aggiorna numeri, etichette e CSS.
+6. Alias `#servizi`: l'id passa a un elemento dentro la 01 (per ora un titolo segnaposto).
+   Senza JS l'hash su un elemento interno deve aprire la 01: estendi :target/:has() perché
+   il pannello che contiene il target risulti aperto.
 
-Criteri di accettazione: 6 strisce funzionanti senza JS; a 1200 px e a 390 px nessuno scroll
-orizzontale; numeri allineati; build senza warning.
+Criteri di accettazione: 5 strisce funzionanti senza JS; /#servizi apre la 01; a 1100 px e a
+390 px nessuno scroll orizzontale; numeri allineati; build senza warning.
 ```
 
 ### Passo 3 — Sezione 00 Omniaevo (fatto con i testi vecchi)
@@ -369,10 +376,11 @@ Criteri di accettazione: card di altezza identica; il CMS salva i nuovi campi; n
 vecchio delle aree rimasto (Engineering, Network, Systems, Web Apps: grep zero).
 ```
 
-### Passo 5 — Sezione 02 Servizi, Scaricabili, eseguibile
+### Passo 5 — Blocco Servizi (dentro la 01), Scaricabili, eseguibile
 
 ```text
-Obiettivo: i 4 servizi nuovi, area download e assistenza remota.
+Obiettivo: i 4 servizi nuovi, area download e assistenza remota, come ultimo blocco della
+sezione 01 Cosa facciamo (non è più una striscia).
 
 Fai così:
 0. Servizi nuovi (TESTI.md 5.3): crea in content/it/servizi/ le 4 voci Consulenza,
@@ -389,8 +397,11 @@ Fai così:
    { title, file, note }) con l'eseguibile («Assistenza remota», nota «Per Windows. Avvialo
    quando te lo chiede il tecnico.») e il manuale PEC. Aggiungi il campo in .pages.yml
    (IT ed EN) con descrizioni per i redattori.
-3. _partials/sections/servizi.html: righe dei servizi (collection servizi, ByWeight) come
-   link alla pagina di dettaglio (il foglio arriva al passo 10); card «Scaricabili» con
+3. _partials/sections/servizi-block.html, incluso in fondo a cosa-facciamo.html, con
+   id="servizi" e sottotitolo piccolo «Come lavoriamo» (stile dei sottotitoli, non un h2 di
+   sezione: sotto <h2> «Cosa facciamo» va un <h3>): intro, righe dei servizi (collection
+   servizi, ByWeight) come link alla pagina di dettaglio (il foglio arriva al passo 10);
+   gruppo «Assistenza clienti» con PEC e card «Scaricabili» con
    tipo file (EXE/PDF) ricavato dall'estensione, attributo download sui file locali.
 4. Aggiorna docs/redesign/redirect.md: /omniaevoremote.exe di nuovo allo stesso URL.
 
@@ -401,7 +412,7 @@ modificabili dal CMS; nessuna duplicazione del manuale PEC nei dati (un solo pun
 cui il CMS lo modifica, o motivazione se serve duplicarlo).
 ```
 
-### Passo 6 — Sezione 03 Case history
+### Passo 6 — Sezione 02 Case history
 
 ```text
 Obiettivo: griglia di card uguali.
@@ -420,10 +431,10 @@ Criteri di accettazione: tutte le card hanno la stessa altezza a ogni larghezza;
 lunghi finiscono con «…»; nessuna categoria inventata.
 ```
 
-### Passo 7 — Sezione 05 Trasparenza
+### Passo 7 — Sezione 04 Trasparenza
 
 ```text
-Obiettivo: sezione Trasparenza (ora la sesta striscia, numero 05, id trasparenza).
+Obiettivo: sezione Trasparenza (ultima striscia, numero 04, id trasparenza).
 
 Fai così: _partials/sections/trasparenza.html: titolo e intro da content/*/trasparenza/
 _index.md; dati societari (stesso partial della 00, nessuna duplicazione di markup);
@@ -434,7 +445,7 @@ Criteri di accettazione: tutti e 4 i PDF scaricabili; contrasto AA della strisci
 alias del vecchio URL WordPress ancora funzionante (il target cambia al passo 11).
 ```
 
-### Passo 7b — Sezione 04 Team
+### Passo 7b — Sezione 03 Team
 
 ```text
 Obiettivo: la nuova sezione Team (TESTI.md 5.5) con i riquadri per le foto.
@@ -554,8 +565,9 @@ Obiettivo: sistemare tutti gli indirizzi della nuova struttura.
 
 Fai così:
 0. Il Team è una sezione senza pagine di dettaglio: nessun redirect, solo /#team.
-1. layouts/{servizi,case-history,trasparenza}/section.html → redirect a /#servizi,
-   /#case-history, /#trasparenza (riusa il layout redirect: noindex, fuori sitemap).
+1. layouts/{servizi,case-history,trasparenza}/section.html → redirect a /#servizi (alias del
+   blocco dentro la 01), /#case-history, /#trasparenza (riusa il layout redirect: noindex,
+   fuori sitemap).
    L'alias WordPress di trasparenza punta a /#trasparenza.
 2. Pagine redirect esistenti: /chi-siamo → /#chi-siamo (ancora dentro la 00; la
    sezione Team è raggiungibile da /#team),
@@ -577,7 +589,7 @@ nessun link interno rotto (controlla con htmltest o uno script di crawl su publi
 ```text
 Obiettivo: /en/ completo come /it/.
 
-Fai così: verifica che ogni sezione (6), campo nuovo (downloads, gallery, facts, timeline, mission,
+Fai così: verifica che ogni sezione (5), campo nuovo (downloads, gallery, facts, timeline, mission,
 vision, services dei servizi, settori, team) ed etichetta i18n esista in inglese; dove il testo inglese manca, mostra il campo vuoto e segnalalo (non
 tradurre tu i contenuti senza chiedere). Selettore lingua: piccolo link IT/EN nel blocco
 Contatti e nella riga legale della 00 (scegli e motiva; niente nella striscia).
@@ -593,7 +605,7 @@ Obiettivo: passata di qualità su tutto.
 
 Fai così: controllo con axe (o Lighthouse) di home, un case, PEC, privacy, 404 a
 1440×900 e 390×844; navigazione solo tastiera; lettore schermo (Orca o VoiceOver) su
-strisce e foglio; 844×390 (flusso normale); 1200 e 1199 px (passaggio di layout); zoom 200%;
+strisce e foglio; 844×390 (flusso normale); 1100 e 1099 px (passaggio di layout); zoom 200%;
 prefers-reduced-motion; foglio di stile print (sezioni tutte aperte, strisce nascoste).
 Correggi ciò che trovi. Controlla anche i dettagli visivi del mockup: card uguali,
 allineamento logo/numeri, segnalatore concentrico, pulsante Contatti solo icona.
@@ -628,7 +640,7 @@ generato (se restano, la pubblicazione è bloccata).
 ---
 
 ## 6. Fuori ambito (prossimi piani)
-- Striscia per i Contatti (oggi: pulsante nella 00 + blocco in fondo alla 00): sarebbe la settima.
+- Striscia per i Contatti (oggi: pulsante nella 00 + blocco in fondo alla 00): sarebbe la sesta.
 - Sezione «Lavora con noi» / carriere (il PDF segnala che mancano nel sito): serve un indirizzo email dedicato e i testi.
 - Sezione Sostenibilità (tolta dai testi del PDF il 2026-11-04).
 - Case history compilati con Sfida / Soluzione / Risultati: servono dati reali di Omniaevo.
