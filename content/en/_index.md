@@ -107,7 +107,17 @@ reviewed = false
 
 [servizi]
   title = "Services"
-  intro = "" # TODO: the current site has no intro text for this section
+  intro = "" # TODO: English text to be provided
+
+  [[servizi.downloads]]
+    title = "Remote assistance"
+    file = "/omniaevoremote.exe"
+    note = ""
+
+[team]
+  title = "Team"
+  highlight = "Team"
+  # TODO: English texts, values and members to be provided (members stay empty: the grid is not shown)
 
 [caseHistory]
   title = "Case history"

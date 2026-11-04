@@ -177,6 +177,9 @@ other = "Services"
 [sectionCaseHistory]
 other = "Case history"
 
+[sectionTeam]
+other = "Team"
+
 [sectionTrasparenza]
 other = "Transparency"
 
@@ -231,3 +234,13 @@ other = "Certified mail"
 
 [close]
 other = "Close"
+
+# Services block (end of section 01) and Team.
+[servicesHow]
+other = "How we work"
+
+[customerSupport]
+other = "Customer support"
+
+[downloads]
+other = "Downloads"

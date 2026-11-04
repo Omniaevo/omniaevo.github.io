@@ -199,7 +199,99 @@ content:
       - name: intro
         label: Introduzione
         type: text
-        description: Facoltativa. Testo sotto il titolo.
+        description: Una riga sotto il sottotitolo «Come lavoriamo», nel blocco Servizi in fondo a Cosa facciamo.
+      - name: downloads
+        label: Scaricabili
+        type: object
+        description: File da scaricare nel gruppo «Assistenza clienti». Il manuale PEC si aggiunge da solo dal servizio PEC. Un file locale compare solo se esiste in static/.
+        list: true
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Nome del file, per esempio «Assistenza remota».
+        - name: file
+          label: File
+          type: file
+          description: Carica il file oppure scrivi l'indirizzo (per l'assistenza remota «/omniaevoremote.exe»).
+        - name: note
+          label: Nota
+          type: string
+          description: Una riga che spiega a cosa serve. Facoltativa.
+    - name: team
+      label: Team
+      type: object
+      description: Sezione Team (terza striscia).
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: highlight
+        label: Parola evidenziata
+        type: string
+        description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
+      - name: quote
+        label: Citazione
+        type: text
+        description: Frase grande sotto il titolo.
+      - name: text
+        label: Testo
+        type: text
+        description: Paragrafo sotto la citazione.
+      - name: valuesTitle
+        label: Titolo dei valori
+        type: string
+        description: Piccolo titolo sopra le tre schede, per esempio «Valori».
+      - name: values
+        label: Valori
+        type: object
+        description: Tre schede uguali. Più di tre vanno a capo.
+        list: true
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Il valore, per esempio «Problem solving».
+        - name: icon
+          label: Icona
+          type: select
+          description: Icona mostrata nella scheda.
+          options:
+            values:
+            - quality
+            - problem
+            - tailor
+      - name: membersTitle
+        label: Titolo delle persone
+        type: string
+        description: Piccolo titolo sopra i riquadri, per esempio «Le persone».
+      - name: members
+        label: Persone
+        type: object
+        description: Un riquadro per persona, nell'ordine in cui compaiono (ordine della struttura aziendale). Senza foto compare una sagoma.
+        list: true
+        fields:
+        - name: name
+          label: Nome e cognome
+          type: string
+          description: Una riga.
+        - name: role
+          label: Mansione
+          type: string
+          description: Breve, al massimo due righe.
+        - name: featured
+          label: Scheda grande
+          type: boolean
+          description: Se attiva, la scheda è grande come due righe e le altre le stanno accanto. Usarla per una sola persona, la prima della lista.
+        - name: photo
+          label: Foto
+          type: image
+          description: Verticale, rapporto 4:5 (per esempio 800×1000 px), JPG, sotto i 300 KB. Il ritaglio è uguale per tutti.
+        - name: photoAlt
+          label: Descrizione della foto
+          type: string
+          description: Testo alternativo. Se vuoto la foto è trattata come decorativa.
     - name: caseHistory
       label: Case history (titolo)
       type: object
@@ -415,6 +507,11 @@ content:
         label: File
         type: file
         description: Carica un file oppure indica l'indirizzo di un documento esterno.
+      list: true
+    - name: services
+      label: Servizi offerti
+      type: string
+      description: Elenco breve di voci, una per riga. Per i servizi numerati del blocco Servizi.
       list: true
     - name: body
       label: Testo
@@ -755,7 +852,99 @@ content:
       - name: intro
         label: Introduzione
         type: text
-        description: Facoltativa. Testo sotto il titolo.
+        description: Una riga sotto il sottotitolo «Come lavoriamo», nel blocco Servizi in fondo a Cosa facciamo.
+      - name: downloads
+        label: Scaricabili
+        type: object
+        description: File da scaricare nel gruppo «Assistenza clienti». Il manuale PEC si aggiunge da solo dal servizio PEC. Un file locale compare solo se esiste in static/.
+        list: true
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Nome del file, per esempio «Assistenza remota».
+        - name: file
+          label: File
+          type: file
+          description: Carica il file oppure scrivi l'indirizzo (per l'assistenza remota «/omniaevoremote.exe»).
+        - name: note
+          label: Nota
+          type: string
+          description: Una riga che spiega a cosa serve. Facoltativa.
+    - name: team
+      label: Team
+      type: object
+      description: Sezione Team (terza striscia).
+      fields:
+      - name: title
+        label: Titolo della sezione
+        type: string
+        description: Titolo mostrato in cima alla sezione.
+      - name: highlight
+        label: Parola evidenziata
+        type: string
+        description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
+      - name: quote
+        label: Citazione
+        type: text
+        description: Frase grande sotto il titolo.
+      - name: text
+        label: Testo
+        type: text
+        description: Paragrafo sotto la citazione.
+      - name: valuesTitle
+        label: Titolo dei valori
+        type: string
+        description: Piccolo titolo sopra le tre schede, per esempio «Valori».
+      - name: values
+        label: Valori
+        type: object
+        description: Tre schede uguali. Più di tre vanno a capo.
+        list: true
+        fields:
+        - name: title
+          label: Titolo
+          type: string
+          description: Il valore, per esempio «Problem solving».
+        - name: icon
+          label: Icona
+          type: select
+          description: Icona mostrata nella scheda.
+          options:
+            values:
+            - quality
+            - problem
+            - tailor
+      - name: membersTitle
+        label: Titolo delle persone
+        type: string
+        description: Piccolo titolo sopra i riquadri, per esempio «Le persone».
+      - name: members
+        label: Persone
+        type: object
+        description: Un riquadro per persona, nell'ordine in cui compaiono (ordine della struttura aziendale). Senza foto compare una sagoma.
+        list: true
+        fields:
+        - name: name
+          label: Nome e cognome
+          type: string
+          description: Una riga.
+        - name: role
+          label: Mansione
+          type: string
+          description: Breve, al massimo due righe.
+        - name: featured
+          label: Scheda grande
+          type: boolean
+          description: Se attiva, la scheda è grande come due righe e le altre le stanno accanto. Usarla per una sola persona, la prima della lista.
+        - name: photo
+          label: Foto
+          type: image
+          description: Verticale, rapporto 4:5 (per esempio 800×1000 px), JPG, sotto i 300 KB. Il ritaglio è uguale per tutti.
+        - name: photoAlt
+          label: Descrizione della foto
+          type: string
+          description: Testo alternativo. Se vuoto la foto è trattata come decorativa.
     - name: caseHistory
       label: Case history (titolo)
       type: object
@@ -981,6 +1170,11 @@ content:
         label: File
         type: file
         description: Carica un file oppure indica l'indirizzo di un documento esterno.
+      list: true
+    - name: services
+      label: Servizi offerti
+      type: string
+      description: Elenco breve di voci, una per riga. Per i servizi numerati del blocco Servizi.
       list: true
     - name: body
       label: Testo

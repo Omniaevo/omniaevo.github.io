@@ -106,7 +106,68 @@ description = "Omniaevo opera in tutti i settori dell’information technology, 
 
 [servizi]
   title = "Servizi"
-  intro = "" # TODO: the current site has no intro text for this section
+  intro = "Consulenza ingegneria digitale · Progettazione e sviluppo hardware e software · Implementazione e supporto legale integrato."
+
+  [[servizi.downloads]]
+    title = "Assistenza remota"
+    file = "/omniaevoremote.exe"
+    note = "Per Windows. Avvialo quando te lo chiede il tecnico."
+
+[team]
+  title = "Team"
+  highlight = "Team"
+  quote = "Un team multidisciplinare in grado di realizzare progetti di ingegneria digitale per industria e servizi."
+  text = "Il nostro team affronta ogni sfida con creatività e precisione, coprendo aspetti hardware, software ed elettronici e trattando con competenza le informazioni digitali."
+  valuesTitle = "Valori"
+  membersTitle = "Le persone"
+  values = [
+    { title = "Qualità e affidabilità", icon = "quality" },
+    { title = "Problem solving", icon = "problem" },
+    { title = "Personalizzazione", icon = "tailor" },
+  ]
+
+  [[team.members]]
+    featured = true
+    name = "Massimo Belluz"
+    role = "Amministratore Unico e responsabile R&D"
+    photo = "/uploads/home/massimo-belluz.jpg"
+    photoAlt = "Massimo Belluz"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
+
+  [[team.members]]
+    name = "Nome Cognome"
+    role = "Mansione"
 
 [caseHistory]
   title = "Case history"

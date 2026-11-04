@@ -177,6 +177,9 @@ other = "Servizi"
 [sectionCaseHistory]
 other = "Case history"
 
+[sectionTeam]
+other = "Team"
+
 [sectionTrasparenza]
 other = "Trasparenza"
 
@@ -231,3 +234,13 @@ other = "Posta certificata"
 
 [close]
 other = "Chiudi"
+
+# Services block (end of section 01) and Team.
+[servicesHow]
+other = "Come lavoriamo"
+
+[customerSupport]
+other = "Assistenza clienti"
+
+[downloads]
+other = "Scaricabili"

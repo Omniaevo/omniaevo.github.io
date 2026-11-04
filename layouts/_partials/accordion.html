@@ -7,8 +7,8 @@
 {{- $sections := slice
   (dict "id" "omniaevo" "label" (T "sectionOmniaevo"))
   (dict "id" "cosa-facciamo" "label" (T "sectionCosaFacciamo"))
-  (dict "id" "servizi" "label" (T "sectionServizi"))
   (dict "id" "case-history" "label" (T "sectionCaseHistory"))
+  (dict "id" "team" "label" (T "sectionTeam"))
   (dict "id" "trasparenza" "label" (T "sectionTrasparenza")) }}
 <div class="accordion">
   {{- range $i, $s := $sections }}
@@ -20,6 +20,8 @@
         {{ partial "sections/omniaevo.html" (dict "h1" $.h1) }}
         {{- else if eq $s.id "cosa-facciamo" }}
         {{ partial "sections/cosa-facciamo.html" . }}
+        {{- else if eq $s.id "team" }}
+        {{ partial "sections/team.html" . }}
         {{- else }}
         <h2 id="{{ $s.id }}-title">{{ $s.label }}</h2>
         {{- end }}

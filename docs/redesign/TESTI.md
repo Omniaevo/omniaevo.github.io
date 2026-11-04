@@ -149,7 +149,7 @@ Non è più una striscia: sta in fondo alla `01`, dopo i Settori, con `id="servi
 **Intro** (`servizi.intro`, dal PDF):
 > Consulenza ingegneria digitale · Progettazione e sviluppo hardware e software · Implementazione e supporto legale integrato.
 
-**4 servizi** numerati `01`–`04`, come percorso. Ognuno è una voce della collection `servizi`, con testo e un elenco breve (campo `services`), e apre il foglio. PEC e scaricabili restano sotto, come gruppo «Assistenza clienti».
+**4 servizi** numerati `01`–`04`, come percorso. Ognuno è una voce della collection `servizi`, con testo e un elenco breve (campo `services`). **Aggiornamento 2026-11-04:** le 4 schede **non sono link** e non hanno pagina di dettaglio (`build.render = "never"`): non c'è altro contenuto da mostrare. Solo la PEC resta una pagina. PEC e scaricabili restano sotto, come gruppo «Assistenza clienti».
 
 **01 · Consulenza**
 > Il primo passo è capire le esigenze specifiche del cliente. Offriamo analisi dettagliate e strategie personalizzate per ottimizzare i processi aziendali e adottare le tecnologie più adatte.
@@ -181,9 +181,9 @@ Restano i 6 case attuali. Dal PDF si prende solo lo schema del foglio, **Sfida �
 
 **Testo** (`team.text`, da «Chi siamo»): Il nostro team affronta ogni sfida con creatività e precisione, coprendo aspetti hardware, software ed elettronici e trattando con competenza le informazioni digitali.
 
-**Valori** (3 schede uguali con icona SVG, `team.values`; spostati qui dalla `00`): Qualità e affidabilità · Problem solving · Personalizzazione. Didascalia: «Soluzioni tailor made».
+**Valori** (3 schede uguali con icona SVG, `team.values`; spostati qui dalla `00`): Qualità e affidabilità · Problem solving · Personalizzazione.
 
-**Persone** (`team.members`: lista di `{ name, role, photo, photoAlt }`). Circa 10 riquadri tutti uguali: foto verticale 4:5, stesso ritaglio, nome e mansione (al massimo 2 righe). Senza foto compare una sagoma SVG su fondo `--mist`. Durante lo sviluppo i riquadri dicono `Nome Cognome` / `Mansione`: vanno sostituiti prima della pubblicazione (il passo 14 lo verifica). Da Omniaevo: nomi, mansioni, ordine (per struttura aziendale) e foto.
+**Persone** (`team.members`: lista di `{ name, role, photo, photoAlt }`). Circa 10 riquadri tutti uguali: foto verticale 4:5, stesso ritaglio, nome e mansione (al massimo 2 righe). Senza foto compare una sagoma SVG su fondo `--mist`. Durante lo sviluppo i riquadri dicono `Nome Cognome` / `Mansione`: vanno sostituiti prima della pubblicazione (il passo 14 lo verifica). **Scheda grande (2026-11-04):** la prima persona, Massimo Belluz (Amministratore Unico e responsabile R&D, foto `/uploads/home/massimo-belluz.jpg` già nel sito), ha una scheda larga due colonne e alta due righe; le altre le stanno accanto (campo `featured`). Da Omniaevo: nomi, mansioni, ordine (per struttura aziendale) e foto.
 
 ### 5.6 — `04` Trasparenza
 

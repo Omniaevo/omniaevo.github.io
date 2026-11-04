@@ -1,0 +1,11 @@
+{{- /*
+  One download as a row (same look as .contact). Type from the extension; "download" only on local files.
+  Context: dict "title" "file" "note"
+*/ -}}
+{{- $external := (urls.Parse .file).Scheme }}
+<li>
+  <a class="contact" href="{{ if $external }}{{ .file }}{{ else }}{{ .file | relURL }}{{ end }}"{{ if $external }} rel="noopener noreferrer"{{ else }} download{{ end }}>
+    <span class="contact__icon">{{ partial "icon.html" "file" }}</span>
+    <span class="contact__text"><small>{{ upper (strings.TrimPrefix "." (path.Ext .file)) }}{{ with .note }} · {{ . }}{{ end }}</small><b>{{ .title }}</b></span>
+  </a>
+</li>

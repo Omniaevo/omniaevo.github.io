@@ -109,7 +109,7 @@ I token (8 colori, 6 misure di testo, 3 pesi, 6 spazi, 2 raggi, 2 durate) sono d
 | `.area` | `components.css` | card delle aree (già fatta, passo 4); riusata dalle schede dei **Settori** |
 | `.timeline` | `components.css` | **nuovo, non è nel mockup:** righe anno + punti della Storia (`00`). Va disegnato prima sul mockup (passo 3b) |
 | `.values` | `components.css` | 3 schede uguali con icona SVG (`04` Team) |
-| `.team`, `.person` | `components.css` | **nuovi, non sono nel mockup:** griglia di riquadri uguali (foto verticale 4:5, nome, mansione su 2 righe), segnaposto SVG se manca la foto (passo 7b). Vanno disegnati prima sul mockup |
+| `.team`, `.person` | `components.css` | **nuovi, non sono nel mockup:** griglia di riquadri uguali (foto verticale 4:5, nome, mansione su 2 righe), segnaposto SVG se manca la foto (passo 7b). Prima persona in scheda grande (2 colonne × 2 righe, `.person--featured`). Vanno disegnati prima sul mockup |
 | `.sheet` | `components.css` | `<dialog>`: maniglia, testata fissa, corpo scorrevole |
 | `.gallery` | `components.css` | binario `scroll-snap` delle immagini + colonna miniature (desktop) / puntini (mobile) |
 | `.prose` | `components.css` | testo Markdown nel foglio e in privacy |
@@ -456,7 +456,7 @@ Fai così:
 1. Dati: campo team in content/it/_index.md e content/en/_index.md: title, quote
    (citazione), text, values (lista di { title, icon }: «Qualità e affidabilità»,
    «Problem solving», «Personalizzazione»; icon = chiave di un SVG già definito in
-   icon.html o nuovo), caption (didascalia «Soluzioni tailor made»), members (lista di
+   icon.html o nuovo), members (lista di
    { name, role, photo, photoAlt }). Aggiungi tutto a .pages.yml (IT ed EN), con la
    descrizione dei campi per i redattori: formato foto, ordine = ordine in pagina,
    mansione breve.
@@ -465,7 +465,7 @@ Fai così:
    Segnala nel resoconto che vanno sostituiti prima della pubblicazione (criterio del
    passo 14).
 3. layouts/_partials/sections/team.html: titolo, citazione grande, testo, Valori (3
-   schede uguali con icona SVG, didascalia sotto), griglia .team di .person. Riquadro:
+   schede uguali con icona SVG), griglia .team di .person. Riquadro:
    foto verticale 4:5 con object-fit cover (stesso ritaglio per tutti), nome (1 riga),
    mansione (2 righe al massimo, poi «…»). Tutti i riquadri hanno la stessa dimensione;
    colonne: 5 su desktop largo, 3 sul pannello stretto, 2 su mobile. Immagini via

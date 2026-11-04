@@ -349,7 +349,8 @@
 }
 
 .about h3,
-.what h3 {
+.what h3,
+.team h3 {
   margin-bottom: var(--space-1);
   font-family: var(--font-body);
   font-size: var(--fs-body);
@@ -668,7 +669,8 @@
   margin-top: var(--space-3);
 }
 
-.what__title {
+.what__title,
+.team__title {
   font-size: var(--fs-display);
   line-height: .95;
 }
@@ -981,4 +983,272 @@
   color: var(--blue);
   font-size: var(--fs-small);
   font-weight: 600;
+}
+
+/* ------------------------------------------- Services block (end of section 01) */
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--bw) solid var(--ink);
+}
+
+.services header {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.services .what__lead {
+  margin: 0;
+}
+
+/* Steps: filled rows (they only inform, no link). Equal height, text clamped to 2 lines. */
+.steps {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 6.5rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--r-m);
+  background: var(--mist);
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+
+.step__text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.step__text b {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.step__text span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--muted);
+}
+
+.support {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.support__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.support__list .contact {
+  height: 100%;
+}
+
+@media (max-width: 560px) {
+  .step {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    padding: var(--space-2);
+  }
+}
+
+/* ------------------------------------------------------- Section 03 (Team) */
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.team h2,
+.team h3,
+.team p {
+  margin: 0;
+}
+
+.team header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.team header p:not(.team__quote) {
+  max-width: 70ch;
+}
+
+.team__quote {
+  max-width: 28ch;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+
+/* Values: filled cards (they only inform), equal size. One column when the panel is narrow
+   (icon beside the title), three columns when it is wide: never two plus one. */
+.team {
+  container-type: inline-size;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 5.5rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--r-m);
+  background: var(--mist);
+}
+
+@container (min-width: 740px) {
+  .values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .value {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 9rem;
+    padding: var(--space-3);
+  }
+}
+
+.value__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue);
+}
+
+.value__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: var(--fs-lead);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+
+/* People: equal tiles, photo 4:5 with the same crop */
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  gap: var(--space-3) var(--space-2);
+  margin-top: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.person__photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  margin-bottom: var(--space-1);
+  overflow: hidden;
+  border-radius: var(--r-s);
+  background: var(--mist);
+  color: var(--muted);
+}
+
+.person__photo {
+  position: relative;
+}
+
+.person__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Featured person: two columns wide and as tall as two rows; the other tiles flow beside it.
+   Its photo fills the free height (it never makes the rows taller). Narrow panel: full width, one row. */
+@container (min-width: 480px) {
+  .person--featured {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .person--featured .person__photo {
+    flex: 1 1 0;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+}
+
+@container (max-width: 479.98px) {
+  .person--featured {
+    grid-column: 1 / -1;
+  }
+}
+
+.person__photo .icon {
+  width: 40%;
+  height: auto;
+}
+
+.person__name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.person__role {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 3em;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--muted);
 }
