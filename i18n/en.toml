@@ -190,6 +190,9 @@ other = "year founded"
 [factAreas]
 other = "areas of expertise"
 
+[factCases]
+other = "case studies"
+
 [factNetwork]
 other = "business network we belong to"
 

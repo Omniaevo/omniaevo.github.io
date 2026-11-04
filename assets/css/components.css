@@ -249,22 +249,29 @@
   line-height: 1.5;
 }
 
-/* Facts: three cells joined by 2 px lines */
+/* Facts: outlined cards (they open a section), V2 style */
 .facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--bw);
+  gap: var(--space-2);
   padding: 0;
-  overflow: hidden;
-  border: var(--bw) solid var(--line);
-  border-radius: var(--r-m);
-  background: var(--line);
   list-style: none;
 }
 
-.facts li {
-  padding: var(--space-3);
-  background: var(--white);
+.facts a {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: var(--space-3) calc(var(--space-3) + 44px + var(--space-1)) var(--space-3) var(--space-3);
+  border: var(--bw) solid var(--line);
+  border-radius: var(--r-m);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color var(--t-fast);
+}
+
+.facts a:hover {
+  background: var(--mist);
 }
 
 .facts__value {
@@ -283,10 +290,51 @@
   color: var(--muted);
 }
 
-.facts__note {
-  margin-top: calc(var(--space-3) - var(--space-6)); /* closes the gap of .home to 24 px */
-  max-width: 70ch;
+.facts .icon {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  box-sizing: content-box;
+  padding: 13px;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--ink);
+  transition: background-color var(--t-fast), transform var(--t-fast);
+}
+
+.facts a:hover .icon {
+  background: var(--orange);
+  transform: translateX(2px);
+}
+
+/* VIDIM network: filled block (it only informs) */
+.network {
+  padding: var(--space-3);
+  border-radius: var(--r-m);
+  background: var(--mist);
+}
+
+.network__label {
+  margin-bottom: var(--space-1);
+  font-size: var(--fs-small);
+  font-weight: 600;
   color: var(--muted);
+}
+
+.network h2 {
+  margin-bottom: var(--space-1);
+  font-size: var(--fs-h3);
+}
+
+.network p:last-child {
+  max-width: 70ch;
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Chi siamo: Storia and Oggi stacked on the left, the management card on the right */

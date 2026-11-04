@@ -24,19 +24,19 @@
   </div>
   {{- end }}
 
-  {{- /* Facts: only real data */}}
+  {{- /* Facts: real data only, each one links to the part of the site it counts */}}
+  {{- $cases := len (where site.RegularPages "Section" "case-history") }}
   <ul class="facts">
     {{- with $c.foundedYear }}
-    <li><span class="facts__value">{{ . }}</span><span class="facts__label">{{ T "factFounded" }}</span></li>
+    <li><a href="#chi-siamo"><span class="facts__value">{{ . }}</span><span class="facts__label">{{ T "factFounded" }}</span>{{ partial "icon-arrow.html" }}</a></li>
     {{- end }}
     {{- with $p.cosaFacciamo.areas }}
-    <li><span class="facts__value">{{ len . }}</span><span class="facts__label">{{ T "factAreas" }}</span></li>
+    <li><a href="#cosa-facciamo"><span class="facts__value">{{ len . }}</span><span class="facts__label">{{ T "factAreas" }}</span>{{ partial "icon-arrow.html" }}</a></li>
     {{- end }}
-    {{- with $p.vidim }}
-    <li><span class="facts__value">{{ index (split .title " ") 0 }}</span><span class="facts__label">{{ T "factNetwork" }}</span></li>
+    {{- if $cases }}
+    <li><a href="#case-history"><span class="facts__value">{{ $cases }}</span><span class="facts__label">{{ T "factCases" }}</span>{{ partial "icon-arrow.html" }}</a></li>
     {{- end }}
   </ul>
-  {{- with $p.vidim.text }}<p class="facts__note">{{ . }}</p>{{ end }}
 
   {{- /* Chi siamo */}}
   {{- with $p.chiSiamo }}
@@ -65,6 +65,15 @@
     </div>
     {{- end }}
   </section>
+  {{- end }}
+
+  {{- /* VIDIM network */}}
+  {{- with $p.vidim }}
+  <aside class="network" aria-labelledby="network-title">
+    <p class="network__label">{{ T "factNetwork" }}</p>
+    <h2 id="network-title">{{ .title }}</h2>
+    {{- with .text }}<p>{{ . }}</p>{{ end }}
+  </aside>
   {{- end }}
 
   {{- /* Company details + link to Trasparenza */}}
