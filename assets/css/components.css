@@ -1914,3 +1914,68 @@ html.js .gallery__track {
     object-fit: cover;
   }
 }
+
+/* Table of contents of a long text (privacy) */
+.detail__toc {
+  max-width: 70ch;
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--r-m);
+  background: var(--mist);
+}
+
+.detail__toc ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail__toc ul ul {
+  margin: 6px 0 0 var(--space-2);
+}
+
+.detail__toc a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.detail__body h2,
+.detail__body h3 {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--blue);
+}
+
+.detail__body h2 {
+  font-size: var(--fs-h3);
+}
+
+.detail__body h3 {
+  font-size: var(--fs-lead);
+}
+
+/* 404 */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 100dvh;
+  padding: var(--space-5) var(--space-3);
+}
+
+.not-found h1,
+.not-found p {
+  margin: 0;
+}
+
+@media (min-width: 720px) {
+  .not-found {
+    padding-inline: clamp(var(--space-4), 8vw, var(--space-6));
+  }
+}

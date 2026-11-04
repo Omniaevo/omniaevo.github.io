@@ -677,12 +677,6 @@ content:
       label: Parola evidenziata
       type: string
       description: Una parola del titolo, da scrivere esattamente come nel titolo. Riceve la banda arancio. Lasciare vuoto per non evidenziare.
-    - name: aliases
-      label: Vecchi indirizzi
-      type: string
-      description: 'Non modificare: servono per i link del vecchio sito.'
-      readonly: true
-      list: true
     - name: banners
       label: Banner
       type: object

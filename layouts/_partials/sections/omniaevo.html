@@ -107,8 +107,8 @@
     <p>{{ T "vatNumber" }} {{ $c.vat }}</p>
     <nav aria-label="{{ T "legalNavigation" }}">
       <ul>
-        <li><a href="{{ $privacy }}"{{ if not $hasPrivacy }} hreflang="it"{{ end }}>{{ T "privacyPolicy" }}</a></li>
-        <li><a href="{{ $privacy }}#cookie"{{ if not $hasPrivacy }} hreflang="it"{{ end }}>{{ T "cookiePolicy" }}</a></li>
+        <li><a href="{{ $privacy }}"{{ if $hasPrivacy }} data-detail{{ else }} hreflang="it"{{ end }}>{{ T "privacyPolicy" }}</a></li>
+        <li><a href="{{ $privacy }}#cookie"{{ if $hasPrivacy }} data-detail{{ else }} hreflang="it"{{ end }}>{{ T "cookiePolicy" }}</a></li>
       </ul>
     </nav>
     <p>© {{ now.Year }} {{ $c.company }} – {{ T "rightsReserved" }}</p>

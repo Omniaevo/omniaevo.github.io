@@ -156,7 +156,7 @@ Stato al 2026-11-04. I passi 1–4 sono stati fatti con i **testi di prima**: i 
 | 8 | JS dell'accordion: pulsanti, cronologia, deep link, Contatti | 3–7b | **Fatto** |
 | 9 | Pagine di dettaglio con foglio e galleria (senza JS) + campo `gallery` | 8 | **Fatto** |
 | 10 | JS del foglio e della galleria | 9 | **Fatto** |
-| 11 | URL: redirect degli indici, privacy nel foglio, 404, sitemap | 10 |
+| 11 | URL: redirect degli indici, privacy nel foglio, 404, sitemap | 10 | **Fatto** |
 | 12 | Versione inglese | 11 |
 | 13 | Passata accessibilità, mobile, schermi bassi, stampa | 12 |
 | 14 | Verifica finale e documentazione | 13 |

@@ -1,0 +1,22 @@
+{{- /*
+  Redirect to a page or an anchor: meta refresh + canonical + visible link (a page of the old site, or an index
+  that now lives in the home page). Context: dict "title" "target" (e.g. "/#case-history").
+*/ -}}
+{{- $rel := strings.TrimPrefix "/" .target -}}
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .title }} | {{ site.Title }}</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ $rel | absLangURL }}">
+  <meta http-equiv="refresh" content="0; url={{ $rel | relLangURL }}">
+</head>
+<body>
+  <main id="main">
+    <h1>{{ .title }}</h1>
+    <p>{{ T "redirectMoved" }} <a href="{{ $rel | relLangURL }}">{{ T "redirectGo" }}</a></p>
+  </main>
+</body>
+</html>

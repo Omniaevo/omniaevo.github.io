@@ -192,6 +192,14 @@ if (dialog) {
     initGallery(dialog);
     opener = link ?? opener;
     if (!dialog.open) dialog.showModal();
+    scrollInSheet(new URL(href, location.href).hash);
+  };
+
+  // A link to an anchor inside the text (contents, #cookie) scrolls the sheet, not the page, and adds no history entry.
+  const scrollInSheet = (hash) => {
+    const target = hash.length > 1 && dialog.querySelector(`#${CSS.escape(decodeURIComponent(hash.slice(1)))}`);
+    if (target) target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+    return !!target;
   };
 
   const close = () => (pushed ? history.back() : hide());
@@ -209,13 +217,16 @@ if (dialog) {
 
   addEventListener("popstate", () => {
     if (detail) return;
-    const link = [...document.querySelectorAll("[data-detail]")].find((l) => l.href === location.href);
+    const link = [...document.querySelectorAll("[data-detail]")].find((l) => l.pathname === location.pathname);
+    if (link && dialog.open) return;
     if (link) { pushed = true; show(link.href, link).catch(() => location.reload()); }
     else if (dialog.open) { pushed = false; hide(); }
   });
 
   dialog.addEventListener("cancel", (event) => { event.preventDefault(); detail ? location.assign(dialog.querySelector(".sheet__close").href) : close(); });
   dialog.addEventListener("click", (event) => {
+    const anchor = event.target.closest('a[href^="#"]');
+    if (anchor && !event.defaultPrevented && scrollInSheet(anchor.hash)) return event.preventDefault();
     const close_ = event.target.closest(".sheet__close");
     if (close_ && !detail) { event.preventDefault(); close(); }
     // A click on the backdrop lands on the dialog itself.

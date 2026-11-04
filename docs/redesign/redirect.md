@@ -10,8 +10,9 @@ Il sito attuale (WordPress, `www.omniaevo.it`) ha questi URL. GitHub Pages non s
 | `/testimonial` | `/` (sezione rimossa) | pagina `redirect` (`content/it/testimonial.md`) |
 | `/contatti` | `/#contatti` | pagina `redirect` (`content/it/contatti.md`) |
 | `/cookie-policy` | `/privacy/#cookie` | pagina `redirect` (`content/it/cookie-policy.md`) |
-| `/informativa_gdpr` | `/privacy/` | `aliases` in `content/it/privacy.md` |
-| `/progetti-fesr-e-documento-trasparenza-aiuti-pubblici` | `/trasparenza/` | `aliases` in `content/it/trasparenza/_index.md` |
+| `/informativa_gdpr` | `/privacy/` (pagina con il testo nel foglio; dalla home si apre senza ricaricare) | `aliases` in `content/it/privacy.md` |
+| `/progetti-fesr-e-documento-trasparenza-aiuti-pubblici` | `/#trasparenza` | pagina `redirect` (`content/it/progetti-fesr-e-documento-trasparenza-aiuti-pubblici.md`) |
+| `/servizi/`, `/case-history/`, `/trasparenza/` (indici) | `/#servizi`, `/#case-history`, `/#trasparenza` | `layouts/<sezione>/section.html` (partial `redirect.html`); fuori dalla sitemap per `cascade` in `hugo.toml` |
 | `/case-history/<slug>/` | stesso URL | stesso slug |
 | `/servizi/pec-posta-elettronica-certificata/` | stesso URL | stesso slug |
 | `/omniaevoremote.exe` | **non migrato** | rimosso (decisione: niente assistenza remota) |

@@ -27,6 +27,14 @@ defaultContentLanguageInSubdir = false
     path = '/trasparenza/**'
     kind = 'page'
 
+# The three index pages only forward to the home page: no sitemap entry.
+[[cascade]]
+  [cascade.sitemap]
+    disable = true
+  [cascade.target]
+    path = '{/servizi,/case-history,/trasparenza}'
+    kind = 'section'
+
 [security]
   enableInlineShortcodes = false
   [security.funcs]
