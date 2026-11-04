@@ -34,9 +34,9 @@ select {
 /* Base */
 body {
   min-height: 100vh;
-  background: var(--c-cream);
-  color: var(--c-ink);
-  font-family: var(--font);
+  background: var(--c-white);
+  color: var(--c-text);
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
@@ -47,17 +47,19 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 800;
-  line-height: var(--lh-tight);
-  letter-spacing: var(--track-tight);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   overflow-wrap: break-word;
   text-wrap: balance;
 }
 
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
-h3 { font-size: var(--fs-h3); line-height: 1.1; letter-spacing: -0.02em; }
-h4 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.01em; }
+h3 { font-size: 1.5rem; line-height: 1.15; }
+h4 { font-size: 1.25rem; line-height: 1.2; }
 
 p,
 li,
@@ -78,24 +80,15 @@ a {
   text-underline-offset: 0.18em;
 }
 
-a:hover {
-  text-decoration-thickness: 3px;
-}
-
-/* Focus: thick outline, at least 3:1 against the background around it (WCAG 1.4.11).
-   Ink on light backgrounds (16:1 on cream); orange on blue sections (4.2:1). */
+/* Focus: 3 px ring, ink on light backgrounds, orange on dark ones (WCAG 1.4.11, 3:1).
+   Orange on white is only 2.6:1, so it is never used there. Dark areas add [data-dark]. */
 :focus-visible {
-  outline: var(--bw) solid var(--c-ink);
+  outline: var(--focus);
   outline-offset: 3px;
 }
 
-:is(.site-footer, .home-contacts, .cta-band, .card--blue, .menu-panel) :focus-visible {
-  outline-color: var(--c-orange);
-}
-
-/* Light boxes inside blue sections go back to ink. */
-:is(.home-contacts .card, .menu-panel__bar) :focus-visible {
-  outline-color: var(--c-ink);
+:is([data-dark], [data-dark] *):focus-visible {
+  outline: var(--focus-on-dark);
 }
 
 /* Text for assistive technology only */
@@ -115,10 +108,9 @@ a:hover {
   left: 8px;
   z-index: 1000;
   padding: 12px 18px;
-  background: var(--c-orange);
-  color: var(--c-ink);
-  border: var(--border);
-  box-shadow: var(--sh-s);
+  border-radius: var(--r-s);
+  background: var(--c-ink);
+  color: var(--c-white);
   font-weight: 700;
   text-decoration: none;
   transform: translateY(-200%);
@@ -126,7 +118,6 @@ a:hover {
 
 .skip-link:focus-visible {
   transform: none;
-  outline-color: var(--c-ink);
 }
 
 /* Motion */

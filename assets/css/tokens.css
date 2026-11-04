@@ -1,36 +1,51 @@
-/* Design tokens (NB1). Every color, shadow and font used by the site comes from here. */
+/* Design tokens (A1 "Strati"). Every color, font, size and timing used by the site comes from here. */
 :root {
-  /* Colors */
+  /* Brand */
   --c-blue: #163687;
   --c-orange: #e08f14;
-  --c-cream: #f2efe9;
-  --c-ink: #111111;
-  --c-lavender: #c3cff2;
-  --c-peach: #ffd9a0;
-  --c-white: #ffffff;
 
-  /* Lines and shadows */
-  --bw: 3px;
-  --border: var(--bw) solid var(--c-ink);
-  --sh-xs: 1px 1px 0 var(--c-ink);   /* pressed/hover state */
-  --sh-s: 3px 3px 0 var(--c-ink);
-  --sh-m: 6px 6px 0 var(--c-ink);
-  --sh-l: 8px 8px 0 var(--c-ink);
-  --sh-xl: 10px 10px 0 var(--c-ink);
+  /* Strips (strip 00 is white) */
+  --c-strip-1: #11307a;
+  --c-strip-2: #0d276a;
+  --c-strip-3: #0a1f58;
+  --c-strip-4: var(--c-orange);
+
+  /* Neutrals */
+  --c-ink: #0b1430;
+  --c-text: #2c3550;
+  --c-muted: #4b5470;
+  --c-surface: #eef1f8;
+  --c-line: #e3e6ee;
+  --c-white: #ffffff;
+  --c-orange-text: #96590a;   /* orange for small text on white and surface (AA) */
+  --c-backdrop: rgb(11 20 48 / .55);
 
   /* Typography */
-  --font: "Bricolage Grotesque", system-ui, sans-serif;
-  --fs-body: 1.0625rem;              /* 17 px */
-  --fs-h1: clamp(3rem, 8vw, 7rem);   /* 48 → 112 px */
-  --fs-h2: clamp(2.25rem, 5vw, 4.5rem);
-  --fs-h3: clamp(1.5rem, 2.5vw, 2.25rem);
-  --lh-tight: 0.92;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Schibsted Grotesk", system-ui, sans-serif;
+  --fs-hero: clamp(3rem, 6.4vw, 6.5rem);
+  --fs-h1: clamp(3rem, 5.5vw, 5.5rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --fs-body: 1rem;
+  --fs-lead: 1.25rem;
   --lh-body: 1.6;
-  --track-tight: -0.045em;
 
-  /* Layout */
-  --max: 1320px;
-  --gutter: clamp(16px, 3vw, 32px);
-  --space-section: clamp(56px, 8vw, 96px);
-  --header-h: 72px;                  /* sticky header height, also used by scroll-padding */
+  /* Accordion */
+  --strip: 96px;
+  --strip-m: 60px;
+  --strip-mark: 52px;
+  --strip-mark-m: 36px;
+  --strip-count: 5;
+  --panel-w: calc(100vw - var(--strip-count) * var(--strip));  /* final width of the open panel */
+
+  /* Shape and motion */
+  --r-s: 12px;
+  --r-m: 16px;
+  --r-sheet: 24px;
+  --t-strip: .6s cubic-bezier(.7, 0, .2, 1);
+  --t-sheet: .5s cubic-bezier(.2, .8, .2, 1);
+
+  /* Focus ring */
+  --focus: 3px solid var(--c-ink);            /* on light backgrounds (18:1) */
+  --focus-on-dark: 3px solid var(--c-orange); /* on blue strips (4.7–6:1) and ink */
 }

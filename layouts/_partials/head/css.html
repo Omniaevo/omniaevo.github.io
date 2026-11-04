@@ -6,7 +6,9 @@
     {{- errorf "head/css.html: missing assets/css/%s.css" . }}
   {{- end }}
 {{- end }}
-<link rel="preload" href="{{ "fonts/bricolage-grotesque-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- range slice "bricolage-grotesque-latin" "schibsted-grotesk-latin" }}
+<link rel="preload" href="{{ printf "fonts/%s.woff2" . | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- end }}
 {{- with $files | resources.Concat "css/main.css" }}
   {{- if hugo.IsDevelopment }}
 <link rel="stylesheet" href="{{ .RelPermalink }}">
