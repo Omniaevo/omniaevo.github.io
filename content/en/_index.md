@@ -5,6 +5,7 @@ reviewed = false
 
 [hero]
   title = "Simple solutions for complex needs"
+  highlight = "Simple"
   ctaLabel = "Learn more"
   ctaAnchor = "cosa-facciamo"
 

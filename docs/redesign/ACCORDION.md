@@ -29,7 +29,7 @@
 
 | Sezione | Contenuto | Origine dei dati |
 |---|---|---|
-| `00` Omniaevo | Hero (riga «Omniaevo S.r.l. · Codroipo (UD) · dal 2007», claim con l'ultima parola arancio, testo; niente pulsante), 3 riquadri di fatti uniti da linee (con il testo di VIDIM sotto), Chi siamo (storia, oggi, management con foto 96×120 accanto al testo), Dati societari (segnaposto «[da inserire]» per REA e capitale sociale finché mancano) + pulsante «Trasparenza →», **Contatti** (griglia etichetta + valore, tutti i recapiti), riga legale | `content/*/_index.md` (`hero`, `chiSiamo`), `data/contacts.toml` |
+| `00` Omniaevo | Hero (riga «Omniaevo S.r.l. · Codroipo (UD) · dal 2007», claim con l'ultima parola evidenziata (banda arancio dietro il testo), testo; niente pulsante), 3 riquadri di fatti uniti da linee (con il testo di VIDIM sotto), Chi siamo (storia, oggi, management con foto 96×120 accanto al testo), Dati societari (segnaposto «[da inserire]» per REA e capitale sociale finché mancano) + pulsante «Trasparenza →», **Contatti** (griglia etichetta + valore, tutti i recapiti), riga legale | `content/*/_index.md` (`hero`, `chiSiamo`), `data/contacts.toml` |
 | `01` Cosa facciamo | Intro, 6 aree numerate `00`–`05`, tecnologie come etichette | `cosaFacciamo` di `_index.md` |
 | `02` Servizi | Elenco servizi (aprono il foglio) + **Scaricabili**: `omniaevoremote.exe` (ripristinato) e allegati | collection `servizi` + nuovo campo `downloads` (vedi sotto) |
 | `03` Case history | Card tutte uguali (copertina, categoria, titolo 2 righe, descrizione 3 righe, troncati con «…»). Aprono il foglio | collection `case-history` |
@@ -42,8 +42,8 @@ I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007)
 ### Interfaccia (dettagli già approvati sul mockup)
 
 - **Prima striscia** bianca, unita al contenuto della `00`: in alto il **logo** (marchio di `_legacy/assets/logo.svg`, blu), al centro l'etichetta verticale, in basso **un solo pulsante Contatti** (solo icona, nome accessibile «Contatti») e sotto il segnalatore. Il pulsante apre la `00` e scorre al blocco Contatti.
-- **Altre strisce**: numero in alto, etichetta verticale, segnalatore in basso. Colori: `#11307a`, `#0d276a`, `#0a1f58`; Trasparenza arancio `#e08f14` con testo inchiostro. Striscia aperta: barra di 4 px a destra (arancio; blu sulla striscia arancio).
-- **Titoli e testo**: titoli in blu `--c-blue`, peso 800 (titoli di pagina e sezione) o 700 (titoli piccoli). Sottotitoli piccoli (es. «Storia», «Omniaevo oggi») in corpo 16 px, `--c-orange-text`. Pulsanti: pillola arancio con testo inchiostro, 44 px, 14 px grassetto. Link: blu, peso 600.
+- **Altre strisce**: numero in alto, etichetta verticale, segnalatore in basso. Colori: tre blu ricavati da `--blue` (`--strip-1/2/3`); Trasparenza arancio `--orange` con testo inchiostro. Striscia aperta: barra di 4 px a destra (arancio; blu sulla striscia arancio).
+- **Titoli e testo**: vedi `TOKENS.md`. Titoli in blu, Bricolage 800; testo Schibsted 400, enfasi 600. Sottotitoli piccoli (es. «Storia», «Omniaevo oggi») in 16 px 600, `--orange-dark`. Pulsanti: pillola arancio con testo inchiostro, 44 px. Link: blu, 600, sottolineati. Parole chiave: evidenziatore `.mark`.
 - **Allineamento**: logo e numeri stanno nello **stesso riquadro** (52 × 52 px desktop, 36 × 36 px mobile), così le etichette partono tutte dalla stessa altezza.
 - **Segnalatore**: SVG, mai caratteri di testo. Chiuso = anello + «+». Aperto = cerchio pieno del colore del testo con punto centrale del colore della striscia (su striscia blu: cerchio bianco, punto blu). I cerchi sono concentrici per costruzione.
 - **Card**: stessa dimensione in tutta la griglia. Altezze fisse e `line-clamp` (categoria 1 riga, titolo 2, descrizione 3). Il testo completo è nel foglio.
@@ -66,7 +66,7 @@ I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007)
 | Scaricabili | **Nuovo campo `downloads`** in `servizi` di `_index.md` (titolo, file, nota), modificabile dal CMS. Il manuale PEC resta allegato del servizio PEC e compare anche qui |
 | Eseguibile | `static/omniaevoremote.exe`, **stesso URL** del sito vecchio (`/omniaevoremote.exe`). Il file lo fornisce l'utente; finché manca, la voce non compare. Quando arriva: copiarlo in `static/` e registrare dimensione e SHA-256 |
 | Titoli | Un solo `<h1>` per pagina. Home: `<h1>` = claim dell'hero; titoli di sezione `<h2>`. Pagine di dettaglio: `<h1>` = titolo nel foglio; l'hero scende a `<h2>` |
-| Accessibilità | Strisce = `<button aria-expanded aria-controls>` (con JS) o `<a>` (senza JS); pannelli `role="region"`; pannelli chiusi `inert` (niente focus su contenuti nascosti); contrasto AA; target ≥ 44 px; focus visibile 3 px: inchiostro su fondi chiari, arancio sulle strisce blu (l'arancio su bianco fa solo 2,6:1, sotto il 3:1 richiesto; il mockup usa arancio ovunque, differenza voluta) |
+| Accessibilità | Strisce = `<button aria-expanded aria-controls>` (con JS) o `<a>` (senza JS); pannelli `role="region"`; pannelli chiusi `inert` (niente focus su contenuti nascosti); contrasto AA; target ≥ 44 px; focus visibile 3 px: inchiostro su fondi chiari, arancio sulle strisce blu (l'arancio su bianco fa solo 2,6:1; il mockup usa arancio ovunque, differenza voluta) |
 | Stampa | Foglio di stile `print`: tutte le sezioni aperte una dopo l'altra, strisce nascoste |
 
 ### Risposte alle domande aperte (2026-11-04)
@@ -83,34 +83,8 @@ I 3 riquadri di fatti della `00` usano solo dati veri: anno di fondazione (2007)
 
 ## 2. Design system
 
-### Token (`assets/css/tokens.css`)
-```css
-:root {
-  /* Brand */
-  --c-blue: #163687;  --c-orange: #e08f14;
-  /* Strips (00 is white) */
-  --c-strip-1: #11307a;  --c-strip-2: #0d276a;  --c-strip-3: #0a1f58;  --c-strip-4: var(--c-orange);
-  /* Neutrals */
-  --c-ink: #0b1430;  --c-text: #2c3550;  --c-muted: #4b5470;
-  --c-surface: #eef1f8;  --c-line: #e3e6ee;  --c-white: #ffffff;
-  --c-orange-text: #a5650a;   /* orange for small text on white (AA) */
-  --c-backdrop: rgb(11 20 48 / .55);
-  /* Type */
-  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
-  --font-body: "Schibsted Grotesk", system-ui, sans-serif;
-  --fs-hero: clamp(3rem, 6.4vw, 6.5rem);  --fs-h1: clamp(3rem, 5.5vw, 5.5rem);
-  --fs-h2: clamp(1.75rem, 3vw, 2.75rem);  --fs-body: 1rem;  --fs-lead: 1.25rem;
-  /* Accordion */
-  --strip: 96px;  --strip-m: 60px;  --strip-mark: 52px;  --strip-mark-m: 36px;
-  --strip-count: 5;
-  --panel-w: calc(100vw - var(--strip-count) * var(--strip));  /* final width of the open panel */
-  /* Shape and motion */
-  --r-s: 12px;  --r-m: 16px;  --r-sheet: 24px;
-  --t-strip-time: .6s;
-  --t-strip: var(--t-strip-time) cubic-bezier(.7, 0, .2, 1);  --t-sheet: .5s cubic-bezier(.2, .8, .2, 1);
-}
-```
-Il passo 1 ha verificato i contrasti: `--c-orange-text` va bene solo su bianco (4,7:1; su `--c-surface` fa 4,16:1); il testo su arancio è sempre inchiostro (7,0:1, il bianco fa 2,6:1); l'anello di focus è inchiostro su chiaro e arancio su scuro (`--focus`, `--focus-on-dark`, attributo `data-dark`).
+### Token
+I token (8 colori, 6 misure di testo, 3 pesi, 6 spazi, 2 raggi, 2 durate) sono descritti in **[`TOKENS.md`](TOKENS.md)** e vivono in `assets/css/tokens.css`. Nei CSS si usano solo quelli.
 
 ### Componenti
 | Componente | File | Note |
@@ -210,7 +184,7 @@ Fai così:
    sottoinsiemi latin + latin-ext, woff2, in static/fonts/. Aggiorna OFL.txt (o aggiungine
    uno per font). Bricolage Grotesque è già presente: verifica che il file copra i pesi
    500–800.
-2. assets/css/: riscrivi tokens.css con la sezione 2 del piano; fonts.css con i due
+2. assets/css/: riscrivi tokens.css come in docs/redesign/TOKENS.md; fonts.css con i due
    @font-face (font-display: swap); base.css (reset minimo, body bianco, font-body, titoli
    in font-display, link, focus-visible arancio 3 px, skip link, prefers-reduced-motion).
    Svuota components.css, pages.css e layout.css dal codice NB1.
@@ -243,7 +217,7 @@ Fai così:
 3. Ogni sezione contiene la striscia e un .panel scorrevole con .panel__inner largo
    --panel-w (min 560 px) e, per ora, solo il titolo della sezione.
 4. layout.css: desktop riga flex, strisce larghe --strip, la sezione aperta flex-grow 1
-   con transizione --t-strip. < 1100 px: colonna, strisce alte --strip-m, etichetta
+   con transizione --t-slow. < 1100 px: colonna, strisce alte --strip-m, etichetta
    orizzontale. Altezza < 560 px: flusso normale, la pagina scorre, tutte le sezioni aperte.
 5. Senza JS la sezione aperta segue :target; senza hash è aperta quella con data-open:
    usa :has() su .accordion. Le sezioni chiuse non mostrano il pannello.
@@ -270,7 +244,7 @@ Fai così:
    Cookie).
 2. data/contacts.toml: aggiungi rea e shareCapital vuoti (decisione: restano vuoti per
    ora). Il template mostra la riga solo se il valore esiste. TODO nel resoconto.
-3. Il contenuto della 00 è su fondo bianco come la striscia; una linea --c-line li separa.
+3. Il contenuto della 00 è su fondo bianco come la striscia; una linea --line li separa.
 
 Criteri di accettazione: tutte le 7 email e la PEC compaiono; nessun testo inventato;
 /#contatti apre la 00 e mostra il blocco Contatti (anche senza JS).

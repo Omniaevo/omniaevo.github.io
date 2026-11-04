@@ -12,7 +12,7 @@
 :where(.panel-wrap) {
   --open: 0;
   --vis: hidden;
-  --vis-delay: var(--t-strip-time);
+  --vis-delay: var(--dur-slow);
 }
 
 :where(.panel-wrap:is([data-open], :target, :has(:target))) {
@@ -24,7 +24,7 @@
 :where(.accordion:has(:target) .panel-wrap[data-open]:not(:target, :has(:target))) {
   --open: 0;
   --vis: hidden;
-  --vis-delay: var(--t-strip-time);
+  --vis-delay: var(--dur-slow);
 }
 
 .accordion {
@@ -33,7 +33,7 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  background: var(--c-ink);
+  background: var(--ink);
 }
 
 .panel-wrap {
@@ -43,7 +43,7 @@
   min-height: 0;
   min-width: 0;
   background: var(--strip-bg);
-  transition: flex-grow var(--t-strip);
+  transition: flex-grow var(--t-slow);
 }
 
 .panel {
@@ -51,15 +51,15 @@
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--c-white);
+  background: var(--white);
   visibility: var(--vis);
   transition: visibility 0s var(--vis-delay);
 }
 
 .panel__inner {
-  padding: 32px 20px 56px;
+  padding: var(--space-4) var(--space-3) var(--space-5);
   opacity: var(--open);
-  transition: opacity .3s calc(var(--open) * .25s);
+  transition: opacity var(--dur-fast) ease calc(var(--open) * var(--dur-fast));
 }
 
 /* Desktop: strips side by side; the open one grows */
@@ -81,7 +81,7 @@
   .panel__inner {
     width: var(--panel-w);
     min-width: 560px;
-    padding: 56px clamp(32px, 5vw, 80px) 80px;
+    padding: var(--space-5) clamp(var(--space-4), 5vw, var(--space-6)) var(--space-6);
   }
 }
 
@@ -107,6 +107,6 @@
   .panel__inner {
     width: auto;
     min-width: 0;
-    padding: 32px 20px 56px;
+    padding: var(--space-4) var(--space-3) var(--space-5);
   }
 }

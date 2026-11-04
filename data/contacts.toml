@@ -19,32 +19,39 @@ shareCapital = ''
 [pec]
   email = 'omniaevo@qnetpec.it'
 
-# publicOnly: address reserved for public administrations and public bodies.
+# group: where the address is listed (main = big links, support, business). publicOnly: address reserved for public administrations and public bodies.
 [[emails]]
   id = 'info'
+  group = 'main'
   email = 'info@omniaevo.it'
 
 [[emails]]
   id = 'administration'
+  group = 'business'
   email = 'amministrazione@omniaevo.it'
 
 [[emails]]
   id = 'support'
+  group = 'support'
   email = 'assistenza@omniaevo.it'
 
 [[emails]]
   id = 'supportPa'
+  group = 'support'
   email = 'assistenzapa@omniaevo.it'
   publicOnly = true
 
 [[emails]]
   id = 'supportEn'
+  group = 'support'
   email = 'support@omniaevo.it'
 
 [[emails]]
   id = 'sales'
+  group = 'business'
   email = 'commerciale@omniaevo.it'
 
 [[emails]]
   id = 'complaints'
+  group = 'business'
   email = 'reclami@omniaevo.it'

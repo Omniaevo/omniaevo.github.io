@@ -1,0 +1,5 @@
+{{- /* One contact: icon, label, address on a single line. Context: dict "icon" "label" "email" */ -}}
+<a class="contact" href="mailto:{{ .email }}">
+  <span class="contact__icon">{{ partial "icon.html" .icon }}</span>
+  <span class="contact__text"><small>{{ .label }}</small><b>{{ .email }}</b></span>
+</a>

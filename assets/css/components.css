@@ -1,10 +1,10 @@
 /* ---------------------------------------------------------------- Strip */
 /* Tones: 0 white, 1–3 blues, 4 orange (ink text). --strip-bg is also used by the open indicator. */
-.panel-wrap[data-tone="0"] { --strip-bg: var(--c-white);   --strip-fg: var(--c-blue); --strip-bar: var(--c-orange); }
-.panel-wrap[data-tone="1"] { --strip-bg: var(--c-strip-1); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
-.panel-wrap[data-tone="2"] { --strip-bg: var(--c-strip-2); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
-.panel-wrap[data-tone="3"] { --strip-bg: var(--c-strip-3); --strip-fg: var(--c-white); --strip-bar: var(--c-orange); }
-.panel-wrap[data-tone="4"] { --strip-bg: var(--c-strip-4); --strip-fg: var(--c-ink);   --strip-bar: var(--c-blue); }
+.panel-wrap[data-tone="0"] { --strip-bg: var(--white);   --strip-hover: var(--mist);  --strip-fg: var(--blue);  --strip-bar: var(--orange); }
+.panel-wrap[data-tone="1"] { --strip-bg: var(--strip-1); --strip-hover: color-mix(in srgb, var(--strip-1) 90%, white); --strip-fg: var(--white); --strip-bar: var(--orange); }
+.panel-wrap[data-tone="2"] { --strip-bg: var(--strip-2); --strip-hover: color-mix(in srgb, var(--strip-2) 90%, white); --strip-fg: var(--white); --strip-bar: var(--orange); }
+.panel-wrap[data-tone="3"] { --strip-bg: var(--strip-3); --strip-hover: color-mix(in srgb, var(--strip-3) 90%, white); --strip-fg: var(--white); --strip-bar: var(--orange); }
+.panel-wrap[data-tone="4"] { --strip-bg: var(--orange);  --strip-hover: color-mix(in srgb, var(--orange) 90%, white);  --strip-fg: var(--ink);   --strip-bar: var(--blue); }
 
 .strip {
   --mark: var(--strip-mark-m);
@@ -14,14 +14,19 @@
   flex: 0 0 var(--strip-m);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 12px 0 16px;
+  gap: var(--space-2);
+  padding: 0 var(--space-2);
   background: var(--strip-bg);
   color: var(--strip-fg);
+  transition: background-color var(--t-fast);
+}
+
+@media (hover: hover) {
+  .strip:hover { background: var(--strip-hover); }
 }
 
 .panel-wrap[data-tone="0"] .strip {
-  border-bottom: 1px solid var(--c-line);
+  border-bottom: var(--bw) solid var(--line);
 }
 
 /* The link covers the whole strip; the contact button sits above it */
@@ -52,19 +57,17 @@
 }
 
 .strip__num {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--fs-small);
+  font-weight: 600;
   line-height: 1;
-  opacity: .85;
 }
 
 .strip__label {
   flex: 1;
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-lead);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   white-space: nowrap;
   pointer-events: none;
 }
@@ -72,7 +75,7 @@
 .strip__end {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-1);
 }
 
 .strip__contact {
@@ -84,12 +87,13 @@
   width: var(--contact);
   height: var(--contact);
   border-radius: 50%;
-  background: var(--c-surface);
-  color: var(--c-blue);
+  background: var(--mist);
+  color: var(--blue);
+  transition: background-color var(--t-fast);
 }
 
 .strip__contact:hover {
-  background: var(--c-line);
+  background: var(--mist-hover);
 }
 
 /* Indicator: two concentric SVGs, cross-faded by --open */
@@ -104,7 +108,7 @@
   grid-area: 1 / 1;
   width: 100%;
   height: 100%;
-  transition: opacity .3s;
+  transition: opacity var(--t-fast);
 }
 
 .strip__ind-open { opacity: var(--open); }
@@ -120,10 +124,6 @@
   pointer-events: none;
 }
 
-@media (hover: hover) {
-  .strip:hover { filter: brightness(1.12); }
-}
-
 /* Desktop: vertical strips */
 @media (min-width: 1100px) and (min-height: 560px) {
   .strip {
@@ -134,22 +134,20 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 0;
-    padding: 24px 0;
+    padding: var(--space-3) 0;
   }
 
   .panel-wrap[data-tone="0"] .strip {
     border-bottom: 0;
-    border-right: 1px solid var(--c-line);
+    border-right: var(--bw) solid var(--line);
   }
-
-  .strip__num { font-size: 15px; }
 
   .strip__label {
     flex: 0 1 auto;
-    font-size: 30px;
+    font-size: var(--fs-h3);
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    transition: transform .25s;
+    transition: transform var(--t-fast);
   }
 
   @media (hover: hover) {
@@ -158,7 +156,7 @@
 
   .strip__end {
     flex-direction: column;
-    gap: 14px;
+    gap: var(--space-2);
   }
 
   .strip__bar {
@@ -176,49 +174,58 @@
   }
 }
 
-/* --------------------------------------------------------------- Panel */
-.panel__inner h2 {
-  font-size: var(--fs-h2);
-}
-
-/* ----------------------------------------------------------- Buttons, links */
+/* ----------------------------------------------- Links, buttons, keyword mark */
 .panel a:where(:not([class])) {
-  color: var(--c-blue);
+  color: var(--blue);
   font-weight: 600;
 }
 
 .panel a:where(:not([class])):hover {
-  color: var(--c-strip-3);
+  color: var(--strip-3);
 }
 
 /* Orange pill, ink text */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-1);
   height: 44px;
-  padding: 0 20px;
+  padding: 0 var(--space-3);
   border-radius: 999px;
-  background: var(--c-orange);
-  color: var(--c-ink);
-  font-size: .875rem;
-  font-weight: 700;
+  background: var(--orange);
+  color: var(--ink);
+  font-size: var(--fs-small);
+  font-weight: 600;
   text-decoration: none;
+  transition: background-color var(--t-fast);
 }
 
 .btn:hover {
-  filter: brightness(1.08);
+  background: var(--orange-hover);
 }
 
 .btn .icon {
   flex: none;
 }
 
+/* Keyword mark: an orange band, one third of the font size high, behind the lower part of the text.
+   The text keeps its own color (blue on large text, ink on small text). */
+.mark {
+  padding-inline: .08em;
+  background: linear-gradient(
+    transparent calc(100% - .66em),
+    var(--orange) calc(100% - .66em),
+    var(--orange) calc(100% - .33em),
+    transparent calc(100% - .33em));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 /* ------------------------------------------------------- Section 00 (home) */
 .home {
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: var(--space-6);
 }
 
 .home h2 {
@@ -226,74 +233,67 @@
 }
 
 .hero__eyebrow {
-  margin-bottom: 20px;
-  font-size: .875rem;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
   font-weight: 600;
-  color: var(--c-orange-text);
+  color: var(--orange-dark);
 }
 
 .hero__title {
-  margin-bottom: 24px;
-  font-size: var(--fs-hero);
-  font-weight: 800;
-  line-height: .92;
-  letter-spacing: -0.04em;
-}
-
-.hero__title span {
-  color: var(--c-orange);
+  margin-bottom: var(--space-3);
 }
 
 .hero__text {
   max-width: 50ch;
   font-size: var(--fs-lead);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 /* Facts: three cells joined by 2 px lines */
 .facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2px;
+  gap: var(--bw);
   padding: 0;
   overflow: hidden;
-  border: 2px solid var(--c-line);
+  border: var(--bw) solid var(--line);
   border-radius: var(--r-m);
-  background: var(--c-line);
+  background: var(--line);
   list-style: none;
 }
 
 .facts li {
-  padding: 24px;
-  background: var(--c-white);
+  padding: var(--space-3);
+  background: var(--white);
 }
 
 .facts__value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.1;
-  color: var(--c-blue);
+  letter-spacing: -0.03em;
+  color: var(--blue);
 }
 
 .facts__label {
   display: block;
-  margin-top: 4px;
-  color: var(--c-muted);
+  margin-top: var(--space-1);
+  color: var(--muted);
 }
 
 .facts__note {
-  margin-top: -40px; /* closes the 64 px gap of .home to 24 px */
+  margin-top: calc(var(--space-3) - var(--space-6)); /* closes the gap of .home to 24 px */
   max-width: 70ch;
-  color: var(--c-muted);
+  color: var(--muted);
 }
 
 /* Chi siamo: Storia and Oggi stacked on the left, the management card on the right */
 .about {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 40px;
+  gap: var(--space-4);
 }
 
 .about h2 {
@@ -301,16 +301,13 @@
 }
 
 .about h3 {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-1);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-body);
+  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0;
-  color: var(--c-orange-text);
-}
-
-.about p {
-  line-height: 1.7;
+  color: var(--orange-dark);
 }
 
 .about p + p {
@@ -321,15 +318,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 20px 24px;
-  padding: 24px;
+  gap: var(--space-3);
+  padding: var(--space-3);
   border-radius: var(--r-m);
-  background: var(--c-surface);
-}
-
-.about__person p {
-  font-size: .9375rem;
-  line-height: 1.6;
+  background: var(--mist);
 }
 
 .about__photo {
@@ -340,7 +332,7 @@
   width: 140px;
   height: 175px;
   border-radius: var(--r-s);
-  background: var(--c-white);
+  background: var(--white);
   object-fit: cover;
 }
 
@@ -348,7 +340,11 @@
   flex: 1 1 220px;
 }
 
-@media (min-width: 760px) {
+.about__name {
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
   .about {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
   }
@@ -363,135 +359,228 @@
   }
 }
 
-.about__name {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--c-text);
-}
-
 /* Company details */
 .legal-data {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 20px 40px;
-  padding: 28px 32px;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--r-m);
-  background: var(--c-surface);
+  background: var(--mist);
 }
 
 .legal-data h2 {
   flex: 1 1 100%;
   font-family: var(--font-body);
-  font-size: .875rem;
-  font-weight: 700;
+  font-size: var(--fs-small);
+  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0;
 }
 
 .legal-data p {
-  font-size: .875rem;
+  font-size: var(--fs-small);
 }
 
-.legal-data span,
-.contacts span {
+.legal-data strong {
+  font-weight: 600;
+}
+
+.legal-data span {
   display: block;
-  color: var(--c-muted);
+  color: var(--muted);
 }
 
 .legal-data .btn {
   margin-left: auto;
 }
 
-.placeholder {
+.legal-data .placeholder {
   font-style: italic;
   font-weight: 400;
-  color: var(--c-muted);
+  color: var(--muted);
 }
 
-/* Contatti: intro and registered office on the first row, then equal small cards */
+/* Contatti: title and intro with the main contacts, then grouped rows with an icon.
+   Addresses never wrap: rows are at least 340 px wide (the longest address has 27 characters). */
 .contacts {
   display: grid;
-  gap: 24px;
-  padding-top: 24px;
-  border-top: 2px solid var(--c-ink);
-  scroll-margin-top: 32px;
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: var(--bw) solid var(--ink);
+  scroll-margin-top: var(--space-4);
 }
 
 .contacts h2 {
-  font-size: 2rem;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-h3);
 }
 
 .contacts__top {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-3) var(--space-4);
+  align-items: center;
 }
 
-.contacts__intro {
-  align-self: center;
-  max-width: 44ch;
+.contacts__lead p {
+  max-width: 40ch;
   font-size: var(--fs-lead);
   line-height: 1.5;
 }
 
-.contacts__list {
+.contacts__main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-  gap: 12px;
+  gap: var(--space-1);
+  justify-items: start;
 }
 
-/* One column on phones: cards keep their own height. Otherwise all rows are equal. */
-@media (min-width: 600px) {
-  .contacts__list {
-    grid-auto-rows: 1fr;
-  }
+/* Main contacts: display size, thin orange band that grows on hover */
+.contacts__main a {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.contacts__item {
-  padding: 16px 20px;
-  border-radius: var(--r-s);
-  background: var(--c-surface);
-  font-size: .9375rem;
-  overflow-wrap: anywhere;
+.contacts__main a span {
+  padding-inline: .08em;
+  background: linear-gradient(var(--orange), var(--orange)) no-repeat 0 88% / 100% .3em;
+  transition: background-size var(--t-fast);
 }
 
-.contacts__item :is(dt, span) {
-  display: block;
-  margin-bottom: 4px;
-  font-size: .8125rem;
-  color: var(--c-muted);
+.contacts__main a:hover span {
+  background-size: 100% .62em;
 }
 
-.contacts__item dd {
-  margin: 0;
-}
-
-.contacts__office address {
+.contacts__main address {
+  margin-top: var(--space-1);
+  font-size: var(--fs-small);
   font-style: normal;
+  color: var(--muted);
+}
+
+.contacts__main address strong {
+  display: block;
+  color: var(--ink);
+}
+
+.contacts__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.contacts__group h3 {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.contacts__group ul {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1);
+  border: var(--bw) solid var(--line);
+  border-radius: var(--r-s);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--t-fast), border-color var(--t-fast);
+}
+
+.contact:hover {
+  border-color: var(--mist);
+  background: var(--mist);
+}
+
+.contact__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--blue);
+  transition: background-color var(--t-fast), color var(--t-fast);
+}
+
+.contact:hover .contact__icon {
+  background: var(--orange);
+  color: var(--ink);
+}
+
+.contact__text {
+  display: grid;
+  min-width: 0;
+}
+
+.contact__text small {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.contact__text b {
+  font-weight: 600;
+  color: var(--blue);
+  white-space: nowrap; /* addresses never wrap; labels may */
+}
+
+@media (max-width: 560px) {
+  .contact {
+    gap: var(--space-1);
+    padding-right: var(--space-1);
+  }
+
+  .contact__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact__icon .icon {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .legal-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--c-line);
-  font-size: .875rem;
-  color: var(--c-muted);
+  gap: var(--space-1) var(--space-4);
+  padding-top: var(--space-3);
+  border-top: var(--bw) solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--muted);
 }
 
 .legal-row ul {
   display: flex;
-  gap: 24px;
+  gap: var(--space-3);
   padding: 0;
   list-style: none;
 }
 
 .legal-row a {
   display: inline-block;
-  padding-block: 12px; /* target height ≥ 44 px */
+  padding-block: var(--space-2); /* target height ≥ 44 px */
 }
 
 .legal-row p:last-child {

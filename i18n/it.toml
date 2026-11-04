@@ -210,3 +210,12 @@ other = "Telefono"
 
 [since]
 other = "dal {{ . }}"
+
+[contactGroupSupport]
+other = "Supporto"
+
+[contactGroupBusiness]
+other = "Commerciale e amministrazione"
+
+[contactGroupCertified]
+other = "Posta certificata"
