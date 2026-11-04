@@ -1478,3 +1478,75 @@
   background: var(--orange);
   transform: translateX(2px);
 }
+
+/* ---------------------------------------------- Section 04 (Trasparenza) */
+.transparency {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.transparency h2,
+.transparency h3,
+.transparency p {
+  margin: 0;
+}
+
+.transparency__title {
+  font-size: var(--fs-display);
+  line-height: .95;
+}
+
+.transparency header {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Posters (the images are large): equal columns, whole image visible, never wider than a column */
+.transparency__banners {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 24rem));
+  gap: var(--space-2);
+}
+
+.transparency__banners a {
+  display: block;
+  aspect-ratio: 7 / 5;
+  overflow: hidden;
+  border-radius: var(--r-s);
+  box-shadow: inset 0 0 0 var(--bw) var(--line);
+}
+
+.transparency__banners img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.transparency h3 {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+/* Document rows reuse .contact; a title may wrap here (only addresses never wrap). */
+.doc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.doc-list .contact {
+  height: 100%;
+}
+
+.doc-list .contact__text b {
+  white-space: normal;
+}

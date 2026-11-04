@@ -1,6 +1,7 @@
 +++
 title = "FESR Projects and Public Aid Transparency"
 reviewed = false
+highlight = "Transparency"
 
 # Banners shown at the top of the page (editable list).
 [[banners]]

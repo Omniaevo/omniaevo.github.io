@@ -22,6 +22,8 @@
         {{ partial "sections/cosa-facciamo.html" . }}
         {{- else if eq $s.id "case-history" }}
         {{ partial "sections/case-history.html" . }}
+        {{- else if eq $s.id "trasparenza" }}
+        {{ partial "sections/trasparenza.html" . }}
         {{- else if eq $s.id "team" }}
         {{ partial "sections/team.html" . }}
         {{- else }}

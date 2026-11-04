@@ -1,6 +1,7 @@
 +++
 title = "Progetti FESR e Trasparenza aiuti pubblici"
 aliases = ["/progetti-fesr-e-documento-trasparenza-aiuti-pubblici"]
+highlight = "Trasparenza"
 
 # Banners shown at the top of the page (editable list).
 [[banners]]
