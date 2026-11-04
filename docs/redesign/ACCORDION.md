@@ -152,8 +152,8 @@ Stato al 2026-11-04. I passi 1–4 sono stati fatti con i **testi di prima**: i 
 | 5 | Blocco Servizi dentro la 01 + Scaricabili + eseguibile (con i 4 servizi nuovi) | 4b | Da fare |
 | 6 | Sezione 02 Case history (card) | 2b | **Fatto**: 6 card uguali (copertina 16:9, meta, titolo 2 righe, testo 3 righe), contatore |
 | 7 | Sezione 04 Trasparenza (ex `04` poi `05`) | 2b | **Fatto**: titolo, locandine, dati societari, righe PDF (3 progetti + 1 documento) |
-| **7b** | **Sezione 03 Team**: citazione, Valori, riquadri foto + mansione | 2b | Da fare |
-| 8 | JS dell'accordion: pulsanti, cronologia, deep link, Contatti | 3–7b | Da fare |
+| **7b** | **Sezione 03 Team**: citazione, Valori, riquadri foto + mansione | 2b | **Fatto** (IT; EN al passo 12) |
+| 8 | JS dell'accordion: pulsanti, cronologia, deep link, Contatti | 3–7b | **Fatto** |
 | 9 | Pagine di dettaglio con foglio e galleria (senza JS) + campo `gallery` | 8 |
 | 10 | JS del foglio e della galleria | 9 |
 | 11 | URL: redirect degli indici, privacy nel foglio, 404, sitemap | 10 |

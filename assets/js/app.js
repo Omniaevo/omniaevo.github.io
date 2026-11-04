@@ -1,9 +1,53 @@
 // Site enhancements. The site works without this file.
-// For now: the Contacts button of the first strip and the bottom sheet with the full text of an area card
-// on touch devices.
-// (Accordion and detail sheet come in plan steps 8 and 10; this file replaces nav.js.)
+// Accordion strips as buttons (state, title, scroll to inner targets), the Contacts button, and the bottom sheet
+// with the full text of an area card on touch devices.
+// (The detail sheet comes in plan step 10.)
+// The open section is decided by CSS from the URL hash (:target); this file only mirrors it for assistive
+// technology and the page title, and scrolls to elements inside a panel.
 
 document.documentElement.classList.add("js");
+
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const wraps = [...document.querySelectorAll(".panel-wrap")];
+const baseTitle = document.title;
+
+// Strips: links with the button role. Enter already follows the link; Space does the same.
+wraps.forEach((wrap) => {
+  const link = wrap.querySelector(".strip__link");
+  link.setAttribute("role", "button");
+  link.setAttribute("aria-controls", `${wrap.id}-panel`);
+  link.addEventListener("keydown", (event) => {
+    if (event.key === " ") {
+      event.preventDefault();
+      link.click();
+    }
+  });
+});
+
+// Hash target: the element the URL points to (read from the hash: :target is not set yet when this script runs).
+const hashTarget = () => location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+
+// Open section: the one holding the hash target, else the one marked data-open.
+const openWrap = () => hashTarget()?.closest(".panel-wrap") ?? wraps.find((w) => w.hasAttribute("data-open"));
+
+const sync = () => {
+  const open = openWrap();
+  wraps.forEach((wrap) => wrap.querySelector(".strip__link").setAttribute("aria-expanded", String(wrap === open)));
+  const label = open?.querySelector(".strip__label").textContent;
+  document.title = open && open !== wraps[0] ? `${label} — ${baseTitle.split(" — ")[0]}` : baseTitle;
+};
+
+// A hash that points inside a panel: scroll the panel to it (not the page), once the section has opened.
+const scrollToInner = () => {
+  const target = hashTarget();
+  if (!target || target.classList.contains("panel-wrap")) return;
+  setTimeout(() => target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" }), reduceMotion.matches ? 0 : 400);
+};
+
+// hashchange also fires for back and forward, so it covers the browser history.
+addEventListener("hashchange", () => { sync(); scrollToInner(); });
+sync();
+scrollToInner();
 
 // Contacts button: if the first section is closed, open it first and wait for the strip animation to end,
 // then scroll to the contacts block (smooth, instant with reduced motion). Without JS the link still jumps.
@@ -12,7 +56,7 @@ document.querySelector(".strip__contact")?.addEventListener("click", (event) => 
   const section = document.getElementById("omniaevo");
   if (!target || !section) return;
   event.preventDefault();
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = reduceMotion.matches;
   const scroll = () => {
     target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     history.replaceState(null, "", "#contatti");
