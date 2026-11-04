@@ -115,7 +115,7 @@ if (sheet) {
 
 // Gallery of a detail sheet: arrows, thumbnails and dots follow the strip (swipe or scroll). Without JS the
 // strip scrolls and the links jump to #img-n.
-document.querySelectorAll(".gallery--multi").forEach((gallery) => {
+const initGallery = (root) => root.querySelectorAll(".gallery--multi").forEach((gallery) => {
   const track = gallery.querySelector(".gallery__track");
   const slides = [...track.children];
   const thumbs = [...gallery.querySelectorAll(".gallery__thumbs a")];
@@ -145,5 +145,82 @@ document.querySelectorAll(".gallery--multi").forEach((gallery) => {
     event.preventDefault();
     goTo(k % slides.length);
   }));
+  // Left and right arrows move through the images when the focus is inside the gallery.
+  gallery.addEventListener("keydown", (event) => {
+    const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+    if (!step || event.target.closest("input, textarea")) return;
+    event.preventDefault();
+    goTo(Math.max(0, Math.min(slides.length - 1, current() + step)));
+  });
   show(0);
 });
+initGallery(document);
+
+// Detail sheet: a card ([data-detail] link) opens its detail page in the shared <dialog> without leaving the page.
+// The URL is pushed, Back and Esc close the sheet, the focus goes back to the card. If anything fails the link
+// works as a normal link. A detail page opened directly has its sheet already open: it becomes modal, and
+// closing it follows the close link (back to the section).
+const dialog = document.getElementById("detail-sheet") ?? document.querySelector("[data-sheet]");
+if (dialog) {
+  const cache = new Map();
+  let opener = null;
+  let pushed = false;
+
+  const load = (href) => {
+    if (!cache.has(href)) {
+      cache.set(href, fetch(href).then((r) => {
+        if (!r.ok) throw new Error(r.status);
+        return r.text();
+      }).then((html) => new DOMParser().parseFromString(html, "text/html")).catch((e) => { cache.delete(href); throw e; }));
+    }
+    return cache.get(href);
+  };
+
+  const hide = () => {
+    const finish = () => { dialog.removeAttribute("data-closing"); dialog.close(); opener?.focus(); opener = null; sync(); };
+    if (reduceMotion.matches) return finish();
+    dialog.setAttribute("data-closing", "");
+    dialog.addEventListener("animationend", finish, { once: true });
+  };
+
+  const show = async (href, link) => {
+    const doc = await load(href);
+    const sheet = doc.querySelector("[data-sheet]");
+    dialog.innerHTML = sheet.innerHTML;
+    dialog.style.setProperty("--i", sheet.style.getPropertyValue("--i"));
+    document.title = `${doc.querySelector("h1").textContent} — ${baseTitle.split(" — ")[0]}`;
+    initGallery(dialog);
+    opener = link ?? opener;
+    if (!dialog.open) dialog.showModal();
+  };
+
+  const close = () => (pushed ? history.back() : hide());
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest?.("[data-detail]");
+    if (!link || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || detail) return;
+    event.preventDefault();
+    show(link.href, link).then(() => { history.pushState(null, "", link.href); pushed = true; }, () => location.assign(link.href));
+  });
+  ["pointerenter", "focusin"].forEach((type) => document.addEventListener(type, (event) => {
+    const link = event.target.closest?.("[data-detail]");
+    if (link && !detail) load(link.href).catch(() => {});
+  }, true));
+
+  addEventListener("popstate", () => {
+    if (detail) return;
+    const link = [...document.querySelectorAll("[data-detail]")].find((l) => l.href === location.href);
+    if (link) { pushed = true; show(link.href, link).catch(() => location.reload()); }
+    else if (dialog.open) { pushed = false; hide(); }
+  });
+
+  dialog.addEventListener("cancel", (event) => { event.preventDefault(); detail ? location.assign(dialog.querySelector(".sheet__close").href) : close(); });
+  dialog.addEventListener("click", (event) => {
+    const close_ = event.target.closest(".sheet__close");
+    if (close_ && !detail) { event.preventDefault(); close(); }
+    // A click on the backdrop lands on the dialog itself.
+    else if (event.target === dialog) detail ? location.assign(dialog.querySelector(".sheet__close").href) : close();
+  });
+
+  if (detail) { dialog.close(); dialog.showModal(); }
+}

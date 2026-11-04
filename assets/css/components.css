@@ -1572,6 +1572,7 @@
   flex-direction: column;
   width: auto;
   max-width: none;
+  max-height: none;
   height: 92dvh;
   margin: 0;
   padding: 0;
@@ -1583,8 +1584,30 @@
   animation: detail-up var(--t-slow);
 }
 
+/* A closed dialog must stay hidden (display: flex above would override the browser default) */
+.detail:not([open]) {
+  display: none;
+}
+
 @keyframes detail-up {
   from { transform: translateY(102%); }
+}
+
+@keyframes detail-down {
+  to { transform: translateY(102%); }
+}
+
+.detail[data-closing] {
+  animation: detail-down var(--t-slow) forwards;
+}
+
+/* With JavaScript the sheet is modal: the browser draws the backdrop and the link is not needed */
+html.js .detail__backdrop {
+  display: none;
+}
+
+.detail::backdrop {
+  background: var(--backdrop);
 }
 
 @media (min-width: 1100px) and (min-height: 560px) {
@@ -1595,6 +1618,11 @@
   .detail {
     inset: auto calc((var(--strip-count) - 1 - var(--i)) * var(--strip) + var(--space-3)) 0 calc((var(--i) + 1) * var(--strip) + var(--space-3));
     height: 90dvh;
+  }
+
+  /* The backdrop covers only the open section (the strips stay visible); where --i is not inherited it covers everything */
+  .detail::backdrop {
+    clip-path: inset(0 calc((var(--strip-count) - 1 - var(--i)) * var(--strip)) 0 calc((var(--i) + 1) * var(--strip)));
   }
 }
 
@@ -1731,6 +1759,11 @@
   .gallery__track {
     scroll-behavior: smooth;
   }
+}
+
+/* With JavaScript the arrows, thumbnails and dots drive the strip: no scrollbar */
+html.js .gallery__track {
+  scrollbar-width: none;
 }
 
 .gallery__slide {

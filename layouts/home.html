@@ -2,4 +2,6 @@
 
 {{ define "main" }}
   {{ partial "accordion.html" (dict "open" "omniaevo" "h1" true) }}
+  {{- /* One shared detail sheet: app.js fills it with the detail page of a card ([data-detail] links) */}}
+  <dialog class="detail" id="detail-sheet" aria-labelledby="detail-title"></dialog>
 {{ end }}

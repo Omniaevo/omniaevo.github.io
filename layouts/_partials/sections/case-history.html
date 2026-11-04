@@ -22,7 +22,7 @@
     {{- $meta := or .Params.client .Params.sector }}
     {{- if and (not $meta) .Params.areas }}{{ $meta = partial "area-label.html" (index .Params.areas 0) }}{{ end }}
     <li>
-      <a class="case" href="{{ .RelPermalink }}">
+      <a class="case" href="{{ .RelPermalink }}" data-detail>
         {{- with .Params.image }}
         <span class="case__cover">{{ partial "image-by-path.html" (dict "path" . "alt" $c.Params.imageAlt) }}</span>
         {{- end }}

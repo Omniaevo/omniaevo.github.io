@@ -36,7 +36,7 @@
     <ul class="support__list">
       {{- range $support }}
       <li>
-        <a class="contact" href="{{ .RelPermalink }}">
+        <a class="contact" href="{{ .RelPermalink }}" data-detail>
           <span class="contact__icon">{{ partial "icon.html" "pec" }}</span>
           <span class="contact__text"><small>{{ T "service" }}</small><b>{{ .Title }}</b></span>
         </a>
