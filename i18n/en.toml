@@ -1,0 +1,247 @@
+[skipToContent]
+other = 'Skip to content'
+
+[mainNavigation]
+other = 'Main navigation'
+
+[languageSwitcher]
+other = 'Language'
+
+[privacyPolicy]
+other = 'Privacy'
+
+[cookiePolicy]
+other = 'Cookie policy'
+
+[vatNumber]
+other = 'VAT no.'
+
+[rightsReserved]
+other = 'All rights reserved'
+
+[readMore]
+other = 'Read more'
+
+[previous]
+other = 'Previous'
+
+[next]
+other = 'Next'
+
+[notFoundTitle]
+other = 'Page not found'
+
+[notFoundText]
+other = 'The page you are looking for does not exist or has moved.'
+
+[backToHome]
+other = 'Back to home'
+
+[contactRoleInfo]
+other = 'Information'
+
+[contactRoleAdministration]
+other = 'Administration'
+
+[contactRoleSupport]
+other = 'Support'
+
+[contactRoleSupportPa]
+other = 'Public administration (PA) support'
+
+[contactRoleSupportEn]
+other = 'Support (English)'
+
+[contactRoleSales]
+other = 'Sales'
+
+[contactRoleComplaints]
+other = 'Complaints'
+
+[contactRolePec]
+other = 'Certified email (PEC)'
+
+[publicOnlyNote]
+other = 'FOR PUBLIC ADMINISTRATIONS AND PUBLIC BODIES ONLY'
+
+[legalNavigation]
+other = "Legal information"
+
+[viewAll]
+other = "View all"
+
+[client]
+other = "Client"
+
+[sector]
+other = "Sector"
+
+[areas]
+other = "Areas"
+
+[areaEngineering]
+other = "Engineering"
+
+[areaNetwork]
+other = "Network"
+
+[areaResearch]
+other = "Research"
+
+[areaSystems]
+other = "Systems"
+
+[areaSoftware]
+other = "Software"
+
+[areaWebApps]
+other = "Web Apps"
+
+[caseHistoryNavigation]
+other = "More case histories"
+
+[projects]
+other = "Projects"
+
+[documents]
+other = "Documents"
+
+[viewProjectSheet]
+other = "View the project sheet"
+
+[viewDocument]
+other = "View the document"
+
+[funder]
+other = "Funder"
+
+[amount]
+other = "Amount"
+
+[country]
+other = "Italy"
+
+[redirectMoved]
+other = "This page has moved."
+
+[redirectGo]
+other = "Go to the new page"
+
+[menu]
+other = "Menu"
+
+[closeMenu]
+other = "Close"
+
+[transparency]
+other = "Transparency"
+
+[home]
+other = "Home"
+
+[breadcrumb]
+other = "Breadcrumb"
+
+# Decorative hero sticker (aria-hidden).
+[heroSticker]
+other = "since 2007"
+
+[pauseAnimation]
+other = "Pause the animation"
+
+[projectSheet]
+other = "Project sheet"
+
+[service]
+other = "Service"
+
+[externalLink]
+other = "External link"
+
+[document]
+other = "Document"
+
+[tableOfContents]
+other = "Contents"
+
+# Accordion strips (labels of the five sections).
+[sectionOmniaevo]
+other = "Omniaevo"
+
+[sectionCosaFacciamo]
+other = "What we do"
+
+[sectionServizi]
+other = "Services"
+
+[sectionCaseHistory]
+other = "Case history"
+
+[sectionTeam]
+other = "Team"
+
+[sectionTrasparenza]
+other = "Transparency"
+
+[contacts]
+other = "Contacts"
+
+# Home: section 00.
+[expandMore]
+other = "Learn more"
+
+[areaDetails]
+other = "Area details"
+
+[companyData]
+other = "Company details"
+
+[reaNumber]
+other = "REA"
+
+[shareCapital]
+other = "Share capital"
+
+[placeholderValue]
+other = "[to be added]"
+
+[contactPhone]
+other = "Phone"
+
+[since]
+other = "since {{ . }}"
+
+[contactGroupSupport]
+other = "Support"
+
+[contactGroupBusiness]
+other = "Sales and administration"
+
+[contactGroupCertified]
+other = "Certified mail"
+
+[close]
+other = "Close"
+
+# Services block (end of section 01) and Team.
+[servicesHow]
+other = "How we work"
+
+[customerSupport]
+other = "Customer support"
+
+[downloads]
+other = "Downloads"
+
+# Detail sheet (case history, services).
+[contactUs]
+other = "Contact us"
+
+[images]
+other = "Images"
+
+[previousImage]
+other = "Previous image"
+
+[nextImage]
+other = "Next image"

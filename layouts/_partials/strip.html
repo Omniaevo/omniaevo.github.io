@@ -1,0 +1,27 @@
+{{- /*
+  One strip. The link covers the whole strip; the Contacts link sits above it
+  (no nested links). Context: dict "index" "label" "id" "base" (home URL on detail pages, empty on the home page: links stay on the page).
+*/ -}}
+<div class="strip"{{ if gt .index 0 }}{{ if lt .index 4 }} data-dark{{ end }}{{ end }}>
+  <a class="strip__link" href="{{ .base }}#{{ .id }}"><span class="visually-hidden">{{ .label }}</span></a>
+  <span class="strip__mark" aria-hidden="true">
+    {{- if eq .index 0 -}}
+      {{ with resources.Get "images/logo-mark.svg" }}{{ .Content | safeHTML }}{{ end }}
+    {{- else -}}
+      <span class="strip__num">0{{ .index }}</span>
+    {{- end -}}
+  </span>
+  <span class="strip__label" aria-hidden="true">{{ .label }}</span>
+  <span class="strip__end">
+    {{- if eq .index 0 }}
+    <a class="strip__contact" href="{{ .base }}#contatti" aria-label="{{ T "contacts" }}" title="{{ T "contacts" }}">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-5 4V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></svg>
+    </a>
+    {{- end }}
+    <span class="strip__indicator" aria-hidden="true">
+      <svg class="strip__ind-closed" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M18 11v14M11 18h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg class="strip__ind-open" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17.25" fill="currentColor" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="7" fill="var(--strip-bg)"/></svg>
+    </span>
+  </span>
+  <span class="strip__bar" aria-hidden="true"></span>
+</div>

@@ -1,0 +1,15 @@
+{{- /* Privacy and cookie policy: the accordion with section 00 open and the text in the detail sheet. */ -}}
+{{ define "skip-target" }}detail-title{{ end }}
+
+{{ define "main" }}
+{{- $home := site.Home.RelPermalink }}
+{{ partial "sheet.html" (dict
+  "page" .
+  "label" (T "privacyPolicy")
+  "index" 0
+  "closeHref" (printf "%s#omniaevo" $home)
+  "toc" (cond (ge (len (findRE `<li>` .TableOfContents)) 4) (replaceRE `</?nav[^>]*>` "" .TableOfContents | safeHTML) "")
+  "items" slice
+  "actions" slice) }}
+{{ partial "accordion.html" (dict "open" "omniaevo" "h1" false "base" $home) }}
+{{ end }}

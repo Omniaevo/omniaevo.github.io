@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- if .IsHome }}
+<title>{{ site.Title }} — {{ site.Params.claim }}</title>
+{{- else }}
+<title>{{ .Title }} | {{ site.Title }}</title>
+{{- end }}
+<meta name="description" content="{{ or .Description site.Params.description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{- if not hugo.IsProduction }}
+<meta name="robots" content="noindex">
+{{- end }}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{- end }}
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{ partial "schema.html" . }}
+{{ partial "head/css.html" . }}
+{{ partial "head/js.html" . }}

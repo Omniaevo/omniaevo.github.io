@@ -1,0 +1,55 @@
+{{- /*
+  Services block, end of section 01 (id="servizi": /#servizi opens 01 and scrolls here).
+  Numbered steps = servizi entries (no detail page: build.render = never) with a "services" param (by weight); the other pages (PEC) and the
+  downloads go in the "Customer support" group. Data: home "servizi" (intro, downloads).
+  A local download is shown only when the file exists in static/.
+*/ -}}
+{{- $s := site.Home.Params.servizi }}
+{{- $pages := (site.GetPage "/servizi").Pages.ByWeight }}
+{{- $steps := where $pages "Params.services" "!=" nil }}
+{{- $support := complement $steps $pages }}
+{{- $downloads := slice }}
+{{- range $s.downloads }}
+  {{- if or (urls.Parse .file).Scheme (os.FileExists (printf "static/%s" (strings.TrimPrefix "/" .file))) }}{{ $downloads = $downloads | append . }}{{ end }}
+{{- end }}
+<section class="services" aria-labelledby="servizi">
+  <header>
+    <h3 id="servizi">{{ T "servicesHow" }}</h3>
+    {{- with $s.intro }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  {{- with $steps }}
+  <ol class="steps">
+    {{- range $i, $p := . }}
+    <li class="step">
+      <span class="step__num">{{ printf "%02d" (add $i 1) }}</span>
+      <b class="step__title">{{ $p.Title }}</b>
+      <span class="step__text">{{ $p.Description }}</span>
+    </li>
+    {{- end }}
+  </ol>
+  {{- end }}
+
+  {{- if or $support $downloads }}
+  <div class="support">
+    <h3>{{ T "customerSupport" }}</h3>
+    <ul class="support__list">
+      {{- range $support }}
+      <li>
+        <a class="contact" href="{{ .RelPermalink }}" data-detail>
+          <span class="contact__icon">{{ partial "icon.html" "pec" }}</span>
+          <span class="contact__text"><small>{{ T "service" }}</small><b>{{ .Title }}</b></span>
+        </a>
+      </li>
+      {{- end }}
+      {{- /* Downloads: data first, then the attachments of the support pages (the PEC manual) */}}
+      {{- range $downloads }}
+        {{- partial "download-row.html" (dict "title" .title "file" .file "note" .note) }}
+      {{- end }}
+      {{- range $support }}{{ range .Params.attachments }}
+        {{- partial "download-row.html" (dict "title" .label "file" .file "note" "") }}
+      {{- end }}{{ end }}
+    </ul>
+  </div>
+  {{- end }}
+</section>

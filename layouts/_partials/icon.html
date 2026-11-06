@@ -1,0 +1,22 @@
+{{- /*
+  Inline SVG icon, decorative (aria-hidden): the text next to it names the thing.
+  Style: 24 grid, stroke 1.8, rounded, currentColor. Context: icon name (string).
+*/ -}}
+{{- $paths := dict
+  "mail" `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`
+  "phone" `<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>`
+  "pec" `<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/>`
+  "support" `<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m5.6 5.6 3.9 3.9m5 5 3.9 3.9m0-12.8-3.9 3.9m-5 5-3.9 3.9"/>`
+  "sales" `<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.2"/>`
+  "admin" `<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>`
+  "plus" `<path d="M12 5v14M5 12h14"/>`
+  "close" `<path d="M6 6l12 12M18 6 6 18"/>`
+  "file" `<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>`
+  "quality" `<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/>`
+  "problem" `<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>`
+  "tailor" `<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>`
+  "person" `<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.6-7 8-7s8 2.5 8 7"/>`
+  "up" `<path d="M12 19V5M6 11l6-6 6 6"/>`
+  "down" `<path d="M12 5v14M6 13l6 6 6-6"/>`
+  "flag" `<path d="M5 21V4h12l-2 4 2 4H5"/>` }}
+{{- with index $paths . }}<svg class="icon" aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{{ . | safeHTML }}</svg>{{ else }}{{ warnf "icon.html: unknown icon %q" . }}{{ end }}

@@ -1,0 +1,34 @@
+{{- /*
+  Gallery of a detail sheet. Without JavaScript: a scroll-snap strip (swipe or scroll), thumbnails and dots are
+  links to #img-n (app.js adds the arrows' behavior, the active thumbnail and dot), and every slide carries its own "n / N" counter (so it is always right).
+  Desktop: big image + vertical column of thumbnails. Phone: strip + dots.
+  Context: dict "items" <slice of { image, alt }> (the first one is the main image).
+*/ -}}
+{{- $items := .items }}
+{{- $n := len $items }}
+{{- if $n }}
+<div class="gallery{{ if gt $n 1 }} gallery--multi{{ end }}" role="group" aria-label="{{ T "images" }}">
+  <ul class="gallery__track">
+    {{- range $i, $it := $items }}
+    <li class="gallery__slide" id="img-{{ add $i 1 }}">
+      {{ partial "image-by-path.html" (dict "path" $it.image "alt" $it.alt "lazy" (gt $i 0)) }}
+      {{- if gt $n 1 }}<span class="gallery__count">{{ add $i 1 }} / {{ $n }}</span>{{ end }}
+    </li>
+    {{- end }}
+  </ul>
+  {{- if gt $n 1 }}
+  <div class="gallery__rail">
+    <button class="gallery__arrow" type="button" data-gallery="prev" aria-label="{{ T "previousImage" }}">{{ partial "icon.html" "up" }}</button>
+    <ul class="gallery__thumbs">
+      {{- range $i, $it := $items }}
+      <li><a href="#img-{{ add $i 1 }}" aria-label="{{ $it.alt }}"{{ if eq $i 0 }} aria-current="true"{{ end }}>{{ partial "image-by-path.html" (dict "path" $it.image "alt" "") }}</a></li>
+      {{- end }}
+    </ul>
+    <button class="gallery__arrow" type="button" data-gallery="next" aria-label="{{ T "nextImage" }}">{{ partial "icon.html" "down" }}</button>
+  </div>
+  <ol class="gallery__dots" aria-hidden="true">
+    {{- range $i, $it := $items }}<li><a href="#img-{{ add $i 1 }}" tabindex="-1"{{ if eq $i 0 }} aria-current="true"{{ end }}></a></li>{{ end }}
+  </ol>
+  {{- end }}
+</div>
+{{- end }}

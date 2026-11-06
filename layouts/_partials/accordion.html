@@ -1,0 +1,38 @@
+{{- /*
+  Accordion of five strips. Without JavaScript the open section follows :target
+  (see layout.css); with no hash, the section named in "open" is open.
+  Context: dict "open" <section id>, "h1" <bool: hero title is the page <h1>>, "base" <home URL on detail pages>.
+*/ -}}
+{{- $open := .open | default "omniaevo" }}
+{{- $sections := slice
+  (dict "id" "omniaevo" "label" (T "sectionOmniaevo"))
+  (dict "id" "cosa-facciamo" "label" (T "sectionCosaFacciamo"))
+  (dict "id" "case-history" "label" (T "sectionCaseHistory"))
+  (dict "id" "team" "label" (T "sectionTeam"))
+  (dict "id" "trasparenza" "label" (T "sectionTrasparenza")) }}
+<div class="accordion">
+  {{- range $i, $s := $sections }}
+  <section class="panel-wrap" id="{{ $s.id }}" data-tone="{{ $i }}"{{ if eq $s.id $open }} data-open{{ end }}>
+    {{ partial "strip.html" (dict "index" $i "label" $s.label "id" $s.id "base" $.base) }}
+    <div class="panel" id="{{ $s.id }}-panel" role="region" aria-label="{{ $s.label }}">
+      <div class="panel__inner">
+        {{- if eq $s.id "omniaevo" }}
+        {{ partial "sections/omniaevo.html" (dict "h1" $.h1) }}
+        {{- else if eq $s.id "cosa-facciamo" }}
+        {{ partial "sections/cosa-facciamo.html" . }}
+        {{- else if eq $s.id "case-history" }}
+        {{ partial "sections/case-history.html" . }}
+        {{- else if eq $s.id "trasparenza" }}
+        {{ partial "sections/trasparenza.html" . }}
+        {{- else if eq $s.id "team" }}
+        {{ partial "sections/team.html" . }}
+        {{- else }}
+        <h2 id="{{ $s.id }}-title">{{ $s.label }}</h2>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{- /* The URL hash decides the open section before the first paint (no opening animation on arrival, e.g. when a detail sheet is closed). CSS (:target) takes over for later changes. */}}
+<script>(function(){var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),w=e&&e.closest(".panel-wrap");if(w){document.querySelectorAll(".panel-wrap[data-open]").forEach(function(x){x.removeAttribute("data-open")});w.setAttribute("data-open","")}})()</script>

@@ -1,0 +1,9 @@
+{{- /*
+  Title text with its last word in a decorative highlight block.
+  Works with any title and language. Use inside a heading element.
+  Context: dict "text" <string> "class" <extra highlight classes, optional>
+*/ -}}
+{{- $words := split .text " " -}}
+{{- $last := index $words (sub (len $words) 1) -}}
+{{- with first (sub (len $words) 1) $words }}{{ delimit . " " }} {{ end -}}
+<span class="highlight{{ with $.class }} {{ . }}{{ end }}">{{ $last }}</span>

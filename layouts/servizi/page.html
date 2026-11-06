@@ -1,0 +1,27 @@
+{{- /* Service detail: the accordion with section 01 open and the detail sheet already open. */ -}}
+{{ define "skip-target" }}detail-title{{ end }}
+
+{{ define "main" }}
+{{- $home := site.Home.RelPermalink }}
+{{- $supportId := cond (eq site.Language.Lang "en") "supportEn" "support" }}
+{{- $support := index (where hugo.Data.contacts.emails "id" $supportId) 0 }}
+{{- $items := slice }}
+{{- with .Params.image }}{{ $items = $items | append (dict "image" . "alt" $.Params.imageAlt) }}{{ end }}
+{{- range .Params.gallery }}{{ $items = $items | append . }}{{ end }}
+{{- $actions := slice }}
+{{- range .Params.links }}{{ $actions = $actions | append (dict "label" .label "href" .url "external" true) }}{{ end }}
+{{- range .Params.attachments }}
+  {{- $external := (urls.Parse .file).Scheme }}
+  {{- $actions = $actions | append (dict "label" .label "href" (cond (ne $external "") .file (.file | relURL)) "external" (ne $external "")) }}
+{{- end }}
+{{- with $support }}{{ $actions = $actions | append (dict "label" .email "href" (printf "mailto:%s" .email)) }}{{ end }}
+{{- $actions = $actions | append (dict "label" (T "contactUs") "href" (printf "%s#contatti" $home)) }}
+{{ partial "sheet.html" (dict
+  "page" .
+  "label" (T "sectionServizi")
+  "index" 1
+  "closeHref" (printf "%s#servizi" $home)
+  "items" $items
+  "actions" $actions) }}
+{{ partial "accordion.html" (dict "open" "cosa-facciamo" "h1" false "base" $home) }}
+{{ end }}

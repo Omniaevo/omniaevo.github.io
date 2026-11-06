@@ -1,0 +1,12 @@
+{{- $dest := .Destination -}}
+{{- $alt := .PlainText -}}
+{{- if not $alt }}{{ warnf "%s: image %q has no alt text" .Page.File.Path $dest }}{{ end -}}
+{{- $img := "" -}}
+{{- if not (urls.Parse $dest).Scheme -}}
+  {{- $img = or (.PageInner.Resources.Get $dest) (resources.Get (strings.TrimPrefix "/" $dest)) -}}
+{{- end -}}
+{{- if $img -}}
+  {{- partial "image.html" (dict "img" $img "alt" $alt) -}}
+{{- else -}}
+  <img src="{{ $dest | safeURL }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+{{- end -}}

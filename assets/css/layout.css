@@ -1,0 +1,112 @@
+/* Accordion layout.
+   Default = stacked (horizontal strips): below 1100 px, or on low screens.
+   Desktop (≥ 1100 × 560 px) = side by side (vertical strips).
+   Low screens (< 560 px high) = normal flow, every section open, the page scrolls.
+
+   State goes through two custom properties set on .panel-wrap:
+     --open  0|1  (flex-grow, content fade, indicator)
+     --vis   hidden|visible  (closed panels are out of the tab order and the a11y tree)
+   Open section = [data-open] by default, or the one that holds :target (a strip link,
+   or an element inside the panel such as #contatti). :where() keeps specificity at zero. */
+
+:where(.panel-wrap) {
+  --open: 0;
+  --vis: hidden;
+  --vis-delay: var(--dur-slow);
+}
+
+:where(.panel-wrap:is([data-open], :target, :has(:target))) {
+  --open: 1;
+  --vis: visible;
+  --vis-delay: 0s;
+}
+
+:where(.accordion:has(:target) .panel-wrap[data-open]:not(:target, :has(:target))) {
+  --open: 0;
+  --vis: hidden;
+  --vis-delay: var(--dur-slow);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.panel-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: var(--open) 0 var(--strip-m);
+  min-height: 0;
+  min-width: 0;
+  background: var(--strip-bg);
+  transition: flex-grow var(--t-slow);
+}
+
+.panel {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--white);
+  visibility: var(--vis);
+  transition: visibility 0s var(--vis-delay);
+}
+
+.panel__inner {
+  padding: var(--space-4) var(--space-3) var(--space-5);
+  opacity: var(--open);
+  transition: opacity var(--dur-fast) ease calc(var(--open) * var(--dur-fast));
+}
+
+/* Desktop: strips side by side; the open one grows */
+@media (min-width: 1100px) and (min-height: 560px) {
+  .accordion {
+    flex-direction: row;
+  }
+
+  .panel-wrap {
+    flex: var(--open) 0 var(--strip);
+    flex-direction: row;
+  }
+
+  .panel {
+    flex: 1 1 auto;
+  }
+
+  /* Final width of the open panel: text never reflows while the strip grows */
+  .panel__inner {
+    width: var(--panel-w);
+    min-width: 560px;
+    padding: var(--space-5) clamp(var(--space-4), 5vw, var(--space-6)) var(--space-6);
+  }
+}
+
+/* Low screens: normal flow, every section open, strips become section headings */
+@media (max-height: 559.98px) {
+  .accordion {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .panel-wrap {
+    --open: 1;
+    --vis: visible;
+    display: block;
+    transition: none;
+  }
+
+  .panel {
+    overflow: visible;
+  }
+
+  .panel__inner {
+    width: auto;
+    min-width: 0;
+    padding: var(--space-4) var(--space-3) var(--space-5);
+  }
+}

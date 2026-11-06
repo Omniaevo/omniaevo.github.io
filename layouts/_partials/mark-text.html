@@ -1,0 +1,11 @@
+{{- /*
+  Title text with one word in the orange keyword mark (.mark). Returns safe HTML.
+  Context: dict "text" <string> "highlight" <word, exactly as in the text; empty = no mark>
+*/ -}}
+{{- $text := .text | htmlEscape }}
+{{- with .highlight }}
+  {{- if strings.Contains $text (htmlEscape .) }}
+    {{- $text = strings.Replace $text (htmlEscape .) (printf `<span class="mark">%s</span>` (htmlEscape .)) 1 }}
+  {{- else }}{{ warnf "highlight %q not found in the title %q" . $.text }}{{ end }}
+{{- end }}
+{{- return (safeHTML $text) -}}

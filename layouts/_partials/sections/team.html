@@ -1,0 +1,48 @@
+{{- /*
+  Section 03 Team. Data: home front matter "team" (title, highlight, quote, text, values, members).
+  Values: equal filled cards (they inform). People: equal tiles, 4:5 photo with the same crop;
+  without a photo a silhouette on --mist (decorative). Blocks without data are not shown.
+*/ -}}
+{{- with site.Home.Params.team }}
+{{- $t := . }}
+<div class="team">
+
+  <header>
+    <h2 class="team__title" id="team-title">{{ partial "mark-text.html" (dict "text" .title "highlight" .highlight) }}</h2>
+    {{- with .quote }}<p class="team__quote">{{ . }}</p>{{ end }}
+    {{- with .text }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  {{- with .values }}
+  <div>
+    {{- with $t.valuesTitle }}<h3>{{ . }}</h3>{{ end }}
+    <ul class="values">
+      {{- range . }}
+      <li class="value">
+        <span class="value__icon">{{ partial "icon.html" .icon }}</span>
+        <span class="value__title">{{ .title }}</span>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+  {{- with .members }}
+  <div>
+    {{- with $t.membersTitle }}<h3>{{ . }}</h3>{{ end }}
+    <ul class="people">
+      {{- range . }}
+      <li class="person{{ if .featured }} person--featured{{ end }}">
+        <div class="person__photo">
+          {{- if .photo }}{{ partial "image-by-path.html" (dict "path" .photo "alt" .photoAlt) }}{{ else }}{{ partial "icon.html" "person" }}{{ end }}
+        </div>
+        <span class="person__name">{{ .name }}</span>
+        <span class="person__role">{{ .role }}</span>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+</div>
+{{- end }}

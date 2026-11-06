@@ -1,0 +1,85 @@
+{{- /*
+  Section 01. Data: home front matter, cosaFacciamo (title, highlight, intro, areas, lists).
+  Intro: all paragraphs visible, full width.
+  Text: **word** in the CMS strings becomes a key word with a small underline (see .what strong).
+  Areas: equal fixed-size cards. Rest: the first lines of the text; hover (pointer): the full text; touch: bottom sheet.
+  Lists: infrastructure, programming, automation, AI (the fields-of-activity list repeats the areas: not shown).
+  Sectors: equal cards after the lists.
+*/ -}}
+{{- with site.Home.Params.cosaFacciamo }}
+{{- $c := . }}
+<div class="what">
+
+  <header>
+    <h2 class="what__title" id="cosa-facciamo-title">{{ partial "mark-text.html" (dict "text" .title "highlight" .highlight) }}</h2>
+    {{- with .intro }}
+    <h3>{{ .title }}</h3>
+    {{- range $i, $t := .paragraphs }}<p{{ if eq $i 0 }} class="what__lead"{{ end }}>{{ site.Home.RenderString $t }}</p>{{ end }}
+    {{- with .closing }}<p>{{ site.Home.RenderString . }}</p>{{ end }}
+    {{- end }}
+  </header>
+
+  {{- with .areas }}
+  {{- /* Area cards. Pointer devices: the card shows the full text on hover or focus (CSS only).
+         Touch devices: a tap opens the text in a bottom sheet (assets/js/app.js). */}}
+  <ol class="areas">
+    {{- range $i, $a := . }}
+    <li class="area" tabindex="0">
+      <div class="area__head">
+        <span class="area__num"><span class="mark">{{ printf "%02d" $i }}</span></span>
+        <h3 class="area__title">{{ $a.title }}</h3>
+      </div>
+      <div class="area__body">
+        <p class="area__summary" aria-hidden="true">{{ site.Home.RenderString $a.text }}</p>
+        <p class="area__full">{{ site.Home.RenderString $a.text }}</p>
+      </div>
+      <span class="area__hint">{{ partial "icon.html" "plus" }}</span>
+    </li>
+    {{- end }}
+  </ol>
+  <dialog class="sheet" id="area-sheet" aria-labelledby="area-sheet-title">
+    <div class="sheet__grip" aria-hidden="true"></div>
+    <div class="sheet__top">
+      <span class="sheet__label">{{ $.title }}</span>
+      <button class="sheet__close" type="button" aria-label="{{ T "close" }}">{{ partial "icon.html" "close" }}</button>
+    </div>
+    <div class="area__head">
+      <span class="area__num"><span class="mark" data-sheet-num></span></span>
+      <h3 class="area__title" id="area-sheet-title" data-sheet-title></h3>
+    </div>
+    <p class="sheet__text" data-sheet-text></p>
+  </dialog>
+  {{- end }}
+
+  <div class="stacks">
+    {{- range $i, $l := .lists }}
+    {{- if gt $i 0 }}
+    <div>
+      <h3>{{ $l.title }}</h3>
+      <ul class="chips">
+        {{- range $l.items }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    </div>
+    {{- end }}
+    {{- end }}
+  </div>
+
+  {{- /* Sectors: plain rows separated by lines (title left, text right). A new sector = one more CMS entry. */}}
+  {{- with .settori }}
+  <div class="sectors">
+    {{- with $c.settoriIntro }}<h3>{{ .title }}</h3>{{ end }}
+    <ul class="sectors__list">
+      {{- range . }}
+      <li class="sector">
+        <h4 class="sector__title">{{ .title }}</h4>
+        <p>{{ .text }}</p>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+  {{ partial "sections/servizi-block.html" . }}
+
+</div>
+{{- end }}

@@ -1,0 +1,7 @@
+{{ define "main" }}
+<div class="not-found">
+  <h1 class="not-found__title"><span class="mark">404</span> {{ T "notFoundTitle" }}</h1>
+  <p>{{ T "notFoundText" }}</p>
+  <a class="btn" href="{{ site.Home.RelPermalink }}">{{ T "backToHome" }} {{ partial "icon-arrow.html" }}</a>
+</div>
+{{ end }}

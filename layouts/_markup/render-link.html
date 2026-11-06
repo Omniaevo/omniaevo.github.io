@@ -1,0 +1,20 @@
+{{- $dest := .Destination -}}
+{{- $u := urls.Parse $dest -}}
+{{- $href := $dest -}}
+{{- $external := false -}}
+{{- if $u.Scheme -}}
+  {{- /* http(s), mailto, tel */ -}}
+  {{- $external = in (slice "http" "https") $u.Scheme -}}
+{{- else if and $u.Path (not (path.Ext $u.Path)) -}}
+  {{- /* Path without extension: must be a content page. Files (.pdf, .exe) are static. */ -}}
+  {{- with .PageInner.GetPage (strings.TrimSuffix "/" $u.Path) -}}
+    {{- $href = .RelPermalink -}}
+    {{- with $u.Fragment }}{{ $href = printf "%s#%s" $href . }}{{ end -}}
+  {{- else -}}
+    {{- warnf "%s: unresolved internal link %q" $.Page.File.Path $dest -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- if $external }} rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /* ponytail: emails/tel pass through unchanged; no target="_blank" */ -}}

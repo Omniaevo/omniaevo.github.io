@@ -1,0 +1,20 @@
+{{- $files := slice }}
+{{- range slice "tokens" "fonts" "base" "layout" "components" "pages" }}
+  {{- with resources.Get (printf "css/%s.css" .) }}
+    {{- $files = $files | append . }}
+  {{- else }}
+    {{- errorf "head/css.html: missing assets/css/%s.css" . }}
+  {{- end }}
+{{- end }}
+{{- range slice "bricolage-grotesque-latin" "schibsted-grotesk-latin" }}
+<link rel="preload" href="{{ printf "fonts/%s.woff2" . | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- end }}
+{{- with $files | resources.Concat "css/main.css" }}
+  {{- if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{- else }}
+    {{- with . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{- end }}
+  {{- end }}
+{{- end }}

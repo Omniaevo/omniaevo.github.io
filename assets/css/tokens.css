@@ -1,0 +1,59 @@
+/* Design tokens (A1 "Strati"), lean system. Every color, size and timing used by the site comes from here.
+   Rules: one token, one job. A new value is added only for a use case the existing ones do not cover,
+   and is written in docs/redesign/TOKENS.md. */
+:root {
+  /* Colors: 8 values */
+  --blue: #163687;          /* titles, links, logo, numbers */
+  --orange: #e08f14;        /* fills and marks: strip 04, buttons, bars, indicator, keyword marker */
+  --orange-dark: #a5650a;   /* small orange text, on white only (4.7:1) */
+  --ink: #0b1430;           /* body text, strong text, rules, focus on light */
+  --muted: #4b5470;         /* secondary text, on white or --mist */
+  --mist: #eef1f8;          /* filled cards */
+  --line: #e3e6ee;          /* borders and dividers */
+  --white: #ffffff;         /* page, outlined cards, text on blue strips */
+
+  /* Derived from the values above: no new colors */
+  --strip-1: color-mix(in srgb, var(--blue) 90%, black);
+  --strip-2: color-mix(in srgb, var(--blue) 78%, black);
+  --strip-3: color-mix(in srgb, var(--blue) 65%, black);   /* also: link hover */
+  --orange-hover: color-mix(in srgb, var(--orange) 92%, black);
+  --mist-hover: color-mix(in srgb, var(--mist) 92%, var(--blue));
+  --backdrop: color-mix(in srgb, var(--ink) 55%, transparent);
+  --focus: 3px solid var(--ink);            /* on light backgrounds (18:1) */
+  --focus-on-dark: 3px solid var(--orange); /* on blue strips (4.6–5.8:1) */
+
+  /* Type: 2 families, 3 weights (400 text, 600 emphasis, 800 titles), 6 sizes */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Schibsted Grotesk", system-ui, sans-serif;
+  --fs-display: clamp(3rem, 5.5vw, 5.5rem);   /* 48 → 88 */
+  --fs-h2: clamp(1.75rem, 3vw, 2.75rem);      /* 28 → 44 */
+  --fs-h3: 1.75rem;                           /* 28 */
+  --fs-lead: 1.25rem;                         /* 20 */
+  --fs-body: 1rem;                            /* 16 */
+  --fs-small: .875rem;                        /* 14 */
+
+  /* Space and shape */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --r-s: 12px;
+  --r-m: 16px;
+  --bw: 2px;
+
+  /* Motion */
+  --dur-fast: .3s;
+  --dur-slow: .6s;
+  --t-fast: var(--dur-fast) ease;
+  --t-slow: var(--dur-slow) cubic-bezier(.7, 0, .2, 1);
+
+  /* Accordion sizes */
+  --strip: 96px;
+  --strip-m: 60px;
+  --strip-mark: 52px;
+  --strip-mark-m: 36px;
+  --strip-count: 5;
+  --panel-w: calc(100vw - var(--strip-count) * var(--strip));  /* final width of the open panel */
+}

@@ -1,0 +1,116 @@
+{{- /*
+  Section 00. Context: dict "h1" <bool: the hero title is the page <h1>, else <h2>>
+  Data: home front matter (hero, chiSiamo, cosaFacciamo, contatti) and data/contacts.toml.
+*/ -}}
+{{- $home := site.Home }}
+{{- $p := $home.Params }}
+{{- $c := hugo.Data.contacts }}
+{{- $info := index (where $c.emails "id" "info") 0 }}
+<div class="home">
+
+  {{- /* Hero */}}
+  {{- with $p.hero }}
+  <div class="hero">
+    <p class="hero__eyebrow">{{ $c.company }} · {{ $c.address.city }} ({{ $c.address.province }}){{ with $c.foundedYear }} · {{ T "since" . }}{{ end }}</p>
+    {{- /* hero.highlight: one word of the title gets the orange mark. Only on the page title (h1). */}}
+    {{- $title := partial "mark-text.html" (dict "text" .title "highlight" (cond $.h1 .highlight "")) }}
+    {{- if $.h1 }}<h1 class="hero__title">{{ $title }}</h1>{{ else }}<h2 class="hero__title">{{ $title }}</h2>{{ end }}
+    {{- with .text }}<p class="hero__text">{{ . }}</p>{{ end }}
+  </div>
+  {{- end }}
+
+  {{- /* Chi siamo: text, Mission, Vision, then the history as a timeline */}}
+  {{- with $p.chiSiamo }}
+  <section class="about" id="chi-siamo" aria-labelledby="chi-siamo-title">
+    <h2 id="chi-siamo-title">{{ .title }}</h2>
+    {{- with .text }}<p class="about__lead">{{ . }}</p>{{ end }}
+    {{- if or .mission .vision }}
+    <div class="about__mv">
+      {{- range slice .mission .vision }}{{ with . }}
+      <div>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </div>
+      {{- end }}{{ end }}
+    </div>
+    {{- end }}
+    {{- with .timeline }}
+    <div>
+      {{- with $p.chiSiamo.historyTitle }}<h3>{{ . }}</h3>{{ end }}
+      {{- /* Two columns on a wide panel: the first one gets the extra row when the count is odd */}}
+      {{- $rows := div (add (len .) 1) 2 }}
+      <div class="timeline-wrap">
+        <ol class="timeline" style="--rows: {{ $rows }}">
+          {{- range $i, $t := . }}
+          <li class="timeline__row{{ if eq $i (sub $rows 1) }} timeline__row--end{{ end }}">
+            <span class="timeline__year">{{ $t.year }}</span>
+            <ul class="timeline__items">
+              {{- range $t.items }}<li>{{ . }}</li>{{ end }}
+            </ul>
+          </li>
+          {{- end }}
+        </ol>
+      </div>
+    </div>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- /* Company details + link to Trasparenza */}}
+  {{ partial "legal-data.html" (dict "id" "omniaevo" "link" "#trasparenza") }}
+
+  {{- /* Contatti */}}
+  {{- /* contatti.ctaText and ctaLabel say the same as intro: not shown here. */}}
+  {{- with $p.contatti }}
+  <section class="contacts" id="contatti" aria-labelledby="contatti-title">
+    <div class="contacts__top">
+      <div class="contacts__lead">
+        <h2 id="contatti-title">{{ .title }}</h2>
+        <p>{{ .intro }}</p>
+      </div>
+      <div class="contacts__main">
+        <a href="mailto:{{ $info.email }}"><span>{{ $info.email }}</span></a>
+        <a href="tel:{{ $c.phoneHref }}"><span>{{ $c.phone }}</span></a>
+        <address>
+          <strong>{{ .officeTitle }}</strong>
+          {{ $c.company }} · {{ $c.address.street }} · {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }})
+        </address>
+      </div>
+    </div>
+    <div class="contacts__groups">
+      {{- range slice "support" "business" }}
+      <div class="contacts__group">
+        <h3>{{ T (printf "contactGroup%s" (strings.FirstUpper .)) }}</h3>
+        <ul>
+          {{- range where $c.emails "group" . }}
+          <li>{{ partial "contact-row.html" (dict "icon" (index (dict "administration" "admin" "support" "support" "supportPa" "support" "supportEn" "support" "sales" "sales" "complaints" "flag") .id) "label" (printf "%s%s" (T (printf "contactRole%s" (strings.FirstUpper .id))) (cond .publicOnly (printf " · %s" (T "publicOnlyNote")) "")) "email" .email) }}</li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}
+      <div class="contacts__group">
+        <h3>{{ T "contactGroupCertified" }}</h3>
+        <ul>
+          <li>{{ partial "contact-row.html" (dict "icon" "pec" "label" (T "contactRolePec") "email" $c.pec.email) }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  {{- end }}
+
+  {{- /* Legal row */}}
+  {{- /* No English privacy page yet: fall back to the Italian one. */}}
+  {{- $hasPrivacy := site.GetPage "/privacy" }}
+  {{- $privacy := relURL "privacy/" }}
+  {{- if $hasPrivacy }}{{ $privacy = relLangURL "privacy/" }}{{ end }}
+  <footer class="legal-row">
+    <p>{{ T "vatNumber" }} {{ $c.vat }}</p>
+    <nav aria-label="{{ T "legalNavigation" }}">
+      <ul>
+        <li><a href="{{ $privacy }}"{{ if $hasPrivacy }} data-detail{{ else }} hreflang="it"{{ end }}>{{ T "privacyPolicy" }}</a></li>
+        <li><a href="{{ $privacy }}#cookie"{{ if $hasPrivacy }} data-detail{{ else }} hreflang="it"{{ end }}>{{ T "cookiePolicy" }}</a></li>
+      </ul>
+    </nav>
+    <p>© {{ now.Year }} {{ $c.company }} – {{ T "rightsReserved" }}</p>
+  </footer>
+</div>

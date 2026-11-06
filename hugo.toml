@@ -1,0 +1,118 @@
+baseURL = 'https://omniaevo.github.io/'
+title = 'Omniaevo'
+timeZone = 'Europe/Rome'
+enableRobotsTXT = true
+
+defaultContentLanguage = 'it'
+defaultContentLanguageInSubdir = false
+
+# No taxonomies: empty table disables the default tags/categories.
+[taxonomies]
+
+[pagination]
+  pagerSize = 12
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.highlight]
+  noClasses = false
+
+# Transparency entries only feed the list page: no detail pages.
+# Kept here (not in _index.md) so that editing the index from the CMS cannot drop it.
+[[cascade]]
+  [cascade.build]
+    render = 'never'
+  [cascade.target]
+    path = '/trasparenza/**'
+    kind = 'page'
+
+# The three index pages only forward to the home page: no sitemap entry.
+[[cascade]]
+  [cascade.sitemap]
+    disable = true
+  [cascade.target]
+    path = '{/servizi,/case-history,/trasparenza}'
+    kind = 'section'
+
+[security]
+  enableInlineShortcodes = false
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+# Defining an assets mount removes the default one: repeat it, then expose
+# static/uploads in assets/uploads for image processing.
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'static/uploads'
+    target = 'assets/uploads'
+
+[languages]
+  [languages.it]
+    contentDir = 'content/it'
+    locale = 'it-IT'
+    label = 'Italiano'
+    weight = 1
+    [languages.it.params]
+      claim = 'Soluzioni semplici per esigenze complesse'
+      description = 'Omniaevo: soluzioni semplici per esigenze complesse. Engineering, network, research, systems, software e web apps.'
+    [[languages.it.menus.main]]
+      name = 'Chi siamo'
+      url = '/#chi-siamo'
+      weight = 10
+    [[languages.it.menus.main]]
+      name = 'Cosa facciamo'
+      url = '/#cosa-facciamo'
+      weight = 20
+    [[languages.it.menus.main]]
+      name = 'Servizi'
+      url = '/#servizi'
+      weight = 30
+    [[languages.it.menus.main]]
+      name = 'Case history'
+      url = '/#case-history'
+      weight = 40
+    [[languages.it.menus.main]]
+      name = 'Trasparenza'
+      url = '/#trasparenza'
+      weight = 50
+    [[languages.it.menus.main]]
+      name = 'Contatti'
+      url = '/#contatti'
+      weight = 70
+
+  [languages.en]
+    contentDir = 'content/en'
+    locale = 'en-GB'
+    label = 'English'
+    weight = 2
+    [languages.en.params]
+      claim = 'Simple solutions for complex needs'
+      description = 'Omniaevo: simple solutions for complex needs. Engineering, network, research, systems, software and web apps.'
+    [[languages.en.menus.main]]
+      name = 'About us'
+      url = '/en/#chi-siamo'
+      weight = 10
+    [[languages.en.menus.main]]
+      name = 'What we do'
+      url = '/en/#cosa-facciamo'
+      weight = 20
+    [[languages.en.menus.main]]
+      name = 'Services'
+      url = '/en/#servizi'
+      weight = 30
+    [[languages.en.menus.main]]
+      name = 'Case history'
+      url = '/en/#case-history'
+      weight = 40
+    [[languages.en.menus.main]]
+      name = 'Transparency'
+      url = '/en/#trasparenza'
+      weight = 50
+    [[languages.en.menus.main]]
+      name = 'Contacts'
+      url = '/en/#contatti'
+      weight = 70

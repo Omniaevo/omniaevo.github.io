@@ -1,0 +1,21 @@
+{{- /* Case history detail: the accordion with section 02 open and the detail sheet already open. */ -}}
+{{ define "skip-target" }}detail-title{{ end }}
+
+{{ define "main" }}
+{{- $home := site.Home.RelPermalink }}
+{{- $meta := slice }}
+{{- with .Params.client }}{{ $meta = $meta | append . }}{{ end }}
+{{- with .Params.sector }}{{ $meta = $meta | append . }}{{ end }}
+{{- $items := slice }}
+{{- with .Params.image }}{{ $items = $items | append (dict "image" . "alt" $.Params.imageAlt) }}{{ end }}
+{{- range .Params.gallery }}{{ $items = $items | append . }}{{ end }}
+{{ partial "sheet.html" (dict
+  "page" .
+  "label" (T "sectionCaseHistory")
+  "index" 2
+  "closeHref" (printf "%s#case-history" $home)
+  "meta" (delimit $meta " · ")
+  "items" $items
+  "actions" (slice (dict "label" (T "contactUs") "href" (printf "%s#contatti" $home)))) }}
+{{ partial "accordion.html" (dict "open" "case-history" "h1" false "base" $home) }}
+{{ end }}

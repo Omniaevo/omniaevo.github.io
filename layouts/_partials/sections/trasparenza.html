@@ -1,0 +1,44 @@
+{{- /*
+  Section 04 Trasparenza. Data: content/<lang>/trasparenza/_index.md (title, highlight, text, banners) and the
+  pages of the collection: kind "progetto" (projects) and "documento-aiuti" (public aid document).
+  Company details: same partial as section 00. Documents: download rows (same look as .contact),
+  newest year first, with the year (and the programme for projects) as the small line.
+*/ -}}
+{{- with site.GetPage "/trasparenza" }}
+{{- $page := . }}
+<div class="transparency">
+
+  <header>
+    <h2 class="transparency__title" id="trasparenza-title">{{ partial "mark-text.html" (dict "text" .Title "highlight" .Params.highlight) }}</h2>
+    {{- with .Content }}<div class="transparency__intro">{{ . }}</div>{{ end }}
+  </header>
+
+  {{- with .Params.banners }}
+  <div class="transparency__banners">
+    {{- range . }}
+    <a href="{{ .image | relURL }}">{{ partial "image-by-path.html" (dict "path" .image "alt" .imageAlt) }}</a>
+    {{- end }}
+  </div>
+  {{- end }}
+
+  {{ partial "legal-data.html" (dict "id" "trasparenza") }}
+
+  {{- range slice (dict "kind" "progetto" "title" (T "projects")) (dict "kind" "documento-aiuti" "title" (T "documents")) }}
+  {{- $group := .title }}
+  {{- with sort (where $page.Pages "Params.kind" .kind) "Params.year" "desc" }}
+  <div>
+    <h3>{{ $group }}</h3>
+    <ul class="doc-list">
+      {{- range . }}
+        {{- $e := . }}
+        {{- with .Params.file }}
+          {{- partial "download-row.html" (dict "title" $e.Title "file" . "note" (delimit (slice $e.Params.program (string $e.Params.year)) " · ")) }}
+        {{- end }}
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+  {{- end }}
+
+</div>
+{{- end }}

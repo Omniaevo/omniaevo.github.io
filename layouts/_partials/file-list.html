@@ -1,0 +1,19 @@
+{{- /*
+  Downloadable documents as full-width blue rows (type square, title, year, arrow).
+  Context: pages with a "file" param (others are skipped).
+*/ -}}
+<ul class="file-list">
+  {{- range . }}
+    {{- $entry := . }}
+    {{- with .Params.file }}
+  <li>
+    <a class="file-list__item" href="{{ . | relURL }}">
+      <span class="file-list__type" aria-hidden="true">{{ upper (strings.TrimPrefix "." (path.Ext .)) }}</span>
+      <span class="file-list__title">{{ $entry.Title }}</span>
+      <span class="file-list__meta">{{ $entry.Params.year }}{{ with $entry.Params.fileNote }} {{ . }}{{ end }}</span>
+      <span class="file-list__arrow" aria-hidden="true">↓</span>
+    </a>
+  </li>
+    {{- end }}
+  {{- end }}
+</ul>

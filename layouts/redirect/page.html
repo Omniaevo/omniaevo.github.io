@@ -1,0 +1,2 @@
+{{- /* Redirect page. Front matter: target = "/path/#anchor" */ -}}
+{{ partial "redirect.html" (dict "title" .Title "target" (.Params.target | default "/")) }}

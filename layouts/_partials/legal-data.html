@@ -1,0 +1,19 @@
+{{- /*
+  Company details (registered office, VAT, REA, share capital) from data/contacts.toml.
+  Empty REA and share capital show a placeholder (TODO: fill data/contacts.toml).
+  Context: dict "id" <unique id prefix for the heading>, optional "link" <href of the Transparency button>
+*/ -}}
+{{- $c := hugo.Data.contacts }}
+<section class="legal-data" aria-labelledby="{{ .id }}-legal-title">
+  <h2 id="{{ .id }}-legal-title">{{ T "companyData" }}</h2>
+  <p>
+    <span>{{ with site.Home.Params.contatti.officeTitle }}{{ . }}{{ else }}{{ $c.company }}{{ end }}</span>
+    <strong>{{ $c.company }} – {{ $c.address.street }} – {{ $c.address.postalCode }} {{ $c.address.city }} ({{ $c.address.province }})</strong>
+  </p>
+  <p><span>{{ T "vatNumber" }}</span><strong>{{ $c.vat }}</strong></p>
+  <p><span>{{ T "reaNumber" }}</span><strong{{ if not $c.rea }} class="placeholder"{{ end }}>{{ or $c.rea (T "placeholderValue") }}</strong></p>
+  <p><span>{{ T "shareCapital" }}</span><strong{{ if not $c.shareCapital }} class="placeholder"{{ end }}>{{ or $c.shareCapital (T "placeholderValue") }}</strong></p>
+  {{- with .link }}
+  <a class="btn" href="{{ . }}">{{ T "transparency" }} {{ partial "icon-arrow.html" . }}</a>
+  {{- end }}
+</section>
